@@ -9,9 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.2",
+    "@chakra-ui/react": "^2.2.1",
+    "firebase": "^9.8.4",
+    "formik": "^2.2.9",
+    "framer-motion": "^6.3.16",
     "next": "12.2.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "8.18.0",
