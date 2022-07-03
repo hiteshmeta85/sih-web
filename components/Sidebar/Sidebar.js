@@ -2,6 +2,7 @@ import {Flex, Icon, Link, List, ListIcon, ListItem, Text} from "@chakra-ui/react
 import NextLink from "next/link";
 import {SidebarItems} from "./SidebarItems";
 import {useRouter} from "next/router";
+import {BiCoffeeTogo} from "react-icons/bi";
 
 const Sidebar = () => {
 
@@ -17,15 +18,16 @@ const Sidebar = () => {
       color={'gray.300'}
       fontSize={'lg'}
     >
-      <Text
+      <Flex
         pl={6}
         pr={20}
         py={2}
         my={6}
+        alignItems='center'
       >
-        <Icon color={'gray.300'} mr={2}/>
-        Homebrew
-      </Text>
+        <Icon as={BiCoffeeTogo} color={'gray.300'} mr={2}/>
+        <Text as={'span'}>Homebrew</Text>
+      </Flex>
       <List>
         {SidebarItems.map((item, index) => {
           return (
@@ -40,7 +42,7 @@ const Sidebar = () => {
                   color={router.pathname === `${item.navLink}` ? 'black' : ''}
                   _hover={router.pathname !== `${item.navLink}` ? {bg: '#0F2E69'} : ''}
                 >
-                  <ListIcon color={router.pathname === `${item.navLink}` ? '#0B2656' : 'gray.300'}/>
+                  <ListIcon as={item.icon} color={router.pathname === `${item.navLink}` ? '#0B2656' : 'gray.300'}/>
                   {item.name}
                 </ListItem>
               </Link>
