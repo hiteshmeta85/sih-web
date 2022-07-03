@@ -1,10 +1,13 @@
 import '../styles/globals.css'
 import {ChakraProvider} from '@chakra-ui/react'
 import Head from "next/head";
+import theme from "../theme";
+import '@fontsource/raleway/400.css'
+import '@fontsource/open-sans/700.css'
 
 function MyApp({Component, pageProps}) {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Head>
         <title>Homebrew</title>
         <meta charSet='utf-8'/>
