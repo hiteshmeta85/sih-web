@@ -1,9 +1,9 @@
 import React from 'react';
-import DashboardContainer from "../../components/DashboardContainer/DashboardContainer";
+import DashboardContainer from "./_layout";
 
 const CreateAlert = () => {
   return (
-    <DashboardContainer>Alert</DashboardContainer>
+    <DashboardContainer title={'Alert'}>Alert</DashboardContainer>
   );
 };
 

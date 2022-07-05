@@ -1,9 +1,9 @@
 import React from 'react';
-import DashboardContainer from "../../components/DashboardContainer/DashboardContainer";
+import DashboardContainer from "./_layout";
 
 const Conversations = () => {
   return (
-    <DashboardContainer>Conversations</DashboardContainer>
+    <DashboardContainer title={'Conversations'}>Conversations</DashboardContainer>
   );
 };
 

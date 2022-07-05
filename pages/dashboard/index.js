@@ -1,10 +1,10 @@
-import DashboardContainer from "../../components/DashboardContainer/DashboardContainer";
 import React from "react";
+import DashboardContainer from "./_layout";
 
 const Index = () => {
 
   return (
-    <DashboardContainer>Dashboard</DashboardContainer>
+    <DashboardContainer title={'Dashboard'}>Dashboard</DashboardContainer>
   );
 };
 

@@ -2,8 +2,11 @@ import { extendTheme } from '@chakra-ui/react'
 
 const theme = extendTheme({
   fonts: {
-    heading: `'Open Sans', sans-serif`, // Defaults to weight 400 with normal variant.
-    body: `'Raleway', sans-serif`, // Defaults to weight 700 with normal variant.
+    heading: `'Open Sans', sans-serif`, // Defaults to weight 700 with normal variant.
+    body: `'Raleway', sans-serif`, // Defaults to weight 400 with normal variant.
+  },
+  colors: {
+
   },
 })
 
