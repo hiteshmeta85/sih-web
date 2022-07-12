@@ -32,7 +32,7 @@ const Sidebar = () => {
           alignItems='center'
         >
           <Icon as={BiCoffeeTogo} color={'gray.100'} mr={2}/>
-          {!isSideBarClosed && <Text as={'span'} fontWeight={600}>Homebrew</Text>}
+          {!isSideBarClosed && <Text as={'span'}>Homebrew</Text>}
         </Flex>
         <List my={8} pl={4}>
           {SidebarItems.map((item, index) => {
@@ -43,9 +43,9 @@ const Sidebar = () => {
                     pl={6}
                     py={2}
                     my={2}
+                    pr={!isSideBarClosed ? 24 : 6}
                     borderLeftRadius={24}
                     alignItems={'center'}
-                    pr={!isSideBarClosed ? 24 : 6}
                     bg={router.pathname === `${item.navLink}` ? '#F5F5F5' : ''}
                     color={router.pathname === `${item.navLink}` ? 'black' : ''}
                     _hover={router.pathname !== `${item.navLink}` ? {bg: 'blue.300'} : ''}
@@ -63,9 +63,7 @@ const Sidebar = () => {
         </List>
       </Box>
       <Button
-        onClick={() => {
-          setIsSideBarClosed(!isSideBarClosed)
-        }}
+        onClick={() => {setIsSideBarClosed(!isSideBarClosed)}}
         bg={'transparent'}
         _hover={{bg: 'blue.300'}}
         borderRadius={0}

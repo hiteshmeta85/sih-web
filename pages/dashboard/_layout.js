@@ -21,8 +21,9 @@ const DashboardContainer = ({children, title}) => {
           px={6}
           py={2}
         >
-          <Text fontWeight={'bold'}
-                fontSize={'large'}
+          <Text
+            fontWeight={'bold'}
+            fontSize={'large'}
           >
             {title}
           </Text>
