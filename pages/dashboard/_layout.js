@@ -18,7 +18,7 @@ const DashboardContainer = ({children, title}) => {
           alignItems={'center'}
           justifyContent={'space-between'}
           bg={'white'}
-          px={6}
+          px={{base:3, md:6}}
           py={2}
         >
           <Text
@@ -28,8 +28,10 @@ const DashboardContainer = ({children, title}) => {
             {title}
           </Text>
           <Flex
-            alignItems={'center'} columnGap={4}>
-            <Avatar name='Hitesh Meta' size={'sm'} color={'white'} bg={'blue.400'}/>
+            alignItems={'center'}
+            columnGap={4}
+          >
+            <Avatar name='Hitesh Meta' size={'sm'} color={'white'} bg={'blue.400'} display={{base:"none",md:"block"}}/>
             <Box lineHeight={'120%'}>
               <Text fontWeight={'semibold'}>Hitesh Meta</Text>
               <Text fontSize={'sm'}>Admin</Text>
@@ -50,7 +52,7 @@ const DashboardContainer = ({children, title}) => {
             </Menu>
           </Flex>
         </Flex>
-        <Box px={6} py={2}>
+        <Box p={{base:3, md:6}}>
           {children}
         </Box>
       </Box>

@@ -22,6 +22,7 @@ const Sidebar = () => {
       bg={'blue.500'}
       color={'gray.100'}
       fontSize={'lg'}
+      display={{base: 'none', lg: 'flex'}}
     >
       <Box>
         <Flex
