@@ -42,6 +42,7 @@ const DashboardContainer = ({children, title}) => {
                 bg={'transparent'}
                 _hover={{bg: 'transparent'}}
                 _active={{bg: 'transparent'}}
+                borderRadius={"none"}
               >
                 <Icon as={AiOutlineSetting} h={6} w={6}/>
               </MenuButton>

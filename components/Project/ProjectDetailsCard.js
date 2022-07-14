@@ -3,10 +3,10 @@ import {Box, Icon, Link, Text} from "@chakra-ui/react";
 import {RiFolder3Fill} from "react-icons/ri";
 import NextLink from "next/link";
 
-const ProjectCard = (props) => {
+const ProjectDetailsCard = (props) => {
   const {label, date} = props
 
-  const colors = ["#1AC0FF", "#FDA5BB", "#92B4FA", "#C291FF", "#4FE3C0"]
+  //const colorOptions = ["#1AC0FF", "#FDA5BB", "#92B4FA", "#C291FF", "#4FE3C0"]
 
   return (
     <NextLink href={"#"}>
@@ -22,7 +22,7 @@ const ProjectCard = (props) => {
         w={"full"}
         _hover={{textDecoration: "none", boxShadow: "md"}}
       >
-        <Icon as={RiFolder3Fill} h={16} w={16} color={colors[Math.floor(Math.random()*colors.length)]}/>
+        <RiFolder3Fill size={'4rem'} style={{color: "#FDA5BB"}}/>
         <Box>
           <Text
             fontWeight={"bold"}
@@ -30,11 +30,16 @@ const ProjectCard = (props) => {
           >
             {label}
           </Text>
-          <Text fontSize={"sm"} fontWeight={"semibold"} color={"gray.500"}>Created On {date}</Text>
+          <Text
+            fontSize={"sm"}
+            fontWeight={"semibold"}
+            color={"gray.500"}>
+            Created On {date}
+          </Text>
         </Box>
       </Link>
     </NextLink>
   );
 };
 
-export default ProjectCard;
+export default ProjectDetailsCard;

@@ -1,10 +1,10 @@
 import React from 'react';
-import DashboardContainer from "./_layout";
+import DashboardContainer from "../_layout"
 
-const CreateAlert = () => {
+const Index = () => {
   return (
     <DashboardContainer title={'Alert'}>Alert</DashboardContainer>
   );
 };
 
-export default CreateAlert;
+export default Index;

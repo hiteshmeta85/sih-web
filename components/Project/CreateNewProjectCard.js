@@ -3,9 +3,9 @@ import {Icon, Link} from "@chakra-ui/react";
 import {AiFillFolderAdd} from "react-icons/ai";
 import NextLink from "next/link";
 
-const CreateProjectCard = () => {
+const CreateNewProjectCard = ({href}) => {
   return (
-    <NextLink href={"#"} passHref>
+    <NextLink href={href} passHref>
       <Link
         display={"flex"}
         justifyContent={"center"}
@@ -27,4 +27,4 @@ const CreateProjectCard = () => {
   );
 };
 
-export default CreateProjectCard;
+export default CreateNewProjectCard;

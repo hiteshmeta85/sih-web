@@ -1,6 +1,6 @@
 import {Box, Button, Flex, Icon, Link, List, ListIcon, ListItem, Text} from "@chakra-ui/react";
 import NextLink from "next/link";
-import {SidebarItems} from "./SidebarItems";
+import {SidebarItems} from "./sidebar-items";
 import {useRouter} from "next/router";
 import {BiCoffeeTogo} from "react-icons/bi";
 import {useState} from "react";
