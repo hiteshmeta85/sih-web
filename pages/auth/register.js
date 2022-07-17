@@ -1,10 +1,9 @@
-import {Box, Button, Flex, FormControl, Heading, Link, Text} from "@chakra-ui/react";
+import {Box, Button, Flex, FormControl, Heading, Link} from "@chakra-ui/react";
 import {Formik} from "formik";
 import registerSchema from "../../lib/schemas/registerSchema";
 import CustomInput from "../../components/Input/CustomInput";
 import NextLink from "next/link";
-import Image from "next/image";
-import slide3 from "./slide3.jpg"
+import Carousel from "../../components/Slider/Carousel";
 
 const Register = () => {
 
@@ -44,7 +43,7 @@ const Register = () => {
             flexDir={"column"}
             justifyContent={"center"}
             minH={"full"}
-            px={{base:4, lg:8}}
+            px={{base:4, lg:16}}
             py={{base:4, lg:8}}
           >
             <Heading>Register</Heading>
@@ -59,8 +58,13 @@ const Register = () => {
               <CustomInput label={"Password"} type={"password"} name={"password"}/>
               <CustomInput label={"Confirm Password"} type={"password"} name={"passwordConfirmation"}/>
               <CustomInput label={"Address"} type={"text"} name={"address"}/>
-              <CustomInput label={"Pincode"} type={"number"} name={"pincode"}/>
-              <CustomInput label={"Phone"} type={"number"} name={"phone"}/>
+              <Flex
+                flexDir={{base: "column", md: "row"}}
+                gap={4}
+              >
+                <CustomInput label={"Pincode"} type={"number"} name={"pincode"}/>
+                <CustomInput label={"Phone"} type={"number"} name={"phone"}/>
+              </Flex>
               <Button
                 type='submit'
                 onClick={handleSubmit}
@@ -93,28 +97,10 @@ const Register = () => {
         flex={5}
         height={"100vh"}
         pos={"relative"}
-        transition={"all"}
-        transitionTimingFunction={"ease-in-out"}
-        transitionDuration={"0.5s"}
         display={{base:"none",lg:"flex"}}
         //opacity={currentSlide === 1 ? 1 : 0}
       >
-        <Image src={slide3} alt='Disaster Image' objectFit={'cover'}/>
-        <Flex
-          height={"full"}
-          flexDir={"column"}
-          pos={'absolute'}
-          justifyContent={"space-around"}
-          top={0}
-          paddingX={12}
-        >
-          <Text
-            fontSize={"2rem"}
-            fontWeight={600}
-          >
-            Lorem ipsum dolor sit amet, Ut non mattis enim. Vivamus quis ultrices orci.
-          </Text>
-        </Flex>
+        <Carousel/>
       </Flex>
     </Flex>
   );

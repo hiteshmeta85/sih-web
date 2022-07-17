@@ -1,16 +1,39 @@
-import {Box, Divider, Flex, FormLabel, Text} from "@chakra-ui/react";
+import {Box, Flex, Icon, Text} from "@chakra-ui/react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import DashboardContainer from "../../_layout";
-import hashtagSchema from "../../../../lib/schemas/hashtagSchema";
 import CustomButton from "../../../../components/Button/CustomSubmitButton";
+import {BsFacebook, BsInstagram, BsTwitter} from "react-icons/bs";
+import socialMediaSchema from "../../../../lib/schemas/socialMediaSchema";
 import axios from "axios";
 
-const SelectHashtags = () => {
+const SelectHashtags = (props) => {
 
-  const hashtags = ["India","Mumbai","Flood","Help Us","Rescue","New Delhi","Emergency","Death","Trending"]
+  const socialMedia = [
+    {
+      id: 1,
+      title: "Twitter",
+      value: "twitter",
+      image: BsTwitter,
+      color: "#1DA1F2",
+    },
+    {
+      id: 2,
+      title: "Facebook",
+      value: "facebook",
+      image: BsFacebook,
+      color: "#4267B2",
+    },
+    {
+      id: 3,
+      title: "Instagram",
+      value: "instagram",
+      image: BsInstagram,
+      color: "#FCAF45",
+    },
+  ]
 
   return (
-    <DashboardContainer title={"Create Project - Hashtags"}>
+    <DashboardContainer title={"Create Project - Social Media"}>
       <Flex
         flexDir={"column"}
         gap={{base: 6, lg: 8}}
@@ -38,14 +61,15 @@ const SelectHashtags = () => {
           </Text>
         </Flex>
         <Box>
-          <Text fontWeight={800} fontSize={"xl"}>Select Most Appropriate Hashtags</Text>
-          <Text color={"gray.600"} fontWeight={"bold"}>Duis ut placerat libero. Vivamus eros est, malesuada sit amet vestibulum in, mollis vel velit.</Text>
+          <Text fontWeight={800} fontSize={"xl"}>Select Social Media Type</Text>
+          <Text color={"gray.600"} fontWeight={"bold"}>Duis ut placerat libero. Vivamus eros est, malesuada sit amet
+            vestibulum in, mollis vel velit.</Text>
         </Box>
         <Formik
           initialValues={{
-            hashtags: [],
+            socialMedia: [],
           }}
-          validationSchema={hashtagSchema}
+          validationSchema={socialMediaSchema}
           onSubmit={async (values, {setSubmitting, resetForm}) => {
             setSubmitting(true);
             try {
@@ -67,49 +91,45 @@ const SelectHashtags = () => {
             errors
           }) => (
             <Form>
-              <Box
-                color={"gray.600"}
-                fontWeight={"bold"}
-              >
-                Hashtags
-              </Box>
               <Box mt={3} mb={6}>
                 <Flex
-                  flexDir={"column"}
-                  border={"1px solid #E8EBED"}
-                  maxW={"md"}
-                  borderRadius={"lg"}
-                  shadow={"sm"}
-                  px={4} pt={3} pb={2}
+                  flexDir={{base: "column", md: "row"}}
+                  gap={6}
                 >
-                  {hashtags.map((item, index) => {
+                  {socialMedia.map((item, index) => {
                     return (
-                      <Box key={index}>
-                        <Flex alignItems={"center"} gap={2} pb={0}>
-                          <Field
-                            type="checkbox"
-                            name="hashtags"
-                            value={item}
-                            style={{position: "relative", top: "-3px"}}
-                          />
-                          <FormLabel>
-                            {item}
-                          </FormLabel>
+                      <Flex key={index}
+                            alignItems={"center"}
+                            gap={2}
+                            borderWidth={"2px"}
+                            borderColor={values.socialMedia.includes(item.value) ? 'white' : item.color}
+                            color={values.socialMedia.includes(item.value) ? 'white' : item.color}
+                            bg={values.socialMedia.includes(item.value) ? item.color : "white"}
+                            borderRadius={"md"}
+                            p={4}>
+                        <Field
+                          type="checkbox"
+                          name="socialMedia"
+                          value={item.value}
+                          style={{position: "relative", top: "0px"}}
+                        />
+                        <Flex alignItems={'center'} gap={2} fontWeight={'semibold'}>
+                          <Icon as={item.image} w={8} h={8}/> {item.title}
                         </Flex>
-                        <Divider mb={1}/>
-                      </Box>
+                      </Flex>
                     )
                   })}
                 </Flex>
                 <Box
                   color={'gray.500'}
                   fontSize={'xs'}
-                  mt={2}
+                  mt={4}
+                  mb={12}
                   fontWeight={'semibold'}>
-                  <ErrorMessage name={"hashtags"}/>
+                  <ErrorMessage name={"socialMedia"}/>
                 </Box>
               </Box>
-              <CustomButton label={"Next"} handleSubmit={handleSubmit}/>
+              <CustomButton label={"Create Project"} handleSubmit={handleSubmit}/>
             </Form>
           )}
         </Formik>
@@ -117,6 +137,7 @@ const SelectHashtags = () => {
     </DashboardContainer>
   )
 }
+
 
 export async function getServerSideProps(context) {
   console.log(context)

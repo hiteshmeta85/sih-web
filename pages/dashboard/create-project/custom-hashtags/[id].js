@@ -1,13 +1,11 @@
-import {useRouter} from 'next/router'
 import {Box, Button, Flex, Text} from "@chakra-ui/react";
-import {Field, Form, Formik, FieldArray} from "formik";
+import {Field, FieldArray, Form, Formik} from "formik";
 import {MdAddCircleOutline, MdRemoveCircleOutline} from "react-icons/md";
 import DashboardContainer from "../../_layout";
 import CustomButton from "../../../../components/Button/CustomSubmitButton";
+import axios from "axios";
 
 const AddCustomHashtags = () => {
-  const router = useRouter()
-  const {id} = router.query
 
   return (
     <DashboardContainer title={"Create Project - Custom Hashtags"}>
@@ -45,9 +43,19 @@ const AddCustomHashtags = () => {
           initialValues={{
             hashtags: ['death', 'help', 'emergency', 'help', 'rescue'],
           }}
-          onSubmit={(values, {setSubmitting}) => {
+          onSubmit={async (values, {setSubmitting, resetForm}) => {
+            setSubmitting(true);
+            try {
+              const response = await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/`, {values});
+              if (response) {
+                console.log(response)
+                resetForm()
+                //await router.push('/')
+              }
+            } catch (err) {
+              console.log(err)
+            }
             setSubmitting(false);
-            console.log(values)
           }}
         >
           {({
@@ -106,13 +114,31 @@ const AddCustomHashtags = () => {
                   />
                 </Flex>
               </Box>
-              <CustomButton label={"Create Project"} handleSubmit={handleSubmit}/>
+              <CustomButton label={"Next"} handleSubmit={handleSubmit}/>
             </Form>
           )}
         </Formik>
       </Flex>
     </DashboardContainer>
   )
+}
+
+export async function getServerSideProps(context) {
+  console.log(context)
+  const id = context.params.id
+
+  try {
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/`)
+    console.log(response)
+  } catch (e) {
+    //console.log(e)
+  }
+
+  return {
+    props: {
+      id
+    }
+  }
 }
 
 export default AddCustomHashtags

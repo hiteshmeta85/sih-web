@@ -18,19 +18,19 @@ export const DisasterTypeData = [
     image: earthquake
   },
   {
-    id: 1,
+    id: 3,
     disasterType: "hurricane",
     label: "Hurricane",
     image: hurricane
   },
   {
-    id: 1,
+    id: 4,
     disasterType: "Storm",
     label: "Storm",
     image: storm
   },
   {
-    id: 1,
+    id: 5,
     disasterType: "wildfire",
     label: "Wildfire",
     image: wildfire

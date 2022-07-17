@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import {Box, Divider, Text} from "@chakra-ui/react";
 
 export default function Home() {

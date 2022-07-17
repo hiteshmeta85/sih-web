@@ -1,45 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {Box, Button, Flex, FormControl, Heading, Link, Text} from "@chakra-ui/react";
+import React from 'react';
+import {Box, Button, Flex, FormControl, Heading, Link} from "@chakra-ui/react";
 import {Formik} from "formik";
 import loginSchema from "../../lib/schemas/loginSchema";
 import CustomInput from "../../components/Input/CustomInput";
+import Carousel from "../../components/Slider/Carousel";
 import NextLink from "next/link";
-import Image from "next/image";
-import slide1 from "./slide1.jpg"
-import slide2 from "./slide2.jpg"
-import slide3 from "./slide3.jpg"
 
 const Login = () => {
-
-  // const slideItems = [
-  //   {
-  //     id: 1,
-  //     src: slide1,
-  //     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-  //   },
-  //   {
-  //     id: 2,
-  //     src: slide2,
-  //     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-  //   },
-  //   {
-  //     id: 3,
-  //     src: slide3,
-  //     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-  //   }
-  // ]
-
-  // const [currentSlide, setCurrentSlide] = useState(1)
-  //
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     if (currentSlide === 3) {
-  //       setCurrentSlide(1)
-  //     } else {
-  //       setCurrentSlide(currentSlide + 1)
-  //     }
-  //   }, 5000)
-  // }, [currentSlide])
 
   return (
     <Flex
@@ -72,7 +39,7 @@ const Login = () => {
             flexDir={"column"}
             justifyContent={"center"}
             minHeight={"full"}
-            px={{base:4, lg:8}}
+            px={{base:4, lg:16}}
             py={{base:4, lg:8}}
           >
             <Heading>Login</Heading>
@@ -116,28 +83,9 @@ const Login = () => {
         flex={5}
         height={"100vh"}
         pos={"relative"}
-        transition={"all"}
-        transitionTimingFunction={"ease-in-out"}
-        transitionDuration={"0.5s"}
         display={{base:"none",lg:"flex"}}
-        //opacity={currentSlide === 1 ? 1 : 0}
       >
-        <Image src={slide1} alt='Disaster Image' objectFit={'cover'}/>
-        <Flex
-          height={"full"}
-          flexDir={"column"}
-          pos={'absolute'}
-          justifyContent={"space-around"}
-          top={0}
-          paddingX={12}
-        >
-          <Text
-            fontSize={"2rem"}
-            fontWeight={600}
-          >
-            Lorem ipsum dolor sit amet, Ut non mattis enim. Vivamus quis ultrices orci.
-          </Text>
-        </Flex>
+        <Carousel/>
       </Flex>
     </Flex>
   );
