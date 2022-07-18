@@ -4,6 +4,7 @@ import {AiFillFolderAdd} from "react-icons/ai";
 import NextLink from "next/link";
 
 const CreateNewProjectCard = ({href}) => {
+
   return (
     <NextLink href={href} passHref>
       <Link
@@ -21,7 +22,7 @@ const CreateNewProjectCard = ({href}) => {
         p={4}
         _hover={{textDecoration: "none", boxShadow: "md"}}
       >
-        <Icon as={AiFillFolderAdd} h={16} w={16} color={"#4EE4C1"}/>
+        <Icon as={AiFillFolderAdd} h={16} w={16} color={'#4EE4C1'}/>
       </Link>
     </NextLink>
   );

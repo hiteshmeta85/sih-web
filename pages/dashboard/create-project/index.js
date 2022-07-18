@@ -7,8 +7,12 @@ import CustomButton from "../../../components/Button/CustomSubmitButton";
 import {DisasterTypeData} from "./_disaster-type-data";
 import Image from "next/image";
 import axios from "axios";
+import {useRouter} from "next/router";
+import {useState} from "react";
 
 const Index = () => {
+  const router = useRouter();
+  const [errorMessage, setErrorMessage] = useState('')
 
   return (
     <DashboardContainer title={"Create Project"}>
@@ -21,14 +25,19 @@ const Index = () => {
         onSubmit={async (values, {setSubmitting, resetForm}) => {
           setSubmitting(true);
           try {
-            const response = await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/`, {values});
-            if (response) {
-              console.log(response)
-              resetForm()
-              //await router.push('/')
-            }
+            await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/projects/create-project`,
+              {projectName: values.projectName, disasterType: values.disasterType})
+              .then(function (response) {
+                if (response.data) {
+                  const {id} = response.data.data
+                  router.push(`/dashboard/create-project/select-hashtags/${id}`)
+                }
+              })
+              .catch(function (err) {
+                setErrorMessage('Something went wrong.')
+              })
           } catch (err) {
-            console.log(err)
+            setErrorMessage('Something went wrong.')
           }
           setSubmitting(false);
         }}
@@ -97,7 +106,8 @@ const Index = () => {
                 <ErrorMessage name={"disasterType"}/>
               </Box>
             </Box>
-            <CustomButton label={"Next"} handleSubmit={handleSubmit}/>
+            <CustomButton label={"Next"} handleSubmit={handleSubmit} isSubmitting={isSubmitting}/>
+            {errorMessage && <Text fontWeight={600} color={'red.500'}>{errorMessage}</Text>}
           </Flex>
         </Form>
       )}

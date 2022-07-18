@@ -1,11 +1,11 @@
 import React from 'react';
 import {Box, Flex, Image, Link, Text} from '@chakra-ui/react';
 
-const TweetCard = ({title, description, image, username, date}) => {
+const AlertCard = ({title, description, image, username, date}) => {
 
   return (
     <>
-      <Flex flexDir={"column"} rowGap={2}>
+      <Flex flexDir={"column"} rowGap={2} bg={'white'} p={3} borderRadius={'md'} boxShadow={'base'}>
         <Box py={'1px'} bg={"blackAlpha.800"}/>
         <Flex
           justifyContent={'space-between'}
@@ -28,4 +28,4 @@ const TweetCard = ({title, description, image, username, date}) => {
   );
 }
 
-export default TweetCard;
+export default AlertCard;

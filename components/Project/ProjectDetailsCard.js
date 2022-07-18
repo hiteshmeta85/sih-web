@@ -1,15 +1,16 @@
 import React from 'react';
-import {Box, Icon, Link, Text} from "@chakra-ui/react";
+import {Box, Link, Text} from "@chakra-ui/react";
 import {RiFolder3Fill} from "react-icons/ri";
 import NextLink from "next/link";
+import moment from "moment";
 
 const ProjectDetailsCard = (props) => {
-  const {label, date} = props
+  const {label, date, id} = props
 
-  //const colorOptions = ["#1AC0FF", "#FDA5BB", "#92B4FA", "#C291FF", "#4FE3C0"]
+  const colors = ["#4EE4C1","#1AC0FF","#92B4FA","#C291FF","#4BE0BD","#FDA5BB"]
 
   return (
-    <NextLink href={"#"}>
+    <NextLink href={`/dashboard/projects/${id}`}>
       <Link
         display={"flex"}
         flexDir={"column"}
@@ -22,7 +23,7 @@ const ProjectDetailsCard = (props) => {
         w={"full"}
         _hover={{textDecoration: "none", boxShadow: "md"}}
       >
-        <RiFolder3Fill size={'4rem'} style={{color: "#FDA5BB"}}/>
+        <RiFolder3Fill size={'4rem'} style={{color:  colors[Math.floor(Math.random() * colors.length)]}}/>
         <Box>
           <Text
             fontWeight={"bold"}
@@ -34,7 +35,7 @@ const ProjectDetailsCard = (props) => {
             fontSize={"sm"}
             fontWeight={"semibold"}
             color={"gray.500"}>
-            Created On {date}
+            Created On  {moment(date).format('llll')}
           </Text>
         </Box>
       </Link>

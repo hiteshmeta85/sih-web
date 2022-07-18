@@ -1,7 +1,7 @@
 import React from 'react';
-import {Button} from "@chakra-ui/react";
+import {Button, Spinner} from "@chakra-ui/react";
 
-const CustomButton = ({label, handleSubmit}) => {
+const CustomButton = ({label, handleSubmit, isSubmitting = false}) => {
   return (
     <Button
       type={"submit"}
@@ -12,8 +12,12 @@ const CustomButton = ({label, handleSubmit}) => {
       _active={{bg: "blackAlpha.800"}}
       alignSelf={"start"}
       px={12}
+      isDisabled={isSubmitting}
     >
-      {label}
+      {isSubmitting ?
+        <Spinner color={'white'}/> :
+        <>{label}</>
+      }
     </Button>
   );
 };
