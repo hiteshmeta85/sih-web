@@ -1,11 +1,18 @@
 import React from 'react';
-import {Box, Flex, Image, Link, Text} from '@chakra-ui/react';
+import {Box, Flex, Image, Text} from '@chakra-ui/react';
 
 const TweetCard = ({title, description, image, username, date}) => {
 
   return (
     <>
-      <Flex flexDir={"column"} rowGap={2} bg={'white'} p={3} borderRadius={'md'} boxShadow={'base'}>
+      <Flex
+        flexDir={"column"}
+        rowGap={2}
+        bg={'white'}
+        p={3}
+        borderRadius={'md'}
+        boxShadow={'base'}
+      >
         <Box py={'1px'} bg={"blackAlpha.800"}/>
         <Flex
           justifyContent={'space-between'}
@@ -13,12 +20,17 @@ const TweetCard = ({title, description, image, username, date}) => {
           fontFamily={'Open Sans'}
           color={'gray.600'}
         >
-          <Link href={'/'} _hover={{textDecoration: 'none'}}>@{username}</Link>
+          <Box
+            fontSize={'sm'}
+            color={'gray.500'}
+          >
+            @{username}
+          </Box>
           <Text fontSize={'xs'}>{date}</Text>
         </Flex>
-        <Text fontWeight={700} fontSize={'lg'}>
+        {/*<Text fontWeight={700} fontSize={'lg'}>
           {title}
-        </Text>
+        </Text>*/}
         <Text fontSize={'md'} lineHeight={'short'}>
           {description}
         </Text>

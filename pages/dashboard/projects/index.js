@@ -1,5 +1,5 @@
 import DashboardContainer from "../_layout";
-import {Flex, SimpleGrid, Text} from "@chakra-ui/react";
+import {Flex, SimpleGrid} from "@chakra-ui/react";
 import {MdOutlineAdd} from "react-icons/md";
 import ProjectDetailsCard from "../../../components/Project/ProjectDetailsCard";
 import CreateNewProjectCard from "../../../components/Project/CreateNewProjectCard";

@@ -1,20 +1,21 @@
 import React from 'react';
-import {Box, Button, Flex, Heading, SimpleGrid} from "@chakra-ui/react";
-import TweetCard from "./TweetCard";
+import {Box, Button, Flex, Heading} from "@chakra-ui/react";
 
-const TweetsContainer = ({title, data}) => {
+const TweetsContainer = ({title, children}) => {
   return (
     <Box
-      p={{base: 2, md: 4, lg: 8}}
+      px={{base: 2, md: 4, lg: 8}}
       maxW={'container.xl'}
       mx={'auto'}
+      py={{base: 4, md: 8}}
     >
       <Flex
         justifyContent={'space-between'}
         alignItems={'center'}
-        mb={{base: 4, lg: 6}}
+        mb={{base: 4, lg: 8}}
       >
         <Heading
+          fontSize={{base: '2xl', md: '4xl'}}
         >
           {title}
         </Heading>
@@ -29,13 +30,7 @@ const TweetsContainer = ({title, data}) => {
           See all
         </Button>
       </Flex>
-      <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
-        <>
-          {data.map((item, index) => {
-            return (<TweetCard key={index} title={item.title} description={item.description} image={item.image}/>)
-          })}
-        </>
-      </SimpleGrid>
+      {children}
     </Box>
   );
 };

@@ -1,19 +1,32 @@
 import React from 'react';
-import {Box, Flex, Image, Link, Text} from '@chakra-ui/react';
+import {Box, Flex, Text} from '@chakra-ui/react';
 
-const AlertCard = ({title, description, image, username, date}) => {
+const AlertCard = ({title, description, username, date}) => {
 
   return (
     <>
-      <Flex flexDir={"column"} rowGap={2} bg={'white'} p={3} borderRadius={'md'} boxShadow={'base'}>
-        <Box py={'1px'} bg={"blackAlpha.800"}/>
+      <Flex
+        flexDir={"column"}
+        rowGap={2}
+        bg={'white'}
+        borderRadius={'md'}
+        boxShadow={'base'}
+        _hover={{boxShadow: 'md'}}
+        p={3}
+      >
+        <Box py={'1px'} bg={"red.500"}/>
         <Flex
           justifyContent={'space-between'}
           alignItems={'center'}
           fontFamily={'Open Sans'}
           color={'gray.600'}
         >
-          <Link href={'/'} _hover={{textDecoration: 'none'}}>@{username}</Link>
+          <Text
+            fontSize={'sm'}
+            color={'gray.500'}
+          >
+            @
+          </Text>
           <Text fontSize={'xs'}>{date}</Text>
         </Flex>
         <Text fontWeight={700} fontSize={'lg'}>
@@ -22,7 +35,6 @@ const AlertCard = ({title, description, image, username, date}) => {
         <Text fontSize={'md'} lineHeight={'short'}>
           {description}
         </Text>
-        {image && <Image src={image} width={"full"} objectFit={"cover"} alt={'image'}/>}
       </Flex>
     </>
   );
