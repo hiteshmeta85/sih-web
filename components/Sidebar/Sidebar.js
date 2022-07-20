@@ -11,27 +11,30 @@ const Sidebar = () => {
         overflow={'auto'}
         h={'full'}
         letterSpacing={'wide'}
+        boxShadow={'lg'}
         color={'gray.100'}
         fontSize={'lg'}
         py={4}
         pl={4}
       >
-        <List pt={4} pb={16} px={4}
-              h={'full'}
-              display={'flex'}
-              flexDir={'column'}
-              justifyContent={'space-between'}
-              bg={'blackAlpha.800'}
-              borderRadius={12}
+        <List
+          py={4} px={4}
+          h={'full'}
+          display={'flex'}
+          flexDir={'column'}
+          justifyContent={'space-between'}
+          bg={'blackAlpha.800'}
+          borderRadius={12}
         >
           <Flex flexDir={'column'} rowGap={8}>
             <Text
+              fontWeight={'bold'}
               pl={6}
               pr={10}
               py={2}
               my={2}
             >
-              Homebrew
+              Homebrew.
             </Text>
             <Box>
               {SidebarItems.map((item, index) => {

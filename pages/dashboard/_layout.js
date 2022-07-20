@@ -22,7 +22,7 @@ const DashboardContainer = ({children, title, helperItems}) => {
           pr={2}
           py={2}
           bg={'white'}
-          color={'gray.600'}
+          color={'gray.800'}
           fontWeight={'bold'}
           fontSize={'x-large'}
         >
