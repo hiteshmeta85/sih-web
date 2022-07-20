@@ -31,7 +31,8 @@ const Register = () => {
         justifyContent={"center"}
         minH={"full"}
         px={{base: 4, lg: 16}}
-        py={{base: 4, lg: 8}}
+        pb={{base: 4, lg: 8}}
+        pt={12}
       >
         <Heading>Register</Heading>
         <FormControl
@@ -56,7 +57,7 @@ const Register = () => {
             type='submit'
             onClick={handleSubmit}
             isLoading={isSubmitting}
-            isSubmitting={isSubmitting}
+            disabled={isSubmitting}
             w='100%'
             bg='blackAlpha.900'
             color='white'

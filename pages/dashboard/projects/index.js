@@ -1,5 +1,5 @@
 import DashboardContainer from "../_layout";
-import {Flex, SimpleGrid} from "@chakra-ui/react";
+import {SimpleGrid} from "@chakra-ui/react";
 import {MdOutlineAdd} from "react-icons/md";
 import ProjectDetailsCard from "../../../components/Project/ProjectDetailsCard";
 import CreateNewProjectCard from "../../../components/Project/CreateNewProjectCard";
@@ -10,12 +10,14 @@ import Error from "../../../components/Error/Error";
 
 const Projects = ({allProjectsInfo}) => {
   return (
-    <DashboardContainer title={'Projects'}>
+    <DashboardContainer
+      title={'Projects'}
+      helperItems={
+        <CustomLink href={'/dashboard/create-project'} text={'Create Project'} icon={<MdOutlineAdd/>}/>
+      }
+    >
       {allProjectsInfo ? <>
-          <Flex justifyContent={"end"}>
-            <CustomLink href={'/dashboard/create-project'} text={'Create Project'} icon={<MdOutlineAdd/>}/>
-          </Flex>
-          <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={4} my={6}>
+          <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={4}>
             <CreateNewProjectCard href={'/dashboard/create-project'}/>
             {allProjectsInfo.map((item, index) => {
               return (

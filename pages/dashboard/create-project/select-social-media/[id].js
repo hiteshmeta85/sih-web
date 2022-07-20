@@ -2,40 +2,40 @@ import {Box, Flex, Icon, Text} from "@chakra-ui/react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import DashboardContainer from "../../_layout";
 import CustomButton from "../../../../components/Button/CustomSubmitButton";
-import {BsFacebook, BsInstagram, BsTwitter} from "react-icons/bs";
 import socialMediaSchema from "../../../../lib/schemas/socialMediaSchema";
 import axios from "axios";
 import {useRouter} from "next/router";
 import Error from "../../../../components/Error/Error";
 import {useState} from "react";
+import {BsFacebook, BsInstagram, BsTwitter} from "react-icons/bs";
+
+const SocialMedia = [
+  {
+    id: 1,
+    title: "Twitter",
+    value: "twitter",
+    image: BsTwitter,
+    color: "#1DA1F2",
+  },
+  {
+    id: 2,
+    title: "Facebook",
+    value: "facebook",
+    image: BsFacebook,
+    color: "#4267B2",
+  },
+  {
+    id: 3,
+    title: "Instagram",
+    value: "instagram",
+    image: BsInstagram,
+    color: "#FCAF45",
+  },
+]
 
 const SelectHashtags = ({id, projectName, disasterType}) => {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('')
-
-  const socialMedia = [
-    {
-      id: 1,
-      title: "Twitter",
-      value: "twitter",
-      image: BsTwitter,
-      color: "#1DA1F2",
-    },
-    {
-      id: 2,
-      title: "Facebook",
-      value: "facebook",
-      image: BsFacebook,
-      color: "#4267B2",
-    },
-    {
-      id: 3,
-      title: "Instagram",
-      value: "instagram",
-      image: BsInstagram,
-      color: "#FCAF45",
-    },
-  ]
 
   return (
     <DashboardContainer title={"Create Project - Social Media"}>
@@ -107,7 +107,7 @@ const SelectHashtags = ({id, projectName, disasterType}) => {
                     flexDir={{base: "column", md: "row"}}
                     gap={6}
                   >
-                    {socialMedia.map((item, index) => {
+                    {SocialMedia.map((item, index) => {
                       return (
                         <Flex key={index}
                               alignItems={"center"}

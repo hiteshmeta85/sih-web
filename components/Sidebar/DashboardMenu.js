@@ -1,25 +1,22 @@
-import React from 'react'
 import {
   Button,
   Divider,
   Drawer,
   DrawerBody,
   DrawerContent,
-  DrawerFooter,
   DrawerOverlay,
   Flex,
-  IconButton,
-  Link,
-  Text,
+  IconButton, Link, Text,
   useDisclosure
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 import {GiHamburgerMenu} from "react-icons/gi";
-import {MdOutlineClose} from "react-icons/md";
-import {NavItems} from "./nav-items";
-import NextLink from "next/link";
 import Logo from "../Logo/Logo";
+import {MdOutlineClose} from "react-icons/md";
+import {SidebarItems} from "./sidebar-items";
+import NextLink from "next/link";
+import React from "react";
 
-const Menu = () => {
+const DashboardMenu = () => {
   const {isOpen, onOpen, onClose} = useDisclosure()
 
   return (
@@ -55,33 +52,20 @@ const Menu = () => {
           </Flex>
           <Divider borderColor={'blackAlpha.600'}/>
           <DrawerBody fontWeight={'semibold'}>
-            {NavItems.map((item, index) => {
+            {SidebarItems.map((item, index) => {
               return (
                 <Text key={index} my={2}>
-                  <NextLink href={item.href} passHref>
-                    <Link>{item.label}</Link>
+                  <NextLink href={item.navLink} passHref>
+                    <Link>{item.name}</Link>
                   </NextLink>
                 </Text>
               )
             })}
-            <Text my={2}><Link href='/auth/login'>Login</Link></Text>
           </DrawerBody>
-          <DrawerFooter>
-            <Button
-              _hover={{bg: 'blackAlpha.700'}}
-              _active={{bg: 'blackAlpha.800'}}
-              rounded={'lg'}
-              bg={'blackAlpha.800'}
-              color={'white'}
-              fontSize={'xl'}
-            >
-              <Link href='/auth/register'>Register</Link>
-            </Button>
-          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </>
   )
 }
 
-export default Menu;
+export default DashboardMenu

@@ -920,7 +920,7 @@ export default function Home({headlines, ndrfTweets}) {
 
   return (
     <LandingPageLayout>
-      {headlines2 && <TweetsContainer title={'News'}>
+      {headlines2 && <TweetsContainer title={'News'} href={'/news'}>
         <SimpleGrid columns={{md: 4}} gap={6}>
           {headlines2.slice(0, 4)
             .map((item, index) => {
@@ -931,7 +931,7 @@ export default function Home({headlines, ndrfTweets}) {
             })}
         </SimpleGrid>
       </TweetsContainer>}
-      <TweetsContainer title={'Alerts'}>
+      <TweetsContainer title={'Alerts'} href={'/alerts'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
           {AlertsData.slice(0, 6)
             .map((item, index) => {
@@ -939,7 +939,7 @@ export default function Home({headlines, ndrfTweets}) {
             })}
         </SimpleGrid>
       </TweetsContainer>
-      {ndrfTweets2 && <TweetsContainer title={'NDRF’s Latest Tweets'}>
+      {ndrfTweets2 && <TweetsContainer title={'NDRF’s Latest Tweets'} href={'/tweets'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
           {ndrfTweets2.slice(0, 6)
             .map((item, index) => {
@@ -948,7 +948,7 @@ export default function Home({headlines, ndrfTweets}) {
             })}
         </SimpleGrid>
       </TweetsContainer>}
-      <TweetsContainer title={'Active Social Media Accounts'}>
+      <TweetsContainer title={'Active Social Media Accounts'} href={'/active-accounts'}>
         <Flex gap={4} overflowX={'scroll'} py={6} px={0.5}>
           {popularTwitterHandles.slice(0, 10)
             .map((item, index) => {

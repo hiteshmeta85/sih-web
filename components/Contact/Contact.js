@@ -9,7 +9,8 @@ const Contact = () => {
       <Box maxW={'container.xl'} mx={'auto'} py={{base: 2, md: 4, lg: 16}} px={{base: 2, md: 4, lg: 8}}>
         <HStack>
           <Heading
-            fontWeight={'semibold'} fontSize={'2rem'}
+            fontWeight={'semibold'}
+            fontSize={{base: '2xl', md: '4xl'}}
             whiteSpace={'nowrap'}>
             Contact Details
           </Heading>
@@ -24,7 +25,7 @@ const Contact = () => {
             </>
           </Flex>
           <Box height='auto' fontWeight={'semibold'}>
-            <Heading pb={3}>
+            <Heading pb={3} fontSize={{base: 'xl', md: '3xl'}}>
               Need Help?
             </Heading>
             <NextLink href={'/'} passHref>
@@ -34,7 +35,7 @@ const Contact = () => {
             </NextLink>
           </Box>
           <Box height='auto'>
-            <Heading pb={3}>
+            <Heading pb={3} fontSize={{base: 'xl', md: '3xl'}}>
               Phone
             </Heading>
             <Box color={'blackAlpha.800'}>
@@ -43,7 +44,7 @@ const Contact = () => {
             </Box>
           </Box>
           <Box height='auto' fontWeight={'semibold'}>
-            <Heading pb={3}>
+            <Heading pb={3} fontSize={{base: 'xl', md: '3xl'}}>
               Email Us
             </Heading>
             <Text>homebrew@mail.org</Text>

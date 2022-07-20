@@ -1,9 +1,9 @@
 import React from 'react';
-import {Avatar, Box, Button, Flex, Icon, Menu, MenuButton, MenuItem, MenuList, Text} from "@chakra-ui/react";
-import {AiOutlineSetting} from "react-icons/ai";
+import {Box, Flex, Text} from "@chakra-ui/react";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import DashboardMenu from "../../components/Sidebar/DashboardMenu";
 
-const DashboardContainer = ({children, title}) => {
+const DashboardContainer = ({children, title, helperItems}) => {
   return (
     <Flex>
       <Sidebar/>
@@ -13,47 +13,38 @@ const DashboardContainer = ({children, title}) => {
         overflow={'scroll'}
         bg={'#F5F5F5'}
       >
-        <Flex
-          boxShadow={'xs'}
-          alignItems={'center'}
-          justifyContent={'space-between'}
-          bg={'white'}
-          px={{base:3, md:6}}
-          py={2}
+        <Box
+          display={{base: 'flex', lg: 'none'}}
+          justifyContent={'flex-end'}
+          mx={{base: 2, md: 6}}
+          mt={2}
         >
-          <Text
-            fontWeight={'bold'}
-            fontSize={'large'}
-          >
+          <DashboardMenu/>
+        </Box>
+        <Flex
+          justifyContent={'space-between'}
+          alignItems={'center'}
+          borderRadius={"md"}
+          mx={{base: 2, md: 6}}
+          mt={{base: 3, lg: 4}}
+          pl={4}
+          pr={2}
+          py={2}
+          bg={'white'}
+          color={'gray.800'}
+          fontWeight={'bold'}
+          fontSize={'x-large'}
+        >
+          <Text>
             {title}
           </Text>
-          <Flex
-            alignItems={'center'}
-            columnGap={4}
-          >
-            <Avatar name='Hitesh Meta' size={'sm'} color={'white'} bg={'blue.400'} display={{base:"none",md:"block"}}/>
-            <Box lineHeight={'120%'}>
-              <Text fontWeight={'semibold'}>Hitesh Meta</Text>
-              <Text fontSize={'sm'}>Admin</Text>
+          {helperItems &&
+            <Box fontSize={'md'}>
+              {helperItems}
             </Box>
-            <Menu>
-              <MenuButton
-                as={Button}
-                bg={'transparent'}
-                _hover={{bg: 'transparent'}}
-                _active={{bg: 'transparent'}}
-                borderRadius={"none"}
-              >
-                <Icon as={AiOutlineSetting} h={6} w={6}/>
-              </MenuButton>
-              <MenuList>
-                <MenuItem>Account</MenuItem>
-                <MenuItem color={'red.500'}>Logout</MenuItem>
-              </MenuList>
-            </Menu>
-          </Flex>
+          }
         </Flex>
-        <Box p={{base:3, md:6}}>
+        <Box p={{base: 3, md: 6}}>
           {children}
         </Box>
       </Box>

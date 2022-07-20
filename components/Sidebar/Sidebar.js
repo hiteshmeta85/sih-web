@@ -1,78 +1,59 @@
-import {Box, Button, Flex, Icon, Link, List, ListIcon, ListItem, Text} from "@chakra-ui/react";
-import NextLink from "next/link";
+import {Box, Flex, List, Text} from "@chakra-ui/react";
 import {SidebarItems} from "./sidebar-items";
-import {useRouter} from "next/router";
-import {BiCoffeeTogo} from "react-icons/bi";
-import {useState} from "react";
-import {BsArrowLeft, BsArrowRight} from "react-icons/bs";
+import SidebarNavItem from "./SidebarNavItem";
 
 const Sidebar = () => {
 
-  const router = useRouter()
-
-  const [isSideBarClosed, setIsSideBarClosed] = useState(false)
-
   return (
-    <Flex
-      flexDir={'column'}
-      overflow={'auto'}
-      justifyContent={'space-between'}
-      h={'100vh'}
-      letterSpacing={'wide'}
-      bg={'blue.500'}
-      color={'gray.100'}
-      fontSize={'lg'}
-      display={{base: 'none', lg: 'flex'}}
-    >
-      <Box>
-        <Flex
-          pl={10}
-          pr={!isSideBarClosed ? 24 : 6}
-          py={1}
-          my={3}
-          alignItems='center'
+    <Box bg={'#F5F5F5'} h={'100vh'}>
+      <Box
+        display={{base: 'none', lg: 'block'}}
+        overflow={'auto'}
+        h={'full'}
+        letterSpacing={'wide'}
+        boxShadow={'lg'}
+        color={'gray.100'}
+        fontSize={'lg'}
+        py={4}
+        pl={4}
+      >
+        <List
+          py={4} px={4}
+          h={'full'}
+          display={'flex'}
+          flexDir={'column'}
+          justifyContent={'space-between'}
+          bg={'blackAlpha.800'}
+          borderRadius={12}
         >
-          <Icon as={BiCoffeeTogo} color={'gray.100'} mr={2}/>
-          {!isSideBarClosed && <Text as={'span'}>Homebrew</Text>}
-        </Flex>
-        <List my={8} pl={4}>
-          {SidebarItems.map((item, index) => {
-            return (
-              <NextLink href={item.navLink} key={index}>
-                <Link _hover={{textDecorationLine: 'none'}}>
-                  <ListItem
-                    pl={6}
-                    py={2}
-                    my={2}
-                    pr={!isSideBarClosed ? 24 : 6}
-                    borderLeftRadius={24}
-                    alignItems={'center'}
-                    bg={router.pathname === `${item.navLink}` ? '#F5F5F5' : ''}
-                    color={router.pathname === `${item.navLink}` ? 'black' : ''}
-                    _hover={router.pathname !== `${item.navLink}` ? {bg: 'blue.300'} : ''}
-                  >
-                    <ListIcon
-                      as={item.icon}
-                      color={router.pathname === `${item.navLink}` ? '#0B2656' : 'gray.100'}
-                    />
-                    {!isSideBarClosed && item.name}
-                  </ListItem>
-                </Link>
-              </NextLink>
-            )
-          })}
+          <Flex flexDir={'column'} rowGap={8}>
+            <Text
+              fontWeight={'bold'}
+              pl={6}
+              pr={10}
+              py={2}
+              my={2}
+            >
+              Homebrew.
+            </Text>
+            <Box>
+              {SidebarItems.map((item, index) => {
+                if (item.position === 'top') {
+                  return <SidebarNavItem key={index} navLink={item.navLink} name={item.name} icon={item.icon}/>
+                }
+              })}
+            </Box>
+          </Flex>
+          <Box>
+            {SidebarItems.map((item, index) => {
+              if (item.position === 'bottom') {
+                return <SidebarNavItem key={index} navLink={item.navLink} name={item.name} icon={item.icon}/>
+              }
+            })}
+          </Box>
         </List>
       </Box>
-      <Button
-        onClick={() => {setIsSideBarClosed(!isSideBarClosed)}}
-        bg={'transparent'}
-        _hover={{bg: 'blue.300'}}
-        borderRadius={0}
-        my={6}
-      >
-        {!isSideBarClosed ? <BsArrowLeft/> : <BsArrowRight/>}
-      </Button>
-    </Flex>
+    </Box>
   );
 };
 

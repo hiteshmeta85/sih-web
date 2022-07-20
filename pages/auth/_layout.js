@@ -1,8 +1,7 @@
-import {Box, Flex, Link, Text} from "@chakra-ui/react";
-import NextLink from "next/link";
+import {Box, Flex} from "@chakra-ui/react";
 import Carousel from "../../components/Slider/Carousel";
-import {IoIosArrowRoundBack} from "react-icons/io";
 import React, {useState} from "react";
+import BackButton from "../../components/Button/BackButton";
 
 const AuthLayout = ({children}) => {
   const [isBackButtonHovered, setIsBackButtonHovered] = useState(false)
@@ -20,22 +19,14 @@ const AuthLayout = ({children}) => {
         pos={'relative'}
       >
         <Box
+          mx={{base: 4, lg: 8}}
+          my={2}
           pos={'absolute'}
-          mx={{base: 4, lg: 16}}
-          my={{base: 4, lg: 8}}
           fontWeight={'semibold'}
           onMouseOver={()=>{setIsBackButtonHovered(true)}}
           onMouseOut={()=>{setIsBackButtonHovered(false)}}
         >
-          <NextLink href={'/'} passHref>
-            <Link
-              display={'flex'}
-              alignItems={'center'}
-              gap={2}
-              textUnderlineOffset={2}
-            >
-              <Text as={'span'} className={isBackButtonHovered ? 'horizontal-bounce' : ''}><IoIosArrowRoundBack/></Text>Go Back</Link>
-          </NextLink>
+          <BackButton isBackButtonHovered={isBackButtonHovered}/>
         </Box>
         {children}
       </Box>
