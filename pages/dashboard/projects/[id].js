@@ -2,7 +2,7 @@ import DashboardContainer from "../_layout";
 import CustomTable from "../../../components/Table/CustomTable"
 import {SimpleGrid, Tab, TabList, TabPanel, TabPanels, Tabs} from "@chakra-ui/react";
 import TweetCard from "../../../components/Tweet/TweetCard";
-import {TrendingTweetsData} from "./trending-tweets-data";
+import {TrendingTweetsData} from "./_trending-tweets-data";
 import "@fontsource/open-sans/500.css";
 
 const ViewIndividualProject = () => {
