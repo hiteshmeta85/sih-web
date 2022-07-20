@@ -4,7 +4,6 @@ import LandingPageLayout from "./_layout";
 const Tweets = () => {
   return (
     <LandingPageLayout>
-
     </LandingPageLayout>
   );
 };
