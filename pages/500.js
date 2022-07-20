@@ -1,16 +1,16 @@
-import FourOhFourImage from "../public/images/404.jpg"
+import FiveHundredError from "../public/images/500.jpg"
 import Image from "next/image";
 import {Box, Flex} from "@chakra-ui/react";
 import BackButton from "../components/Button/BackButton";
 import {useState} from "react";
 
-export default function Custom404() {
+export default function Custom500() {
   const [isBackButtonHovered, setIsBackButtonHovered] = useState(false)
 
   return (
-    <Flex justifyContent={'center'} alignItems={'center'} pos={'relative'} minH={'100vh'}>
+    <Flex justifyContent={'center'} alignItems={'center'} pos={'relative'} h={'100vh'}>
       <Box maxW={'container.lg'}>
-        <Image src={FourOhFourImage} alt={'404 Image'} height={1800} objectFit={'contain'}/>
+        <Image src={FiveHundredError} alt={'500 Image'} height={1200} objectFit={'contain'}/>
       </Box>
       <Box
         pos={'absolute'}

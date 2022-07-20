@@ -1,15 +1,12 @@
 import React from 'react';
 import {Box, Text} from "@chakra-ui/react";
+import Image from "next/image";
+import FiveHundredError from "../../public/images/500.jpg";
 
 const Error = () => {
   return (
-    <Box>
-      <Text
-        fontWeight={'semibold'}
-        fontSize={'2xl'}
-      >
-        Some Error Occurred
-      </Text>
+    <Box bg={'white'} borderRadius={'md'} py={12}>
+      <Image src={FiveHundredError} alt={'500 Image'} height={1000} objectFit={'contain'}/>
     </Box>
   );
 };
