@@ -31,7 +31,8 @@ const Login = () => {
           justifyContent={"center"}
           minHeight={"full"}
           px={{base: 4, lg: 16}}
-          py={{base: 4, lg: 8}}
+          pb={{base: 4, lg: 8}}
+          pt={12}
         >
           <Heading>Login</Heading>
           <FormControl
@@ -45,7 +46,7 @@ const Login = () => {
             <Button
               type='submit'
               onClick={handleSubmit}
-              // disabled={!(isValid && dirty)}
+              disabled={isSubmitting}
               isLoading={isSubmitting}
               w='100%'
               bg='blackAlpha.900'

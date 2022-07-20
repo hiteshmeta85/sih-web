@@ -19,4 +19,9 @@ export const NavItems = [
     label: 'Tweets',
     href: '/tweets',
   },
+  {
+    id: 5,
+    label: 'Active Accounts',
+    href: '/active-accounts',
+  },
 ]

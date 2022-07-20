@@ -19,9 +19,9 @@ const AuthLayout = ({children}) => {
         pos={'relative'}
       >
         <Box
-          pos={'absolute'}
           mx={{base: 4, lg: 8}}
-          my={{base: 4, lg: 8}}
+          my={2}
+          pos={'absolute'}
           fontWeight={'semibold'}
           onMouseOver={()=>{setIsBackButtonHovered(true)}}
           onMouseOut={()=>{setIsBackButtonHovered(false)}}

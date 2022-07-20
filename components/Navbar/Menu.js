@@ -64,7 +64,7 @@ const Menu = () => {
                 </Text>
               )
             })}
-            <Text my={2}><Link href='/'>Login</Link></Text>
+            <Text my={2}><Link href='/auth/login'>Login</Link></Text>
           </DrawerBody>
           <DrawerFooter>
             <Button
@@ -75,7 +75,7 @@ const Menu = () => {
               color={'white'}
               fontSize={'xl'}
             >
-              <Link href='/'>Register</Link>
+              <Link href='/auth/register'>Register</Link>
             </Button>
           </DrawerFooter>
         </DrawerContent>
