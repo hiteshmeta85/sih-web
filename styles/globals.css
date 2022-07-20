@@ -15,6 +15,11 @@ a {
     box-sizing: border-box;
 }
 
+#nprogress .bar {
+    background: #6170F7 !important;
+    height: 3px !important;
+}
+
 .menu-item {
     text-decoration: none;
     position: relative;
@@ -35,7 +40,6 @@ a {
 }
 
 .active-menu-item {
-    width: 100%;
     background: linear-gradient(to bottom, yellow 0%, yellow 100%) no-repeat bottom;
     background-size: calc(100%) calc(50%);
 }

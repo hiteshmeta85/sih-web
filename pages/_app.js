@@ -4,6 +4,8 @@ import Head from "next/head";
 import theme from "../theme";
 import '@fontsource/raleway/400.css'
 import '@fontsource/open-sans/700.css'
+import dynamic from 'next/dynamic';
+const ProgressBar = dynamic(() => import('../components/ProgressBar/ProgressBar'), { ssr: false });
 
 function MyApp({Component, pageProps}) {
   return (
@@ -16,6 +18,7 @@ function MyApp({Component, pageProps}) {
         <link rel="icon" href="/favicon.ico"/>
       </Head>
 
+      <ProgressBar />
       <Component {...pageProps} />
     </ChakraProvider>
   )
