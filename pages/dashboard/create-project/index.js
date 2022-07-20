@@ -4,7 +4,7 @@ import newProjectSchema from "../../../lib/schemas/newProjectSchema";
 import CustomInput from "../../../components/Input/CustomInput";
 import {ErrorMessage, Form, Formik} from "formik";
 import CustomButton from "../../../components/Button/CustomSubmitButton";
-import {DisasterTypeData} from "./_disaster-type-data";
+import {DisasterTypes} from "./_disaster-types";
 import Image from "next/image";
 import axios from "axios";
 import {useRouter} from "next/router";
@@ -65,7 +65,7 @@ const Index = () => {
             <Box>
               <Heading fontSize={"3xl"} mb={4}>Select Disaster Type</Heading>
               <SimpleGrid columns={{base: 1, md: 3, lg: 5}} spacing={4}>
-                {DisasterTypeData.map((item, index) => {
+                {DisasterTypes.map((item, index) => {
                   return (
                     <Box
                       key={index}

@@ -9,11 +9,11 @@ const CustomLink = ({href, text, icon}) => {
         display={"flex"}
         alignItems={"center"}
         gap={2}
-        bg={"blue.500"}
+        bg={"blackAlpha.800"}
         textColor={"white"}
         px={4}
         py={2}
-        _hover={{textDecoration: "none", bg: "blue.600"}}
+        _hover={{textDecoration: "none", bg: "blackAlpha.700"}}
         borderRadius={"md"}
       >
         {icon} <Text as={'span'}>{text}</Text>
