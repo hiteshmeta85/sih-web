@@ -7,7 +7,31 @@ import axios from "axios";
 import {useRouter} from "next/router";
 import Error from "../../../../components/Error/Error";
 import {useState} from "react";
-import SocialMedia from "./_social-media";
+import {BsFacebook, BsInstagram, BsTwitter} from "react-icons/bs";
+
+const SocialMedia = [
+  {
+    id: 1,
+    title: "Twitter",
+    value: "twitter",
+    image: BsTwitter,
+    color: "#1DA1F2",
+  },
+  {
+    id: 2,
+    title: "Facebook",
+    value: "facebook",
+    image: BsFacebook,
+    color: "#4267B2",
+  },
+  {
+    id: 3,
+    title: "Instagram",
+    value: "instagram",
+    image: BsInstagram,
+    color: "#FCAF45",
+  },
+]
 
 const SelectHashtags = ({id, projectName, disasterType}) => {
   const router = useRouter();
