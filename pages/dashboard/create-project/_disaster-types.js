@@ -4,7 +4,7 @@ import hurricane from "./hurricane.png"
 import storm from "./storm.png"
 import wildfire from "./wildfire.png"
 
-export const DisasterTypes = [
+const DisasterTypes = [
   {
     id: 1,
     disasterType: "flood",
@@ -36,3 +36,5 @@ export const DisasterTypes = [
     image: wildfire
   },
 ]
+
+export default DisasterTypes

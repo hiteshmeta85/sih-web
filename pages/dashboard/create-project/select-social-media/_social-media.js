@@ -1,6 +1,6 @@
 import {BsFacebook, BsInstagram, BsTwitter} from "react-icons/bs";
 
-export const SocialMedia = [
+const SocialMedia = [
   {
     id: 1,
     title: "Twitter",
@@ -23,3 +23,5 @@ export const SocialMedia = [
     color: "#FCAF45",
   },
 ]
+
+export default SocialMedia

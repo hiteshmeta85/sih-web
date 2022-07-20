@@ -1,4 +1,4 @@
-export const TrendingTweetsData = [
+const TrendingTweetsData = [
   {
     id: 1,
     username: 'hiteshmeta',
@@ -47,5 +47,6 @@ export const TrendingTweetsData = [
     description: 'Elit duis tristique sollicitudin nibh sit amet commodo. Magna etiam tempor orci eu lobortis elementum nibh. Cras pulvinar mattis nunc sed. Ut tortor pretium viverra suspendisse potenti. Tempus imperdiet nulla malesuada pellentesque elit.',
     image: 'https://images.unsplash.com/photo-1536245344390-dbf1df63c30a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1773&q=80'
   },
-
 ];
+
+export default TrendingTweetsData

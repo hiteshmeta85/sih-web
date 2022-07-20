@@ -7,7 +7,7 @@ import axios from "axios";
 import {useRouter} from "next/router";
 import Error from "../../../../components/Error/Error";
 import {useState} from "react";
-import {SocialMedia} from "./_social-media";
+import SocialMedia from "./_social-media";
 
 const SelectHashtags = ({id, projectName, disasterType}) => {
   const router = useRouter();

@@ -4,7 +4,7 @@ import newProjectSchema from "../../../lib/schemas/newProjectSchema";
 import CustomInput from "../../../components/Input/CustomInput";
 import {ErrorMessage, Form, Formik} from "formik";
 import CustomButton from "../../../components/Button/CustomSubmitButton";
-import {DisasterTypes} from "./_disaster-types";
+import DisasterTypes from "./_disaster-types";
 import Image from "next/image";
 import axios from "axios";
 import {useRouter} from "next/router";
