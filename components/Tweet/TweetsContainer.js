@@ -7,7 +7,8 @@ const TweetsContainer = ({title, children}) => {
       px={{base: 2, md: 4, lg: 8}}
       maxW={'container.xl'}
       mx={'auto'}
-      py={{base: 4, md: 8}}
+      pt={{base: 4, md: 8}}
+      pb={{base: 6, md:10}}
     >
       <Flex
         justifyContent={'space-between'}

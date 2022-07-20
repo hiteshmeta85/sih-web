@@ -2,7 +2,6 @@
   "name": "sih-web",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://bd85-183-87-243-199.ngrok.io",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

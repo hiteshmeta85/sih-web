@@ -1,14 +1,48 @@
 import TweetsContainer from "../components/Tweet/TweetsContainer";
-import {Box, Flex, SimpleGrid} from "@chakra-ui/react";
-import Contact from "../components/Contact/Contact";
+import {Flex, SimpleGrid} from "@chakra-ui/react";
 import TweetCard from "../components/Tweet/TweetCard";
 import SocialMediaAccountCard from "../components/Account/SocialMediaAccountCard";
 import {AlertsData} from "../components/Alert/alerts-data";
 import AlertCard from "../components/Alert/AlertCard";
 import NewsCard from "../components/News/NewsCard";
+import LandingPageLayout from "./_layout";
 
-export default function Home() {
-  const ndrfTweets = [
+export default function Home({headlines, ndrfTweets}) {
+
+  const popularTwitterHandles = [
+    {
+      id: 1,
+      name: 'Hitesh Meta',
+      username: 'metahitesh85'
+    },
+    {
+      id: 2,
+      name: 'Om Surve',
+      username: 'gamingflexer'
+    },
+    {
+      id: 3,
+      name: 'Yash Wakekar',
+      username: 'yashwakekar'
+    },
+    {
+      id: 4,
+      name: 'Kunal Wagh',
+      username: 'kunalwagh18'
+    },
+    {
+      id: 5,
+      name: 'Adwait Gawade',
+      username: 'adwaitgawade'
+    },
+    {
+      id: 6,
+      name: 'Shreya Belanekar',
+      username: 'shreyabelanekar'
+    },
+  ]
+
+  const ndrfTweets2 = [
     {
       "id": 1546017399186784256,
       "conversation_id": "1546017399186784256",
@@ -531,40 +565,7 @@ export default function Home() {
     }
   ]
 
-  const popularTwitterHandles = [
-    {
-      id: 1,
-      name: 'Hitesh Meta',
-      username: 'metahitesh85'
-    },
-    {
-      id: 2,
-      name: 'Om Surve',
-      username: 'gamingflexer'
-    },
-    {
-      id: 3,
-      name: 'Yash Wakekar',
-      username: 'yashwakekar'
-    },
-    {
-      id: 4,
-      name: 'Kunal Wagh',
-      username: 'kunalwagh18'
-    },
-    {
-      id: 3,
-      name: 'Yash Wakekar',
-      username: 'yashwakekar'
-    },
-    {
-      id: 4,
-      name: 'Kunal Wagh',
-      username: 'kunalwagh18'
-    },
-  ]
-
-  const news = [
+  const headlines2 = [
     {
       "id": "6071099688754801141",
       "title": "Punjab CM Bhagwant Mann Gives Nod to State Disaster Mitigation Fund",
@@ -918,43 +919,76 @@ export default function Home() {
   ]
 
   return (
-    <Box bg={'#F5F5F5'}>
-      <TweetsContainer title={'News'}>
+    <LandingPageLayout>
+      {headlines2 && <TweetsContainer title={'News'}>
         <SimpleGrid columns={{md: 4}} gap={6}>
-          {news.slice(0, 4)
+          {headlines2.slice(0, 4)
             .map((item, index) => {
               return (
-                <NewsCard key={index} title={item.title} datePublished={item.datePublished} description={item.description}/>
+                <NewsCard key={index} title={item.title} datePublished={item.datePublished}
+                          description={item.description}/>
               )
             })}
         </SimpleGrid>
-      </TweetsContainer>
+      </TweetsContainer>}
       <TweetsContainer title={'Alerts'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
-          {AlertsData.slice(0,6).map((item, index) => {
-            return (<AlertCard key={index} title={item.title} description={item.description} image={item.image}/>)
-          })}
-        </SimpleGrid>
-      </TweetsContainer>
-      <TweetsContainer title={'NDRF’s Latest Tweets'}>
-        <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
-          {ndrfTweets.slice(0, 6)
+          {AlertsData.slice(0, 6)
             .map((item, index) => {
-              return (<TweetCard key={index} username={item.username} description={item.tweet}
-                                 image={item.photos.length > 0 && item.photos[0]}/>)
+              return (<AlertCard key={index} title={item.title} description={item.description} image={item.image}/>)
             })}
         </SimpleGrid>
       </TweetsContainer>
+      {ndrfTweets2 && <TweetsContainer title={'NDRF’s Latest Tweets'}>
+        <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
+          {ndrfTweets2.slice(0, 6)
+            .map((item, index) => {
+              return (<TweetCard key={index} username={item.username} description={item.tweet}
+                                 image={item.photos.length > 0 && item.photos[0]} date={item.date}/>)
+            })}
+        </SimpleGrid>
+      </TweetsContainer>}
       <TweetsContainer title={'Active Social Media Accounts'}>
         <Flex gap={4} overflowX={'scroll'} py={6} px={0.5}>
-          {popularTwitterHandles.slice(0,10).map((item, index) => {
-            return (
-              <SocialMediaAccountCard key={index} name={item.name} username={item.username}/>
-            )
-          })}
+          {popularTwitterHandles.slice(0, 10)
+            .map((item, index) => {
+              return (
+                <SocialMediaAccountCard key={index} name={item.name} username={item.username}/>
+              )
+            })}
         </Flex>
       </TweetsContainer>
-      <Contact/>
-    </Box>
+    </LandingPageLayout>
   )
 }
+
+// export async function getServerSideProps() {
+
+  // let headlines, ndrfTweets;
+  //
+  // try {
+  //   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/get-headlines`)
+  //   if (res.data) {
+  //     headlines = res.data.data.value
+  //   }
+  // } catch (e) {
+  //   headlines = null
+  // }
+  //
+  // try {
+  //   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/ndrf-tweets`)
+  //   if (res.data) {
+  //     ndrfTweets = res.data.data
+  //   }
+  // } catch (e) {
+  //   ndrfTweets = null
+  // }
+  //
+  //
+  // return {
+  //   props: {
+  //     headlines,
+  //     ndrfTweets
+  //   }
+  // }
+// }

@@ -11,7 +11,7 @@ const AlertCard = ({title, description, username, date}) => {
         bg={'white'}
         borderRadius={'md'}
         boxShadow={'base'}
-        _hover={{boxShadow: 'md'}}
+        _hover={{boxShadow: 'lg'}}
         p={3}
       >
         <Box py={'1px'} bg={"red.500"}/>

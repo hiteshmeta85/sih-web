@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Flex, Image, Text} from '@chakra-ui/react';
 
-const TweetCard = ({title, description, image, username, date}) => {
+const TweetCard = ({description, image, username, date}) => {
 
   return (
     <>
@@ -9,9 +9,10 @@ const TweetCard = ({title, description, image, username, date}) => {
         flexDir={"column"}
         rowGap={2}
         bg={'white'}
-        p={3}
         borderRadius={'md'}
         boxShadow={'base'}
+        _hover={{boxShadow: 'lg'}}
+        p={3}
       >
         <Box py={'1px'} bg={"blackAlpha.800"}/>
         <Flex
