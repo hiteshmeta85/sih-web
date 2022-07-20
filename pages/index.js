@@ -944,8 +944,7 @@ export default function Home({headlines, ndrfTweets}) {
         <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
           {ndrfTweets2.slice(0, 6)
             .map((item, index) => {
-              return (<TweetCard key={index} username={item.username} description={item.tweet}
-                                 image={item.photos.length > 0 && item.photos[0]} date={item.date}/>)
+              return (<TweetCard key={index} username={item.username} description={item.tweet} image={item.photos.length > 0 && item.photos[0]} date={item.date}/>)
             })}
         </SimpleGrid>
       </TweetsContainer>}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Flex, Text} from '@chakra-ui/react';
 
-const AlertCard = ({title, description, username, date}) => {
+const AlertCard = ({title, description}) => {
 
   return (
     <>
@@ -15,7 +15,7 @@ const AlertCard = ({title, description, username, date}) => {
         p={3}
       >
         <Box py={'1px'} bg={"red.500"}/>
-        <Flex
+        {/*<Flex
           justifyContent={'space-between'}
           alignItems={'center'}
           fontFamily={'Open Sans'}
@@ -25,10 +25,10 @@ const AlertCard = ({title, description, username, date}) => {
             fontSize={'sm'}
             color={'gray.500'}
           >
-            @
+            @{username}
           </Text>
           <Text fontSize={'xs'}>{date}</Text>
-        </Flex>
+        </Flex>*/}
         <Text fontWeight={700} fontSize={'lg'}>
           {title}
         </Text>

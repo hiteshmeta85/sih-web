@@ -21,13 +21,14 @@ const TweetCard = ({description, image, username, date}) => {
           fontFamily={'Open Sans'}
           color={'gray.600'}
         >
-          <Box
-            fontSize={'sm'}
-            color={'gray.500'}
-          >
-            @{username}
-          </Box>
-          <Text fontSize={'xs'}>{date}</Text>
+          {username &&
+            <Box
+              fontSize={'sm'}
+              color={'gray.500'}
+            >
+              @{username}
+            </Box>}
+          {date && <Text fontSize={'xs'}>{date}</Text>}
         </Flex>
         {/*<Text fontWeight={700} fontSize={'lg'}>
           {title}
