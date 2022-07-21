@@ -12,7 +12,7 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import {Box, FormLabel} from "@chakra-ui/react";
+import {Box, FormLabel, Text} from "@chakra-ui/react";
 
 const SearchPlacesMap = ({setFieldValue, label}) => {
 
@@ -24,7 +24,7 @@ const SearchPlacesMap = ({setFieldValue, label}) => {
   if (!isLoaded) return <div>Loading...</div>;
   return (
     <Box width={'100%'}>
-      {label && <FormLabel style={{fontWeight: 600}}>{label}</FormLabel>}
+      {label && <Text fontWeight={600} lineHeight={'shorter'}>{label}</Text>}
       <Map setFieldValue={setFieldValue}/>
     </Box>
   );
@@ -76,6 +76,7 @@ const PlacesAutocomplete = ({setSelected, setFieldValue}) => {
     setSelected({lat, lng});
     setFieldValue("geolocation_lng", lat)
     setFieldValue("geolocation_lat", lng)
+    setFieldValue("address", address)
   };
 
   return (

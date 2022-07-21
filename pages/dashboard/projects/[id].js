@@ -62,8 +62,8 @@ const ViewIndividualProject = () => {
 
       <Tabs borderRadius={"md"}>
         <TabList>
-          <Tab>Tweets</Tab>
-          <Tab>Tweets + Images</Tab>
+          <Tab>Text</Tab>
+          <Tab>Text + Images</Tab>
           <Tab>Voices</Tab>
           <Tab>Videos</Tab>
           <Tab>Map</Tab>

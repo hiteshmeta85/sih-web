@@ -9,11 +9,13 @@ const News = ({headlines}) => {
     <LandingPageLayout>
       <Box maxW={'container.xl'} mx={'auto'} p={{base: 2, md: 4, lg: 8}}>
         <SimpleGrid gap={6}>
-          {headlines2.map((item, index) => {
-            return (
-              <NewsCard key={index} title={item.title} datePublished={item.datePublished} body={item.body} isDetailedView={true} src={item.image.url}/>
-            )
-          })}
+          <>
+            {headlines2.map((item, index) => {
+              return (
+                <NewsCard key={index} title={item.title} datePublished={item.datePublished} body={item.body} isDetailedView={true} src={item.image.url}/>
+              )
+            })}
+          </>
         </SimpleGrid>
       </Box>
     </LandingPageLayout>

@@ -8,7 +8,7 @@ import alertSchema from "../../../lib/schemas/alertSchema";
 import CustomSelect from "../../../components/Select/CustomSelect";
 import SearchPlacesMap from "../../../components/Map/SearchPlacesMap";
 
-export const labelOptions = [
+const labelOptions = [
   {
     label: 'Emergency',
     value: 'Emergency',
@@ -31,7 +31,7 @@ export const labelOptions = [
   },
 ]
 
-export const severityTypes = [
+const severityTypes = [
   {
     label: 'High',
     value: 'high',
@@ -65,7 +65,8 @@ const Index = () => {
             geolocation_lat: '',
             geolocation_lng: '',
             labels: [],
-            severityType: ''
+            severityType: '',
+            address: '',
           }}
           validationSchema={alertSchema}
           onSubmit={(values, {setSubmitting}) => {
@@ -122,7 +123,7 @@ const Index = () => {
                     </Box>
                   </Box>
                 </Flex>
-                {/*<SearchPlacesMap label={'Search Geolocation'} setFieldValue={setFieldValue}/>*/}
+                <SearchPlacesMap label={'Search Geolocation'} setFieldValue={setFieldValue}/>
               </Flex>
               <CustomSubmitButton label={'Submit'} isSubmitting={isSubmitting} handleSubmit={handleSubmit}/>
             </Form>

@@ -5,7 +5,7 @@ import NextLink from "next/link";
 const Contact = () => {
 
   return (
-    <Box bg={'white'} mt={{base: 4, md: 8, lg: 10}}>
+    <Box bg={'white'}>
       <Box maxW={'container.xl'} mx={'auto'} py={{base: 2, md: 4, lg: 16}} px={{base: 2, md: 4, lg: 8}}>
         <HStack>
           <Heading

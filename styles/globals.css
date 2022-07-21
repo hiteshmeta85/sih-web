@@ -79,7 +79,8 @@ body {
 
 .combobox-input {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.33rem 0.4rem;
+    margin-top: 0;
     border: 1px solid lightgray;
-    border-radius: 3px;
+    border-radius: 5px;
 }

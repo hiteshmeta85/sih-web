@@ -33,6 +33,7 @@ const NewsCard = ({title, datePublished, description, isDetailedView = false, bo
     >
       <Flex
         flexDir={'column'}
+        h={'full'}
         justifyContent={'space-between'}
       >
         <Flex flexDir={'column'} gap={2}>
