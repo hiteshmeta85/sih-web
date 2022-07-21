@@ -1,4 +1,4 @@
-import {useState, useMemo} from "react";
+import React, {useState, useMemo} from "react";
 import {GoogleMap, useLoadScript, Marker} from "@react-google-maps/api";
 import usePlacesAutocomplete, {
   getGeocode,
@@ -12,33 +12,37 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import {Box} from "@chakra-ui/react";
+import {Box, FormLabel} from "@chakra-ui/react";
 
-const SearchPlacesMap = () => {
+const SearchPlacesMap = ({setFieldValue, label}) => {
+
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
     libraries: ["places"],
   });
 
   if (!isLoaded) return <div>Loading...</div>;
-  return <Map/>;
+  return (
+    <Box width={'100%'}>
+      {label && <FormLabel style={{fontWeight: 600}}>{label}</FormLabel>}
+      <Map setFieldValue={setFieldValue}/>
+    </Box>
+  );
 }
 
-function Map() {
+function Map({setFieldValue}) {
   // 20.7707739,73.7217954 - India
   const center = useMemo(() => ({lat: 20.7707739, lng: 73.7217954}), []);
   const [selected, setSelected] = useState(null);
 
-  console.log(selected)
-
   return (
-    <Box pos={'relative'} maxW={'container.lg'} mx={'auto'}>
+    <Box pos={'relative'} mx={'auto'}>
       <Box
-        my={6}
+        my={3}
         width={'300px'}
         zIndex={10}
       >
-        <PlacesAutocomplete setSelected={setSelected}/>
+        <PlacesAutocomplete setSelected={setSelected} setFieldValue={setFieldValue}/>
       </Box>
 
       <Box>
@@ -54,7 +58,7 @@ function Map() {
   );
 }
 
-const PlacesAutocomplete = ({setSelected}) => {
+const PlacesAutocomplete = ({setSelected, setFieldValue}) => {
   const {
     ready,
     value,
@@ -70,6 +74,8 @@ const PlacesAutocomplete = ({setSelected}) => {
     const results = await getGeocode({address});
     const {lat, lng} = await getLatLng(results[0]);
     setSelected({lat, lng});
+    setFieldValue("geolocation_lng", lat)
+    setFieldValue("geolocation_lat", lng)
   };
 
   return (

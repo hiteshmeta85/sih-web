@@ -102,37 +102,39 @@ const Index = () => {
             <Box>
               <Heading fontSize={"3xl"} mb={4}>Select Disaster Type</Heading>
               <SimpleGrid columns={{base: 1, md: 3, lg: 5}} spacing={4}>
-                {DisasterTypes.map((item, index) => {
-                  return (
-                    <Box
-                      key={index}
-                      h={"180px"}
-                      pos={"relative"}
-                      cursor={"pointer"}
-                      onClick={() => setFieldValue("disasterType", `${item.disasterType}`)}
-                      border={"2px"} borderRadius={"4px"}
-                      borderColor={values.disasterType === `${item.disasterType}` ? "blue.500" : "transparent"}
-                    >
-                      <Image
-                        src={item.image}
-                        alt={"disaster type"}
-                        layout="fill"
-                        style={{borderRadius: "4px"}}
-                      />
-                      <Text
-                        pos={"absolute"}
-                        bottom={"0"}
-                        w={"full"}
-                        textAlign={"center"}
-                        fontWeight={"semibold"}
-                        letterSpacing={"1px"}
-                        bgColor={"rgba(255, 255, 255, 0.7)"}
+                <>
+                  {DisasterTypes.map((item, index) => {
+                    return (
+                      <Box
+                        key={index}
+                        h={"180px"}
+                        pos={"relative"}
+                        cursor={"pointer"}
+                        onClick={() => setFieldValue("disasterType", `${item.disasterType}`)}
+                        border={"2px"} borderRadius={"4px"}
+                        borderColor={values.disasterType === `${item.disasterType}` ? "blue.500" : "transparent"}
                       >
-                        {item.label}
-                      </Text>
-                    </Box>
-                  )
-                })}
+                        <Image
+                          src={item.image}
+                          alt={"disaster type"}
+                          layout="fill"
+                          style={{borderRadius: "4px"}}
+                        />
+                        <Text
+                          pos={"absolute"}
+                          bottom={"0"}
+                          w={"full"}
+                          textAlign={"center"}
+                          fontWeight={"semibold"}
+                          letterSpacing={"1px"}
+                          bgColor={"rgba(255, 255, 255, 0.7)"}
+                        >
+                          {item.label}
+                        </Text>
+                      </Box>
+                    )
+                  })}
+                </>
               </SimpleGrid>
               <Box
                 color={'gray.500'}

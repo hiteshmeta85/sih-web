@@ -11,9 +11,9 @@ const CustomInput = ({...props}) => {
         placeholder={props.placeholder}
         autoComplete='off' {...field} {...props}
         className={`${meta.touched && meta.error && `is-invalid`}`}
-        style={{borderBottom: "1px solid #E7E8EC", width: "100%", outline: "none", background: "transparent", paddingBottom: "0.1rem"}}
+        style={{borderBottom: "1px solid #E7E8EC", width: "100%", outline: "none", background: "transparent", marginBottom: 0}}
       />
-      <Box color={'gray.500'} pt={0} fontSize={'xs'} fontWeight={'semibold'}>
+      <Box color={'gray.500'} mt={1} fontSize={'xs'} fontWeight={'semibold'}>
         <ErrorMessage name={field.name}/>
       </Box>
     </Box>

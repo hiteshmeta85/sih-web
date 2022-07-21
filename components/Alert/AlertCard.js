@@ -1,7 +1,16 @@
 import React from 'react';
 import {Box, Flex, Text} from '@chakra-ui/react';
+import {severityTypes} from "../../pages/dashboard/create-alert";
 
-const AlertCard = ({title, description}) => {
+const AlertCard = ({
+  title,
+  description,
+  labels,
+  isDetailedView = false,
+  geolocation_lng,
+  geolocation_lat,
+  severity_type
+}) => {
 
   return (
     <>
@@ -15,20 +24,30 @@ const AlertCard = ({title, description}) => {
         p={3}
       >
         <Box py={'1px'} bg={"red.500"}/>
-        {/*<Flex
-          justifyContent={'space-between'}
+        <Flex
           alignItems={'center'}
           fontFamily={'Open Sans'}
-          color={'gray.600'}
+          gap={4}
+          flexWrap={'wrap'}
+          flex={1}
         >
-          <Text
-            fontSize={'sm'}
-            color={'gray.500'}
-          >
-            @{username}
-          </Text>
-          <Text fontSize={'xs'}>{date}</Text>
-        </Flex>*/}
+          <>
+            {severityTypes.map((item, index) => {
+              if (item.value === severity_type) {
+                return (
+                  <Text key={index} bg={item.color} p={3} borderRadius={'full'}/>
+                )
+              }
+            })}
+          </>
+          <>
+            {labels.map((item, index) => {
+              return (
+                <Text key={index} fontSize={'xs'} bg={'red.100'} px={3} py={1} borderRadius={'2xl'}>{item}</Text>
+              )
+            })}
+          </>
+        </Flex>
         <Text fontWeight={700} fontSize={'lg'}>
           {title}
         </Text>

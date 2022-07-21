@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Flex, Image, Text} from '@chakra-ui/react';
 
-const TweetCard = ({description, image, username, date}) => {
+const TweetCard = ({description, image, username, date, icon}) => {
 
   return (
     <>

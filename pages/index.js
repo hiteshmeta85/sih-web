@@ -8,6 +8,7 @@ import NewsCard from "../components/News/NewsCard";
 import LandingPageLayout from "./_layout";
 import {IoIosAlert} from "react-icons/io";
 import {BsTwitter} from "react-icons/bs";
+import SimpleMap from "../components/Map/SimpleMap";
 
 export const popularTwitterHandles = [
   {
@@ -924,38 +925,46 @@ export default function Home({headlines, ndrfTweets}) {
     <LandingPageLayout>
       {headlines2 && <TweetsContainer title={'News'} href={'/news'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={6}>
-          {headlines2.slice(0, 4)
-            .map((item, index) => {
-              return (
-                <NewsCard key={index} title={item.title} datePublished={item.datePublished} description={item.description}/>
-              )
-            })}
+          <>
+            {headlines2.slice(0, 4)
+              .map((item, index) => {
+                return (
+                  <NewsCard key={index} title={item.title} datePublished={item.datePublished} description={item.description}/>
+                )
+              })}
+          </>
         </SimpleGrid>
       </TweetsContainer>}
       <TweetsContainer title={<Flex alignItems={'center'} gap={2}><IoIosAlert color={'#EB4747'}/> Alerts</Flex>} href={'/alerts'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
-          {AlertsData.slice(0, 6)
-            .map((item, index) => {
-              return (<AlertCard key={index} title={item.title} description={item.description} image={item.image}/>)
-            })}
+          <>
+            {AlertsData.slice(0, 6)
+              .map((item, index) => {
+                return (<AlertCard key={index} title={item.title} description={item.description} labels={item.labels} severity_type={item.severity_type}/>)
+              })}
+          </>
         </SimpleGrid>
       </TweetsContainer>
       {ndrfTweets2 && <TweetsContainer title={<Flex alignItems={'center'} gap={2}><BsTwitter color={'#1DA1F2'}/> NDRF’s Latest Tweets</Flex>} href={'/tweets'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
-          {ndrfTweets2.slice(0, 6)
-            .map((item, index) => {
-              return (<TweetCard key={index} username={item.username} description={item.tweet} image={item.photos.length > 0 && item.photos[0]} date={item.date}/>)
-            })}
+          <>
+            {ndrfTweets2.slice(0, 6)
+              .map((item, index) => {
+                return (<TweetCard key={index} username={item.username} description={item.tweet} image={item.photos.length > 0 && item.photos[0]} date={item.date}/>)
+              })}
+          </>
         </SimpleGrid>
       </TweetsContainer>}
       <TweetsContainer title={'Active Social Media Accounts'} href={'/active-accounts'}>
         <Flex gap={4} overflowX={'scroll'} py={6} px={0.5}>
-          {popularTwitterHandles.slice(0, 10)
-            .map((item, index) => {
-              return (
-                <SocialMediaAccountCard key={index} name={item.name} username={item.username}/>
-              )
-            })}
+          <>
+            {popularTwitterHandles.slice(0, 10)
+              .map((item, index) => {
+                return (
+                  <SocialMediaAccountCard key={index} name={item.name} username={item.username}/>
+                )
+              })}
+          </>
         </Flex>
       </TweetsContainer>
     </LandingPageLayout>
@@ -964,31 +973,31 @@ export default function Home({headlines, ndrfTweets}) {
 
 // export async function getServerSideProps() {
 
-  // let headlines, ndrfTweets;
-  //
-  // try {
-  //   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/get-headlines`)
-  //   if (res.data) {
-  //     headlines = res.data.data.value
-  //   }
-  // } catch (e) {
-  //   headlines = null
-  // }
-  //
-  // try {
-  //   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/ndrf-tweets`)
-  //   if (res.data) {
-  //     ndrfTweets = res.data.data
-  //   }
-  // } catch (e) {
-  //   ndrfTweets = null
-  // }
-  //
-  //
-  // return {
-  //   props: {
-  //     headlines,
-  //     ndrfTweets
-  //   }
-  // }
+// let headlines, ndrfTweets;
+//
+// try {
+//   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/get-headlines`)
+//   if (res.data) {
+//     headlines = res.data.data.value
+//   }
+// } catch (e) {
+//   headlines = null
+// }
+//
+// try {
+//   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/ndrf-tweets`)
+//   if (res.data) {
+//     ndrfTweets = res.data.data
+//   }
+// } catch (e) {
+//   ndrfTweets = null
+// }
+//
+//
+// return {
+//   props: {
+//     headlines,
+//     ndrfTweets
+//   }
+// }
 // }
