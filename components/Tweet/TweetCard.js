@@ -1,5 +1,7 @@
 import React from 'react';
 import {Box, Flex, Image, Text} from '@chakra-ui/react';
+import { BsTwitch } from 'react-icons/bs';
+import { BsTwitter } from "react-icons/bs";
 
 const TweetCard = ({description, image, username, date, icon}) => {
 
@@ -13,6 +15,7 @@ const TweetCard = ({description, image, username, date, icon}) => {
         boxShadow={'base'}
         _hover={{boxShadow: 'lg'}}
         p={3}
+        h={'full'}
       >
         <Box py={'1px'} bg={"blackAlpha.800"}/>
         <Flex
@@ -26,7 +29,10 @@ const TweetCard = ({description, image, username, date, icon}) => {
               fontSize={'sm'}
               color={'gray.500'}
             >
+              <Flex align={'center'} gap={2}>
+              {icon && icon}
               @{username}
+              </Flex>
             </Box>}
           {date && <Text fontSize={'xs'}>{date}</Text>}
         </Flex>
