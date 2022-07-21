@@ -8,7 +8,6 @@ import NewsCard from "../components/News/NewsCard";
 import LandingPageLayout from "./_layout";
 import {IoIosAlert} from "react-icons/io";
 import {BsTwitter} from "react-icons/bs";
-import SimpleMap from "../components/Map/SimpleMap";
 
 export const popularTwitterHandles = [
   {
@@ -48,7 +47,7 @@ export const ndrfTweets2 = [
     "id": 1546017399186784256,
     "conversation_id": "1546017399186784256",
     "created_at": "2022-07-10 11:54:06 IST",
-    "date": "-07-102022",
+    "date": "07-102022",
     "time": "11:54:06",
     "timezone": "+0530",
     "user_id": 2791137282,
