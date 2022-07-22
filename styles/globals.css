@@ -69,6 +69,45 @@ a {
     }
 }
 
+@-webkit-keyframes blinkAnimation {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+.blink {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    animation: blinkAnimation 2s linear infinite;
+    background-color: red;
+    margin-right: 5px;
+}
+
+.ping {
+    background: #fff;
+    border-radius: 50%;
+    border: 3px solid #222;
+    width: 10px;
+    height: 10px;
+    animation: pingAnimation 1.5s ease-out infinite;
+}
+
+@keyframes pingAnimation {
+    0% {
+        background: #fff;
+        border: 0px solid #fff;
+    }
+    50% {
+        background: #fff;
+        border: 8px solid #222;
+    }
+    100% {
+        background: #fff;
+        border: 0px solid #222;
+    }
+}
+
 /*
 body {
     animation: fadeInAnimation ease 1s;

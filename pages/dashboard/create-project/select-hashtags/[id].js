@@ -76,12 +76,10 @@ const SelectHashtags = ({hashtags, projectName, disasterType, id}) => {
               isSubmitting
             }) => (
               <Form>
-                <Box
-                  color={"gray.600"}
-                  fontWeight={"bold"}
-                >
-                  Hashtags
-                </Box>
+                <Flex alignItems={'center'} gap={2}>
+                  <Text color={"gray.600"} fontWeight={"bold"}>Hashtags</Text>
+                  <Text className={'blink'}></Text>
+                </Flex>
                 <Box mt={3} mb={6}>
                   <Flex
                     flexDir={"column"}
