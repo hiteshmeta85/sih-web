@@ -22,7 +22,7 @@ const severityTypes = [
 const AlertCard = ({
   title,
   description,
-  labels,
+  label,
   isDetailedView = false,
   geolocation_lng,
   geolocation_lat,
@@ -57,13 +57,7 @@ const AlertCard = ({
               }
             })}
           </>
-          <>
-            {labels.map((item, index) => {
-              return (
-                <Text key={index} fontSize={'xs'} bg={'red.100'} px={3} py={1} borderRadius={'2xl'}>{item}</Text>
-              )
-            })}
-          </>
+          <Text fontSize={'xs'} bg={'red.100'} px={3} py={1} borderRadius={'2xl'}>{label}</Text>
         </Flex>
         <Text fontWeight={700} fontSize={'lg'}>
           {title}

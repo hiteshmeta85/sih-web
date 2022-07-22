@@ -18,7 +18,7 @@ const Alerts = () => {
                     key={index}
                     title={item.title}
                     description={item.description}
-                    labels={item.labels}
+                    label={item.label}
                     geolocation_lat={item.geolocation_lat}
                     geolocation_lng={item.geolocation_lng}
                     severity_type={item.severity_type}

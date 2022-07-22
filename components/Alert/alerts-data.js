@@ -5,7 +5,7 @@ export const AlertsData = [
     description: 'Elit duis tristique sollicitudin nibh sit amet commodo. Magna etiam tempor orci eu lobortis elementum nibh. Cras pulvinar mattis nunc sed. Ut tortor pretium viverra suspendisse potenti. Tempus imperdiet nulla malesuada pellentesque elit.',
     geolocation_lat: 20.7707739,
     geolocation_lng: 73.7217954,
-    labels: ['Emergency', 'Evacuation'],
+    label: 'Emergency',
     severity_type: 'high'
   },
   {
@@ -14,7 +14,7 @@ export const AlertsData = [
     description: 'Elit duis tristique sollicitudin nibh sit amet commodo. Magna etiam tempor orci eu lobortis elementum nibh. Cras pulvinar mattis nunc sed. Ut tortor pretium viverra suspendisse potenti. Tempus imperdiet nulla malesuada pellentesque elit.',
     geolocation_lat: 20.7707739,
     geolocation_lng: 73.7217954,
-    labels: ['Emergency', 'Evacuation'],
+    label: 'Evacuation',
     severity_type: 'high'
   },
   {
@@ -23,7 +23,7 @@ export const AlertsData = [
     description: 'Elit duis tristique sollicitudin nibh sit amet commodo. Magna etiam tempor orci eu lobortis elementum nibh. Cras pulvinar mattis nunc sed. Ut tortor pretium viverra suspendisse potenti. Tempus imperdiet nulla malesuada pellentesque elit.',
     geolocation_lat: 20.7707739,
     geolocation_lng: 73.7217954,
-    labels: ['Emergency', 'Hospital'],
+    label: 'Hospital',
     severity_type: 'low'
   },
   {
@@ -32,7 +32,7 @@ export const AlertsData = [
     description: 'Elit duis tristique sollicitudin nibh sit amet commodo. Magna etiam tempor orci eu lobortis elementum nibh. Cras pulvinar mattis nunc sed. Ut tortor pretium viverra suspendisse potenti. Tempus imperdiet nulla malesuada pellentesque elit.',
     geolocation_lat: 20.7707739,
     geolocation_lng: 73.7217954,
-    labels: ['Emergency', 'Evacuation'],
+    label: 'Emergency',
     severity_type: 'high'
   },
   {
@@ -41,7 +41,7 @@ export const AlertsData = [
     description: 'Elit duis tristique sollicitudin nibh sit amet commodo. Magna etiam tempor orci eu lobortis elementum nibh. Cras pulvinar mattis nunc sed. Ut tortor pretium viverra suspendisse potenti. Tempus imperdiet nulla malesuada pellentesque elit.',
     geolocation_lat: 20.7707739,
     geolocation_lng: 73.7217954,
-    labels: ['Emergency', 'Evacuation'],
+    label: 'Emergency',
     severity_type: 'medium'
   },
   {
@@ -50,7 +50,7 @@ export const AlertsData = [
     description: 'Elit duis tristique sollicitudin nibh sit amet commodo. Magna etiam tempor orci eu lobortis elementum nibh. Cras pulvinar mattis nunc sed. Ut tortor pretium viverra suspendisse potenti. Tempus imperdiet nulla malesuada pellentesque elit.',
     geolocation_lat: 20.7707739,
     geolocation_lng: 73.7217954,
-    labels: ['Emergency', 'Evacuation'],
+    label: 'Evacuation',
     severity_type: 'high'
   },
 ];

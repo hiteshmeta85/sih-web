@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import DashboardContainer from "../_layout"
-import {Box, Flex, FormLabel, SimpleGrid, Text} from "@chakra-ui/react";
+import {Box, Flex, FormLabel, Text} from "@chakra-ui/react";
 import {ErrorMessage, Form, Formik} from "formik";
 import CustomSubmitButton from "../../../components/Button/CustomSubmitButton";
 import CustomInput from "../../../components/Input/CustomInput";
@@ -64,7 +64,7 @@ const Index = () => {
             description: '',
             geolocation_lat: '',
             geolocation_lng: '',
-            labels: [],
+            label: '',
             severityType: '',
             address: '',
           }}
@@ -91,7 +91,7 @@ const Index = () => {
                   <Flex flexDir={'column'} flex={1} gap={4}>
                     <CustomInput name={'title'} type={'text'} label={'Title'}/>
                     <CustomInput name={'description'} as={'textarea'} type={'text'} label={'Description'} rows={5}/>
-                    <CustomSelect name={'labels'} label={'Select Labels'} options={labelOptions} placeholder={'Select Labels...'}/>
+                    <CustomSelect isMulti={false} name={'label'} label={'Select Labels'} options={labelOptions} placeholder={'Select Labels...'}/>
                   </Flex>
                   <Box>
                     <FormLabel style={{fontWeight: 600}}>Select Severity</FormLabel>
