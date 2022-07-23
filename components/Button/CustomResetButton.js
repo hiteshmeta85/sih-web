@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Spinner} from "@chakra-ui/react";
+import {Button} from "@chakra-ui/react";
 
 const CustomButton = ({label}) => {
   return (

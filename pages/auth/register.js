@@ -8,7 +8,8 @@ import AuthLayout from "./_layout";
 
 const Register = () => {
 
-  return (<AuthLayout>
+  return (
+    <AuthLayout>
       <Formik
         initialValues={{
           name: '',

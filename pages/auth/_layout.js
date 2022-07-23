@@ -34,7 +34,7 @@ const AuthLayout = ({children}) => {
         flex={5}
         height={"100vh"}
         pos={"relative"}
-        display={{base:"none",lg:"flex"}}
+        display={{base: "none", lg: "flex"}}
       >
         <Carousel/>
       </Flex>

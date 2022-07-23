@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Button, Flex, Heading, Link} from "@chakra-ui/react";
+import {Box, Flex, Heading, Link} from "@chakra-ui/react";
 import NextLink from "next/link";
 
 const TweetsContainer = ({title, children, href}) => {

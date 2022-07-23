@@ -1,7 +1,5 @@
 import React from 'react';
 import {Box, Flex, Image, Text} from '@chakra-ui/react';
-import { BsTwitch } from 'react-icons/bs';
-import { BsTwitter } from "react-icons/bs";
 
 const TweetCard = ({description, image, username, date, icon}) => {
 

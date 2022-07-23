@@ -939,7 +939,7 @@ export default function Home({headlines, ndrfTweets}) {
           <>
             {AlertsData.slice(0, 6)
               .map((item, index) => {
-                return (<AlertCard key={index} title={item.title} description={item.description} labels={item.labels} severity_type={item.severity_type}/>)
+                return (<AlertCard key={index} title={item.title} description={item.description} label={item.label} severity_type={item.severity_type}/>)
               })}
           </>
         </SimpleGrid>
