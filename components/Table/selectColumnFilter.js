@@ -22,7 +22,7 @@ export function SelectColumnFilter({
       onChange={e => {
         setFilter(e.target.value || undefined)
       }}
-      style={{marginTop: '8px', padding: '12px 8px', width:'100%', border: '1px solid lightgray', borderRadius: '4px', boxShadow: 'none', fontWeight: 200}}
+      style={{marginTop: '8px', padding: '5.7px 4px', width:'100%', border: '1px solid lightgray', borderRadius: '4px', boxShadow: 'none', fontWeight: 200, color: 'gray'}}
     >
       <option value="">All</option>
       {options.map((option, i) => (

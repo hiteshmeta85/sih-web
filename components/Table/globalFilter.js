@@ -1,5 +1,4 @@
 import React from "react";
-import {Flex, Input, Text} from "@chakra-ui/react";
 
 export function GlobalFilter({
   preGlobalFilteredRows,
@@ -13,19 +12,17 @@ export function GlobalFilter({
   }
 
   return (
-    <Flex alignItems={'center'} gap={4} mb={4}>
-      <Text fontSize={'sm'}>Search:</Text>
-      <Input
+    <div>
+      <p style={{fontSize: 'medium'}}>Global Search:</p>
+      <input
         value={value || ""}
         onChange={e => {
           setValue(e.target.value);
           onChange(e.target.value);
         }}
+        style={{marginTop: '8px', padding: '4px 4px', width:'200px', border: '1px solid lightgray', borderRadius: '4px', boxShadow: 'none', fontWeight: 200}}
         placeholder={`Search ${count} records...`}
-        size={'md'}
-        maxW={'xs'}
-        _focus={{boxShadow: 'none'}}
       />
-    </Flex>
+    </div>
   )
 }

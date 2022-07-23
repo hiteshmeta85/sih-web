@@ -1,11 +1,10 @@
 import React from 'react'
-import {useTable, useFilters, useGlobalFilter} from 'react-table'
+import {useFilters, useGlobalFilter, useTable} from 'react-table'
 import {Data} from "./data";
 import {GlobalFilter} from "./globalFilter";
 import {DefaultColumnFilter} from "./defaultColumnFilter";
 import {SelectColumnFilter} from "./selectColumnFilter";
-import {Box, Link, Table, Tbody, Td, Th, Thead, Tr} from "@chakra-ui/react";
-import NextLink from "next/link";
+import {Link} from "@chakra-ui/react";
 
 // Our table component
 function TableStructure({columns, data}) {
@@ -58,49 +57,49 @@ function TableStructure({columns, data}) {
 
   return (
     <>
-      <Table {...getTableProps()} variant={'striped'} colorScheme={'teal'} size={'sm'}>
-        <Thead>
-        <Tr>
-          <Th
+      <table {...getTableProps()} style={{textAlign: 'left', border: '1px solid lightgray'}}>
+        <thead>
+        <tr>
+          <th
             colSpan={visibleColumns.length}
-            border={'none'}
+            style={{padding: '20px 10px'}}
           >
             <GlobalFilter
               preGlobalFilteredRows={preGlobalFilteredRows}
               globalFilter={state.globalFilter}
               setGlobalFilter={setGlobalFilter}
             />
-          </Th>
-        </Tr>
+          </th>
+        </tr>
         {headerGroups.map((headerGroup, index) => (
-          <Tr key={index} {...headerGroup.getHeaderGroupProps()} pl={0}>
+          <tr key={index} {...headerGroup.getHeaderGroupProps()} style={{border: '1px solid lightgray'}}>
             {headerGroup.headers.map((column, index) => (
-              <Th border={'none'} key={index} {...column.getHeaderProps()}>
-                <Box fontSize={'sm'}>{column.render('Header')}</Box>
+              <th key={index} {...column.getHeaderProps()} style={{padding: '20px 10px'}}>
+                <div>{column.render('Header')}</div>
                 {/* Render the columns filter UI */}
-                <Box>{column.canFilter && (column.Header !== 'Time') ? column.render('Filter') : null}</Box>
-                <Box my={4}/>
-              </Th>
+                <div>{column.canFilter? column.render('Filter') : null}</div>
+                <div/>
+              </th>
             ))}
-          </Tr>
+          </tr>
         ))}
-        </Thead>
-        <Tbody {...getTableBodyProps()}>
+        </thead>
+        <tbody {...getTableBodyProps()}>
         {firstPageRows.map((row, index) => {
           prepareRow(row)
           return (
-            <Tr key={index} {...row.getRowProps()}>
+            <tr key={index} {...row.getRowProps()} style={{border: '1px solid lightgray'}}>
               {row.cells.map((cell, index) => {
                 if(cell.column.id === 'link') {
-                  return <Td maxW={'100px'} key={index} {...cell.getCellProps()}><Link href={cell.value}>{cell.render('Cell')}</Link></Td>
+                  return <td key={index}  {...cell.getCellProps()} style={{maxWidth: '220px', textUnderlineOffset: '2px', padding: '10px 10px'}}><Link href={cell.value}>{cell.render('Cell')}</Link></td>
                 }
-                return <Td maxW={'100px'} key={index} {...cell.getCellProps()}>{cell.render('Cell')}</Td>
+                return <td key={index}  {...cell.getCellProps()} style={{maxWidth: '220px', padding: '10px 10px'}}>{cell.render('Cell')}</td>
               })}
-            </Tr>
+            </tr>
           )
         })}
-        </Tbody>
-      </Table>
+        </tbody>
+      </table>
     </>
   )
 }
