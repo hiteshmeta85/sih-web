@@ -1,29 +1,12 @@
 import DashboardContainer from "../_layout";
 import CustomTable from "../../../components/Table/CustomTable"
-import {
-  Box,
-  Divider,
-  Flex, Link,
-  SimpleGrid,
-  Tab, Table,
-  TableContainer,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs, Tbody,
-  Td,
-  Text, Th, Thead,
-  Tr
-} from "@chakra-ui/react";
+import {Flex, SimpleGrid, Tab, TabList, TabPanel, TabPanels, Tabs} from "@chakra-ui/react";
 import TweetCard from "../../../components/Tweet/TweetCard";
 import "@fontsource/open-sans/500.css";
-import {Form, Formik} from "formik";
-import DatePickerField from "../../../components/DatePicker/DatePicker";
-import CustomSubmitButton from "../../../components/Button/CustomSubmitButton";
-import reportSchema from "../../../lib/schemas/reportSchema";
-import CustomResetButton from "../../../components/Button/CustomResetButton";
 import React from "react";
-import {AiOutlineEye} from "react-icons/ai";
+import Analytics from "../../../components/Analysis/Analytics";
+import CreateReportForm from "../../../components/Analysis/CreateReportForm";
+import PreviousReportTable from "../../../components/Analysis/PreviousReportTable";
 
 const TrendingTweetsData = [
   {
@@ -88,7 +71,7 @@ const ViewIndividualProject = () => {
           <Tab>Voices</Tab>
           <Tab>Videos</Tab>
           <Tab>Map</Tab>
-          <Tab>Statistics</Tab>
+          <Tab>Analytics</Tab>
           <Tab>Reports</Tab>
         </TabList>
 
@@ -118,85 +101,13 @@ const ViewIndividualProject = () => {
             <p>Map</p>
           </TabPanel>
           <TabPanel>
-            <p>Statistics</p>
+            <Analytics/>
           </TabPanel>
           <TabPanel>
-            <Formik
-              initialValues={{
-                startDate: '',
-                endDate: '',
-              }}
-              validationSchema={reportSchema}
-              onSubmit={(values, {setSubmitting}) => {
-                setSubmitting(false);
-                console.log(values)
-              }}>
-              {({
-                handleSubmit, isSubmitting, isValid, dirty, setFieldValue, values
-              }) => (
-                <Form>
-                  <Text as={'span'} fontSize={'xl'} fontWeight={'semibold'} my={1}>Create Report</Text>
-                  <Box py={'1px'} bg={'blackAlpha.800'}/>
-                  <Text mb={4} mt={8} fontSize={''} fontWeight={'semibold'}>Pick Date Range <Text as={'span'} fontWeight={'light'}>(optional)</Text></Text>
-                  <Flex my={4} gap={4} maxW={'lg'}>
-                    <DatePickerField name={'startDate'} label={'Start Date'}/>
-                    <DatePickerField name={'endDate'} label={'End Date'}/>
-                  </Flex>
-                  <Flex gap={4}>
-                    <CustomSubmitButton handleSubmit={handleSubmit} isSubmitting={isSubmitting} label={'Download Reports'}/>
-                    <CustomResetButton label={'Reset'}/>
-                  </Flex>
-                </Form>
-              )}
-            </Formik>
-
-            <Box mt={16}>
-              <Text as={'span'} fontSize={'xl'} fontWeight={'semibold'} my={1}>Previous Reports</Text>
-              <Box py={'1px'} bg={'blackAlpha.800'} mb={8}/>
-              <TableContainer>
-                <Table variant='simple'>
-                  <Thead>
-                    <Tr>
-                      <Th>Report Id</Th>
-                      <Th>Created On</Th>
-                      <Th isNumeric>View Report</Th>
-                    </Tr>
-                  </Thead>
-                  <Tbody>
-                    <Tr>
-                      <Td>1</Td>
-                      <Td>23 July 2022</Td>
-                      <Td isNumeric>
-                        <Flex alignItems={'center'} justifyContent={'end'} gap={2}>
-                          <AiOutlineEye/>
-                          <Link href={'/'} color={'blue'}>View Report</Link>
-                        </Flex>
-                      </Td>
-                    </Tr>
-                    <Tr>
-                      <Td>2</Td>
-                      <Td>24 July 2022</Td>
-                      <Td isNumeric>
-                        <Flex alignItems={'center'} justifyContent={'end'} gap={2}>
-                          <AiOutlineEye/>
-                          <Link href={'/'} color={'blue'}>View Report</Link>
-                        </Flex>
-                      </Td>
-                    </Tr>
-                    <Tr>
-                      <Td>3</Td>
-                      <Td>25 July 2022</Td>
-                      <Td isNumeric>
-                        <Flex alignItems={'center'} justifyContent={'end'} gap={2}>
-                          <AiOutlineEye/>
-                          <Link href={'/'} color={'blue'}>View Report</Link>
-                        </Flex>
-                      </Td>
-                    </Tr>
-                  </Tbody>
-                </Table>
-              </TableContainer>
-            </Box>
+            <Flex flexDir={'column'} gap={16}>
+              <CreateReportForm/>
+              <PreviousReportTable/>
+            </Flex>
           </TabPanel>
         </TabPanels>
       </Tabs>
