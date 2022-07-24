@@ -13,12 +13,13 @@ ChartJS.register(
 
 const options = {
   responsive: true,
+  indexAxis: 'x',
   layout: {
     // padding: 20,
   },
   plugins: {
     legend: {
-      display: false,
+      display: true,
       position: 'bottom',
     },
     title: {
@@ -41,9 +42,9 @@ const options = {
       },
     },
   },
-  // ticks: {
-  //   stepSize: 20,
-  // },
+  ticks: {
+    stepSize: 1,
+  },
   elements: {
     bar: {
       borderWidth: 1,

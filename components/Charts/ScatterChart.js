@@ -19,15 +19,15 @@ const options = {
   scales: {
     x: {
       grid: {
-        display: false,
+        display: true,
         drawBorder: true,
       },
     },
     y: {
       grid: {
-        borderDash: [12],
+       // borderDash: [12],
         display: true,
-        drawBorder: false,
+        drawBorder: true,
       },
     },
   },
