@@ -21,7 +21,7 @@ import {
 import ClusterMap from "../Map/ClusterMap";
 import {useState} from "react";
 
-const BarChartData = {
+export const BarChartData = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     {
@@ -250,7 +250,7 @@ const ScatterChartData = {
   ],
 };
 
-const PieChartData = {
+export const PieChartData = {
   labels: ['Emergency', 'Hospital', 'Evacuation', 'Help', 'Aid', 'Rescue'],
   datasets: [
     {
