@@ -3,7 +3,7 @@ import {ScatterChart} from "../Charts/ScatterChart";
 import {PieChart} from "../Charts/PieChart";
 import {Flex} from "@chakra-ui/react";
 
-const BarChartData = {
+export const BarChartData = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     {
@@ -211,7 +211,7 @@ const ScatterChartData = {
   ],
 };
 
-const PieChartData = {
+export const PieChartData = {
   labels: ['Emergency', 'Hospital', 'Evacuation', 'Help', 'Aid', 'Rescue'],
   datasets: [
     {
