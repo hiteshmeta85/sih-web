@@ -342,11 +342,11 @@ const Analytics = () => {
         <StatCard label={'Label 1'} value={100}/>
       </StatGroup>
       <Grid templateColumns='repeat(3, 1fr)' gap={5}>
-        <GridItem colSpan={2} border={'1px solid lightgray'} borderRadius={'lg'} p={4}>
+        <GridItem colSpan={{base: 3, lg: 2}} border={'1px solid lightgray'} borderRadius={'lg'} p={4}>
           <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
           <ScatterChart data={ScatterChartData}/>
         </GridItem>
-        <GridItem colSpan={1} border={'1px solid lightgray'} borderRadius={'lg'} p={2}>
+        <GridItem colSpan={{base: 3, lg: 1}} border={'1px solid lightgray'} borderRadius={'lg'} p={2}>
           <Tabs isFitted variant='soft-rounded' colorScheme={'green'}>
             <TabList>
               <Tab borderRadius={"md"}>One</Tab>
@@ -366,7 +366,7 @@ const Analytics = () => {
         </GridItem>
       </Grid>
       <Grid templateColumns='repeat(3, 1fr)' gap={5} alignItems={'start'}>
-        <GridItem colSpan={1} border={'1px solid lightgray'} borderRadius={'lg'} p={2}>
+        <GridItem colSpan={{base:3, lg:1}} border={'1px solid lightgray'} borderRadius={'lg'} p={2}>
           <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
           <Flex justifyContent={'end'} my={4}>
             <Select value={selectedOption} onChange={(e) => handleChange(e)} w={'150px'}>
@@ -377,8 +377,8 @@ const Analytics = () => {
           {selectedOption === "One" && <BarChart data={BarChartData}/>}
           {selectedOption === "Two" && <BarChart data={BarChartData2}/>}
         </GridItem>
-        <GridItem colSpan={2} border={'1px solid lightgray'} borderRadius={'lg'} p={0}>
-          {/*<ClusterMap height={'400px'}/>*/}
+        <GridItem colSpan={{base: 3, lg:2}} border={'1px solid lightgray'} borderRadius={'lg'} p={0}>
+          <ClusterMap height={'400px'}/>
         </GridItem>
       </Grid>
     </Flex>
