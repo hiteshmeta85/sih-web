@@ -2,20 +2,24 @@ import {BarChart} from "../Charts/BarChart";
 import {ScatterChart} from "../Charts/ScatterChart";
 import {PieChart} from "../Charts/PieChart";
 import {
-  Box, Divider,
+  Box,
+  Divider,
   Flex,
   Grid,
-  GridItem,
+  GridItem, Select,
   Stat,
   StatGroup,
   StatLabel,
   StatNumber,
-  Tab, TabList,
+  Tab,
+  TabList,
   TabPanel,
   TabPanels,
-  Tabs, Text
+  Tabs,
+  Text
 } from "@chakra-ui/react";
 import ClusterMap from "../Map/ClusterMap";
+import {useState} from "react";
 
 const BarChartData = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -302,7 +306,8 @@ const PieChartData2 = {
 
 const StatCard = ({label, value, boxShadow, cardBgColor, titleColor}) => {
   return (
-    <Stat bg={cardBgColor || ''} border={'1px solid lightgray'} padding={5} rounded={'lg'} boxShadow={boxShadow || 'lg'}>
+    <Stat bg={cardBgColor || ''} border={'1px solid lightgray'} padding={5} rounded={'lg'}
+          boxShadow={boxShadow || 'lg'}>
       <StatLabel fontWeight={'bold'} fontSize={'xl'} color={titleColor || ''}>{label}</StatLabel>
       <StatNumber color={'green.400'}>{value}</StatNumber>
     </Stat>
@@ -320,6 +325,13 @@ const CardTitle = ({primaryText, secondaryText}) => {
 }
 
 const Analytics = () => {
+
+  const [selectedOption, setSelectedOption] = useState("One")
+
+  const handleChange = (event) => {
+    setSelectedOption(event.target.value)
+  }
+
   return (
     <Flex flexDir={'column'} gap={5}>
       <StatGroup gap={5}>
@@ -355,22 +367,15 @@ const Analytics = () => {
       </Grid>
       <Grid templateColumns='repeat(3, 1fr)' gap={5} alignItems={'start'}>
         <GridItem colSpan={1} border={'1px solid lightgray'} borderRadius={'lg'} p={2}>
-          <Tabs isFitted variant='soft-rounded' colorScheme={'pink'}>
-            <TabList>
-              <Tab borderRadius={"md"}>One</Tab>
-              <Tab borderRadius={"md"}>Two</Tab>
-            </TabList>
-            <TabPanels>
-              <TabPanel px={0}>
-                <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
-                <BarChart data={BarChartData}/>
-              </TabPanel>
-              <TabPanel px={0}>
-                <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
-                <BarChart data={BarChartData2}/>
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
+          <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
+          <Flex justifyContent={'end'} my={4}>
+            <Select value={selectedOption} onChange={(e) => handleChange(e)} w={'150px'}>
+              <option value="One">One</option>
+              <option value="Two">Two</option>
+            </Select>
+          </Flex>
+          {selectedOption === "One" && <BarChart data={BarChartData}/>}
+          {selectedOption === "Two" && <BarChart data={BarChartData2}/>}
         </GridItem>
         <GridItem colSpan={2} border={'1px solid lightgray'} borderRadius={'lg'} p={0}>
           {/*<ClusterMap height={'400px'}/>*/}
