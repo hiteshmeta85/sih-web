@@ -24,7 +24,9 @@ const ClusterMap = ({height}) => {
   return (
     <Box pos={'relative'}>
       <Button
-        onClick={() => {setData(true)}}
+        onClick={() => {
+          setData(true)
+        }}
         mb={3}
         bottom={0}
         left={2}

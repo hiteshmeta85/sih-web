@@ -1,18 +1,16 @@
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import {Box, Grid, GridItem} from "@chakra-ui/react";
 import React from "react";
-import { BarChart } from "../../components/Charts/BarChart";
+import {BarChart} from "../../components/Charts/BarChart";
 import Alerts from "../../components/Dashboard/Alerts";
 import DashTabs from "../../components/Dashboard/Tabs";
-import DataScrapper from "../../components/Stats/DataScrapper";
-import SocialMedia from "../../components/Stats/SocialMedia";
 import DashboardContainer from "./_layout";
-import {
-  BarChartData,
-  PieChartData,
-} from "../../components/Analysis/Analytics";
-import { PieChart } from "../../components/Charts/PieChart";
+import {BarChartData, PieChartData} from "../../components/Analysis/Analytics";
+import {PieChart} from "../../components/Charts/PieChart";
+import ActiveModels from "../../components/Dashboard/ActiveModels";
+import {CardTitle} from "../../components/Analysis/CardTitle";
+import DataScrapper from "../../components/Dashboard/DataScrapper";
+import SocialMediaCard from "../../components/Dashboard/SocialMediaCard";
 import ClusterMap from "../../components/Map/ClusterMap";
-import ModelsActive from "../../components/Dashboard/ModelsActive";
 
 const Index = () => {
   return (
@@ -20,16 +18,12 @@ const Index = () => {
       <Box bg={"white"} p={4}>
         <Grid gridTemplateColumns={{base: 'repeat(2, 1fr)', lg: "repeat(3, 1fr)"}} gap={4}>
           <GridItem colSpan={2}>
-            <Grid
-              gridTemplateColumns={{base: 'repeat(3, 1fr)',lg: 'repeat(3, 1fr)',xl: "repeat(4, 1fr)"}}
-              gridTemplateRows={{base: 'repeat(2, 1fr)',lg: 'repeat(3, 1fr)',xl: "repeat(5, 1fr)"}}
-              gap={4}
-            >
+            <Grid gridTemplateColumns={{base: 'repeat(3, 1fr)', lg: 'repeat(3, 1fr)', xl: "repeat(4, 1fr)"}} gap={4}>
               <GridItem colSpan={1}>
-                <DataScrapper />
+                <DataScrapper/>
               </GridItem>
               <GridItem colSpan={1}>
-                <SocialMedia />
+                <SocialMediaCard/>
               </GridItem>
               <GridItem
                 colSpan={2}
@@ -39,7 +33,10 @@ const Index = () => {
                 alignItems={"center"}
                 borderRadius={"md"}
               >
-                <BarChart data={BarChartData} />
+                <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
+                <Box mt={4}>
+                  <BarChart data={BarChartData}/>
+                </Box>
               </GridItem>
               <GridItem
                 colSpan={2}
@@ -48,16 +45,20 @@ const Index = () => {
                 border={"1px solid lightgray"}
                 borderRadius={"md"}
               >
-                <PieChart data={PieChartData} />
+                <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
+                <PieChart data={PieChartData}/>
               </GridItem>
               <GridItem colSpan={2} rowSpan={1}>
-                <ModelsActive />
+                <ActiveModels/>
+              </GridItem>
+              <GridItem colSpan={4}>
+                <ClusterMap/>
               </GridItem>
             </Grid>
           </GridItem>
           <GridItem colSpan={1}>
-            <Alerts />
-            <DashTabs />
+            <Alerts/>
+            <DashTabs/>
           </GridItem>
         </Grid>
       </Box>

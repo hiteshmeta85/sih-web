@@ -39,8 +39,4 @@ export const locations = [
     lat: 19.0172734,
     lng: 73.1003927,
   },
-  {
-    lat: 19.0172734,
-    lng: 73.1003927,
-  }
 ]

@@ -20,6 +20,7 @@ import {
 } from "@chakra-ui/react";
 import ClusterMap from "../Map/ClusterMap";
 import {useState} from "react";
+import {CardTitle} from "./CardTitle";
 
 export const BarChartData = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -311,16 +312,6 @@ const StatCard = ({label, value, boxShadow, cardBgColor, titleColor}) => {
       <StatLabel fontWeight={'bold'} fontSize={'xl'} color={titleColor || ''}>{label}</StatLabel>
       <StatNumber color={'green.400'}>{value}</StatNumber>
     </Stat>
-  )
-}
-
-const CardTitle = ({primaryText, secondaryText}) => {
-  return (
-    <Box>
-      <Text fontWeight={'bold'} fontSize={'lg'}>{primaryText}</Text>
-      <Text fontSize={'sm'}>{secondaryText}</Text>
-      <Divider my={3}/>
-    </Box>
   )
 }
 
