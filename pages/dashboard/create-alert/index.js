@@ -8,7 +8,7 @@ import alertSchema from "../../../lib/schemas/alertSchema";
 import CustomSelect from "../../../components/Select/CustomSelect";
 import SearchPlacesMap from "../../../components/Map/SearchPlacesMap";
 
-const labelOptions = [
+export const labelOptions = [
   {
     label: 'Emergency',
     value: 'Emergency',
@@ -51,6 +51,8 @@ const severityTypes = [
 
 const Index = () => {
 
+  const customStyle = {border: '1px solid lightgray', borderRadius: '5px', padding: '0.3rem 0.7rem'}
+
   return (
     <DashboardContainer title={'Alert'}>
       <Box
@@ -89,9 +91,9 @@ const Index = () => {
                   gap={{base: 2, md: 4, lg: 8}}
                 >
                   <Flex flexDir={'column'} flex={1} gap={4}>
-                    <CustomInput name={'title'} type={'text'} label={'Title'}/>
-                    <CustomInput name={'description'} as={'textarea'} type={'text'} label={'Description'} rows={5}/>
-                    <CustomSelect isMulti={false} name={'label'} label={'Select Labels'} options={labelOptions} placeholder={'Select Labels...'}/>
+                    <CustomInput name={'title'} type={'text'} label={'Title'} styles={customStyle}/>
+                    <CustomInput name={'description'} as={'textarea'} type={'text'} label={'Description'} rows={5} styles={customStyle}/>
+                    <CustomSelect isMulti={false} name={'label'} label={'Select Label'} options={labelOptions} placeholder={'Select Labels...'}/>
                   </Flex>
                   <Box>
                     <FormLabel style={{fontWeight: 600}}>Select Severity</FormLabel>

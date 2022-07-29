@@ -10,7 +10,7 @@ const ProjectDetailsCard = (props) => {
   const colors = ["#4EE4C1","#1AC0FF","#92B4FA","#C291FF","#4BE0BD","#FDA5BB"]
 
   return (
-    <NextLink href={`/dashboard/projects/${id}`}>
+    <NextLink href={`/dashboard/projects/${id}/text`}>
       <Link
         display={"flex"}
         flexDir={"column"}

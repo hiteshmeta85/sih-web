@@ -1,5 +1,5 @@
 import {AiOutlineHome, AiOutlineProject, AiOutlineSetting} from "react-icons/ai";
-import {FiAlertTriangle} from "react-icons/fi";
+import {FiAlertTriangle, FiMapPin} from "react-icons/fi";
 import {BiChat} from "react-icons/bi"
 
 export const SidebarItems = [
@@ -13,6 +13,12 @@ export const SidebarItems = [
     name: 'Projects',
     navLink: '/dashboard/projects',
     icon: AiOutlineProject,
+    position: 'top'
+  },
+  {
+    name: 'Maps',
+    navLink: '/dashboard/maps',
+    icon: FiMapPin,
     position: 'top'
   },
   {

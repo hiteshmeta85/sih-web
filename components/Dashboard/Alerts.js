@@ -8,7 +8,6 @@ import {
   AccordionPanel,
   Box,
   Flex,
-  Heading,
   Text,
 } from "@chakra-ui/react";
 
@@ -18,7 +17,7 @@ const Alerts = () => {
       bg={"white"}
       borderRadius={"md"}
       border={"1px solid lightgray"}
-      w={{base: '280px', md: 'full'}}
+      w={'full'}
       h={'fit-content'}
       mb={4}
     >

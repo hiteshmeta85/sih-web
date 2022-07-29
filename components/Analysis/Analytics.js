@@ -3,10 +3,10 @@ import {ScatterChart} from "../Charts/ScatterChart";
 import {PieChart} from "../Charts/PieChart";
 import {
   Box,
-  Divider,
   Flex,
   Grid,
-  GridItem, Select,
+  GridItem,
+  Select,
   Stat,
   StatGroup,
   StatLabel,
@@ -15,8 +15,7 @@ import {
   TabList,
   TabPanel,
   TabPanels,
-  Tabs,
-  Text
+  Tabs
 } from "@chakra-ui/react";
 import ClusterMap from "../Map/ClusterMap";
 import {useState} from "react";
@@ -365,11 +364,13 @@ const Analytics = () => {
               <option value="Two">Two</option>
             </Select>
           </Flex>
-          {selectedOption === "One" && <BarChart data={BarChartData}/>}
-          {selectedOption === "Two" && <BarChart data={BarChartData2}/>}
+          <Box height={'400px'}>
+            {selectedOption === "One" && <BarChart data={BarChartData}/>}
+            {selectedOption === "Two" && <BarChart data={BarChartData2}/>}
+          </Box>
         </GridItem>
         <GridItem colSpan={{base: 3, lg:2}} border={'1px solid lightgray'} borderRadius={'lg'} p={0}>
-          <ClusterMap height={'400px'}/>
+          <ClusterMap height={'500px'}/>
         </GridItem>
       </Grid>
     </Flex>

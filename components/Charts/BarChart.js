@@ -17,6 +17,7 @@ const options = {
   layout: {
     // padding: 20,
   },
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       display: true,

@@ -1,7 +1,7 @@
 export const libraries = ["places"]
 
 //18.997429,73.115723
-export const mapCenter = {lat: 18.997429, lng: 73.115723}
+export const mapCenter = {lat: 21.953686, lng: 78.326770}
 
 export const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 

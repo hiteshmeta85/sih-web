@@ -15,18 +15,18 @@ import ClusterMap from "../../components/Map/ClusterMap";
 const Index = () => {
   return (
     <DashboardContainer title={"Dashboard"}>
-      <Box bg={"white"} p={4}>
-        <Grid gridTemplateColumns={{base: 'repeat(2, 1fr)', lg: "repeat(3, 1fr)"}} gap={4}>
-          <GridItem colSpan={2}>
-            <Grid gridTemplateColumns={{base: 'repeat(3, 1fr)', lg: 'repeat(3, 1fr)', xl: "repeat(4, 1fr)"}} gap={4}>
-              <GridItem colSpan={1}>
+      <Box bg={"white"} p={4} rounded={'md'}>
+        <Grid gridTemplateColumns={"repeat(3, 1fr)"} gap={4}>
+          <GridItem colSpan={{base: 3,lg:2}}>
+            <Grid gridTemplateColumns={"repeat(4, 1fr)"} gap={4}>
+              <GridItem colSpan={{base:2, lg: 1}}>
                 <DataScrapper/>
               </GridItem>
-              <GridItem colSpan={1}>
+              <GridItem  colSpan={{base:2, lg: 1}}>
                 <SocialMediaCard/>
               </GridItem>
               <GridItem
-                colSpan={2}
+                colSpan={{base: 4, md: 2}}
                 rowSpan={2}
                 border={"1px solid lightgray"}
                 p={4}
@@ -34,12 +34,12 @@ const Index = () => {
                 borderRadius={"md"}
               >
                 <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
-                <Box mt={4}>
+                <Box mt={4} height={'400px'}>
                   <BarChart data={BarChartData}/>
                 </Box>
               </GridItem>
               <GridItem
-                colSpan={2}
+                colSpan={{base: 4, md:2}}
                 rowSpan={2}
                 p={4}
                 border={"1px solid lightgray"}
@@ -48,15 +48,15 @@ const Index = () => {
                 <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
                 <PieChart data={PieChartData}/>
               </GridItem>
-              <GridItem colSpan={2} rowSpan={1}>
+              <GridItem colSpan={{base: 4, md: 2}} rowSpan={1}>
                 <ActiveModels/>
               </GridItem>
               <GridItem colSpan={4}>
-                <ClusterMap/>
+                <ClusterMap height={'600px'}/>
               </GridItem>
             </Grid>
           </GridItem>
-          <GridItem colSpan={1}>
+          <GridItem colSpan={{base:3, lg: 1}}>
             <Alerts/>
             <DashTabs/>
           </GridItem>
