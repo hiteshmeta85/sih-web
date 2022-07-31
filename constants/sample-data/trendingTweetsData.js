@@ -32,5 +32,4 @@ export const trendingTweetsData = [
     description: 'Elit duis tristique sollicitudin nibh sit amet commodo. Magna etiam tempor orci eu lobortis elementum nibh. Cras pulvinar mattis nunc sed. Ut tortor pretium viverra suspendisse potenti. Tempus imperdiet nulla malesuada pellentesque elit.',
     image: 'https://media.springernature.com/m685/springer-static/image/art%3A10.1038%2F473291a/MediaObjects/41586_2011_BF473291a_Fig1_HTML.jpg'
   },
-
 ];
