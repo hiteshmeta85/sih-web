@@ -7,29 +7,7 @@ import CustomInput from "../components/Input/CustomInput";
 import CustomSubmitButton from "../components/Button/CustomSubmitButton";
 import CustomSelect from "../components/Select/CustomSelect";
 import SearchPlacesMap from "../components/Map/SearchPlacesMap";
-
-const labelOptions = [
-  {
-    label: 'Emergency',
-    value: 'Emergency',
-  },
-  {
-    label: 'Hospital',
-    value: 'Hospital',
-  },
-  {
-    label: 'Relief Camp',
-    value: 'ReliefCamp',
-  },
-  {
-    label: 'Danger Zone',
-    value: 'DangerZone',
-  },
-  {
-    label: 'Evacuation',
-    value: 'Evacuation',
-  },
-]
+import {labelOptions} from "../constants/useful-data/labelOptions";
 
 const Contact = () => {
 

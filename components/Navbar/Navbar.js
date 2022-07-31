@@ -2,9 +2,9 @@ import {Box, Button, Flex, Link, Text, useMediaQuery} from "@chakra-ui/react";
 import React from "react";
 import Menu from "./Menu";
 import NextLink from "next/link";
-import {NavItems} from "./nav-items";
 import Logo from "../Logo/Logo";
 import {useRouter} from "next/router";
+import {navItems} from "../../constants/useful-data/navItems";
 
 const Navbar = () => {
   const [isLargerThan540] = useMediaQuery('(min-width: 768px)');
@@ -28,7 +28,7 @@ const Navbar = () => {
             gap={6}
             align={'center'}
           >
-            {NavItems.map((item, index) => {
+            {navItems.map((item, index) => {
               return (
                 <Text key={index} fontWeight={'semibold'} className={router.pathname === `${item.href}` ? 'active-menu-item' : 'menu-item'}>
                   <NextLink href={item.href} passHref>

@@ -4,8 +4,8 @@ import {googleMapsApiKey, libraries, locations, mapCenter} from "./MapConfigAndD
 import {Box, Button, Flex, Text} from "@chakra-ui/react";
 import {GrRefresh} from "react-icons/gr";
 import {ImCancelCircle} from "react-icons/im";
-import {labelOptions} from "../../pages/dashboard/create-alert";
 import {BiSelectMultiple} from "react-icons/bi";
+import {labelOptions} from "../../constants/useful-data/labelOptions";
 
 const ClusterMap = ({height}) => {
 

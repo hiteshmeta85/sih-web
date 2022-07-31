@@ -7,7 +7,7 @@ import axios from "axios";
 const News = ({headlines}) => {
   return (
     <LandingPageLayout>
-      <Box maxW={'container.xl'} mx={'auto'} p={{base: 2, md: 4, lg: 8}}>
+      {headlines && <Box maxW={'container.xl'} mx={'auto'} p={{base: 2, md: 4, lg: 8}}>
         <SimpleGrid gap={6}>
           <>
             {headlines.map((item, index) => {
@@ -17,7 +17,7 @@ const News = ({headlines}) => {
             })}
           </>
         </SimpleGrid>
-      </Box>
+      </Box>}
     </LandingPageLayout>
   );
 };

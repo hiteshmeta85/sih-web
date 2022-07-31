@@ -7,7 +7,7 @@ import axios from "axios";
 const Alerts = ({alerts}) => {
   return (
     <LandingPageLayout>
-      <Box maxW={'container.xl'} mx={'auto'} p={{base: 2, md: 4, lg: 8}}>
+      {alerts && <Box maxW={'container.xl'} mx={'auto'} p={{base: 2, md: 4, lg: 8}}>
         <Heading my={2}>Alerts</Heading>
         <SimpleGrid spacing={4}>
           <>
@@ -27,7 +27,7 @@ const Alerts = ({alerts}) => {
               })}
           </>
         </SimpleGrid>
-      </Box>
+      </Box>}
     </LandingPageLayout>
   );
 };

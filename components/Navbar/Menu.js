@@ -15,9 +15,9 @@ import {
 } from '@chakra-ui/react'
 import {GiHamburgerMenu} from "react-icons/gi";
 import {MdOutlineClose} from "react-icons/md";
-import {NavItems} from "./nav-items";
 import NextLink from "next/link";
 import Logo from "../Logo/Logo";
+import {navItems} from "../../constants/useful-data/navItems";
 
 const Menu = () => {
   const {isOpen, onOpen, onClose} = useDisclosure()
@@ -55,7 +55,7 @@ const Menu = () => {
           </Flex>
           <Divider borderColor={'blackAlpha.600'}/>
           <DrawerBody fontWeight={'semibold'}>
-            {NavItems.map((item, index) => {
+            {navItems.map((item, index) => {
               return (
                 <Text key={index} my={2}>
                   <NextLink href={item.href} passHref>

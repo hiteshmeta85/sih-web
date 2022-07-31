@@ -8,47 +8,8 @@ import alertSchema from "../../../lib/schemas/alertSchema";
 import CustomSelect from "../../../components/Select/CustomSelect";
 import SearchPlacesMap from "../../../components/Map/SearchPlacesMap";
 import axios from "axios";
-
-export const labelOptions = [
-  {
-    label: 'Emergency',
-    value: 'Emergency',
-  },
-  {
-    label: 'Hospital',
-    value: 'Hospital',
-  },
-  {
-    label: 'Relief Camp',
-    value: 'ReliefCamp',
-  },
-  {
-    label: 'Danger Zone',
-    value: 'DangerZone',
-  },
-  {
-    label: 'Evacuation',
-    value: 'Evacuation',
-  },
-]
-
-const severityTypes = [
-  {
-    label: 'High',
-    value: 'high',
-    color: 'OrangeRed',
-  },
-  {
-    label: 'Medium',
-    value: 'medium',
-    color: 'orange',
-  },
-  {
-    label: 'Low',
-    value: 'low',
-    color: 'gold'
-  }
-]
+import {labelOptions} from "../../../constants/useful-data/labelOptions";
+import {severityTypes} from "../../../constants/useful-data/severityTypes";
 
 const Index = () => {
 

@@ -8,44 +8,7 @@ import Image from "next/image";
 import axios from "axios";
 import {useRouter} from "next/router";
 import {useState} from "react";
-import flood from "./flood.png";
-import earthquake from "./earthquake.png";
-import hurricane from "./hurricane.png";
-import storm from "./storm.png";
-import wildfire from "./wildfire.png";
-
-const DisasterTypes = [
-  {
-    id: 1,
-    disasterType: "flood",
-    label: "Flood",
-    image: flood
-  },
-  {
-    id: 2,
-    disasterType: "earthquake",
-    label: "Earthquake",
-    image: earthquake
-  },
-  {
-    id: 3,
-    disasterType: "hurricane",
-    label: "Hurricane",
-    image: hurricane
-  },
-  {
-    id: 4,
-    disasterType: "Storm",
-    label: "Storm",
-    image: storm
-  },
-  {
-    id: 5,
-    disasterType: "wildfire",
-    label: "Wildfire",
-    image: wildfire
-  },
-]
+import {disasterTypes} from "../../../constants/useful-data/disasterTypes";
 
 const Index = () => {
   const router = useRouter();
@@ -104,7 +67,7 @@ const Index = () => {
               <Heading fontSize={"3xl"} mb={4}>Select Disaster Type</Heading>
               <SimpleGrid columns={{base: 1, md: 3, lg: 5}} spacing={4}>
                 <>
-                  {DisasterTypes.map((item, index) => {
+                  {disasterTypes.map((item, index) => {
                     return (
                       <Box
                         key={index}

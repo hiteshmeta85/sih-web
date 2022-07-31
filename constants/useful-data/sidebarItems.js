@@ -1,8 +1,8 @@
 import {AiOutlineHome, AiOutlineProject, AiOutlineSetting} from "react-icons/ai";
 import {FiAlertTriangle, FiMapPin} from "react-icons/fi";
-import {BiChat} from "react-icons/bi"
+import {BiChat} from "react-icons/bi";
 
-export const SidebarItems = [
+export const sidebarItems = [
   {
     name: 'Dashboard',
     navLink: '/dashboard',

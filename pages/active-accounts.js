@@ -5,10 +5,10 @@ import TweetCard from "../components/Tweet/TweetCard";
 import {BsTwitter} from "react-icons/bs";
 import axios from "axios";
 
-const ActiveAccounts = ({ActiveAccounts}) => {
+const ActiveAccounts = ({activeAccounts}) => {
 
   /*
-  const ActiveAccountsData = [
+  const activeAccountsData = [
     {
       id: 1,
       username: 'hiteshmeta85',
@@ -70,7 +70,7 @@ const ActiveAccounts = ({ActiveAccounts}) => {
 
   return (
     <LandingPageLayout>
-      <Flex
+      {activeAccounts && <Flex
         flexDir={'column'}
         gap={14}
         px={{base: 2, md: 4, lg: 8}}
@@ -80,7 +80,7 @@ const ActiveAccounts = ({ActiveAccounts}) => {
         pb={{base: 6, md: 8}}
       >
         <>
-          {ActiveAccounts && Object.keys(ActiveAccounts)
+          {Object.keys(activeAccounts)
             .map((key, index) => {
               return (
                 <Flex
@@ -112,7 +112,7 @@ const ActiveAccounts = ({ActiveAccounts}) => {
                     </Flex>
                   </Flex>
                   <SimpleGrid columns={{base: 1, md: 2, lg: 4}} spacing={4}>
-                    {ActiveAccounts[key].slice(0, 4)
+                    {activeAccounts[key].slice(0, 4)
                       .map((item, index) => {
                         return (
                           <TweetCard
@@ -127,7 +127,7 @@ const ActiveAccounts = ({ActiveAccounts}) => {
               )
             })}
         </>
-      </Flex>
+      </Flex>}
     </LandingPageLayout>
   );
 };
@@ -136,23 +136,23 @@ export default ActiveAccounts;
 
 export async function getServerSideProps() {
 
-  let ActiveAccounts
+  let activeAccounts
 
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/active-accounts`)
     if (res.data) {
-      ActiveAccounts = res.data.data.activeAccounts
+      activeAccounts = res.data.data.activeAccounts
     }
   } catch (e) {
     console.log(e)
-    ActiveAccounts = null
+    activeAccounts = null
   }
 
-  console.log(ActiveAccounts)
+  console.log(activeAccounts)
 
   return {
     props: {
-      ActiveAccounts
+      activeAccounts
     }
   }
 }

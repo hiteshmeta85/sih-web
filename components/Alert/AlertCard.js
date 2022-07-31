@@ -1,23 +1,6 @@
 import React from 'react';
 import {Box, Flex, Text} from '@chakra-ui/react';
-
-const severityTypes = [
-  {
-    label: 'High',
-    value: 'high',
-    color: 'OrangeRed',
-  },
-  {
-    label: 'Medium',
-    value: 'medium',
-    color: 'orange',
-  },
-  {
-    label: 'Low',
-    value: 'low',
-    color: 'gold'
-  }
-]
+import {severityTypes} from "../../constants/useful-data/severityTypes";
 
 const AlertCard = ({
   title,

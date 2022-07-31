@@ -1,5 +1,4 @@
 import React from "react";
-import {AlertsData} from "../Alert/alerts-data";
 import {
   Accordion,
   AccordionButton,
@@ -10,6 +9,7 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
+import {alertsData} from "../../constants/sample-data/alertsData";
 
 const Alerts = () => {
   return (
@@ -24,7 +24,7 @@ const Alerts = () => {
       <Text fontWeight={'semibold'} p={3} fontSize={'xl'}>Alerts</Text>
       <Accordion allowToggle mb={4}>
         <>
-          {AlertsData.map((item, index) => {
+          {alertsData.map((item, index) => {
             return (
               <AccordionItem key={index}>
                 <Text>

@@ -1,18 +1,18 @@
-import React, {useEffect, useState} from "react";
-import {SliderData} from "./slider-data";
+import React, {useState} from "react";
 import {Box, Button, Flex, Image, Text} from "@chakra-ui/react";
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
+import {sliderData} from "../../constants/useful-data/sliderData";
 
 const Carousel = () => {
   const [index, setIndex] = useState(0);
-  const {image, text, name, designation, company} = SliderData[index];
+  const {image, text, name, designation, company} = sliderData[index];
 
   const checkNumber = (num) => {
-    if (num > SliderData.length - 1) {
+    if (num > sliderData.length - 1) {
       return 0
     }
     if (num < 0) {
-      return SliderData.length - 1
+      return sliderData.length - 1
     }
     return num
   };

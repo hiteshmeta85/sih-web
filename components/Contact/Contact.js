@@ -1,6 +1,6 @@
-import {Box, Divider, Flex, Heading, HStack, Link, SimpleGrid, Text} from "@chakra-ui/react";
-import {SocialMediaData} from "./social-media";
+import {Box, Divider, Flex, Heading, HStack, Icon, Link, SimpleGrid, Text} from "@chakra-ui/react";
 import NextLink from "next/link";
+import {socialMediaTypes} from "../../constants/useful-data/socialMediaTypes";
 
 const Contact = () => {
 
@@ -19,8 +19,8 @@ const Contact = () => {
         <SimpleGrid columns={[1, 1, 2, 4]} spacing='40px' py={8}>
           <Flex gap={4}>
             <>
-              {SocialMediaData.map((item, index) => (
-                <Link key={index}>{item.image}</Link>
+              {socialMediaTypes.map((item, index) => (
+                <Link key={index}><Icon as={item.image} w={8} h={8}/></Link>
               ))}
             </>
           </Flex>

@@ -9,43 +9,39 @@ const Tweets = ({ndrfTweets}) => {
 
   return (
     <LandingPageLayout>
-      <Box
+      {ndrfTweets && <Box
         p={{base: 2, md: 4, lg: 8}}
         maxW={"container.xl"}
         mx={"auto"}
       >
         <Heading my={2}>NDRF’s Recent Tweets</Heading>
-        <>
-          <>
-            {ndrfTweets && Object.keys(ndrfTweets)
-              .map((key, index) => {
-                return (
-                  <SimpleGrid
-                    key={index}
-                    flexDir={"column"}
-                    columns={{base: 1, md: 2, lg: 4}}
-                    spacing={4}
-                  >
-                    {ndrfTweets[key].slice(0, 50)
-                      .map((item, index) => {
-                        return (
-                          <TweetCard
-                            key={index}
-                            username={item.username}
-                            icon={<BsTwitter color={'#1DA1F2'} size={'1rem'}/>}
-                            description={item.tweet}
-                            image={item.photos.length > 0 && item.photos[0]}
-                            date={item.date}
-                          />
-                        )
-                      })
-                    }
-                  </SimpleGrid>
-                );
-              })}
-          </>
-        </>
-      </Box>
+        {Object.keys(ndrfTweets)
+          .map((key, index) => {
+            return (
+              <SimpleGrid
+                key={index}
+                flexDir={"column"}
+                columns={{base: 1, md: 2, lg: 4}}
+                spacing={4}
+              >
+                {ndrfTweets[key].slice(0, 50)
+                  .map((item, index) => {
+                    return (
+                      <TweetCard
+                        key={index}
+                        username={item.username}
+                        icon={<BsTwitter color={'#1DA1F2'} size={'1rem'}/>}
+                        description={item.tweet}
+                        image={item.photos.length > 0 && item.photos[0]}
+                        date={item.date}
+                      />
+                    )
+                  })
+                }
+              </SimpleGrid>
+            );
+          })}
+      </Box>}
     </LandingPageLayout>
   );
 };
@@ -64,7 +60,6 @@ export async function getServerSideProps() {
   } catch (e) {
     ndrfTweets = null
   }
-
 
   return {
     props: {

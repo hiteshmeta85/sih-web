@@ -1,6 +1,6 @@
 import {Box, Flex, List, Text} from "@chakra-ui/react";
-import {SidebarItems} from "./sidebar-items";
 import SidebarNavItem from "./SidebarNavItem";
+import {sidebarItems} from "../../constants/useful-data/sidebarItems";
 
 const Sidebar = () => {
 
@@ -37,7 +37,7 @@ const Sidebar = () => {
               Homebrew.
             </Text>
             <Box>
-              {SidebarItems.map((item, index) => {
+              {sidebarItems.map((item, index) => {
                 if (item.position === 'top') {
                   return <SidebarNavItem key={index} navLink={item.navLink} name={item.name} icon={item.icon}/>
                 }
@@ -45,7 +45,7 @@ const Sidebar = () => {
             </Box>
           </Flex>
           <Box>
-            {SidebarItems.map((item, index) => {
+            {sidebarItems.map((item, index) => {
               if (item.position === 'bottom') {
                 return <SidebarNavItem key={index} navLink={item.navLink} name={item.name} icon={item.icon}/>
               }

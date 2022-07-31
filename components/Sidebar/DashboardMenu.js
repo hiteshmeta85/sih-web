@@ -12,9 +12,9 @@ import {
 import {GiHamburgerMenu} from "react-icons/gi";
 import Logo from "../Logo/Logo";
 import {MdOutlineClose} from "react-icons/md";
-import {SidebarItems} from "./sidebar-items";
 import NextLink from "next/link";
 import React from "react";
+import {sidebarItems} from "../../constants/useful-data/sidebarItems";
 
 const DashboardMenu = () => {
   const {isOpen, onOpen, onClose} = useDisclosure()
@@ -52,7 +52,7 @@ const DashboardMenu = () => {
           </Flex>
           <Divider borderColor={'blackAlpha.600'}/>
           <DrawerBody fontWeight={'semibold'}>
-            {SidebarItems.map((item, index) => {
+            {sidebarItems.map((item, index) => {
               return (
                 <Text key={index} my={2}>
                   <NextLink href={item.navLink} passHref>

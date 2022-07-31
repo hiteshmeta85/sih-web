@@ -1,6 +1,5 @@
 import React from "react";
 import {BsTwitter} from "react-icons/bs";
-
 import {
   Box,
   Divider,
@@ -14,62 +13,8 @@ import {
   Tabs,
   Text,
 } from "@chakra-ui/react";
-
-const recentProjects = [
-  {
-    id: 1,
-    projectName: 'Kerala Floods',
-    disasterType: 'flood',
-  },
-  {
-    id: 2,
-    projectName: 'Assam Floods',
-    disasterType: 'flood',
-  },
-  {
-    id: 1,
-    projectName: 'Rajasthan Drought',
-    disasterType: 'drought',
-  },
-  {
-    id: 1,
-    projectName: 'Maharashtra Storm',
-    disasterType: 'storm',
-  }
-]
-
-const popularTwitterHandles = [
-  {
-    id: 1,
-    name: 'Hitesh Meta',
-    username: 'metahitesh85'
-  },
-  {
-    id: 2,
-    name: 'Om Surve',
-    username: 'gamingflexer'
-  },
-  {
-    id: 3,
-    name: 'Yash Wakekar',
-    username: 'yashwakekar'
-  },
-  {
-    id: 4,
-    name: 'Kunal Wagh',
-    username: 'kunalwagh18'
-  },
-  {
-    id: 5,
-    name: 'Adwait Gawade',
-    username: 'adwaitgawade'
-  },
-  {
-    id: 6,
-    name: 'Shreya Belanekar',
-    username: 'shreyabelanekar'
-  },
-]
+import {recentProjects} from "../../constants/sample-data/recentProjects";
+import {popularTwitterHandles} from "../../constants/sample-data/popularTwitterHandles";
 
 const DashTabs = () => {
   return (

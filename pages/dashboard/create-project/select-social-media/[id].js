@@ -7,31 +7,7 @@ import axios from "axios";
 import {useRouter} from "next/router";
 import Error from "../../../../components/Error/Error";
 import {useState} from "react";
-import {BsFacebook, BsInstagram, BsTwitter} from "react-icons/bs";
-
-const SocialMedia = [
-  {
-    id: 1,
-    title: "Twitter",
-    value: "twitter",
-    image: BsTwitter,
-    color: "#1DA1F2",
-  },
-  {
-    id: 2,
-    title: "Facebook",
-    value: "facebook",
-    image: BsFacebook,
-    color: "#4267B2",
-  },
-  {
-    id: 3,
-    title: "Instagram",
-    value: "instagram",
-    image: BsInstagram,
-    color: "#FCAF45",
-  },
-]
+import {socialMediaTypes} from "../../../../constants/useful-data/socialMediaTypes";
 
 const SelectHashtags = ({id, projectName, disasterType}) => {
   const router = useRouter();
@@ -107,29 +83,31 @@ const SelectHashtags = ({id, projectName, disasterType}) => {
                     flexDir={{base: "column", md: "row"}}
                     gap={6}
                   >
-                    {SocialMedia.map((item, index) => {
-                      return (
-                        <Flex key={index}
-                              alignItems={"center"}
-                              gap={2}
-                              borderWidth={"2px"}
-                              borderColor={values.socialMedia.includes(item.value) ? 'white' : item.color}
-                              color={values.socialMedia.includes(item.value) ? 'white' : item.color}
-                              bg={values.socialMedia.includes(item.value) ? item.color : "white"}
-                              borderRadius={"md"}
-                              p={4}>
-                          <Field
-                            type="checkbox"
-                            name="socialMedia"
-                            value={item.value}
-                            style={{position: "relative", top: "0px"}}
-                          />
-                          <Flex alignItems={'center'} gap={2} fontWeight={'semibold'}>
-                            <Icon as={item.image} w={8} h={8}/> {item.title}
+                    <>
+                      {socialMediaTypes.map((item, index) => {
+                        return (
+                          <Flex key={index}
+                                alignItems={"center"}
+                                gap={2}
+                                borderWidth={"2px"}
+                                borderColor={values.socialMedia.includes(item.value) ? 'white' : item.color}
+                                color={values.socialMedia.includes(item.value) ? 'white' : item.color}
+                                bg={values.socialMedia.includes(item.value) ? item.color : "white"}
+                                borderRadius={"md"}
+                                p={4}>
+                            <Field
+                              type="checkbox"
+                              name="socialMedia"
+                              value={item.value}
+                              style={{position: "relative", top: "0px"}}
+                            />
+                            <Flex alignItems={'center'} gap={2} fontWeight={'semibold'}>
+                              <Icon as={item.image} w={8} h={8}/> {item.title}
+                            </Flex>
                           </Flex>
-                        </Flex>
-                      )
-                    })}
+                        )
+                      })}
+                    </>
                   </Flex>
                   <Box
                     color={'gray.500'}

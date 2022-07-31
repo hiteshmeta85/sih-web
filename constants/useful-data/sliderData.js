@@ -1,12 +1,12 @@
-import Slide1 from './slide1.jpg'
-import Slide2 from './slide2.jpg'
-import Slide3 from './slide3.jpg'
-import Slide4 from './slide4.jpg'
-import Slide5 from './slide5.jpg'
-import Slide6 from './slide6.jpg'
-import Slide7 from './slide7.jpg'
+import Slide1 from "../../components/Slider/slide1.jpg";
+import Slide2 from "../../components/Slider/slide2.jpg";
+import Slide3 from "../../components/Slider/slide3.jpg";
+import Slide4 from "../../components/Slider/slide4.jpg";
+import Slide5 from "../../components/Slider/slide5.jpg";
+import Slide6 from "../../components/Slider/slide6.jpg";
+import Slide7 from "../../components/Slider/slide7.jpg";
 
-export const SliderData = [
+export const sliderData = [
   {
     id: 1,
     image: Slide1,

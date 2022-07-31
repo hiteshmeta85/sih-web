@@ -1,4 +1,4 @@
-export const NavItems = [
+export const navItems = [
   {
     id: 1,
     label: 'Contact',
