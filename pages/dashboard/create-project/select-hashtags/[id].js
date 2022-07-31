@@ -136,6 +136,7 @@ export async function getServerSideProps(context) {
   try {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/projects/create-project/select-hashtags/${id}`)
     if (response.data) {
+      console.log(response.data.data)
       hashtags = response.data.data.hashtags
       projectName = response.data.data.projectInfo.projectName
       disasterType = response.data.data.projectInfo.disasterType

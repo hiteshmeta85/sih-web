@@ -1,17 +1,17 @@
 import React from 'react';
 import LandingPageLayout from "./_layout";
-import {AlertsData} from "../components/Alert/alerts-data";
 import AlertCard from "../components/Alert/AlertCard";
 import {Box, Heading, SimpleGrid} from "@chakra-ui/react";
+import axios from "axios";
 
-const Alerts = () => {
+const Alerts = ({alerts}) => {
   return (
     <LandingPageLayout>
       <Box maxW={'container.xl'} mx={'auto'} p={{base: 2, md: 4, lg: 8}}>
         <Heading my={2}>Alerts</Heading>
         <SimpleGrid spacing={4}>
           <>
-            {AlertsData.slice(0, 6)
+            {alerts.slice(0, 6)
               .map((item, index) => {
                 return (
                   <AlertCard
@@ -21,7 +21,7 @@ const Alerts = () => {
                     label={item.label}
                     geolocation_lat={item.geolocation_lat}
                     geolocation_lng={item.geolocation_lng}
-                    severity_type={item.severity_type}
+                    severity_type={item.severityType}
                   />
                 )
               })}
@@ -33,3 +33,24 @@ const Alerts = () => {
 };
 
 export default Alerts;
+
+export async function getServerSideProps() {
+
+  let alerts
+
+  try {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/alerts`)
+    if (res.data) {
+      alerts = res.data.data.alerts
+    }
+  } catch (e) {
+    console.log(e)
+    alerts = null
+  }
+
+  return {
+    props: {
+      alerts
+    }
+  }
+}

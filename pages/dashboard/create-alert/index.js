@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import DashboardContainer from "../_layout"
 import {Box, Flex, FormLabel, Text} from "@chakra-ui/react";
 import {ErrorMessage, Form, Formik} from "formik";
@@ -7,6 +7,7 @@ import CustomInput from "../../../components/Input/CustomInput";
 import alertSchema from "../../../lib/schemas/alertSchema";
 import CustomSelect from "../../../components/Select/CustomSelect";
 import SearchPlacesMap from "../../../components/Map/SearchPlacesMap";
+import axios from "axios";
 
 export const labelOptions = [
   {
@@ -52,6 +53,7 @@ const severityTypes = [
 const Index = () => {
 
   const customStyle = {border: '1px solid lightgray', borderRadius: '5px', padding: '0.3rem 0.7rem'}
+  const [responseMessage, setResponseMessage] = useState('')
 
   return (
     <DashboardContainer title={'Alert'}>
@@ -71,9 +73,24 @@ const Index = () => {
             address: '',
           }}
           validationSchema={alertSchema}
-          onSubmit={(values, {setSubmitting}) => {
+          onSubmit={async (values, {setSubmitting, resetForm}) => {
+            setSubmitting(true);
+            try {
+              await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/alerts`, values)
+                .then(function (response) {
+                  if (response.data) {
+                    resetForm()
+                    const {id} = response.data.data
+                    setResponseMessage('Alert Created Successfully.')
+                  }
+                })
+                .catch(function (err) {
+                  setResponseMessage('Some Error Occurred.')
+                })
+            } catch (err) {
+              setResponseMessage('Some Error Occurred.')
+            }
             setSubmitting(false);
-            console.log(values)
           }}
         >
           {({
@@ -92,8 +109,10 @@ const Index = () => {
                 >
                   <Flex flexDir={'column'} flex={1} gap={4}>
                     <CustomInput name={'title'} type={'text'} label={'Title'} styles={customStyle}/>
-                    <CustomInput name={'description'} as={'textarea'} type={'text'} label={'Description'} rows={5} styles={customStyle}/>
-                    <CustomSelect isMulti={false} name={'label'} label={'Select Label'} options={labelOptions} placeholder={'Select Labels...'}/>
+                    <CustomInput name={'description'} as={'textarea'} type={'text'} label={'Description'} rows={5}
+                                 styles={customStyle}/>
+                    <CustomSelect isMulti={false} name={'label'} label={'Select Label'} options={labelOptions}
+                                  placeholder={'Select Labels...'}/>
                   </Flex>
                   <Box>
                     <FormLabel style={{fontWeight: 600}}>Select Severity</FormLabel>
@@ -128,6 +147,7 @@ const Index = () => {
                 <SearchPlacesMap label={'Search Geolocation'} setFieldValue={setFieldValue}/>
               </Flex>
               <CustomSubmitButton label={'Submit'} isSubmitting={isSubmitting} handleSubmit={handleSubmit}/>
+              {responseMessage && <Text fontWeight={'semibold'} my={4}>{responseMessage}</Text>}
             </Form>
           )}
         </Formik>

@@ -66,8 +66,9 @@ const Index = () => {
               {projectName: values.projectName, disasterType: values.disasterType})
               .then(function (response) {
                 if (response.data) {
+                  console.log(response.data)
                   const {id} = response.data.data
-                  router.push(`/dashboard/create-project/select-hashtags/${id}`)
+                  router.push(`/dashboard/create-project/select-location/${id}`)
                 }
               })
               .catch(function (err) {

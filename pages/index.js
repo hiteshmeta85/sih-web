@@ -2,14 +2,14 @@ import TweetsContainer from "../components/Tweet/TweetsContainer";
 import {Flex, SimpleGrid} from "@chakra-ui/react";
 import TweetCard from "../components/Tweet/TweetCard";
 import SocialMediaAccountCard from "../components/Account/SocialMediaAccountCard";
-import {AlertsData} from "../components/Alert/alerts-data";
 import AlertCard from "../components/Alert/AlertCard";
 import NewsCard from "../components/News/NewsCard";
 import LandingPageLayout from "./_layout";
 import {IoIosAlert} from "react-icons/io";
 import {BsTwitter} from "react-icons/bs";
+import axios from "axios";
 
-export const popularTwitterHandles = [
+/*const popularTwitterHandles = [
   {
     id: 1,
     name: 'Hitesh Meta',
@@ -42,7 +42,7 @@ export const popularTwitterHandles = [
   },
 ]
 
-export const ndrfTweets2 = [
+const ndrfTweets2 = [
   {
     "id": 1546017399186784256,
     "conversation_id": "1546017399186784256",
@@ -565,7 +565,7 @@ export const ndrfTweets2 = [
   }
 ]
 
-export const headlines2 = [
+const headlines2 = [
   {
     "id": "6071099688754801141",
     "title": "Punjab CM Bhagwant Mann Gives Nod to State Disaster Mitigation Fund",
@@ -916,16 +916,17 @@ export const headlines2 = [
       "webpageUrl": "https://www.newsbreak.com/news/2653418064747/mudslide-leaves-16-dead-over-70-missing-in-northeast-india"
     }
   }
-]
+]*/
 
-export default function Home({headlines, ndrfTweets}) {
+export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
 
   return (
     <LandingPageLayout>
-      {headlines2 && <TweetsContainer title={'News'} href={'/news'}>
+      {/*<ClusterMap/>*/}
+      {news && <TweetsContainer title={'News'} href={'/news'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={6}>
           <>
-            {headlines2.slice(0, 4)
+            {news.slice(0, 4)
               .map((item, index) => {
                 return (
                   <NewsCard key={index} title={item.title} datePublished={item.datePublished} description={item.description}/>
@@ -934,69 +935,70 @@ export default function Home({headlines, ndrfTweets}) {
           </>
         </SimpleGrid>
       </TweetsContainer>}
-      <TweetsContainer title={<Flex alignItems={'center'} gap={2}><IoIosAlert color={'#EB4747'}/> Alerts</Flex>} href={'/alerts'}>
+      {alerts && <TweetsContainer title={<Flex alignItems={'center'} gap={2}><IoIosAlert color={'#EB4747'}/> Alerts</Flex>} href={'/alerts'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
           <>
-            {AlertsData.slice(0, 6)
+            {alerts.slice(0, 6)
               .map((item, index) => {
-                return (<AlertCard key={index} title={item.title} description={item.description} label={item.label} severity_type={item.severity_type}/>)
+                return (<AlertCard key={index} title={item.title} description={item.description} label={item.label} severity_type={item.severityType}/>)
               })}
           </>
         </SimpleGrid>
-      </TweetsContainer>
-      {ndrfTweets2 && <TweetsContainer title={<Flex alignItems={'center'} gap={2}><BsTwitter color={'#1DA1F2'}/> NDRF’s Latest Tweets</Flex>} href={'/tweets'}>
+      </TweetsContainer>}
+      {ndrfTweets && <TweetsContainer title={<Flex alignItems={'center'} gap={2}><BsTwitter color={'#1DA1F2'}/> NDRF’s Latest Tweets</Flex>} href={'/tweets'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
           <>
-            {ndrfTweets2.slice(0, 6)
+            {ndrfTweets.slice(0, 6)
               .map((item, index) => {
                 return (<TweetCard key={index} username={item.username} description={item.tweet} image={item.photos.length > 0 && item.photos[0]} date={item.date}/>)
               })}
           </>
         </SimpleGrid>
       </TweetsContainer>}
-      <TweetsContainer title={'Active Social Media Accounts'} href={'/active-accounts'}>
+      {activeAccounts && <TweetsContainer title={'Active Social Media Accounts'} href={'/active-accounts'}>
         <Flex gap={4} overflowX={'scroll'} py={6} px={0.5}>
           <>
-            {popularTwitterHandles.slice(0, 10)
-              .map((item, index) => {
+            {Object.keys(activeAccounts)
+              .map((key, index) => {
                 return (
-                  <SocialMediaAccountCard key={index} name={item.name} username={item.username}/>
+                  <SocialMediaAccountCard key={index} username={key}/>
                 )
               })}
           </>
         </Flex>
-      </TweetsContainer>
+      </TweetsContainer>}
     </LandingPageLayout>
   )
 }
 
-// export async function getServerSideProps() {
+export async function getServerSideProps() {
 
-// let headlines, ndrfTweets;
-//
-// try {
-//   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/get-headlines`)
-//   if (res.data) {
-//     headlines = res.data.data.value
-//   }
-// } catch (e) {
-//   headlines = null
-// }
-//
-// try {
-//   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/ndrf-tweets`)
-//   if (res.data) {
-//     ndrfTweets = res.data.data
-//   }
-// } catch (e) {
-//   ndrfTweets = null
-// }
-//
-//
-// return {
-//   props: {
-//     headlines,
-//     ndrfTweets
-//   }
-// }
-// }
+  let news, ndrfTweets, alerts, activeAccounts, mapData;
+
+  try {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/landing`)
+    if (res.data) {
+      news = res.data.data.news.value
+      ndrfTweets = res.data.data.ndrfTweets
+      alerts = res.data.data.alerts
+      activeAccounts = res.data.data.activeAccounts
+      mapData = res.data.data.mapData
+    }
+  } catch (e) {
+    news = null
+    ndrfTweets = null
+    alerts = null
+    activeAccounts = null
+    mapData = null
+  }
+
+  return {
+    props: {
+      news,
+      ndrfTweets,
+      alerts,
+      activeAccounts,
+      mapData
+    }
+  }
+}

@@ -40,7 +40,7 @@ function Map({setFieldValue, mapHeight, mapWidth}) {
         setFieldValue={setFieldValue}
       />
       <GoogleMap
-        zoom={14}
+        zoom={4}
         center={center}
         mapContainerStyle={{width: mapWidth || '100%', height: mapHeight || '600px'}}
         onLoad={onLoad}
