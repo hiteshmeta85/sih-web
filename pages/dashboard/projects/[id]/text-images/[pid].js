@@ -1,9 +1,10 @@
-import DashboardContainer from "../../../_layout";
-import {Box, Button, Flex, Grid, GridItem, Image, Progress, SimpleGrid, Text} from "@chakra-ui/react";
+import {Box, Button, Flex, Grid, GridItem, Image, Progress, SimpleGrid} from "@chakra-ui/react";
 import {PieChart} from "../../../../../components/Charts/PieChart";
 import {PieChartData} from "../../../../../components/Analysis/Analytics";
 import React from "react";
 import {useRouter} from "next/router";
+import IndividualTweetAnalysisLayout from "../_individualTweetAnalysisLayout";
+import Badge from "../../../../../components/Badge/Badge";
 
 const images = [
   {
@@ -86,103 +87,89 @@ const labels = [
 const IndividualTextAndImageAnalysis = () => {
 
   const router = useRouter()
-  const { pid } = router.query
+  const {pid} = router.query
 
   return (
-    <DashboardContainer title="Individual Analysis - Text + Image">
-      <Box bg={"white"} p={4} rounded={"md"}>
-        <Grid gridTemplateColumns={"repeat(5, 1fr)"} gap={8}>
-          <GridItem colSpan={{base: 5, lg: 3}}>
-            <Grid gap={8}>
-              <GridItem>
-                <SimpleGrid columns={{base: 1, md: 2}} gap={4}>
-                  <Box p={2}>
-                    <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg"/>
-                  </Box>
-                  <Box p={2}>
-                    <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg"/>
-                  </Box>
-                </SimpleGrid>
-              </GridItem>
-              <GridItem p={2}>
-                <Progress
-                  border={"1px solid lightgray"}
-                  borderRadius={"md"}
-                  colorScheme="green"
-                  size="lg"
-                  value={40}
-                />
-              </GridItem>
-              <GridItem>
-                <SimpleGrid columns={{base: 2, md: 3}} gap={8} p={2}>
-                  {labels.map((item, index) => {
-                    return (
-                      <Text
-                        align={"center"}
-                        key={index}
-                        bg={"gray.200"}
-                        border={"1px solid lightgray"}
-                        borderRadius={"md"}
-                        fontWeight={"semibold"}
-                        p={2}
-                      >
-                        {item.label}
-                      </Text>
-                    );
-                  })}
-                </SimpleGrid>
-              </GridItem>
-              <GridItem>
-                <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={4} p={2}>
-                  {images.map((item, index) => {
-                    return (
-                      <Image key={index} src={item.image}/>
-                    )
-                  })}
-                </SimpleGrid>
-              </GridItem>
-            </Grid>
-          </GridItem>
-          <GridItem colSpan={{base: 5, md: 2}} gap={8}>
-            <Box>
-              <Flex justify={"flex-end"} p={2} gap={4}>
-                <Button
-                  bg={"blackAlpha.800"}
-                  _hover={{bg: "blackAlpha.700"}}
-                  _active={{bg: "blackAlpha.800"}}
-                  rounded={"full"}
-                  color={"white"}
-                  px={6}
-                >
-                  Click Here
-                </Button>
+    <IndividualTweetAnalysisLayout
+      title={'Tweet Analysis - Text and Images'}
+      topSection={
+        <Flex justify={"flex-end"} p={2} gap={4}>
+          <Button
+            bg={"blackAlpha.800"}
+            _hover={{bg: "blackAlpha.700"}}
+            _active={{bg: "blackAlpha.800"}}
+            rounded={"full"}
+            color={"white"}
+            px={6}
+          >
+            Click Here
+          </Button>
 
-                <Button
-                  bg={"red.500"}
-                  textColor={"white"}
-                  _hover={{bg: "red.400"}}
-                  _active={{bg: "red.500"}}
-                  rounded={"full"}
-                  color={"white"}
-                  px={6}
-                >
-                  Click Here
-                </Button>
-              </Flex>
+          <Button
+            bg={"red.500"}
+            textColor={"white"}
+            _hover={{bg: "red.400"}}
+            _active={{bg: "red.500"}}
+            rounded={"full"}
+            color={"white"}
+            px={6}
+          >
+            Click Here
+          </Button>
+        </Flex>
+      }
+      rightSection={
+        <Box
+          p={4}
+          border={"1px solid lightgray"}
+          borderRadius={"md"}
+        >
+          <PieChart data={PieChartData}/>
+        </Box>
+      }
+    >
+      <Grid gap={8}>
+        <GridItem>
+          <SimpleGrid columns={{base: 1, md: 2}} gap={4}>
+            <Box p={2}>
+              <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg"/>
             </Box>
-
-            <Box
-              p={4}
-              border={"1px solid lightgray"}
-              borderRadius={"md"}
-              my={4}
-            >
-              <PieChart data={PieChartData}/>
+            <Box p={2}>
+              <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg"/>
             </Box>
-          </GridItem>
-        </Grid>
-      </Box>
-    </DashboardContainer>
+          </SimpleGrid>
+        </GridItem>
+        <GridItem p={2}>
+          <Progress
+            border={"1px solid lightgray"}
+            borderRadius={"md"}
+            colorScheme="green"
+            size="lg"
+            value={40}
+          />
+        </GridItem>
+        <SimpleGrid columns={{base: 2, md: 3}} gap={4} p={2}>
+          <>
+            {labels.map((item, index) => {
+              return (
+                <Badge key={index} label={item.label}/>
+              );
+            })}
+          </>
+        </SimpleGrid>
+        <GridItem>
+          <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={4} p={2}>
+            <>
+              {images.map((item, index) => {
+                return (
+                  <Image key={index} src={item.image}/>
+                )
+              })}
+            </>
+          </SimpleGrid>
+        </GridItem>
+      </Grid>
+    </IndividualTweetAnalysisLayout>
   );
 };
 

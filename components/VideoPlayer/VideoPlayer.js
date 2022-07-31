@@ -1,17 +1,20 @@
 import React from 'react';
-import ReactPlayer from "react-player";
+import dynamic from "next/dynamic";
 
-const VideoPlayer = () => {
+const ReactPlayer = dynamic(() => import('react-player'), {ssr: false});
+
+const VideoPlayer = ({url}) => {
+
   return (
     <ReactPlayer
       controls
-      url={"https://www.youtube.com/watch?v=GePs-zWeS2o"}
+      url={url}
+      width='100%'
       onReady={() => console.log('OnReady callback')}
       onStart={() => console.log('onStart callback')}
       onPause={() => console.log('onPause callback')}
       onEnded={() => console.log('onEnded callback')}
       onError={() => console.log('onError callback')}
-
     />
   );
 };

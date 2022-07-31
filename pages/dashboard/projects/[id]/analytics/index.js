@@ -1,7 +1,7 @@
+import TabsLayout from "../_tabsLayout";
 import {TabPanel, TabPanels} from "@chakra-ui/react";
+import Analytics from "../../../../../components/Analysis/Analytics";
 import React from "react";
-import TabsLayout from "./_tabsLayout";
-import Analytics from "../../../../components/Analysis/Analytics";
 
 const ProjectAnalytics = () => {
 
