@@ -1,21 +1,11 @@
+import DashboardContainer from "../../../_layout";
+import {Box, Button, Flex, Grid, GridItem, Image, Progress, SimpleGrid, Text} from "@chakra-ui/react";
+import {PieChart} from "../../../../../components/Charts/PieChart";
+import {PieChartData} from "../../../../../components/Analysis/Analytics";
 import React from "react";
-import DashboardContainer from "../dashboard/_layout";
-import {
-  Grid,
-  Box,
-  GridItem,
-  Text,
-  Progress,
-  SimpleGrid,
-  Button,
-  Flex,
-  Image,
-} from "@chakra-ui/react";
-import { labels } from "./Text";
-import { PieChart } from "../../components/Charts/PieChart";
-import { PieChartData } from "../../components/Analysis/Analytics";
+import {useRouter} from "next/router";
 
-export const images = [
+const images = [
   {
     id: 1,
     image: 'https://images.unsplash.com/photo-1547683905-f686c993aae5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmF0dXJhbCUyMGRpc2FzdGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
@@ -50,21 +40,67 @@ export const images = [
   },
 ]
 
-const Images = () => {
+const labels = [
+  {
+    id: 1,
+    label: "flood",
+  },
+  {
+    id: 2,
+    label: "earthquake",
+  },
+  {
+    id: 3,
+    label: "storm",
+  },
+  {
+    id: 4,
+    label: "wildfire",
+  },
+  {
+    id: 5,
+    label: "earthquake",
+  },
+  {
+    id: 6,
+    label: "flood",
+  },
+  {
+    id: 7,
+    label: "wildfire",
+  },
+  {
+    id: 8,
+    label: "storm",
+  },
+  {
+    id: 9,
+    label: "earthquake",
+  },
+  {
+    id: 10,
+    label: "flood",
+  },
+];
+
+const IndividualTextAndImageAnalysis = () => {
+
+  const router = useRouter()
+  const { pid } = router.query
 
   return (
     <DashboardContainer title="Individual Analysis - Text + Image">
       <Box bg={"white"} p={4} rounded={"md"}>
         <Grid gridTemplateColumns={"repeat(5, 1fr)"} gap={8}>
-          <GridItem colSpan={{ base: 5, lg: 3 }}>
+          <GridItem colSpan={{base: 5, lg: 3}}>
             <Grid gap={8}>
               <GridItem>
-                <SimpleGrid columns={{ base: 1, md: 2 }} gap={4}>
+                <SimpleGrid columns={{base: 1, md: 2}} gap={4}>
                   <Box p={2}>
-                    <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg" />
+                    <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg"/>
                   </Box>
                   <Box p={2}>
-                    <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg" />
+                    <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg"/>
                   </Box>
                 </SimpleGrid>
               </GridItem>
@@ -78,7 +114,7 @@ const Images = () => {
                 />
               </GridItem>
               <GridItem>
-                <SimpleGrid columns={{ base: 2, md: 3 }} gap={8} p={2}>
+                <SimpleGrid columns={{base: 2, md: 3}} gap={8} p={2}>
                   {labels.map((item, index) => {
                     return (
                       <Text
@@ -97,23 +133,23 @@ const Images = () => {
                 </SimpleGrid>
               </GridItem>
               <GridItem>
-              <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} gap={4} p={2}>
-                {images.map((item, index) => {
-                  return (
-                    <Image key={index} src={item.image} />
-                  )
-                })}
+                <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={4} p={2}>
+                  {images.map((item, index) => {
+                    return (
+                      <Image key={index} src={item.image}/>
+                    )
+                  })}
                 </SimpleGrid>
               </GridItem>
             </Grid>
           </GridItem>
-          <GridItem colSpan={{ base: 5, md: 2 }} gap={8}>
+          <GridItem colSpan={{base: 5, md: 2}} gap={8}>
             <Box>
               <Flex justify={"flex-end"} p={2} gap={4}>
                 <Button
                   bg={"blackAlpha.800"}
-                  _hover={{ bg: "blackAlpha.700" }}
-                  _active={{ bg: "blackAlpha.800" }}
+                  _hover={{bg: "blackAlpha.700"}}
+                  _active={{bg: "blackAlpha.800"}}
                   rounded={"full"}
                   color={"white"}
                   px={6}
@@ -124,8 +160,8 @@ const Images = () => {
                 <Button
                   bg={"red.500"}
                   textColor={"white"}
-                  _hover={{ bg: "red.400" }}
-                  _active={{ bg: "red.500" }}
+                  _hover={{bg: "red.400"}}
+                  _active={{bg: "red.500"}}
                   rounded={"full"}
                   color={"white"}
                   px={6}
@@ -141,7 +177,7 @@ const Images = () => {
               borderRadius={"md"}
               my={4}
             >
-              <PieChart data={PieChartData} />
+              <PieChart data={PieChartData}/>
             </Box>
           </GridItem>
         </Grid>
@@ -150,4 +186,4 @@ const Images = () => {
   );
 };
 
-export default Images;
+export default IndividualTextAndImageAnalysis;

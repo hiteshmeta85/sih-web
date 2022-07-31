@@ -1,21 +1,21 @@
-import {
-  Grid,
-  Box,
-  GridItem,
-  Progress,
-} from "@chakra-ui/react";
-import React from "react";
+import DashboardContainer from "../../../_layout";
+import {Box, Grid, GridItem} from "@chakra-ui/react";
 import ReactAudioPlayer from "react-audio-player";
-import DashboardContainer from "../dashboard/_layout";
-import { PieChart } from "../../components/Charts/PieChart";
-import { PieChartData } from "../../components/Analysis/Analytics";
+import {PieChart} from "../../../../../components/Charts/PieChart";
+import {PieChartData} from "../../../../../components/Analysis/Analytics";
+import React from "react";
+import {useRouter} from "next/router";
 
-const Voices = () => {
+const IndividualVoiceAnalysis = () => {
+
+  const router = useRouter()
+  const { pid } = router.query
+
   return (
-    <DashboardContainer title="Individual Analysis - Voices">
+    <DashboardContainer title="Individual Analysis - IndividualVoiceAnalysis">
       <Box bg={"white"} p={4} rounded={"md"}>
         <Grid gridTemplateColumns={"repeat(5, 1fr)"} gap={8}>
-          <GridItem colSpan={{ base: 5, lg: 3 }}>
+          <GridItem colSpan={{base: 5, lg: 3}}>
             <Grid gap={8}>
               <GridItem>
                 <Grid templateColumns="repeat(2, 1fr)" gap={2}>
@@ -32,9 +32,9 @@ const Voices = () => {
               </GridItem>
             </Grid>
           </GridItem>
-          <GridItem colSpan={{ base: 5, md: 2 }}>
+          <GridItem colSpan={{base: 5, md: 2}}>
             <Box p={4} border={"1px solid lightgray"} borderRadius={"md"}>
-              <PieChart data={PieChartData} />
+              <PieChart data={PieChartData}/>
             </Box>
           </GridItem>
         </Grid>
@@ -43,4 +43,4 @@ const Voices = () => {
   );
 };
 
-export default Voices;
+export default IndividualVoiceAnalysis;

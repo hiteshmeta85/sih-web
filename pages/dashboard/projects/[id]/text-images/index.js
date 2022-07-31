@@ -1,8 +1,8 @@
+import TabsLayout from "../_tabsLayout";
 import {SimpleGrid, TabPanel, TabPanels} from "@chakra-ui/react";
+import {trendingTweetsData} from "../../../../../constants/sample-data/trendingTweetsData";
+import TweetCard from "../../../../../components/Tweet/TweetCard";
 import React from "react";
-import TabsLayout from "./_tabsLayout";
-import TweetCard from "../../../../components/Tweet/TweetCard";
-import {trendingTweetsData} from "../../../../constants/sample-data/trendingTweetsData";
 
 const ProjectTextPlusVideosView = () => {
 

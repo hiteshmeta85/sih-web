@@ -1,17 +1,11 @@
-import {
-  Grid,
-  Box,
-  GridItem,
-  Text,
-  Progress,
-  SimpleGrid,
-} from "@chakra-ui/react";
+import {Box, Grid, GridItem, Progress, SimpleGrid, Text,} from "@chakra-ui/react";
 import React from "react";
-import DashboardContainer from "../dashboard/_layout";
-import { PieChart } from "../../components/Charts/PieChart";
-import { PieChartData } from "../../components/Analysis/Analytics";
+import DashboardContainer from "../../../_layout";
+import {PieChart} from "../../../../../components/Charts/PieChart";
+import {PieChartData} from "../../../../../components/Analysis/Analytics";
+import {useRouter} from "next/router";
 
-export const labels = [
+const labels = [
   {
     id: 1,
     label: "flood",
@@ -54,13 +48,16 @@ export const labels = [
   },
 ];
 
-const Texts = () => {
+const IndividualTextAnalysis = () => {
+
+  const router = useRouter()
+  const { pid } = router.query
 
   return (
     <DashboardContainer title='Individual Analysis - Text'>
       <Box bg={"white"} p={4} rounded={"md"}>
         <Grid gridTemplateColumns={"repeat(5, 1fr)"} gap={8}>
-          <GridItem colSpan={{ base: 5, lg: 3 }}>
+          <GridItem colSpan={{base: 5, lg: 3}}>
             <Grid gap={8}>
               <GridItem>
                 <Box p={2} px={4} border={"1px solid lightgray"} borderRadius={"md"}>
@@ -83,12 +80,12 @@ const Texts = () => {
                   </Text>
                 </Box>
               </GridItem>
-              <GridItem >
+              <GridItem>
                 <Progress
                   border={"1px solid lightgray"}
                   borderRadius={"md"}
                   colorScheme="green"
-                  size="lg" 
+                  size="lg"
                   value={40}
                 />
               </GridItem>
@@ -103,7 +100,7 @@ const Texts = () => {
                         border={"1px solid lightgray"}
                         borderRadius={"md"}
                         fontWeight={'semibold'}
-                        p={2} 
+                        p={2}
                       >
                         {item.label}
                       </Text>
@@ -113,9 +110,9 @@ const Texts = () => {
               </GridItem>
             </Grid>
           </GridItem>
-          <GridItem colSpan={{ base: 5, md: 2 }}>
+          <GridItem colSpan={{base: 5, md: 2}}>
             <Box p={4} border={"1px solid lightgray"} borderRadius={"md"}>
-              <PieChart data={PieChartData} />
+              <PieChart data={PieChartData}/>
             </Box>
           </GridItem>
         </Grid>
@@ -124,4 +121,4 @@ const Texts = () => {
   );
 };
 
-export default Texts;
+export default IndividualTextAnalysis;

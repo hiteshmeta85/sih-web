@@ -1,7 +1,7 @@
 import {TabPanel, TabPanels} from "@chakra-ui/react";
-import CustomTable from "../../../../components/Table/CustomTable";
 import React from "react";
-import TabsLayout from "./_tabsLayout";
+import TabsLayout from "../_tabsLayout";
+import CustomTable from "../../../../../components/Table/CustomTable";
 
 const ProjectTextView = () => {
 
