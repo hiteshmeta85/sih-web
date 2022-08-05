@@ -53,7 +53,7 @@ function TableStructure({columns, data}) {
 
   // We don't want to render all the rows for this example, so cap
   // it for this use case
-  const firstPageRows = rows.slice(0, 100)
+  // const firstPageRows = rows.slice(0, 100)
 
   return (
     <>
@@ -85,7 +85,7 @@ function TableStructure({columns, data}) {
         ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-        {firstPageRows.map((row, index) => {
+        {rows.map((row, index) => {
           prepareRow(row)
           return (
             <tr key={index} {...row.getRowProps()} style={{border: '1px solid lightgray'}}>

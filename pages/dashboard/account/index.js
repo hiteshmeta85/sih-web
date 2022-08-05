@@ -5,7 +5,7 @@ import {Formik} from "formik";
 import CustomInput from "../../../components/Input/CustomInput";
 import CustomSubmitButton from "../../../components/Button/CustomSubmitButton";
 
-const Index = () => {
+const Account = () => {
 
   const [isFormEditable, setIsFormEditable] = useState(false)
 
@@ -80,4 +80,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Account;

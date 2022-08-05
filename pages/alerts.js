@@ -5,6 +5,7 @@ import {Box, Heading, SimpleGrid} from "@chakra-ui/react";
 import axios from "axios";
 
 const Alerts = ({alerts}) => {
+
   return (
     <LandingPageLayout>
       {alerts && <Box maxW={'container.xl'} mx={'auto'} p={{base: 2, md: 4, lg: 8}}>

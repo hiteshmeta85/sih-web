@@ -22,8 +22,8 @@ export const sidebarItems = [
     position: 'top'
   },
   {
-    name: 'Create Alerts',
-    navLink: '/dashboard/create-alert',
+    name: 'Alerts',
+    navLink: '/dashboard/alerts',
     icon: FiAlertTriangle,
     position: 'top'
   },
