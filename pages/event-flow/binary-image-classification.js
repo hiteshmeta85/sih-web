@@ -4,7 +4,7 @@ import {Heading, SimpleGrid} from "@chakra-ui/react";
 import StatCard from "../../components/Stat/StatCard";
 import TweetCard from "../../components/Card/TweetCard";
 
-const TweetWithImages = [
+export const TweetWithImages = [
   {
     "id": 1546017399186784256,
     "conversation_id": "1546017399186784256",
