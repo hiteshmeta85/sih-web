@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactAudioPlayer from "react-audio-player";
 
-const AudioPlayer = () => {
+const AudioPlayer = ({src}) => {
   return (
     <ReactAudioPlayer
-      src={"https://www2.cs.uic.edu/~i101/SoundFiles/BabyElephantWalk60.wav"}
+      src={src}
       autoPlay
       controls
     />

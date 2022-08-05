@@ -1,8 +1,8 @@
+import TabsLayout from "../_tabsLayout";
 import {Flex, TabPanel, TabPanels} from "@chakra-ui/react";
+import CreateReportForm from "../../../../../components/Analysis/CreateReportForm";
+import PreviousReportTable from "../../../../../components/Analysis/PreviousReportTable";
 import React from "react";
-import TabsLayout from "./_tabsLayout";
-import CreateReportForm from "../../../../components/Analysis/CreateReportForm";
-import PreviousReportTable from "../../../../components/Analysis/PreviousReportTable";
 
 const ProjectReports = () => {
 

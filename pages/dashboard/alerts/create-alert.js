@@ -11,7 +11,7 @@ import axios from "axios";
 import {labelOptions} from "../../../constants/useful-data/labelOptions";
 import {severityTypes} from "../../../constants/useful-data/severityTypes";
 
-const Index = () => {
+const CreateAlert = () => {
 
   const customStyle = {border: '1px solid lightgray', borderRadius: '5px', padding: '0.3rem 0.7rem'}
   const [responseMessage, setResponseMessage] = useState('')
@@ -117,4 +117,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default CreateAlert;

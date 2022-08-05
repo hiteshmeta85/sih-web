@@ -1,0 +1,58 @@
+export const TweetsData = [
+  {
+    username: 'metahitesh85',
+    time: '12 PM, 16 July 2022',
+    tweet: 'Just created a Portfolio website builder using #ReactJS  and #strapi😃.',
+    link: 'https://twitter.com/MetaHitesh85/status/1454051030488936449?s=20&t=a-4kkLm-eEkWY96L23FwFA',
+    multilabel: ['emergency', 'help', 'medical', 'rescue'],
+  },
+  {
+    username: 'omsurve',
+    time: '12 PM, 12 July 2022',
+    tweet: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at commodi debitis eius, molestiae nam quia tempore. Accusantium cum doloremque ipsam ipsum maiores necessitatibus neque ratione unde? Consectetur, labore, nesciunt?',
+    link: 'https://twitter.com/MetaHitesh85/status/1454051030488936449?s=20&t=a-4kkLm',
+    multilabel: ['emergency', 'help', 'medical', 'rescue'],
+  },
+  {
+    username: 'metahitesh85',
+    time: '12 PM, 16 July 2022',
+    tweet: 'Just created a Portfolio website builder using #ReactJS  and #strapi😃.',
+    link: 'https://twitter.com/MetaHitesh85/status/1454051030488936449?s=20&t=a-4kkLm-eEkWY96L23FwFA',
+    multilabel: ['emergency', 'help', 'medical', 'rescue'],
+  },
+  {
+    username: 'metahitesh85',
+    time: '12 PM, 16 July 2022',
+    tweet: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at commodi debitis eius, molestiae nam quia tempore. Accusantium cum doloremque ipsam ipsum maiores necessitatibus neque ratione unde? Consectetur, labore, nesciunt?',
+    link: 'https://twitter.com/MetaHitesh85/status/1454051030488936449?s=20&t=a-4kkLm-eEkWY96L23FwFA',
+    multilabel: ['emergency', 'help', 'medical', 'rescue'],
+  },
+  {
+    username: 'metahitesh85',
+    time: '12 PM, 16 July 2022',
+    tweet: 'Just created a Portfolio website builder using #ReactJS  and #strapi😃.',
+    link: 'https://twitter.com/MetaHitesh85/status/1454051030488936449?s=20&t=a-4kkLm-eEkWY96L23FwFA',
+    multilabel: ['emergency', 'help', 'medical', 'rescue'],
+  },
+  {
+    username: 'omsurve',
+    time: '12 PM, 12 July 2022',
+    tweet: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at commodi debitis eius, molestiae nam quia tempore. Accusantium cum doloremque ipsam ipsum maiores necessitatibus neque ratione unde? Consectetur, labore, nesciunt?',
+    link: 'https://twitter.com/MetaHitesh85/status/1454051030488936449?s=20&t=a-4kkLm',
+    multilabel: ['emergency', 'help', 'medical', 'rescue'],
+  },
+  {
+    username: 'metahitesh85',
+    time: '12 PM, 16 July 2022',
+    tweet: 'Just created a Portfolio website builder using #ReactJS  and #strapi😃.',
+    link: 'https://twitter.com/MetaHitesh85/status/1454051030488936449?s=20&t=a-4kkLm-eEkWY96L23FwFA',
+    multilabel: ['emergency', 'help', 'medical', 'rescue'],
+  },
+  {
+    username: 'metahitesh85',
+    time: '12 PM, 16 July 2022',
+    tweet: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at commodi debitis eius, molestiae nam quia tempore. Accusantium cum doloremque ipsam ipsum maiores necessitatibus neque ratione unde? Consectetur, labore, nesciunt?',
+    link: 'https://twitter.com/MetaHitesh85/status/1454051030488936449?s=20&t=a-4kkLm-eEkWY96L23FwFA',
+    multilabel: ['emergency', 'help', 'medical', 'rescue'],
+  },
+]

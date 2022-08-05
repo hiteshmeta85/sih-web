@@ -1,25 +1,11 @@
 import {BarChart} from "../Charts/BarChart";
 import {ScatterChart} from "../Charts/ScatterChart";
 import {PieChart} from "../Charts/PieChart";
-import {
-  Box,
-  Flex,
-  Grid,
-  GridItem,
-  Select,
-  Stat,
-  StatGroup,
-  StatLabel,
-  StatNumber,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs
-} from "@chakra-ui/react";
+import {Box, Flex, Grid, GridItem, Select, StatGroup, Tab, TabList, TabPanel, TabPanels, Tabs} from "@chakra-ui/react";
 import ClusterMap from "../Map/ClusterMap";
 import {useState} from "react";
 import {CardTitle} from "./CardTitle";
+import StatCard from "../Stat/StatCard";
 
 export const BarChartData = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -303,16 +289,6 @@ const PieChartData2 = {
     },
   ],
 };
-
-const StatCard = ({label, value, boxShadow, cardBgColor, titleColor}) => {
-  return (
-    <Stat bg={cardBgColor || ''} border={'1px solid lightgray'} padding={5} rounded={'lg'}
-          boxShadow={boxShadow || 'lg'}>
-      <StatLabel fontWeight={'bold'} fontSize={'xl'} color={titleColor || ''}>{label}</StatLabel>
-      <StatNumber color={'green.400'}>{value}</StatNumber>
-    </Stat>
-  )
-}
 
 const Analytics = () => {
 
