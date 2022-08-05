@@ -8,7 +8,7 @@ const TweetCard = ({image, username, tweet, date, socialMediaType, label}) => {
       <Flex flexDirection={'column'} border={'2px solid black'} rounded={'md'}>
         <Image roundedTop={'md'} src={image} alt={'Tweet Image'}/>
         <Flex flexDir={'column'} gap={2} px={4} pt={2} pb={4}>
-          {label && <Text alignSelf={'start'} px={2} rounded={'md'} border={'1px solid red'}>{label}</Text>}
+          {label && <Text textTransform={'capitalize'} alignSelf={'start'} px={2} rounded={'md'} border={'1px solid red'}>{label}</Text>}
           <Text fontWeight={'bold'} color={'gray.400'} fontSize={'sm'} letterSpacing={'wider'}>@{username}</Text>
           <Text lineHeight={'shorter'} fontFamily={'Inter'}>{tweet}</Text>
           <Flex justifyContent={'space-between'} alignItems={'center'}>

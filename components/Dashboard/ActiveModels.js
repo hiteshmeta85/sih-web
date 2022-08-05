@@ -1,9 +1,9 @@
-import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
+import {Avatar, Box, Flex, Text} from "@chakra-ui/react";
 import React from "react";
 import Image from "next/image";
 import audio from "./audio.png";
 import text from "./text.png";
-import classfication from "./classfication.png";
+import classification from "./classification.png";
 import detection from "./detection.png";
 import image from "./image.png";
 
@@ -20,22 +20,21 @@ const ActiveModels = () => {
         Active Models
       </Text>
       <Flex justifyContent={'space-between'} gap={2}>
-          <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
-            <Image src={audio}/>
-          </Avatar>
-          <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
-            <Image src={text}/>
-          </Avatar>
-          <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
-            <Image src={classfication}/>
-          </Avatar>
-          <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
-            <Image src={detection}/>
-          </Avatar>
-          <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
-            <Image src={image}/>
-          </Avatar>
-        
+        <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
+          <Image src={audio} alt={'img'}/>
+        </Avatar>
+        <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
+          <Image src={text} alt={'img'}/>
+        </Avatar>
+        <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
+          <Image src={classification} alt={'img'}/>
+        </Avatar>
+        <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
+          <Image src={detection} alt={'img'}/>
+        </Avatar>
+        <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
+          <Image src={image} alt={'img'}/>
+        </Avatar>
       </Flex>
     </Box>
   );

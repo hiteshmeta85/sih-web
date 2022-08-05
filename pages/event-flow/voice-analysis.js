@@ -8,7 +8,7 @@ const VoiceAnalysis = () => {
     <EventFlowLayout
       heading={'STEP 6 - Voice Analysis'}
       progressPercent={70}
-      forwardLink={'/geolocation-marking'}
+      forwardLink={'/event-flow/geolocation-marking'}
     >
       {/* Stats */}
       <SimpleGrid columns={{base: 2, md: 4}} gap={4}>

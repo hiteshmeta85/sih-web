@@ -16,8 +16,8 @@ import {
   Text,
   Box,
 } from "@chakra-ui/react";
-import { AiOutlineTwitter } from "react-icons/ai";
-import { TweetsData } from "../../constants/sample-data/tweetsData";
+import {AiOutlineTwitter} from "react-icons/ai";
+import {TweetsData} from "../../constants/sample-data/tweetsData";
 
 const MultiLabelTextClassification = () => {
   return (
@@ -26,7 +26,7 @@ const MultiLabelTextClassification = () => {
       progressPercent={30}
       forwardLink={"/event-flow/binary-image-classification"}
     >
-      <SimpleGrid columns={{ base: 2, md: 4 }} gap={4}>
+      <SimpleGrid columns={{base: 2, md: 4}} gap={4}>
         <StatCard
           label={"Total No of Disastrous Tweets"}
           value={750}
@@ -36,11 +36,10 @@ const MultiLabelTextClassification = () => {
         />
       </SimpleGrid>
 
-      <Heading size={"lg"} my={8}>
-        {" "}
-        Multi-label Classification
-      </Heading>
+      {/* Heading */}
+      <Heading size={"lg"} my={8}>Multi-label Classification</Heading>
 
+      {/* Multi-Label Classification Table */}
       <TableContainer>
         <Table borderWidth={"1px"}>
           <Thead>
@@ -48,9 +47,9 @@ const MultiLabelTextClassification = () => {
               <Th>ID</Th>
               <Th>Username</Th>
               <Th>Tweet</Th>
-              <Th>Label</Th>
-              <Th textAlign={"center"}>Link</Th>
+              <Th>Labels</Th>
               <Th textAlign={"center"}>Date</Th>
+              <Th textAlign={"center"}>Link</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -64,22 +63,18 @@ const MultiLabelTextClassification = () => {
                       {item.tweet}
                     </Td>
                     <Td>
-                    {item.multilabel.map((subitem, index) => {
-                      return <Box key={index}>{subitem}</Box>;
-                    })}
+                      <>
+                        {item.multilabel.map((label, index) => {
+                          return <Box key={index}>{label}</Box>;
+                        })}
+                      </>
                     </Td>
                     <Td textAlign={"center"}>{item.time}</Td>
                     <Td textAlign={"center"}>
                       <Link href={item.link} target={"_blank"}>
-                        <Icon
-                          as={AiOutlineTwitter}
-                          h={8}
-                          w={8}
-                          color={"#1DA1F2"}
-                        />
+                        <Icon as={AiOutlineTwitter} h={8} w={8} color={"#1DA1F2"}/>
                       </Link>
                     </Td>
-                    
                   </Tr>
                 );
               })}

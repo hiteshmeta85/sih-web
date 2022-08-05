@@ -1,22 +1,9 @@
 import React from "react";
 import EventFlowLayout from "./_layout";
 import StatCard from "../../components/Stat/StatCard";
-import TweetCard from "../../components/Card/TweetCard";
-import {
-  SimpleGrid,
-  Heading,
-  TableContainer,
-  Table,
-  Thead,
-  Tr,
-  Th,
-  Tbody,
-  Td,
-  Icon,
-  Link,
-} from "@chakra-ui/react";
-import { AiOutlineTwitter } from "react-icons/ai";
-import { TweetsData } from "../../constants/sample-data/tweetsData";
+import {Heading, Icon, Link, SimpleGrid, Table, TableContainer, Tbody, Td, Th, Thead, Tr,} from "@chakra-ui/react";
+import {AiOutlineTwitter} from "react-icons/ai";
+import {TweetsData} from "../../constants/sample-data/tweetsData";
 
 const BinaryTextClassification = () => {
   return (
@@ -26,7 +13,7 @@ const BinaryTextClassification = () => {
       forwardLink={"/event-flow/multi-label-text-classification"}
     >
       {/* Stats */}
-      <SimpleGrid columns={{ base: 2, md: 4 }} gap={4}>
+      <SimpleGrid columns={{base: 2, md: 4}} gap={4}>
         <StatCard
           label={"Total No of Images"}
           value={1000}
@@ -49,8 +36,10 @@ const BinaryTextClassification = () => {
         />
       </SimpleGrid>
 
+      {/* Heading 1 */}
       <Heading size={"lg"} my={8}>Disastrous Tweets</Heading>
 
+      {/* Disastrous Tweets */}
       <TableContainer>
         <Table borderWidth={"1px"}>
           <Thead>
@@ -91,8 +80,10 @@ const BinaryTextClassification = () => {
         </Table>
       </TableContainer>
 
+      {/* Heading 2 */}
       <Heading size={"lg"} my={8}>Non-Disastrous Tweets</Heading>
-      
+
+      {/* Disastrous Tweets */}
       <TableContainer>
         <Table borderWidth={"1px"}>
           <Thead>
