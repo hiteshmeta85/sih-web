@@ -145,3 +145,10 @@ body {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     appearance: none;
 }
+
+/* custom style to react slick */
+
+.slick-prev:before,
+.slick-next:before {
+    color: red !important;
+}

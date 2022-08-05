@@ -99,7 +99,7 @@ const EventFlowLayout = (
             <Text fontWeight={'bold'}>Back</Text>
           </Flex>
           {isForwardButtonPresent &&
-            <NextLink href={forwardLink} passHref>
+            <NextLink href={forwardLink || '/'} passHref>
               <Link display={'flex'} alignItems={'center'} gap={3} _hover={{textDecoration: 'none'}}>
                 <Text fontWeight={'bold'}>Next</Text>
                 <Image src={ForwardButtonIcon} alt={'Forward Button Icon'} height={'40px'} width={'40px'}/>

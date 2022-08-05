@@ -132,10 +132,10 @@ const IndividualTextAndImageAnalysis = () => {
         <GridItem>
           <SimpleGrid columns={{base: 1, md: 2}} gap={4}>
             <Box p={2}>
-              <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg"/>
+              <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg" alt={'image'}/>
             </Box>
             <Box p={2}>
-              <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg"/>
+              <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg" alt={'image'}/>
             </Box>
           </SimpleGrid>
         </GridItem>
@@ -162,7 +162,7 @@ const IndividualTextAndImageAnalysis = () => {
             <>
               {images.map((item, index) => {
                 return (
-                  <Image key={index} src={item.image}/>
+                  <Image key={index} src={item.image} alt={'image'}/>
                 )
               })}
             </>

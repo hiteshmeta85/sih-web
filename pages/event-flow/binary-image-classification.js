@@ -599,8 +599,8 @@ const BinaryImageClassification = () => {
 
       {/* Stats */}
       <SimpleGrid columns={{base: 2, md: 4}} gap={4}>
-        <StatCard label={'Total No of Images'} value={1000} cardBgColor={'blackAlpha.800'} titleColor={'white'}/>
-        <StatCard label={'Total No of Disastrous Tweets'} value={800} cardBgColor={'#F04A4A'} titleColor={'white'} subTextColor={'white'}/>
+        <StatCard label={'Total No of Images'} value={300} cardBgColor={'blackAlpha.800'} titleColor={'white'}/>
+        <StatCard label={'Total No of Disastrous Tweets'} value={200} cardBgColor={'#F04A4A'} titleColor={'white'} subTextColor={'white'}/>
         <StatCard label={'Total No of Non-Disastrous Tweets'} value={100} cardBgColor={'#3798F1'} titleColor={'white'} subTextColor={'white'}/>
       </SimpleGrid>
 
