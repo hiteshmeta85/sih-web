@@ -5,7 +5,7 @@ const AudioPlayer = ({src}) => {
   return (
     <ReactAudioPlayer
       src={src}
-      autoPlay
+      autoPlay={false}
       controls
     />
   );
