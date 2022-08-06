@@ -2,6 +2,8 @@ import React from 'react';
 import EventFlowLayout from "./_layout";
 import {Heading, SimpleGrid} from "@chakra-ui/react";
 import StatCard from "../../components/Stat/StatCard";
+import TweetWithVoices from '../../components/Card/TweetWithVoices';
+import { BinaryAudioVideoData } from './binary-video-classification';
 
 const VoiceAnalysis = () => {
   return (
@@ -22,8 +24,18 @@ const VoiceAnalysis = () => {
       <Heading size={'lg'} my={8}>Voices</Heading>
 
       {/* Voices */}
-      <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={4}>
-
+      <SimpleGrid columns={{base: 1, md: 2, lg: 3}} gap={4}>
+      <>
+       {BinaryAudioVideoData.map((item, index) => {
+        return (
+          <TweetWithVoices 
+          key={index}
+          username={item.username}
+          date={item.date}
+          audio={item.audio}/>
+        )
+       })}
+      </>
       </SimpleGrid>
     </EventFlowLayout>
   );
