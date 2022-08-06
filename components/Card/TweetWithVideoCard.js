@@ -1,13 +1,13 @@
-import { Box, Flex, Icon, Text } from "@chakra-ui/react";
+import {Box, Flex, Icon, Text} from "@chakra-ui/react";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import "@fontsource/inter";
-import { AiOutlineTwitter } from "react-icons/ai";
+import {AiOutlineTwitter} from "react-icons/ai";
 
-const VideoPlusTweetCard = ({ username, text, url, transcript, label, date }) => {
+const TweetWithVideoCard = ({username, text, url, transcript, label, date}) => {
   return (
-    <Box >
-      <Flex flexDirection={"column"} border={"2px solid black"} rounded={"md"} >
-        <VideoPlayer url={url} />
+    <Box>
+      <Flex flexDirection={"column"} border={"2px solid black"} rounded={"md"}>
+        <VideoPlayer url={url}/>
         <Flex flexDir={"column"} gap={2} px={4} pt={2} pb={4}>
           <Text
             fontWeight={"bold"}
@@ -20,19 +20,21 @@ const VideoPlusTweetCard = ({ username, text, url, transcript, label, date }) =>
           <Text lineHeight={"shorter"} fontFamily={"Inter"}>
             {text}
           </Text>
-          {label && (
-            <Text
-              textTransform={"capitalize"}
-              alignSelf={"start"}
-              fontWeight={"bold"}
-              color={"gray.400"}
-            >
-              {label}
-            </Text>
+          {(label && transcript) && (
+            <>
+              <Text
+                textTransform={"capitalize"}
+                alignSelf={"start"}
+                fontWeight={"bold"}
+                color={"gray.400"}
+              >
+                {label}
+              </Text>
+              <Text lineHeight={"shorter"} fontFamily={"Inter"}>
+                {transcript}
+              </Text>
+            </>
           )}
-          <Text lineHeight={"shorter"} fontFamily={"Inter"}>
-            {transcript}
-          </Text>
           <Flex justifyContent={"space-between"} alignItems={"center"}>
             <Text fontWeight={"bold"} color={"gray.400"} fontSize={"sm"}>
               {date}
@@ -52,4 +54,4 @@ const VideoPlusTweetCard = ({ username, text, url, transcript, label, date }) =>
   );
 };
 
-export default VideoPlusTweetCard;
+export default TweetWithVideoCard;

@@ -2,7 +2,7 @@ import {Box, Flex, Icon, Image, Text} from "@chakra-ui/react";
 import {socialMediaTypes} from "../../constants/useful-data/socialMediaTypes";
 import "@fontsource/inter"
 
-const TweetCard = ({image, username, tweet, date, socialMediaType, label}) => {
+const TweetWithImagesCard = ({image, username, tweet, date, socialMediaType, label}) => {
   return (
     <Box>
       <Flex flexDirection={'column'} border={'2px solid black'} rounded={'md'}>
@@ -28,4 +28,4 @@ const TweetCard = ({image, username, tweet, date, socialMediaType, label}) => {
   )
 }
 
-export default TweetCard
+export default TweetWithImagesCard

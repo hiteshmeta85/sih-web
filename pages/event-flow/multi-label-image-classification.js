@@ -2,7 +2,7 @@ import React from "react";
 import EventFlowLayout from "./_layout";
 import {Heading, SimpleGrid} from "@chakra-ui/react";
 import StatCard from "../../components/Stat/StatCard";
-import TweetCard from "../../components/Card/TweetCard";
+import TweetWithImagesCard from "../../components/Card/TweetWithImagesCard";
 import {TweetWithImages} from "./binary-image-classification";
 
 const MultiLabelImageClassification = () => {
@@ -31,7 +31,7 @@ const MultiLabelImageClassification = () => {
           {TweetWithImages.map((item, index) => {
             if (item.photos.length > 0)
               return (
-                <TweetCard
+                <TweetWithImagesCard
                   label="Emergency"
                   key={index}
                   tweet={item.tweet}

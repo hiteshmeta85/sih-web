@@ -2,7 +2,7 @@ import React from 'react';
 import EventFlowLayout from "./_layout";
 import {Heading, SimpleGrid} from "@chakra-ui/react";
 import StatCard from "../../components/Stat/StatCard";
-import TweetCard from "../../components/Card/TweetCard";
+import TweetWithImagesCard from "../../components/Card/TweetWithImagesCard";
 
 export const TweetWithImages = [
   {
@@ -611,7 +611,7 @@ const BinaryImageClassification = () => {
           {TweetWithImages.map((item, index) => {
             if (item.photos.length > 0)
               return (
-                <TweetCard
+                <TweetWithImagesCard
                   key={index}
                   tweet={item.tweet}
                   image={item.photos.length > 0 && item.photos[0]}
@@ -619,7 +619,7 @@ const BinaryImageClassification = () => {
                   date={item.date}
                   socialMediaType={'facebook'}
                 />
-            )
+              )
           })}
         </>
       </SimpleGrid>
@@ -631,7 +631,7 @@ const BinaryImageClassification = () => {
           {TweetWithImages.map((item, index) => {
             if (item.photos.length > 0)
               return (
-                <TweetCard
+                <TweetWithImagesCard
                   key={index}
                   tweet={item.tweet}
                   image={item.photos.length > 0 && item.photos[0]}
