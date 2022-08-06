@@ -6,7 +6,7 @@ import StatCard from "../../components/Stat/StatCard";
 const VoiceAnalysis = () => {
   return (
     <EventFlowLayout
-      heading={'STEP 6 - Voice Analysis'}
+      heading={'STEP 7 - Voice Analysis'}
       progressPercent={70}
       forwardLink={'/event-flow/geolocation-marking'}
     >

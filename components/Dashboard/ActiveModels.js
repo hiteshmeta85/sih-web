@@ -20,19 +20,19 @@ const ActiveModels = () => {
         Active Models
       </Text>
       <Flex justifyContent={'space-between'} gap={2}>
-        <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
+        <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
           <Image src={audio} alt={'img'}/>
         </Avatar>
-        <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
+        <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
           <Image src={text} alt={'img'}/>
         </Avatar>
-        <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
+        <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
           <Image src={classification} alt={'img'}/>
         </Avatar>
-        <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
+        <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
           <Image src={detection} alt={'img'}/>
         </Avatar>
-        <Avatar p={{base: 2, md: 2, lg: 4}} bg={"green.400"} size={{base: 'sm', md: 'md', lg: 'md'}}>
+        <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
           <Image src={image} alt={'img'}/>
         </Avatar>
       </Flex>

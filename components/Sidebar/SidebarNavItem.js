@@ -3,7 +3,7 @@ import {Link, ListIcon, ListItem} from "@chakra-ui/react";
 import {useRouter} from "next/router";
 import {useState} from "react";
 
-const SidebarNavItem = ({navLink, icon, name}) => {
+const SidebarNavItem = ({navLink, icon, name, isSidebarOpen}) => {
 
   const router = useRouter()
   const [isNavItemHovered, setIsNavItemHovered] = useState(false)
@@ -19,13 +19,16 @@ const SidebarNavItem = ({navLink, icon, name}) => {
           bg={router.pathname === `${navLink}` ? '#F5F5F5' : ''}
           color={router.pathname === `${navLink}` ? 'black' : ''}
           _hover={router.pathname !== `${navLink}` ? {bg: '#F5F5F5', color: 'blackAlpha.800'} : ''}
-          pl={6} pr={10} py={2} my={2}
+          pl={6}
+          pr={isSidebarOpen ? 10 : 0}
+          py={2}
+          my={2}
         >
           {icon && <ListIcon
             as={icon}
             color={(router.pathname === `${navLink}` || isNavItemHovered === true) ? '#0B2656' : 'gray.100'}
           />}
-          {name}
+          {isSidebarOpen ? name : ''}
         </ListItem>
       </Link>
     </NextLink>

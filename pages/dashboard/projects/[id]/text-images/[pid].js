@@ -5,40 +5,17 @@ import React from "react";
 import {useRouter} from "next/router";
 import IndividualTweetAnalysisLayout from "../_individualTweetAnalysisLayout";
 import Badge from "../../../../../components/Badge/Badge";
+import Carousel from "../../../../../components/Carousel/Carousel";
 
 const images = [
-  {
-    id: 1,
-    image: 'https://images.unsplash.com/photo-1547683905-f686c993aae5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmF0dXJhbCUyMGRpc2FzdGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-  },
-  {
-    id: 2,
-    image: 'https://images.unsplash.com/photo-1575916167835-a26dc9a826fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fG5hdHVyYWwlMjBkaXNhc3RlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-  },
-  {
-    id: 3,
-    image: 'https://static.toiimg.com/photo/msid-79955270/79955270.jpg',
-  },
-  {
-    id: 4,
-    image: 'https://www.incimages.com/uploaded_files/image/1920x1080/getty_844768902_299186.jpg',
-  },
-  {
-    id: 5,
-    image: 'https://i0.wp.com/eos.org/wp-content/uploads/2021/08/hurricane-eta-queja-guatemala-landslide.jpg?fit=820%2C615&ssl=1',
-  },
-  {
-    id: 6,
-    image: 'https://static.scientificamerican.com/sciam/cache/file/80FA3D01-B0B3-4409-90814E84D989F935_source.jpg',
-  },
-  {
-    id: 7,
-    image: 'https://i0.wp.com/eos.org/wp-content/uploads/2021/08/hurricane-eta-queja-guatemala-landslide.jpg?fit=820%2C615&ssl=1',
-  },
-  {
-    id: 8,
-    image: 'https://static.scientificamerican.com/sciam/cache/file/80FA3D01-B0B3-4409-90814E84D989F935_source.jpg',
-  },
+  'https://images.unsplash.com/photo-1547683905-f686c993aae5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmF0dXJhbCUyMGRpc2FzdGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+  'https://images.unsplash.com/photo-1575916167835-a26dc9a826fd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fG5hdHVyYWwlMjBkaXNhc3RlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+  'https://static.toiimg.com/photo/msid-79955270/79955270.jpg',
+  'https://www.incimages.com/uploaded_files/image/1920x1080/getty_844768902_299186.jpg',
+  'https://i0.wp.com/eos.org/wp-content/uploads/2021/08/hurricane-eta-queja-guatemala-landslide.jpg?fit=820%2C615&ssl=1',
+  'https://static.scientificamerican.com/sciam/cache/file/80FA3D01-B0B3-4409-90814E84D989F935_source.jpg',
+  'https://i0.wp.com/eos.org/wp-content/uploads/2021/08/hurricane-eta-queja-guatemala-landslide.jpg?fit=820%2C615&ssl=1',
+  'https://static.scientificamerican.com/sciam/cache/file/80FA3D01-B0B3-4409-90814E84D989F935_source.jpg',
 ]
 
 const labels = [
@@ -157,18 +134,10 @@ const IndividualTextAndImageAnalysis = () => {
             })}
           </>
         </SimpleGrid>
-        <GridItem>
-          <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={4} p={2}>
-            <>
-              {images.map((item, index) => {
-                return (
-                  <Image key={index} src={item.image} alt={'image'}/>
-                )
-              })}
-            </>
-          </SimpleGrid>
-        </GridItem>
       </Grid>
+      <Box my={6} px={1} mx={2}>
+        <Carousel images={images}/>
+      </Box>
     </IndividualTweetAnalysisLayout>
   );
 };

@@ -1,8 +1,13 @@
-import {Box, Flex, List, Text} from "@chakra-ui/react";
+import {Box, Flex, Icon, List, ListItem, Text} from "@chakra-ui/react";
 import SidebarNavItem from "./SidebarNavItem";
 import {sidebarItems} from "../../constants/useful-data/sidebarItems";
+import {BiArrowBack} from "react-icons/bi";
+import {useState} from "react";
 
 const Sidebar = () => {
+
+  const [isNavItemHovered, setIsNavItemHovered] = useState(false)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   return (
     <Box bg={'#F5F5F5'} h={'100vh'}>
@@ -32,14 +37,15 @@ const Sidebar = () => {
               pl={6}
               pr={10}
               py={2}
-              my={2}
+              my={"auto"}
+              h={12}
             >
-              Homebrew.
+              {isSidebarOpen ? 'Homebrew.' : ''}
             </Text>
             <Box>
               {sidebarItems.map((item, index) => {
                 if (item.position === 'top') {
-                  return <SidebarNavItem key={index} navLink={item.navLink} name={item.name} icon={item.icon}/>
+                  return <SidebarNavItem key={index} navLink={item.navLink} name={item.name} icon={item.icon} isSidebarOpen={isSidebarOpen}/>
                 }
               })}
             </Box>
@@ -47,9 +53,23 @@ const Sidebar = () => {
           <Box>
             {sidebarItems.map((item, index) => {
               if (item.position === 'bottom') {
-                return <SidebarNavItem key={index} navLink={item.navLink} name={item.name} icon={item.icon}/>
+                return <SidebarNavItem key={index} navLink={item.navLink} name={item.name} icon={item.icon} isSidebarOpen={isSidebarOpen}/>
               }
             })}
+            <ListItem
+              borderLeftRadius={12}
+              borderRightRadius={12}
+              onMouseOver={() => {setIsNavItemHovered(true)}}
+              onMouseOut={() => {setIsNavItemHovered(false)}}
+              pl={6}
+              pr={isSidebarOpen ? 10 : ''}
+              py={2}
+              my={2}
+              cursor={'pointer'}
+              onClick={()=>{setIsSidebarOpen(!isSidebarOpen)}}
+            >
+              <Icon as={BiArrowBack} color={'gray.100'} transform={isSidebarOpen ? '' :  'rotate(180deg)'} className={(isNavItemHovered && isSidebarOpen) ? 'horizontal-bounce': ''}/>
+            </ListItem>
           </Box>
         </List>
       </Box>
