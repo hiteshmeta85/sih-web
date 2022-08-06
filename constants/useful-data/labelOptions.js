@@ -19,4 +19,20 @@ export const labelOptions = [
     label: 'Evacuation',
     value: 'Evacuation',
   },
+  {
+    label: 'Alerts',
+    value: 'ALerts',
+  },
+  {
+    label: 'Twitter',
+    value: 'Twitter',
+  },
+  {
+    label: 'Instagram',
+    value: 'Instagram',
+  },
+  {
+    label: 'Facebook',
+    value: 'Facebook',
+  },
 ]
