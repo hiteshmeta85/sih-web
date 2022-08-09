@@ -1,4 +1,5 @@
 import EventFlowLayout from "./_layout";
+import React from "react";
 
 const Analysis = () => {
   return (

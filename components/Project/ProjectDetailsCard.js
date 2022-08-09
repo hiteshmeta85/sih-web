@@ -27,7 +27,7 @@ const ProjectDetailsCard = (props) => {
 
   //const colors = ["#4EE4C1", "#1AC0FF", "#92B4FA", "#C291FF", "#4BE0BD", "#FDA5BB"]
 
-  const handleDelete = async ({id}) => {
+  const handleDelete = async () => {
     setIsSubmitting(true)
     await axios.delete(`${process.env.NEXT_PUBLIC_API_HOST}/projects`, {data: {"projectId": id}})
       .then(function (response) {
@@ -98,7 +98,7 @@ const ProjectDetailsCard = (props) => {
           </ModalBody>
           <ModalFooter gap={3}>
             <Button
-              onClick={() => {handleDelete()}}
+              onClick={handleDelete}
               size={'sm'}
               colorScheme={'red'}
               disabled={isSubmitting}
