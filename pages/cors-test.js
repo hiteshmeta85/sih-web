@@ -6,7 +6,11 @@ const CorsTest = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/tweets/translated`)
+        axios(`${process.env.NEXT_PUBLIC_API_HOST}/tweets/all`, {
+          headers: {
+            'Access-Control-Allow-Origin': "*"
+          }
+        })
           .then(function (response) {
             console.log(response);
           })

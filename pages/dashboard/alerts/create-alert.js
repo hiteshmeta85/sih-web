@@ -70,10 +70,8 @@ const CreateAlert = () => {
                 >
                   <Flex flexDir={'column'} flex={1} gap={4}>
                     <CustomInput name={'title'} type={'text'} label={'Title'} styles={customStyle}/>
-                    <CustomInput name={'description'} as={'textarea'} type={'text'} label={'Description'} rows={5}
-                                 styles={customStyle}/>
-                    <CustomSelect isMulti={false} name={'label'} label={'Select Label'} options={labelOptions}
-                                  placeholder={'Select Labels...'}/>
+                    <CustomInput name={'description'} as={'textarea'} type={'text'} label={'Description'} rows={5} styles={customStyle}/>
+                    <CustomSelect isMulti={false} name={'label'} label={'Select Label'} options={labelOptions} placeholder={'Select Labels...'}/>
                   </Flex>
                   <Box>
                     <FormLabel style={{fontWeight: 600}}>Select Severity</FormLabel>

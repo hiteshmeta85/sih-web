@@ -17,12 +17,12 @@ const Index = () => {
     <DashboardContainer title={"Dashboard"}>
       <Box bg={"white"} p={4} rounded={'md'}>
         <Grid gridTemplateColumns={"repeat(3, 1fr)"} gap={4}>
-          <GridItem colSpan={{base: 3,lg:2}}>
+          <GridItem colSpan={{base: 3, lg: 2}}>
             <Grid gridTemplateColumns={"repeat(4, 1fr)"} gap={4}>
-              <GridItem colSpan={{base:2, lg: 1}}>
+              <GridItem colSpan={{base: 2, lg: 1}}>
                 <DataScrapper/>
               </GridItem>
-              <GridItem  colSpan={{base:2, lg: 1}}>
+              <GridItem colSpan={{base: 2, lg: 1}}>
                 <SocialMediaCard/>
               </GridItem>
               <GridItem
@@ -39,7 +39,7 @@ const Index = () => {
                 </Box>
               </GridItem>
               <GridItem
-                colSpan={{base: 4, md:2}}
+                colSpan={{base: 4, md: 2}}
                 rowSpan={2}
                 p={4}
                 border={"1px solid lightgray"}
@@ -56,7 +56,7 @@ const Index = () => {
               </GridItem>
             </Grid>
           </GridItem>
-          <GridItem colSpan={{base:3, lg: 1}}>
+          <GridItem colSpan={{base: 3, lg: 1}}>
             <Alerts/>
             <DashTabs/>
           </GridItem>

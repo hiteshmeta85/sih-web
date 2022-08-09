@@ -10,7 +10,6 @@ const CustomButton = ({label, handleSubmit, isSubmitting = false}) => {
       textColor={"white"}
       _hover={{bg: "blackAlpha.700"}}
       _active={{bg: "blackAlpha.800"}}
-      alignSelf={"start"}
       px={12}
       isDisabled={isSubmitting}
     >

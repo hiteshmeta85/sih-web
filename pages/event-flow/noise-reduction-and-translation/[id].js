@@ -9,7 +9,7 @@ const NoiseReductionAndTranslation = () => {
 
   return (
     <EventFlowLayout
-      heading={'STEP 6 - Video Object Detection'}
+      heading={'STEP 7 - Noise Reduction and Translation'}
       progressPercent={60}
       isForwardButtonPresent={false}
     >

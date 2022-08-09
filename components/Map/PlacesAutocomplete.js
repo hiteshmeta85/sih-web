@@ -19,8 +19,8 @@ const PlacesAutocomplete = ({setSelected, setFieldValue}) => {
     const results = await getGeocode({address});
     const {lat, lng} = await getLatLng(results[0]);
     setSelected({lat, lng});
-    setFieldValue("geolocation_lng", lat)
-    setFieldValue("geolocation_lat", lng)
+    setFieldValue("geolocation_lng", lng)
+    setFieldValue("geolocation_lat", lat)
     setFieldValue("address", address)
   };
 

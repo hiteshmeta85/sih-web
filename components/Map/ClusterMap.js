@@ -1,13 +1,15 @@
 import React, {useCallback, useMemo, useRef, useState} from 'react'
 import {GoogleMap, Marker, MarkerClusterer, useLoadScript} from '@react-google-maps/api';
-import {googleMapsApiKey, libraries, locations, mapCenter} from "./MapConfigAndDefaults";
+import {googleMapsApiKey, libraries, mapCenter} from "./MapConfigAndDefaults";
 import {Box, Button, Flex, Text} from "@chakra-ui/react";
 import {GrRefresh} from "react-icons/gr";
 import {ImCancelCircle} from "react-icons/im";
 import {BiSelectMultiple} from "react-icons/bi";
 import {labelOptions} from "../../constants/useful-data/labelOptions";
 
-const ClusterMap = ({height}) => {
+const ClusterMap = ({height, locations}) => {
+
+  const [visibleLocations, setVisibleLocations] = useState(locations)
 
   const {isLoaded} = useLoadScript({
     googleMapsApiKey,
@@ -121,8 +123,8 @@ const ClusterMap = ({height}) => {
         {data && <>
           <MarkerClusterer>
             {(clusterer) =>
-              locations.map((location, index) => (
-                <Marker key={index} position={location} clusterer={clusterer}/>
+              visibleLocations.map((location, index) => (
+                <Marker key={index} position={{lat: location.geolocation_lat, lng: location.geolocation_lng}} clusterer={clusterer}/>
               ))
             }
           </MarkerClusterer>

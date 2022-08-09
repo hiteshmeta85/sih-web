@@ -15,7 +15,7 @@ const BinaryTextClassification = () => {
       {/* Stats */}
       <SimpleGrid columns={{base: 2, md: 4}} gap={4}>
         <StatCard
-          label={"Total No of Images"}
+          label={"Total No of Tweets"}
           value={1000}
           cardBgColor={"blackAlpha.800"}
           titleColor={"white"}
