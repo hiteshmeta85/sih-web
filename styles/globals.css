@@ -15,10 +15,14 @@ a {
     box-sizing: border-box;
 }
 
+/* custom style nprogress bar */
+
 #nprogress .bar {
     background: #6170F7 !important;
     height: 2px !important;
 }
+
+/* menu item style */
 
 .menu-item {
     text-decoration: none;
@@ -43,6 +47,8 @@ a {
     background: linear-gradient(to bottom, yellow 0%, yellow 100%) no-repeat bottom;
     background-size: calc(100%) calc(50%);
 }
+
+/* animations */
 
 @keyframes horizontal-bounce {
     0%, 20%, 50%, 80%, 100% {
@@ -90,15 +96,6 @@ a {
     margin-right: 5px;
 }
 
-.ping {
-    background: #fff;
-    border-radius: 50%;
-    border: 3px solid #222;
-    width: 10px;
-    height: 10px;
-    animation: pingAnimation 1.5s ease-out infinite;
-}
-
 @keyframes pingAnimation {
     0% {
         background: #fff;
@@ -114,6 +111,15 @@ a {
     }
 }
 
+.ping {
+    background: #fff;
+    border-radius: 50%;
+    border: 3px solid #222;
+    width: 10px;
+    height: 10px;
+    animation: pingAnimation 1.5s ease-out infinite;
+}
+
 /*
 body {
     animation: fadeInAnimation ease 1s;
@@ -121,6 +127,8 @@ body {
     animation-fill-mode: forwards;
 }
 */
+
+/* custom style combobox input */
 
 .combobox-input {
     width: 100%;
@@ -150,44 +158,5 @@ body {
 
 .slick-prev:before,
 .slick-next:before {
-    color: red !important;
-}
-
-h1 {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    color: #281414;
-    z-index: 10;
-    margin: 0;
-    padding: 0;
-}
-
-.search {
-    position: absolute;
-    top: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 400px;
-    z-index: 10;
-}
-
-.search input {
-    padding: 0.5rem;
-    font-size: 1.5rem;
-    width: 100%;
-}
-
-.locate {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: none;
-    border: none;
-    z-index: 10;
-}
-.locate img {
-    width: 30px;
-    cursor: pointer;
+    color: #1C9BEF !important;
 }
