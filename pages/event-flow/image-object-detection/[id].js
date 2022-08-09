@@ -1,6 +1,6 @@
 import EventFlowLayout from "../_layout";
 import {Box, Flex, Heading, Image, SimpleGrid, Text} from "@chakra-ui/react";
-import Carousel from "../../../components/Carousel/Carousel";
+import ImageCarousel from "../../../components/Carousel/ImageCarousel";
 import Badge from "../../../components/Badge/Badge";
 import React from "react";
 
@@ -50,7 +50,7 @@ const ImageObjectDetection = () => {
       </SimpleGrid>
 
       <Box mt={12}>
-        <Carousel images={images}/>
+        <ImageCarousel images={images}/>
       </Box>
     </EventFlowLayout>
   );

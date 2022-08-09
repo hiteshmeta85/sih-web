@@ -5,7 +5,7 @@ import React from "react";
 import {useRouter} from "next/router";
 import IndividualTweetAnalysisLayout from "../_individualTweetAnalysisLayout";
 import Badge from "../../../../../components/Badge/Badge";
-import Carousel from "../../../../../components/Carousel/Carousel";
+import ImageCarousel from "../../../../../components/Carousel/ImageCarousel";
 
 const images = [
   'https://images.unsplash.com/photo-1547683905-f686c993aae5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmF0dXJhbCUyMGRpc2FzdGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
@@ -136,7 +136,7 @@ const IndividualTextAndImageAnalysis = () => {
         </SimpleGrid>
       </Grid>
       <Box my={6} px={1} mx={2}>
-        <Carousel images={images}/>
+        <ImageCarousel images={images}/>
       </Box>
     </IndividualTweetAnalysisLayout>
   );

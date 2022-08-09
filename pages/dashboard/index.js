@@ -1,4 +1,4 @@
-import {Box, Grid, GridItem} from "@chakra-ui/react";
+import {Box, Grid, GridItem, Text} from "@chakra-ui/react";
 import React from "react";
 import {BarChart} from "../../components/Charts/BarChart";
 import Alerts from "../../components/Dashboard/Alerts";
@@ -11,11 +11,22 @@ import {CardTitle} from "../../components/Analysis/CardTitle";
 import DataScrapper from "../../components/Dashboard/DataScrapper";
 import SocialMediaCard from "../../components/Dashboard/SocialMediaCard";
 import ClusterMap from "../../components/Map/ClusterMap";
+import TweetCarousel from "../../components/Carousel/TweetCarousel";
 
 const Index = () => {
   return (
     <DashboardContainer title={"Dashboard"}>
       <Box bg={"white"} p={4} rounded={'md'}>
+        <Box
+          border={"1px solid lightgray"}
+          borderRadius={"md"}
+          p={4} mb={4}
+        >
+          <CardTitle primaryText={'Trending Tweets'}/>
+          <Box py={4} px={8}>
+            <TweetCarousel data={['flood', 'earthquake', 'hospital', 'emergency', 'medical', 'assam', 'kerala', 'life', 'death', 'danger']}/>
+          </Box>
+        </Box>
         <Grid gridTemplateColumns={"repeat(3, 1fr)"} gap={4}>
           <GridItem colSpan={{base: 3, lg: 2}}>
             <Grid gridTemplateColumns={"repeat(4, 1fr)"} gap={4}>

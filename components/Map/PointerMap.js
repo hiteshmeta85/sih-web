@@ -4,7 +4,7 @@ import usePlacesAutocomplete, {getGeocode, getLatLng,} from "use-places-autocomp
 import {Combobox, ComboboxInput, ComboboxList, ComboboxOption, ComboboxPopover} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import {googleMapsApiKey, libraries, mapCenter} from "./MapConfigAndDefaults";
-import {Box, Flex, Select} from "@chakra-ui/react";
+import {Box, Flex, Select, Text} from "@chakra-ui/react";
 import CustomSubmitButton from "../Button/CustomSubmitButton";
 
 const options = {
@@ -63,10 +63,11 @@ export default function PointerMap({height}) {
 
   return (
     <Box>
-      <Flex justifyContent={'end'} my={4}>
+      <Flex justifyContent={'end'} alignItems={'center'} my={4} gap={4}>
+        <Text fontWeight={"bold"}>Project Id: </Text>
         <Select value={selectedOption} onChange={(e) => handleChange(e)} w={'150px'}>
-          <option value="One">One</option>
-          <option value="Two">Two</option>
+          <option value={1}>1</option>
+          <option value={2}>2</option>
         </Select>
       </Flex>
       <Flex
