@@ -1,4 +1,4 @@
-export default [
+export const mapStyles = [
   {
     featureType: "all",
     elementType: "geometry.fill",

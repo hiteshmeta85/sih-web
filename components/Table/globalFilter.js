@@ -13,7 +13,7 @@ export function GlobalFilter({
 
   return (
     <div>
-      <p style={{fontSize: 'medium'}}>Global Search:</p>
+      <p style={{fontSize: 'medium', fontWeight: 'bold'}}>Global Search</p>
       <input
         value={value || ""}
         onChange={e => {
