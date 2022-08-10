@@ -6,6 +6,7 @@ import {DefaultColumnFilter} from "./defaultColumnFilter";
 import {GlobalFilter} from "./globalFilter";
 import TablePagination from "./TablePagination";
 import {Box} from "@chakra-ui/react";
+import {BiDownArrow, BiUpArrow} from "react-icons/bi";
 
 function ReactTableComponent({columns, data}) {
 
@@ -51,11 +52,19 @@ function ReactTableComponent({columns, data}) {
       <table className="table" {...getTableProps()}>
         <thead>
         {headerGroups.map((headerGroup, index) => (
-          <tr key={index} {...headerGroup.getHeaderGroupProps()} style={{borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray'}}>
+          <tr key={index} {...headerGroup.getHeaderGroupProps()}
+              style={{borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray'}}>
             {headerGroup.headers.map((column, index) => (
-              <th key={index} {...column.getHeaderProps(column.getSortByToggleProps())} style={{padding: '20px 10px', textAlign: 'left', cursor: 'pointer'}}>
+              <th key={index} {...column.getHeaderProps(column.getSortByToggleProps())}
+                  style={{padding: '20px 10px', textAlign: 'left', cursor: 'pointer'}}>
                 {column.render('Header')}
-                <div style={{display: 'inline', margin: '0 8px'}}>{column.isSorted ? column.isSortedDesc ? ' 🔽' : ' 🔼' : ''}</div>
+                <div style={{display: 'inline', margin: '0 8px'}}>
+                  {column.isSorted ? column.isSortedDesc ?
+                      <BiUpArrow style={{display: 'inline-block', position: 'relative', top: '4px'}}/>
+                      :
+                      <BiDownArrow style={{display: 'inline-block', position: 'relative', top: '3px'}}/>
+                    : ''}
+                </div>
                 <div>{column.canFilter ? column.render('Filter') : null}</div>
               </th>
             ))}
@@ -66,9 +75,14 @@ function ReactTableComponent({columns, data}) {
         {page.map((row, index) => {
           prepareRow(row)
           return (
-            <tr key={index} {...row.getRowProps()} style={{borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray'}}>
+            <tr key={index} {...row.getRowProps()}
+                style={{borderTop: '1px solid lightgray', borderBottom: '1px solid lightgray'}}>
               {row.cells.map((cell, index) => {
-                return <td key={index} {...cell.getCellProps()} style={{maxWidth: '400px', minWidth: '200px', padding: '4px 12px'}}>{cell.render('Cell')}</td>
+                return <td key={index} {...cell.getCellProps()} style={{
+                  maxWidth: '400px',
+                  minWidth: '200px',
+                  padding: '4px 12px'
+                }}>{cell.render('Cell')}</td>
               })}
             </tr>
           )
