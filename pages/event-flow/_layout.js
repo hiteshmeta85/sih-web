@@ -7,6 +7,7 @@ import ForwardButtonIcon from "./ForwardButton.svg"
 import Image from "next/image";
 import Router from "next/router";
 import PropTypes from 'prop-types';
+import {DoughnutChart} from "../../components/Charts/DoughnutChart";
 
 const EventFlowLayout = (
   {
@@ -49,15 +50,31 @@ const EventFlowLayout = (
                 fontWeight={'bold'}
                 color={'gray.500'}
               >
-                <Text as={'span'} className={isDashboardLinkHovered ? 'horizontal-bounce' : ''}><IoIosArrowRoundBack/></Text>Dashboard
+                <Text as={'span'}
+                      className={isDashboardLinkHovered ? 'horizontal-bounce' : ''}><IoIosArrowRoundBack/></Text>Dashboard
               </Link>
             </NextLink>
             {/* Heading */}
             <Heading size={'lg'} mt={4}>{heading}</Heading>
           </Box>
-          <CircularProgress value={progressPercent} color='black' size={'80px'}>
-            <CircularProgressLabel fontFamily={'Open Sans'}>{progressPercent}%</CircularProgressLabel>
-          </CircularProgress>
+
+          <Box h={'80px'} w={'80px'}>
+            <DoughnutChart data={{
+              labels: [],
+              datasets: [
+                {
+                  label: 'Progress',
+                  data: [progressPercent, 100 - progressPercent],
+                  backgroundColor: [
+                    'rgba(0,0,0,0.8)',
+                    'white',
+                  ],
+                  borderColor: ['rgba(0,0,0,0.8)'],
+                  borderWidth: 2,
+                },
+              ],
+            }}/>
+          </Box>
         </Flex>
       </Box>
 
