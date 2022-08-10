@@ -1,4 +1,4 @@
-import {Box, Grid, GridItem, Text} from "@chakra-ui/react";
+import {Box, Grid, GridItem} from "@chakra-ui/react";
 import React from "react";
 import {BarChart} from "../../components/Charts/BarChart";
 import Alerts from "../../components/Dashboard/Alerts";

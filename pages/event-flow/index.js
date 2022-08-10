@@ -1,4 +1,8 @@
 import EventFlowLayout from "./_layout";
+import ModelDescriptionCarousel from "../../components/Carousel/ModelDescriptionCarousel";
+import React from "react";
+import {modelDescriptionData} from "../../constants/useful-data/modelDescriptionData";
+import {Heading} from "@chakra-ui/react";
 
 const Index = () => {
   return (
@@ -7,7 +11,8 @@ const Index = () => {
       progressPercent={0}
       forwardLink={'/event-flow/raw-data-extraction'}
     >
-      EF
+      <Heading size={'lg'} mb={4} mx={4}>Machine Learning Models</Heading>
+      <ModelDescriptionCarousel data={modelDescriptionData}/>
     </EventFlowLayout>
   );
 };
