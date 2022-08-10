@@ -65,6 +65,7 @@ const Menu = () => {
               )
             })}
             <Text my={2}><Link href='/auth/login'>Login</Link></Text>
+            <Text my={2}><Link href='/dashboard'>Dashboard</Link></Text>
           </DrawerBody>
           <DrawerFooter>
             <Button

@@ -47,6 +47,11 @@ const Navbar = () => {
             gap={4}
             align={'center'}
           >
+            <NextLink href='/dashboard' passHref>
+              <Link _hover={{textDecoration: 'none'}} className={'menu-item'}>
+                <Text fontWeight={'semibold'}>Dashboard</Text>
+              </Link>
+            </NextLink>
             <NextLink href='/auth/login' passHref>
               <Link _hover={{textDecoration: 'none'}} className={'menu-item'}>
                 <Text fontWeight={'semibold'}>Login</Text>
