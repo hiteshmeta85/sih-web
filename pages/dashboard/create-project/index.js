@@ -109,7 +109,9 @@ const Index = () => {
                 <ErrorMessage name={"disasterType"}/>
               </Box>
             </Box>
-            <CustomButton label={"Next"} handleSubmit={handleSubmit} isSubmitting={isSubmitting}/>
+            <Box alignSelf={'start'}>
+              <CustomButton label={"Next"} handleSubmit={handleSubmit} isSubmitting={isSubmitting}/>
+            </Box>
             {errorMessage && <Text fontWeight={600} color={'red.500'}>{errorMessage}</Text>}
           </Flex>
         </Form>

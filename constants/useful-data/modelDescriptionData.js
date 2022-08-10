@@ -33,7 +33,7 @@ export const modelDescriptionData = [
     subTextColor: 'black'
   },
   {
-    title: 'Translation Model',
+    title: 'Text Translation Model',
     text: 'NLLB (Dense Distilled)',
     subText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur commodi consequatur ducimus error est excepturi expedita fugit laboriosam minus nulla pariatur praesentium quod reiciendis, repudiandae tenetur velit veniam voluptatibus?',
     stepCount: 3,
