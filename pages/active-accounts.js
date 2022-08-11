@@ -148,8 +148,6 @@ export async function getServerSideProps() {
     activeAccounts = null
   }
 
-  console.log(activeAccounts)
-
   return {
     props: {
       activeAccounts

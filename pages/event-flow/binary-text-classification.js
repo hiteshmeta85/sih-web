@@ -2,10 +2,10 @@ import React from "react";
 import EventFlowLayout from "./_layout";
 import StatCard from "../../components/Stat/StatCard";
 import {Heading, Icon, Link, SimpleGrid, Table, TableContainer, Tbody, Td, Th, Thead, Tr,} from "@chakra-ui/react";
-import {AiOutlineTwitter} from "react-icons/ai";
-import {TweetsData} from "../../constants/sample-data/tweetsData";
+import {AiOutlineFacebook, AiOutlineTwitter} from "react-icons/ai";
+import axios from "axios";
 
-const BinaryTextClassification = () => {
+const BinaryTextClassification = ({twitterData, facebookData, instagramData}) => {
   return (
     <EventFlowLayout
       heading={"Step 2 - Binary Classification of Text"}
@@ -16,20 +16,20 @@ const BinaryTextClassification = () => {
       <SimpleGrid columns={{base: 2, md: 4}} gap={4}>
         <StatCard
           label={"Total No of Tweets"}
-          value={1000}
+          value={twitterData.length + facebookData.length + instagramData.length}
           cardBgColor={"blackAlpha.800"}
           titleColor={"white"}
         />
         <StatCard
           label={"Total No of Disastrous Tweets"}
-          value={800}
+          value={(twitterData.filter(item => item.prediction === 1).length) + (facebookData.filter(item => item.prediction === 1).length) + (instagramData.filter(item => item.prediction === 1).length)}
           cardBgColor={"#F04A4A"}
           titleColor={"white"}
           subTextColor={"white"}
         />
         <StatCard
           label={"Total No of Non-Disastrous Tweets"}
-          value={100}
+          value={(twitterData.length + facebookData.length + instagramData.length) - (twitterData.filter(item => item.prediction === 1).length) + (facebookData.filter(item => item.prediction === 1).length) + (instagramData.filter(item => item.prediction === 1).length)}
           cardBgColor={"#3798F1"}
           titleColor={"white"}
           subTextColor={"white"}
@@ -53,27 +53,33 @@ const BinaryTextClassification = () => {
           </Thead>
           <Tbody>
             <>
-              {TweetsData.map((item, index) => {
-                return (
-                  <Tr key={index}>
-                    <Td>{index}</Td>
-                    <Td>{item.username}</Td>
-                    <Td maxW={"xs"} whiteSpace={"initial"}>
-                      {item.tweet}
-                    </Td>
-                    <Td textAlign={"center"}>{item.time}</Td>
-                    <Td textAlign={"center"}>
-                      <Link href={item.link} target={"_blank"}>
-                        <Icon
-                          as={AiOutlineTwitter}
-                          h={8}
-                          w={8}
-                          color={"#1DA1F2"}
-                        />
-                      </Link>
-                    </Td>
-                  </Tr>
-                );
+              {twitterData.map((item, index) => {
+                if (item.prediction === 1)
+                  return (
+                    <Tr key={index}>
+                      <Td>{item.id}</Td>
+                      <Td>{item.username}</Td>
+                      <Td maxW={'xs'} whiteSpace={'initial'}>{item.tweet}</Td>
+                      <Td textAlign={'center'}>{item.created_at}</Td>
+                      <Td textAlign={'center'}><Link href={item.link} target={'_blank'}>
+                        <Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/></Link>
+                      </Td>
+                    </Tr>
+                  )
+              })}
+              {facebookData.map((item, index) => {
+                if (item.prediction === 1)
+                  return (
+                    <Tr key={index}>
+                      <Td>{item.id}</Td>
+                      <Td>{item.username}</Td>
+                      <Td maxW={'xs'} whiteSpace={'initial'}>{item.post_text}</Td>
+                      <Td textAlign={'center'}>{item.time}</Td>
+                      <Td textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
+                        <Icon as={AiOutlineFacebook} h={8} w={8} color={'#4167B2'}/></Link>
+                      </Td>
+                    </Tr>
+                  )
               })}
             </>
           </Tbody>
@@ -97,27 +103,33 @@ const BinaryTextClassification = () => {
           </Thead>
           <Tbody>
             <>
-              {TweetsData.map((item, index) => {
-                return (
-                  <Tr key={index}>
-                    <Td>{index}</Td>
-                    <Td>{item.username}</Td>
-                    <Td maxW={"xs"} whiteSpace={"initial"}>
-                      {item.tweet}
-                    </Td>
-                    <Td textAlign={"center"}>{item.time}</Td>
-                    <Td textAlign={"center"}>
-                      <Link href={item.link} target={"_blank"}>
-                        <Icon
-                          as={AiOutlineTwitter}
-                          h={8}
-                          w={8}
-                          color={"#1DA1F2"}
-                        />
-                      </Link>
-                    </Td>
-                  </Tr>
-                );
+              {twitterData.map((item, index) => {
+                if (item.prediction === 0)
+                  return (
+                    <Tr key={index}>
+                      <Td>{item.id}</Td>
+                      <Td>{item.username}</Td>
+                      <Td maxW={'xs'} whiteSpace={'initial'}>{item.tweet}</Td>
+                      <Td textAlign={'center'}>{item.created_at}</Td>
+                      <Td textAlign={'center'}><Link href={item.link} target={'_blank'}>
+                        <Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/></Link>
+                      </Td>
+                    </Tr>
+                  )
+              })}
+              {facebookData.map((item, index) => {
+                if (item.prediction === 0)
+                  return (
+                    <Tr key={index}>
+                      <Td>{item.id}</Td>
+                      <Td>{item.username}</Td>
+                      <Td maxW={'xs'} whiteSpace={'initial'}>{item.post_text}</Td>
+                      <Td textAlign={'center'}>{item.time}</Td>
+                      <Td textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
+                        <Icon as={AiOutlineFacebook} h={8} w={8} color={'#4167B2'}/></Link>
+                      </Td>
+                    </Tr>
+                  )
               })}
             </>
           </Tbody>
@@ -128,3 +140,30 @@ const BinaryTextClassification = () => {
 };
 
 export default BinaryTextClassification;
+
+export async function getServerSideProps() {
+
+  let twitterData, facebookData, instagramData
+
+  try {
+    const res = await axios.get(`http://4e51-203-115-115-170.ngrok.io/demo/api/event-flow/binary-text-classification`)
+    if (res.data) {
+      twitterData = res.data.data.twitterData
+      facebookData = res.data.data.facebookData
+    }
+  } catch (e) {
+    console.log(e)
+    twitterData = []
+    facebookData = []
+  }
+
+  instagramData = []
+
+  return {
+    props: {
+      twitterData,
+      facebookData,
+      instagramData
+    }
+  }
+}
