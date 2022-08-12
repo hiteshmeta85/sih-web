@@ -1,4 +1,15 @@
-import {Box, Divider, Flex, FormLabel, Text} from "@chakra-ui/react";
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Box,
+  Divider,
+  Flex,
+  FormLabel,
+  Text
+} from "@chakra-ui/react";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import DashboardContainer from "../../_layout";
 import hashtagSchema from "../../../../lib/schemas/hashtagSchema";
@@ -11,6 +22,50 @@ import Error from "../../../../components/Error/Error";
 const SelectHashtags = ({hashtags, projectName, disasterType, id}) => {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('')
+  const states = [{
+    "state": "Andhra Pradesh",
+    "districts": [
+      "Anantapur",
+      "Chittoor",
+      "East Godavari",
+      "Guntur",
+      "Krishna",
+      "Kurnool",
+      "Nellore",
+      "Prakasam",
+      "Srikakulam",
+      "Visakhapatnam",
+      "Vizianagaram",
+      "West Godavari",
+      "YSR Kadapa"
+    ]
+  },
+    {
+      "state": "Arunachal Pradesh",
+      "districts": [
+        "Tawang",
+        "West Kameng",
+        "East Kameng",
+        "Papum Pare",
+        "Kurung Kumey",
+        "Kra Daadi",
+        "Lower Subansiri",
+        "Upper Subansiri",
+        "West Siang",
+        "East Siang",
+        "Siang",
+        "Upper Siang",
+        "Lower Siang",
+        "Lower Dibang Valley",
+        "Dibang Valley",
+        "Anjaw",
+        "Lohit",
+        "Namsai",
+        "Changlang",
+        "Tirap",
+        "Longding"
+      ]
+    }]
 
   return (
     <DashboardContainer title={"Create Project - Hashtags"}>
@@ -41,11 +96,6 @@ const SelectHashtags = ({hashtags, projectName, disasterType, id}) => {
               {disasterType}
             </Text>
           </Flex>
-          <Box>
-            <Text fontWeight={800} fontSize={"xl"}>Select Most Appropriate Hashtags</Text>
-            <Text color={"gray.600"} fontWeight={"bold"}>Duis ut placerat libero. Vivamus eros est, malesuada sit amet
-              vestibulum in, mollis vel velit.</Text>
-          </Box>
           <Formik
             initialValues={{
               hashtags: [],
@@ -53,6 +103,7 @@ const SelectHashtags = ({hashtags, projectName, disasterType, id}) => {
             validationSchema={hashtagSchema}
             onSubmit={async (values, {setSubmitting, resetForm}) => {
               setSubmitting(true);
+              console.log(values)
               try {
                 await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/projects/create-project/select-hashtags/${id}`,
                   {selectedHashTags: values.hashtags})
@@ -76,7 +127,12 @@ const SelectHashtags = ({hashtags, projectName, disasterType, id}) => {
               isSubmitting
             }) => (
               <Form>
-                <Flex alignItems={'center'} gap={2}>
+                <Box>
+                  <Text fontWeight={800} fontSize={"xl"}>Select Most Appropriate Hashtags</Text>
+                  <Text color={"gray.600"} fontWeight={"bold"}>Duis ut placerat libero. Vivamus eros est, malesuada sit
+                    amet vestibulum in, mollis vel velit.</Text>
+                </Box>
+                <Flex alignItems={'center'} gap={2} mt={2}>
                   <Text color={"gray.600"} fontWeight={"bold"}>Hashtags</Text>
                   <Text className={'blink'}></Text>
                 </Flex>
@@ -115,6 +171,61 @@ const SelectHashtags = ({hashtags, projectName, disasterType, id}) => {
                     fontWeight={'semibold'}>
                     <ErrorMessage name={"hashtags"}/>
                   </Box>
+                </Box>
+                <Box my={4}>
+                  <Text fontWeight={800} fontSize={"xl"}>Select States & Districts</Text>
+                  <Text color={"gray.600"} fontWeight={"bold"}>Duis ut placerat libero. Vivamus eros est, malesuada sit
+                    amet vestibulum in, mollis vel velit.</Text>
+                </Box>
+                <Box mt={3} mb={6}>
+                  <Flex
+                    flexDir={"column"}
+                    border={"1px solid #E8EBED"}
+                    maxW={"md"}
+                    borderRadius={"lg"}
+                    shadow={"sm"}
+                    px={4} pt={3} pb={2}
+                  >
+                    {states && states.map((item, index) => {
+                      return (
+                        <Flex key={index} gap={2} alignItems={'start'}>
+                          <Field
+                            type="checkbox"
+                            name="hashtags"
+                            value={item.state}
+                            style={{position: "relative", top: "11px"}}
+                          />
+                          <Accordion allowToggle flex={1}>
+                            <AccordionItem borderTop={'none'}>
+                              <AccordionButton py={1} px={0} justifyContent={'space-between'}>
+                                  <FormLabel>
+                                    {item.state}
+                                  </FormLabel>
+                                <AccordionIcon/>
+                              </AccordionButton>
+                              <AccordionPanel pb={4}>
+                                {item.districts.map((district, index) => {
+                                  return (
+                                    <Flex key={index} gap={2}>
+                                      <Field
+                                        type="checkbox"
+                                        name="hashtags"
+                                        value={district}
+                                        style={{position: "relative", top: "-3px"}}
+                                      />
+                                      <FormLabel>
+                                        {district}
+                                      </FormLabel>
+                                    </Flex>
+                                  )
+                                })}
+                              </AccordionPanel>
+                            </AccordionItem>
+                          </Accordion>
+                        </Flex>
+                      )
+                    })}
+                  </Flex>
                 </Box>
                 <CustomButton label={"Next"} handleSubmit={handleSubmit} isSubmitting={isSubmitting}/>
                 {errorMessage && <Text fontWeight={600} color={'red.500'} my={4}>{errorMessage}</Text>}
