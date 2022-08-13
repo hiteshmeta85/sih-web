@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import DashboardContainer from "../../_layout";
 import {Form, Formik} from "formik";
-import SearchPlacesMap from "../../../../components/Map/SearchPlacesMap";
+import SearchAndMarkLocation from "../../../../components/Map/SearchAndMarkLocation";
 import CustomSubmitButton from "../../../../components/Button/CustomSubmitButton";
 import {Box, Flex, Text} from "@chakra-ui/react";
 import axios from "axios";
@@ -73,7 +73,7 @@ const SelectLocation = ({projectName, disasterType, id}) => {
             }) => (
               <Form>
                 <Box py={4}>
-                  <SearchPlacesMap label={'Search Geolocation'} setFieldValue={setFieldValue} mapHeight={'400px'}/>
+                  <SearchAndMarkLocation label={'Search Geolocation'} setFieldValue={setFieldValue} mapHeight={'400px'}/>
                 </Box>
                 <CustomSubmitButton label={'Next'} isSubmitting={isSubmitting} handleSubmit={handleSubmit}/>
                 {errorMessage && <Text fontWeight={600} color={'red.500'} my={4}>{errorMessage}</Text>}

@@ -1,11 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import {GoogleMap, InfoWindow, Marker, useLoadScript} from "@react-google-maps/api";
-import usePlacesAutocomplete, {getGeocode, getLatLng,} from "use-places-autocomplete";
-import {Combobox, ComboboxInput, ComboboxList, ComboboxOption, ComboboxPopover} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import {googleMapsApiKey, libraries, mapCenter} from "./MapConfigAndDefaults";
-import {Box, Flex, Select, Text} from "@chakra-ui/react";
+import {Flex} from "@chakra-ui/react";
 import CustomSubmitButton from "../Button/CustomSubmitButton";
+import {SearchLocation} from "./SearchLocation";
 
 const options = {
   disableDefaultUI: false,
@@ -20,18 +19,8 @@ export default function PointerMap({height}) {
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
 
-  const [selectedOption, setSelectedOption] = useState("One")
-
   const onMapClick = React.useCallback((e) => {
     setMarkers(() =>
-      // [
-      //   ...current,
-      //   {
-      //     lat: e.latLng.lat(),
-      //     lng: e.latLng.lng(),
-      //     time: new Date(),
-      //   },
-      // ]
       [{
         lat: e.latLng.lat(),
         lng: e.latLng.lng(),
@@ -57,24 +46,13 @@ export default function PointerMap({height}) {
     console.log({geolocation_lng: markers[0].lng, geolocation_lat: markers[0].lat})
   }
 
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value)
-  }
-
   return (
-    <Box>
-      <Flex justifyContent={'end'} alignItems={'center'} my={4} gap={4}>
-        <Text fontWeight={"bold"}>Project Id: </Text>
-        <Select value={selectedOption} onChange={(e) => handleChange(e)} w={'150px'}>
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-        </Select>
-      </Flex>
+    <>
       <Flex
         justifyContent={'space-between'}
         alignItems={'center'}
       >
-        <Search panTo={panTo}/>
+        <SearchLocation panTo={panTo}/>
         {markers.length > 0 &&
           <CustomSubmitButton handleSubmit={handleSubmit} label={'Add Relief Camp'}/>
         }
@@ -128,59 +106,7 @@ export default function PointerMap({height}) {
           </InfoWindow>
         ) : null}
       </GoogleMap>
-    </Box>
-  );
-}
-
-function Search({panTo}) {
-  const {
-    ready,
-    value,
-    suggestions: {status, data},
-    setValue,
-    clearSuggestions,
-  } = usePlacesAutocomplete();
-
-  const handleInput = (e) => {
-    setValue(e.target.value);
-  };
-
-  const handleSelect = async (address) => {
-    setValue(address, false);
-    clearSuggestions();
-
-    try {
-      const results = await getGeocode({address});
-      const {lat, lng} = await getLatLng(results[0]);
-      panTo({lat, lng});
-    } catch (error) {
-      console.log("Error: ", error);
-    }
-  };
-
-  return (
-    <Box
-      my={3}
-      width={'300px'}
-    >
-      <Combobox onSelect={handleSelect}>
-        <ComboboxInput
-          value={value}
-          onChange={handleInput}
-          disabled={!ready}
-          className="combobox-input"
-          placeholder="Search your location"
-        />
-        <ComboboxPopover>
-          <ComboboxList>
-            {status === "OK" &&
-              data.map(({id, description}) => (
-                <ComboboxOption key={id} value={description}/>
-              ))}
-          </ComboboxList>
-        </ComboboxPopover>
-      </Combobox>
-    </Box>
+    </>
   );
 }
 

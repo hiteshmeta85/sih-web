@@ -20,7 +20,7 @@ const SidebarNavItem = ({navLink, icon, name, isSidebarOpen}) => {
           color={router.pathname === `${navLink}` ? 'black' : ''}
           _hover={router.pathname !== `${navLink}` ? {bg: '#F5F5F5', color: 'blackAlpha.800'} : ''}
           pl={6}
-          pr={isSidebarOpen ? 10 : 0}
+          pr={isSidebarOpen ? 14 : 0}
           py={2}
           my={2}
         >

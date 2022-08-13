@@ -5,7 +5,7 @@ import {Box, Text} from "@chakra-ui/react";
 import PlacesAutocomplete from "./PlacesAutocomplete";
 import {googleMapsApiKey, libraries, mapCenter} from "./MapConfigAndDefaults";
 
-const SearchPlacesMap = ({setFieldValue, label, mapHeight, mapWidth}) => {
+const SearchAndMarkLocation = ({setFieldValue, label, mapHeight, mapWidth}) => {
 
   const {isLoaded} = useLoadScript({
     googleMapsApiKey,
@@ -57,4 +57,4 @@ function Map({setFieldValue, mapHeight, mapWidth}) {
   );
 }
 
-export default SearchPlacesMap
+export default SearchAndMarkLocation

@@ -14,26 +14,27 @@ const ActiveModels = () => {
       borderRadius={"md"}
       border={"1px solid lightgray"}
       h={"full"}
-      p={4}
+      p={14}
+      className={'conic'}
     >
-      <Text fontSize={"lg"} fontWeight={"bold"} mb={2}>
+      <Text fontSize={"lg"} fontWeight={"bold"} mb={4}>
         Active Models
       </Text>
       <Flex justifyContent={'space-between'} gap={2}>
         <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
-          <Image src={audio} alt={'img'}/>
+          <Image src={audio} alt={'img'} className={'blink-animation'}/>
         </Avatar>
         <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
-          <Image src={text} alt={'img'}/>
+          <Image src={text} alt={'img'} className={'blink-animation'}/>
         </Avatar>
         <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
-          <Image src={classification} alt={'img'}/>
+          <Image src={classification} alt={'img'} className={'blink-animation'}/>
         </Avatar>
         <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
-          <Image src={detection} alt={'img'}/>
+          <Image src={detection} alt={'img'} className={'blink-animation'}/>
         </Avatar>
         <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
-          <Image src={image} alt={'img'}/>
+          <Image src={image} alt={'img'} className={'blink-animation'}/>
         </Avatar>
       </Flex>
     </Box>

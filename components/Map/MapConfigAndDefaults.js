@@ -1,25 +1,37 @@
 export const libraries = ["places"]
 
 //18.997429,73.115723
-export const mapCenter = {lat: 21.953686, lng: 78.326770}
+export const mapCenter = {lat: 20.360685544458363, lng: 80.60235898925784}
 
 export const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 
 export const defaultOptions = {
-  strokeOpacity: 0.5,
-  strokeWeight: 1,
+  strokeOpacity: 0.6,
+  strokeWeight: 2,
   clickable: false,
   draggable: false,
-  editable: false,
-  visible: true
+  visible: true,
+  zIndex: 3,
+  strokeColor: "white",
+  strokeFill: "white",
 }
 
-export const circleOptions = {
+export const facebookCircle = {
   ...defaultOptions,
-  zIndex: 3,
-  fillOpacity: 0.05,
-  strokeColor: "#EB4747",
-  strokeFill: "#F32424",
+  fillColor: "#1DA1F2",
+  fillOpacity: 0.2,
+}
+
+export const twitterCircle = {
+  ...defaultOptions,
+  fillColor: "#4267B2",
+  fillOpacity: 0.2,
+}
+
+export const instagramCircle = {
+  ...defaultOptions,
+  fillColor: "#FCAF45",
+  fillOpacity: 0.2,
 }
 
 export const locations = [

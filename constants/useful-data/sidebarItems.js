@@ -1,6 +1,5 @@
 import {AiOutlineHome, AiOutlineProject, AiOutlineSetting} from "react-icons/ai";
 import {FiAlertTriangle, FiMapPin} from "react-icons/fi";
-import {BiChat} from "react-icons/bi";
 import {RiPlayList2Fill} from "react-icons/ri";
 
 export const sidebarItems = [
@@ -32,12 +31,6 @@ export const sidebarItems = [
     name: 'Event Flow',
     navLink: '/event-flow',
     icon: RiPlayList2Fill,
-    position: 'top'
-  },
-  {
-    name: 'Conversations',
-    navLink: '/dashboard/conversations',
-    icon: BiChat,
     position: 'top'
   },
   {

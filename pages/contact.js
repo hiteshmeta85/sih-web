@@ -6,7 +6,7 @@ import contactSchema from "../lib/schemas/contactSchema";
 import CustomInput from "../components/Input/CustomInput";
 import CustomSubmitButton from "../components/Button/CustomSubmitButton";
 import CustomSelect from "../components/Select/CustomSelect";
-import SearchPlacesMap from "../components/Map/SearchPlacesMap";
+import SearchAndMarkLocation from "../components/Map/SearchAndMarkLocation";
 import {labelOptions} from "../constants/useful-data/labelOptions";
 
 const Contact = () => {
@@ -56,7 +56,7 @@ const Contact = () => {
                   </Flex>
                   <Box>
                     {/*<ClusterMap/>*/}
-                    <SearchPlacesMap label={'Provide your address'} setFieldValue={setFieldValue}/>
+                    <SearchAndMarkLocation label={'Provide your address'} setFieldValue={setFieldValue}/>
                   </Box>
                 </SimpleGrid>
                 <CustomSubmitButton label={'Submit'} handleSubmit={handleSubmit} isSubmitting={isSubmitting}/>

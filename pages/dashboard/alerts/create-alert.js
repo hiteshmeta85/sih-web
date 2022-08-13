@@ -6,7 +6,7 @@ import CustomSubmitButton from "../../../components/Button/CustomSubmitButton";
 import CustomInput from "../../../components/Input/CustomInput";
 import alertSchema from "../../../lib/schemas/alertSchema";
 import CustomSelect from "../../../components/Select/CustomSelect";
-import SearchPlacesMap from "../../../components/Map/SearchPlacesMap";
+import SearchAndMarkLocation from "../../../components/Map/SearchAndMarkLocation";
 import axios from "axios";
 import {labelOptions} from "../../../constants/useful-data/labelOptions";
 import {severityTypes} from "../../../constants/useful-data/severityTypes";
@@ -103,7 +103,7 @@ const CreateAlert = () => {
                     </Box>
                   </Box>
                 </Flex>
-                <SearchPlacesMap label={'Search Geolocation'} setFieldValue={setFieldValue}/>
+                <SearchAndMarkLocation label={'Search Geolocation'} setFieldValue={setFieldValue}/>
               </Flex>
               <CustomSubmitButton label={'Submit'} isSubmitting={isSubmitting} handleSubmit={handleSubmit}/>
               {responseMessage && <Text fontWeight={'semibold'} my={4}>{responseMessage}</Text>}
