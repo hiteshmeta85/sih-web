@@ -1,4 +1,4 @@
-const FactCheckApiResponse = {
+export const FactCheckApiResponse = {
   "claims": [
     {
       "text": "Silchar flooded due to \"flood jihad\"",

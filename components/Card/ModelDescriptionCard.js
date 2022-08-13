@@ -17,6 +17,7 @@ const ModelDescriptionCard = ({title, text, subText, stepCount, icon, cardBgColo
         gap={6}
         p={6}
         h={'100%'}
+        cursor={'pointer'}
       >
         <Flex direction={'column'} gap={6}>
           {icon}
