@@ -1,6 +1,5 @@
 import {AiOutlineFileText} from "react-icons/ai";
 import React from "react";
-import {TbLetterT} from "react-icons/Tb";
 import {MdOutlineVideoCameraFront} from "react-icons/md";
 import {ImImages} from "react-icons/im";
 import {IoIosImages} from "react-icons/io";
@@ -8,6 +7,7 @@ import {FaRegObjectGroup} from "react-icons/fa";
 import {SiAirplayvideo} from "react-icons/si";
 import {RiTranslate2} from "react-icons/ri";
 import {BsTranslate} from "react-icons/bs";
+import {BiText} from "react-icons/bi";
 
 export const modelDescriptionData = [
   {
@@ -15,7 +15,7 @@ export const modelDescriptionData = [
     text: 'BERT Custom',
     subText: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur commodi consequatur ducimus error est excepturi expedita fugit laboriosam minus nulla pariatur praesentium quod reiciendis, repudiandae tenetur velit veniam voluptatibus?',
     stepCount: 1,
-    icon: <TbLetterT size={'4rem'} color={'white'}/>,
+    icon: <BiText size={'4rem'} color={'white'}/>,
     cardBgColor: 'green.300',
     titleColor: 'white',
     textColor: 'black',
