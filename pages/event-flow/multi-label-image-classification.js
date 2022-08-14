@@ -619,7 +619,7 @@ const MultiLabelImageClassification = () => {
                   label="Emergency"
                   key={index}
                   tweet={item.tweet}
-                  image={item.photos.length > 0 && item.photos[0]}
+                  images={item.photos}
                   username={item.username}
                   date={item.date}
                   socialMediaType={'facebook'}
