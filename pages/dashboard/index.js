@@ -62,9 +62,6 @@ const Index = () => {
               <GridItem colSpan={{base: 4, md: 2}} rowSpan={1}>
                 <ActiveModels/>
               </GridItem>
-              <GridItem colSpan={4}>
-                <ClusterMap height={'600px'}/>
-              </GridItem>
             </Grid>
           </GridItem>
           <GridItem colSpan={{base: 3, lg: 1}}>
@@ -72,6 +69,9 @@ const Index = () => {
             <DashTabs/>
           </GridItem>
         </Grid>
+        <Box my={4}>
+          <ClusterMap/>
+        </Box>
       </Box>
     </DashboardContainer>
   );

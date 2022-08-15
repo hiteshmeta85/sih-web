@@ -21,10 +21,263 @@ const options = {
 };
 
 const Index = () => {
+  /// project
   const alerts = CommonMapData.data.alerts
-  const projects = CommonMapData.data.projects
+  const projectIds = [1, 2, 3]
+  const [currentProjectData, setCurrentProjectData] = useState({
+    "projectId": 1,
+    "twitter": [
+      {
+        "geolocation_lat": 24.990201,
+        "geolocation_lng": 75.1276701
+      },
+      {
+        "geolocation_lat": 23.990201,
+        "geolocation_lng": 74.1276701
+      },
+      {
+        "geolocation_lat": 18.990201,
+        "geolocation_lng": 73.1276701
+      },
+      {
+        "geolocation_lat": 23.690201,
+        "geolocation_lng": 75.1276701
+      },
+      {
+        "geolocation_lat": 23.890201,
+        "geolocation_lng": 74.1276701
+      },
+      {
+        "geolocation_lat": 18.990201,
+        "geolocation_lng": 73.1276701
+      }
+    ],
+    "facebook": [
+      {
+        "geolocation_lat": 22.990201,
+        "geolocation_lng": 77.1276701
+      },
+      {
+        "geolocation_lat": 24.990201,
+        "geolocation_lng": 76.1276701
+      },
+      {
+        "geolocation_lat": 19.990201,
+        "geolocation_lng": 73.1276701
+      }
+    ],
+    "instagram": [
+      {
+        "geolocation_lat": 18.990201,
+        "geolocation_lng": 73.1276701
+      },
+      {
+        "geolocation_lat": 18.000201,
+        "geolocation_lng": 73.1276701
+      },
+      {
+        "geolocation_lat": 13.990201,
+        "geolocation_lng": 79.1276701
+      }
+    ],
+    "relief_camps": [
+      {
+        "reliefId": 1,
+        "geolocation_lat": 18.990201,
+        "geolocation_lng": 73.1276701,
+        "projectId": 100,
+        "creationTime": "2022-08-13T03:55:39.263000Z"
+      },
+      {
+        "reliefId": 2,
+        "geolocation_lat": 22.990201,
+        "geolocation_lng": 75.1276701,
+        "projectId": 100,
+        "creationTime": "2022-08-13T03:59:15.629000Z"
+      },
+      {
+        "reliefId": 3,
+        "geolocation_lat": 20.990201,
+        "geolocation_lng": 78.1276701,
+        "projectId": 100,
+        "creationTime": "2022-08-13T06:49:37.883000Z"
+      },
+      {
+        "reliefId": 4,
+        "geolocation_lat": 18.990201,
+        "geolocation_lng": 74.1276701,
+        "projectId": 100,
+        "creationTime": "2022-08-13T06:52:07.562000Z"
+      },
+    ],
+    "clustersTwitter": [
+      {
+        "geolocation_lat": 20.990201,
+        "geolocation_lng": 77.1276701
+      },
+      {
+        "geolocation_lat": 18.990201,
+        "geolocation_lng": 76.1276701
+      },
+      {
+        "geolocation_lat": 19.990201,
+        "geolocation_lng": 77.1276701
+      }
+    ],
+    "clustersFacebook": [
+      {
+        "geolocation_lat": 19.990201,
+        "geolocation_lng": 77.1276701
+      },
+      {
+        "geolocation_lat": 19.990201,
+        "geolocation_lng": 77.1276701
+      },
+      {
+        "geolocation_lat": 17.990201,
+        "geolocation_lng": 77.1276701
+      }
+    ],
+    "clustersInstagram": [
+      {
+        "geolocation_lat": 19.990201,
+        "geolocation_lng": 76.1276701
+      },
+      {
+        "geolocation_lat": 19.990201,
+        "geolocation_lng": 82.1276701
+      },
+      {
+        "geolocation_lat": 14.990201,
+        "geolocation_lng": 76.1276701
+      }
+    ]
+  })
+  const [currentProjectId, setCurrentProjectId] = useState(0)
 
-  /// show geolocation
+  const handleChange = (event) => {
+    // send api request
+    setCurrentProjectData({
+      "projectId": 2,
+      "twitter": [
+        {
+          "geolocation_lat": 31.990201,
+          "geolocation_lng": 76.1276701
+        },
+        {
+          "geolocation_lat": 21.990201,
+          "geolocation_lng": 76.1276701
+        },
+        {
+          "geolocation_lat": 23.990201,
+          "geolocation_lng": 73.1276701
+        }
+      ],
+      "facebook": [
+        {
+          "geolocation_lat": 22.990201,
+          "geolocation_lng": 82.1276701
+        },
+        {
+          "geolocation_lat": 24.990201,
+          "geolocation_lng": 83.1276701
+        },
+        {
+          "geolocation_lat": 29.990201,
+          "geolocation_lng": 73.1276701
+        }
+      ],
+      "instagram": [
+        {
+          "geolocation_lat": 18.990201,
+          "geolocation_lng": 73.1276701
+        },
+        {
+          "geolocation_lat": 19.000201,
+          "geolocation_lng": 73.1276701
+        },
+        {
+          "geolocation_lat": 13.990201,
+          "geolocation_lng": 79.1276701
+        }
+      ],
+      "relief_camps": [
+        {
+          "reliefId": 1,
+          "geolocation_lat": 20.990201,
+          "geolocation_lng": 73.1276701,
+          "projectId": 100,
+          "creationTime": "2022-08-13T03:55:39.263000Z"
+        },
+        {
+          "reliefId": 2,
+          "geolocation_lat": 21.990201,
+          "geolocation_lng": 75.1276701,
+          "projectId": 100,
+          "creationTime": "2022-08-13T03:59:15.629000Z"
+        },
+        {
+          "reliefId": 3,
+          "geolocation_lat": 25.990201,
+          "geolocation_lng": 78.1276701,
+          "projectId": 100,
+          "creationTime": "2022-08-13T06:49:37.883000Z"
+        },
+        {
+          "reliefId": 4,
+          "geolocation_lat": 17.990201,
+          "geolocation_lng": 79.1276701,
+          "projectId": 100,
+          "creationTime": "2022-08-13T06:52:07.562000Z"
+        },
+      ],
+      "clustersTwitter": [
+        {
+          "geolocation_lat": 20.990201,
+          "geolocation_lng": 77.1276701
+        },
+        {
+          "geolocation_lat": 18.990201,
+          "geolocation_lng": 80.1276701
+        },
+        {
+          "geolocation_lat": 20.990201,
+          "geolocation_lng": 81.1276701
+        }
+      ],
+      "clustersFacebook": [
+        {
+          "geolocation_lat": 18.990201,
+          "geolocation_lng": 73.1276701
+        },
+        {
+          "geolocation_lat": 18.990201,
+          "geolocation_lng": 73.1276701
+        },
+        {
+          "geolocation_lat": 18.990201,
+          "geolocation_lng": 73.1276701
+        }
+      ],
+      "clustersInstagram": [
+        {
+          "geolocation_lat": 18.990201,
+          "geolocation_lng": 73.1276701
+        },
+        {
+          "geolocation_lat": 18.990201,
+          "geolocation_lng": 73.1276701
+        },
+        {
+          "geolocation_lat": 18.990201,
+          "geolocation_lng": 73.1276701
+        }
+      ]
+    })
+    setCurrentProjectId(event.target.value)
+  }
+
+  /// map - show geolocation
   const [showAlerts, setShowAlerts] = useState(false)
   const [showReliefCamps, setShowReliefCamps] = useState(false)
   const [showTwitterPoints, setShowTwitterPoints] = useState(false)
@@ -32,15 +285,11 @@ const Index = () => {
   const [showInstagramPoints, setShowInstagramPoints] = useState(false)
   const [showAffectedZones, setShowAffectedZones] = useState(false)
 
-  const handleChange = (event) => {
-    setCurrentProject(event.target.value)
-  }
-
-  const [currentProject, setCurrentProject] = useState(0)
-
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: googleMapsApiKey, libraries,
   });
+
+  console.log(currentProjectData)
 
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
@@ -80,11 +329,11 @@ const Index = () => {
         <FaMapMarkerAlt color={'green'} size={'1.5rem'}/>
       </Button>}
       <SearchLocation panTo={panTo}/>
-      <select value={currentProject} onChange={(e) => handleChange(e)} style={{
+      <select value={currentProjectId} onChange={(e) => handleChange(e)} style={{
         appearance: 'none', border: '2px solid black', padding: '5px 24px', borderRadius: '6px', marginRight: '8px'
       }}
       >
-        {projects.map((item, index) => <option key={index} value={index}>{item.projectId}</option>)}
+        {projectIds.map((item, index) => <option key={index} value={index}>{item}</option>)}
       </select>
     </Flex>}
   >
@@ -99,7 +348,7 @@ const Index = () => {
         borderRadius={'sm'}
         userSelect={'none'}
         flexWrap={'wrap'}
-        w={'container.lg'}
+        minW={'container.lg'}
       >
         <Flex ml={2}>
           <Flex
@@ -228,6 +477,23 @@ const Index = () => {
         onLoad={onMapLoad}
       >
         <>
+          {showAffectedZones && (<>
+            {currentProjectData.clustersInstagram.map((marker, index) => {
+              return (
+                <Circle key={index} center={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}} radius={60000}
+                        options={twitterCircle}/>)
+            })}
+            {currentProjectData.clustersFacebook.map((marker, index) => {
+              return (
+                <Circle key={index} center={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}} radius={60000}
+                        options={facebookCircle}/>)
+            })}
+            {currentProjectData.clustersTwitter.map((marker, index) => {
+              return (
+                <Circle key={index} center={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}} radius={60000}
+                        options={instagramCircle}/>)
+            })}
+          </>)}
           {markers.map((marker, index) => (<Marker
             key={index}
             position={{lat: marker.lat, lng: marker.lng}}
@@ -257,7 +523,7 @@ const Index = () => {
               }}
             />)
           })}
-          {showReliefCamps && projects[currentProject].relief_camps.map((marker, index) => {
+          {showReliefCamps && currentProjectData.relief_camps.map((marker, index) => {
             return (<Marker
               key={index}
               position={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}}
@@ -273,7 +539,7 @@ const Index = () => {
             />)
           })}
           {showTwitterPoints && (<>
-            {projects[currentProject].twitter.map((marker, index) => {
+            {currentProjectData.twitter.map((marker, index) => {
               return (<>
                 <Marker
                   key={index}
@@ -292,7 +558,7 @@ const Index = () => {
             })}
           </>)}
           {showFacebookPoints && (<>
-            {projects[currentProject].facebook.map((marker, index) => {
+            {currentProjectData.facebook.map((marker, index) => {
               return (<Marker
                 key={index}
                 position={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}}
@@ -310,7 +576,7 @@ const Index = () => {
           </>)}
 
           {showInstagramPoints && (<>
-            {projects[currentProject].instagram.map((marker, index) => {
+            {currentProjectData.instagram.map((marker, index) => {
               return (<Marker
                 key={index}
                 position={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}}
@@ -327,24 +593,6 @@ const Index = () => {
             })}
           </>)}
         </>
-
-        {showAffectedZones && (<>
-          {projects[currentProject].clustersInstagram.map((marker, index) => {
-            return (
-              <Circle key={index} center={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}} radius={60000}
-                      options={twitterCircle}/>)
-          })}
-          {projects[currentProject].clustersFacebook.map((marker, index) => {
-            return (
-              <Circle key={index} center={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}} radius={60000}
-                      options={facebookCircle}/>)
-          })}
-          {projects[currentProject].clustersTwitter.map((marker, index) => {
-            return (
-              <Circle key={index} center={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}} radius={60000}
-                      options={instagramCircle}/>)
-          })}
-        </>)}
 
         {selected ? (<InfoWindow
           position={{lat: selected.lat, lng: selected.lng}}

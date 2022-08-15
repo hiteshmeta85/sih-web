@@ -117,7 +117,7 @@ const ClusterMap = ({height, locations}) => {
           borderRadius: '8px'
         }}
         center={center}
-        zoom={5}
+        zoom={4}
         onLoad={onLoad}
       >
         {data && <>

@@ -14,8 +14,7 @@ const ActiveModels = () => {
       borderRadius={"md"}
       border={"1px solid lightgray"}
       h={"full"}
-      p={14}
-      className={'conic'}
+      p={4}
     >
       <Text fontSize={"lg"} fontWeight={"bold"} mb={4}>
         Active Models
