@@ -40,7 +40,7 @@ const Sidebar = () => {
               my={"auto"}
               h={12}
             >
-              {isSidebarOpen ? 'Homebrew.' : ''}
+              <Text as={'span'} transition={'all 1s'} display={isSidebarOpen ? 'inline-block' : 'none'}>Homebrew.</Text>
             </Text>
             <Box>
               {sidebarItems.map((item, index) => {
@@ -62,11 +62,12 @@ const Sidebar = () => {
               onMouseOver={() => {setIsNavItemHovered(true)}}
               onMouseOut={() => {setIsNavItemHovered(false)}}
               pl={6}
-              pr={isSidebarOpen ? 10 : ''}
+              pr={isSidebarOpen ? 10 : 4}
               py={2}
               my={2}
               cursor={'pointer'}
               onClick={()=>{setIsSidebarOpen(!isSidebarOpen)}}
+              transition={'all 1s'}
             >
               <Icon as={BiArrowBack} color={'gray.100'} transform={isSidebarOpen ? '' :  'rotate(180deg)'} className={(isNavItemHovered && isSidebarOpen) ? 'horizontal-bounce': ''}/>
             </ListItem>

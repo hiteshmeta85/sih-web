@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import {Link, ListIcon, ListItem} from "@chakra-ui/react";
+import {Link, ListIcon, ListItem, Text} from "@chakra-ui/react";
 import {useRouter} from "next/router";
 import {useState} from "react";
 
@@ -20,15 +20,16 @@ const SidebarNavItem = ({navLink, icon, name, isSidebarOpen}) => {
           color={router.pathname === `${navLink}` ? 'black' : ''}
           _hover={router.pathname !== `${navLink}` ? {bg: '#F5F5F5', color: 'blackAlpha.800'} : ''}
           pl={6}
-          pr={isSidebarOpen ? 14 : 0}
+          pr={isSidebarOpen ? 14 : 4}
           py={2}
           my={2}
+          transition={'all 1s'}
         >
           {icon && <ListIcon
             as={icon}
             color={(router.pathname === `${navLink}` || isNavItemHovered === true) ? '#0B2656' : 'gray.100'}
           />}
-          {isSidebarOpen ? name : ''}
+          <Text display={isSidebarOpen ? 'inline-block' : 'none'} transition={'all 1s'}>{name}</Text>
         </ListItem>
       </Link>
     </NextLink>
