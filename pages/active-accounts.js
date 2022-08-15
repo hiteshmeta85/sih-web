@@ -139,7 +139,7 @@ export async function getServerSideProps() {
   let activeAccounts
 
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/active-accounts`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/active-accounts`)
     if (res.data) {
       activeAccounts = res.data.data.activeAccounts
     }

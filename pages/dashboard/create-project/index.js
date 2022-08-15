@@ -25,7 +25,7 @@ const Index = () => {
         onSubmit={async (values, {setSubmitting, resetForm}) => {
           setSubmitting(true);
           try {
-            await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/projects/create-project`,
+            await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/create-project`,
               {projectName: values.projectName, disasterType: values.disasterType})
               .then(function (response) {
                 if (response.data) {

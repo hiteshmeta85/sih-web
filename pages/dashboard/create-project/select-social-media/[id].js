@@ -55,7 +55,7 @@ const SelectHashtags = ({id, projectName, disasterType}) => {
             onSubmit={async (values, {setSubmitting, resetForm}) => {
               setSubmitting(true);
               try {
-                await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/projects/create-project/social-media/${id}`,
+                await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/create-project/social-media/${id}`,
                   {socialMedia: values.socialMedia})
                   .then(function (response) {
                     if (response.data) {
@@ -137,7 +137,7 @@ export async function getServerSideProps(context) {
   let projectName, disasterType;
 
   try {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/projects/create-project/social-media/${id}`)
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/create-project/social-media/${id}`)
     if (response.data) {
       projectName = response.data.data.projectInfo.projectName
       disasterType = response.data.data.projectInfo.disasterType

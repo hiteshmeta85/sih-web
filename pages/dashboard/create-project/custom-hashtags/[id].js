@@ -53,7 +53,7 @@ const AddCustomHashtags = ({id, projectName, disasterType}) => {
             onSubmit={async (values, {setSubmitting, resetForm}) => {
               setSubmitting(true);
               try {
-                await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/projects/create-project/custom-hashtags/${id}`,
+                await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/create-project/custom-hashtags/${id}`,
                   {customHashTags: values.hashtags})
                   .then(function (response) {
                     if (response.data) {
@@ -149,7 +149,7 @@ export async function getServerSideProps(context) {
   let projectName, disasterType;
 
   try {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/projects/create-project/custom-hashtags/${id}`)
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/create-project/custom-hashtags/${id}`)
     if (response.data) {
       projectName = response.data.data.projectInfo.projectName
       disasterType = response.data.data.projectInfo.disasterType

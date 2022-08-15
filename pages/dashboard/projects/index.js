@@ -40,7 +40,7 @@ export async function getServerSideProps() {
   let allProjectsInfo;
 
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/projects`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects`)
     if (res.data) {
       allProjectsInfo = res.data.data
     }

@@ -105,7 +105,7 @@ const SelectHashtags = ({hashtags, projectName, disasterType, id}) => {
               setSubmitting(true);
               console.log(values)
               try {
-                await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/projects/create-project/select-hashtags/${id}`,
+                await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/create-project/select-hashtags/${id}`,
                   {selectedHashTags: values.hashtags})
                   .then(function (response) {
                     if (response.data) {
@@ -245,7 +245,7 @@ export async function getServerSideProps(context) {
   let hashtags, projectName, disasterType;
 
   try {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/projects/create-project/select-hashtags/${id}`)
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/create-project/select-hashtags/${id}`)
     if (response.data) {
       console.log(response.data.data)
       hashtags = response.data.data.hashtags

@@ -52,7 +52,7 @@ const SelectLocation = ({projectName, disasterType, id}) => {
             onSubmit={async (values, {setSubmitting, resetForm}) => {
               setSubmitting(true);
               try {
-                await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/projects/create-project/select-location/${id}`, values)
+                await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/create-project/select-location/${id}`, values)
                   .then(function (response) {
                     if (response.data) {
                       const {projectId} = response.data.data.projectInfo
@@ -95,7 +95,7 @@ export async function getServerSideProps(context) {
   let projectName, disasterType;
 
   try {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/projects/create-project/select-location/${id}`)
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/create-project/select-location/${id}`)
     if (response.data) {
       projectName = response.data.data.projectInfo.projectName
       disasterType = response.data.data.projectInfo.disasterType

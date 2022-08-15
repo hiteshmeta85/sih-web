@@ -67,7 +67,7 @@ export async function getServerSideProps() {
   let news, ndrfTweets, alerts, activeAccounts, mapData;
 
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/landing`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/landing`)
     if (res.data) {
       news = res.data.data.news.value
       ndrfTweets = res.data.data.ndrfTweets

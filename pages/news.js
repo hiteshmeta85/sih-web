@@ -29,7 +29,7 @@ export async function getServerSideProps() {
   let headlines
 
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/get-headlines`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/get-headlines`)
     if (res.data) {
       headlines = res.data.data.news.value
     }

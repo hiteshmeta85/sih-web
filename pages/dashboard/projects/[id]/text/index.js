@@ -63,7 +63,7 @@ export async function getServerSideProps(context) {
   let twitterData
 
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/projects/${id}/text`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/${id}/text`)
     if (res.data) {
       console.log(res.data)
       twitterData = res.data.data.twitterData

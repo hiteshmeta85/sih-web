@@ -37,7 +37,7 @@ const CreateAlert = () => {
           onSubmit={async (values, {setSubmitting, resetForm}) => {
             setSubmitting(true);
             try {
-              await axios.post(`${process.env.NEXT_PUBLIC_API_HOST}/alerts`, values)
+              await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/alerts`, values)
                 .then(function (response) {
                   if (response.data) {
                     resetForm()

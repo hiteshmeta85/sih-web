@@ -53,7 +53,7 @@ export async function getServerSideProps() {
   let ndrfTweets;
 
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST}/ndrf-tweets`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/ndrf-tweets`)
     if (res.data) {
       ndrfTweets = res.data.data.ndrfTweets
     }

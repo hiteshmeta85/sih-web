@@ -104,7 +104,7 @@ export async function getServerSideProps() {
   let twitterData, facebookData, instagramData
 
   try {
-    const res = await axios.get(`http://127.0.0.1:8000/demo/api/event-flow/multi-label-text-classification`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_DEMO}/event-flow/multi-label-text-classification`)
     if (res.data) {
       twitterData = res.data.data.twitterData
       facebookData = res.data.data.facebookData

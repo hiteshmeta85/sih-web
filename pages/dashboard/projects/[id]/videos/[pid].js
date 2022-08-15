@@ -1,4 +1,3 @@
-import DashboardContainer from "../../../_layout";
 import {Box, Button, Flex, Grid, GridItem, Progress, SimpleGrid, Text} from "@chakra-ui/react";
 import React from "react";
 import {useRouter} from "next/router";
