@@ -1,4 +1,5 @@
 import {
+  Button,
   Flex,
   Icon,
   Link,
@@ -9,6 +10,7 @@ import {
   TabPanels,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr
@@ -17,7 +19,10 @@ import React, {useEffect, useState} from "react";
 import TabsLayout from "../_tabsLayout";
 import axios from "axios";
 import {useRouter} from "next/router";
-import {AiOutlineTwitter} from "react-icons/ai";
+import {AiFillFacebook, AiOutlineInstagram, AiOutlineTwitter} from "react-icons/ai";
+import {facebookSampleTweets} from "../../../../../constants/sample-data/facebookSampleTweets";
+import {instagramSampleTweets} from "../../../../../constants/sample-data/instagramSampleTweets";
+import {IoIosRefresh} from "react-icons/io";
 
 const ProjectTextView = () => {
 
@@ -33,6 +38,13 @@ const ProjectTextView = () => {
   const [instagramData, setInstagramData] = useState([])
   const [didWeGetTaskIds, setDidWeGetTaskIds] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [shouldPageRefresh, setShouldPageRefresh] = useState(false)
+
+  const handlePageRefresh = () => {
+    setCeleryKeys({})
+    setDidWeGetTaskIds(false)
+    setShouldPageRefresh(true)
+  }
 
   const newFn = async () => {
     if (localStorage.getItem('twitterKeysForText')) {
@@ -223,6 +235,7 @@ const ProjectTextView = () => {
         }
       }
     } else {
+      setShouldPageRefresh(true)
       console.log("Keys Not Found: Dead End")
     }
   }
@@ -241,13 +254,29 @@ const ProjectTextView = () => {
     <TabsLayout defaultIndex={0}>
       <TabPanels bg={"white"}>
         <TabPanel overflowX={'scroll'}>
+          {shouldPageRefresh ? <Flex alignItems={'center'} gap={2} mb={4} justifyContent={'flex-end'}>
+            <Button
+              display={'flex'}
+              alignItems={'center'}
+              gap={2}
+              bg={'blackAlpha.800'}
+              _hover={{bg: 'blackAlpha.700'}}
+              _active={{bg: 'blackAlpha.800'}}
+              color={'white'}
+              onClick={handlePageRefresh}
+            >
+              <Text>Refresh</Text>
+              <Icon as={IoIosRefresh} h={6} w={6} color={'white'}/>
+            </Button>
+          </Flex> : '' }
           <TableContainer>
             <Table borderWidth={"1px"}>
               <Thead>
                 <Tr>
-                  <Th>ID</Th>
+                  <Th>Prediction</Th>
                   <Th>Username</Th>
                   <Th>Tweet</Th>
+                  <Th>Multi-Label</Th>
                   <Th textAlign={"center"}>Date</Th>
                   <Th textAlign={"center"}>Link</Th>
                 </Tr>
@@ -257,12 +286,65 @@ const ProjectTextView = () => {
                   {twitterData.map((item, index) => {
                     return (
                       <Tr key={index}>
-                        <Td>{item.id}</Td>
-                        <Td>{item.username}</Td>
+                        <Td bg={item.prediction === 1 ? 'green.200' : 'red.200'}>{item.prediction}</Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'}>
+                          <Text fontWeight={'semibold'}>
+                            {item.username}
+                          </Text>
+                          <Text fontSize={'sm'}>
+                            {item.name}
+                          </Text>
+                        </Td>
                         <Td maxW={'xs'} whiteSpace={'initial'}>{item.tweet}</Td>
+                        <Td>{item.multilabel.split(',')
+                          .slice(0, 2)
+                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'}
+                                                      m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
                         <Td textAlign={'center'}>{item.created_at}</Td>
                         <Td textAlign={'center'}><Link href={item.link} target={'_blank'}>
                           <Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/></Link>
+                        </Td>
+                      </Tr>
+                    )
+                  })}
+                  {facebookSampleTweets.map((item, index) => {
+                    return (
+                      <Tr key={index}>
+                        <Td bg={item.prediction === 1 ? 'green.200' : 'red.200'}>{item.prediction}</Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'}>
+                          <Text fontWeight={'semibold'}>
+                            {item.username}
+                          </Text>
+                        </Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.post_text}</Td>
+                        <Td>{item.multilabel.split(',')
+                          .slice(0, 2)
+                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'}
+                                                      m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
+                        <Td textAlign={'center'}>{item.time}</Td>
+                        <Td textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
+                          <Icon as={AiFillFacebook} h={8} w={8} color={'#4267B2'}/></Link>
+                        </Td>
+                      </Tr>
+                    )
+                  })}
+                  {instagramSampleTweets.map((item, index) => {
+                    return (
+                      <Tr key={index}>
+                        <Td bg={item.prediction === 1 ? 'green.200' : 'red.200'}>{item.prediction}</Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'}>
+                          <Text fontWeight={'semibold'}>
+                            unknown
+                          </Text>
+                        </Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.caption}</Td>
+                        <Td>{item.multilabel.split(',')
+                          .slice(0, 2)
+                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'}
+                                                      m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
+                        <Td textAlign={'center'}>{item.creationTime.$date.$numberLong}</Td>
+                        <Td textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
+                          <Icon as={AiOutlineInstagram} h={8} w={8} color={'#FCAF45'}/></Link>
                         </Td>
                       </Tr>
                     )

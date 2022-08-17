@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Box, CircularProgress, CircularProgressLabel, Flex, Heading, Link, Text} from "@chakra-ui/react";
+import {Box, Flex, Heading, Link, Text} from "@chakra-ui/react";
 import {IoIosArrowRoundBack} from "react-icons/io";
 import NextLink from "next/link";
 import BackButtonIcon from "./BackButton.svg";
@@ -69,8 +69,8 @@ const EventFlowLayout = (
                     'rgba(0,0,0,0.8)',
                     'white',
                   ],
-                  borderColor: ['rgba(0,0,0,0.8)'],
-                  borderWidth: 2,
+                  borderColor: ['rgba(0,0,0,0.4)'],
+                  borderWidth: 1,
                 },
               ],
             }}/>
