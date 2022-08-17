@@ -13,9 +13,9 @@ const CeleryTest = () => {
   const [didWeGetTaskIds, setDidWeGetTaskIds] = useState(false)
 
   const newFn = async () => {
-    if (localStorage.getItem('twitterKeys')) {
+    if (localStorage.getItem('twitterKeysForText')) {
       console.log("working on twitter keys")
-      let twitterKeys = localStorage.getItem('twitterKeys')
+      let twitterKeys = localStorage.getItem('twitterKeysForText')
       twitterKeys = JSON.parse(twitterKeys)
       const getTwitterData = async () => {
         try {
@@ -42,13 +42,13 @@ const CeleryTest = () => {
         }
       }
       if (twitterKeys.length === 0) {
-        localStorage.removeItem('twitterKeys')
+        localStorage.removeItem('twitterKeysForText')
       } else {
-        localStorage.setItem('twitterKeys', JSON.stringify(twitterKeys))
+        localStorage.setItem('twitterKeysForText', JSON.stringify(twitterKeys))
       }
-    } else if (localStorage.getItem('facebookKeys')) {
+    } else if (localStorage.getItem('facebookKeysForText')) {
       console.log("working on facebook keys")
-      let facebookKeys = localStorage.getItem('facebookKeys')
+      let facebookKeys = localStorage.getItem('facebookKeysForText')
       facebookKeys = JSON.parse(facebookKeys)
       const getFacebookData = async () => {
         try {
@@ -75,9 +75,9 @@ const CeleryTest = () => {
         }
       }
       if (facebookKeys.length === 0) {
-        localStorage.removeItem('facebookKeys')
+        localStorage.removeItem('facebookKeysForText')
       } else {
-        localStorage.setItem('twitterKeys', JSON.stringify(facebookKeys))
+        localStorage.setItem('twitterKeysForText', JSON.stringify(facebookKeys))
       }
     } else if (Object.keys(celeryKeys).length === 0) {
       console.log("getting celery keys")
@@ -101,7 +101,7 @@ const CeleryTest = () => {
             console.log(response.data)
             if (response.data.status === 'SUCCESS' || 'FAILURE') {
               console.log(response.data.result)
-              localStorage.setItem('twitterKeys', JSON.stringify(response.data.result))
+              localStorage.setItem('twitterKeysForText', JSON.stringify(response.data.result))
               return true
             } else {
               return false
@@ -116,7 +116,7 @@ const CeleryTest = () => {
           const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${celeryKeys.facebook_task_id}`)
           if (response) {
             if (response.data.status === 'SUCCESS' || 'FAILURE') {
-              localStorage.setItem('facebookKeys', JSON.stringify(response.data.result))
+              localStorage.setItem('facebookKeysForText', JSON.stringify(response.data.result))
               return true
             } else {
               return false
@@ -131,7 +131,7 @@ const CeleryTest = () => {
           const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${celeryKeys.instagram_task_id}`)
           if (response) {
             if (response.data.status === 'SUCCESS' || 'FAILURE') {
-              localStorage.setItem('instagramKeys', JSON.stringify(response.data.result))
+              localStorage.setItem('instagramKeysForText', JSON.stringify(response.data.result))
               return true
             } else {
               return false
@@ -142,9 +142,9 @@ const CeleryTest = () => {
         }
       };
 
-      if ((celeryKeys.hasOwnProperty("twitter_task_id") && localStorage.getItem('twitterKeys') === null)
-        || (celeryKeys.hasOwnProperty("facebook_task_id") && localStorage.getItem('facebookKeys') === null)
-        || (celeryKeys.hasOwnProperty("instagram_task_id") && localStorage.getItem('instagramKeys') === null)) {
+      if ((celeryKeys.hasOwnProperty("twitter_task_id") && localStorage.getItem('twitterKeysForText') === null)
+        || (celeryKeys.hasOwnProperty("facebook_task_id") && localStorage.getItem('facebookKeysForText') === null)
+        || (celeryKeys.hasOwnProperty("instagram_task_id") && localStorage.getItem('instagramKeysForText') === null)) {
         let twitterResponse, facebookResponse, instagramResponse
         if (celeryKeys.hasOwnProperty("twitter_task_id")) {
           twitterResponse = await getTwitterTaskId()
