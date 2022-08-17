@@ -22,7 +22,7 @@ const DashTabs = ({activeAccounts, recentProjects}) => {
           <Tab p={3}>Active Accounts</Tab>
           <Tab p={3}>Recent Projects</Tab>
         </TabList>
-        <TabPanels variant='soft-rounded' colorscheme='green' minH={'285px'} maxH={'285px'} overflow={'scroll'}>
+        <TabPanels variant='soft-rounded' colorscheme='green' minH={'320px'} maxH={'320px'} overflow={'scroll'}>
           <TabPanel px={0} pt={2}>
             <>
               {activeAccounts.map((item, index) => {

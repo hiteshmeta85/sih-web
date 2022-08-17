@@ -1,28 +1,7 @@
-import {
-  Flex,
-  Icon,
-  Link,
-  Spinner,
-  Table,
-  TableContainer,
-  TabPanel,
-  TabPanels,
-  Tbody,
-  Td,
-  Th,
-  Thead,
-  Tr
-} from "@chakra-ui/react";
-import React, {useEffect, useState} from "react";
-import TabsLayout from "../_tabsLayout";
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {useRouter} from "next/router";
-import {AiOutlineTwitter} from "react-icons/ai";
 
-const ProjectTextView = () => {
-
-  const router = useRouter()
-  const {id} = router.query
+const CeleryTest = () => {
 
   const [celeryKeys, setCeleryKeys] = useState({
     "twitter_task_id": "8e4d39aa-a8aa-4406-9eb9-77538e296c80",
@@ -32,7 +11,6 @@ const ProjectTextView = () => {
   const [facebookData, setFacebookData] = useState([])
   const [instagramData, setInstagramData] = useState([])
   const [didWeGetTaskIds, setDidWeGetTaskIds] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
 
   const newFn = async () => {
     if (localStorage.getItem('twitterKeysForText')) {
@@ -40,7 +18,6 @@ const ProjectTextView = () => {
       let twitterKeys = localStorage.getItem('twitterKeysForText')
       twitterKeys = JSON.parse(twitterKeys)
       const getTwitterData = async () => {
-        setIsLoading(true)
         try {
           const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${twitterKeys[0]}`)
           if (response) {
@@ -52,7 +29,6 @@ const ProjectTextView = () => {
         } catch (err) {
           return false
         }
-        setIsLoading(false)
       };
       if (twitterKeys.length > 0) {
         const response = await getTwitterData()
@@ -75,7 +51,6 @@ const ProjectTextView = () => {
       let facebookKeys = localStorage.getItem('facebookKeysForText')
       facebookKeys = JSON.parse(facebookKeys)
       const getFacebookData = async () => {
-        setIsLoading(true)
         try {
           const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${facebookKeys[0]}`)
           if (response) {
@@ -89,7 +64,6 @@ const ProjectTextView = () => {
         } catch (err) {
           return false
         }
-        setIsLoading(false)
       };
       if (facebookKeys.length > 0) {
         const response = await getFacebookData()
@@ -104,41 +78,6 @@ const ProjectTextView = () => {
         localStorage.removeItem('facebookKeysForText')
       } else {
         localStorage.setItem('twitterKeysForText', JSON.stringify(facebookKeys))
-      }
-    } else if (localStorage.getItem('instagramKeysForText')) {
-      console.log("working on instagram keys")
-      let instagramKeys = localStorage.getItem('instagramKeysForText')
-      instagramKeys = JSON.parse(instagramKeys)
-      const getInstagramData = async () => {
-        setIsLoading(true)
-        try {
-          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${instagramKeys[0]}`)
-          if (response) {
-            if (response.data.status === 'SUCCESS' || 'FAILURE') {
-              setInstagramData([...instagramData, ...response.data.result])
-              return true
-            } else {
-              return false
-            }
-          }
-        } catch (err) {
-          return false
-        }
-        setIsLoading(false)
-      }
-      if (instagramKeys.length > 0) {
-        const response = await getInstagramData()
-        if (response === true) {
-          instgramKeys.shift()
-          console.log('instagram success', instagramKeys)
-        } else {
-          console.log("instagram failed")
-        }
-      }
-      if (instagramKeys.length === 0) {
-        localStorage.removeItem('instagramKeysForText')
-      } else {
-        localStorage.setItem('twitterKeysForText', JSON.stringify(instagramKeys))
       }
     } else if (Object.keys(celeryKeys).length === 0) {
       console.log("getting celery keys")
@@ -238,46 +177,10 @@ const ProjectTextView = () => {
   }, [newFn]);
 
   return (
-    <TabsLayout defaultIndex={0}>
-      <TabPanels bg={"white"}>
-        <TabPanel overflowX={'scroll'}>
-          <TableContainer>
-            <Table borderWidth={"1px"}>
-              <Thead>
-                <Tr>
-                  <Th>ID</Th>
-                  <Th>Username</Th>
-                  <Th>Tweet</Th>
-                  <Th textAlign={"center"}>Date</Th>
-                  <Th textAlign={"center"}>Link</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                <>
-                  {twitterData.map((item, index) => {
-                    return (
-                      <Tr key={index}>
-                        <Td>{item.id}</Td>
-                        <Td>{item.username}</Td>
-                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.tweet}</Td>
-                        <Td textAlign={'center'}>{item.created_at}</Td>
-                        <Td textAlign={'center'}><Link href={item.link} target={'_blank'}>
-                          <Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/></Link>
-                        </Td>
-                      </Tr>
-                    )
-                  })}
-                </>
-              </Tbody>
-            </Table>
-          </TableContainer>
-          <Flex justifyContent={'center'} alignItems={'center'} my={6} w={'full'}>
-            {isLoading ? <Spinner color={'blue'} size={'lg'} mx={'auto'}/> : null}
-          </Flex>
-        </TabPanel>
-      </TabPanels>
-    </TabsLayout>
-  )
-}
+    <div>
+      Celery Test
+    </div>
+  );
+};
 
-export default ProjectTextView
+export default CeleryTest;

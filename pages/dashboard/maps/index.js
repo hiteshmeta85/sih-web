@@ -87,6 +87,8 @@ const Index = ({projectIds, alerts, projectData}) => {
         {projectId: currentProjectData.projectId, geolocation_lng: markers[0].lng, geolocation_lat: markers[0].lat})
         .then(function (response) {
           console.log(response)
+          setMarkers([])
+          // todo : make marker visible on submit
           // manage add relief camps to existing array
         })
         .catch(function (error) {

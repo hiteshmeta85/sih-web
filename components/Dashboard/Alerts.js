@@ -19,8 +19,8 @@ const Alerts = ({alerts}) => {
       w={'full'}
       h={'fit-content'}
       mb={4}
-      maxH={'300px'}
-      minH={'300px'}
+      maxH={'320px'}
+      minH={'320px'}
     >
       <Text fontWeight={'semibold'} p={3} fontSize={'xl'}>Alerts</Text>
       <Accordion allowToggle mb={4}>
