@@ -1,7 +1,7 @@
 import React from "react";
 import {Stat, StatLabel, StatNumber,} from "@chakra-ui/react";
 
-const DataScrapper = () => {
+const DataScrapper = ({dataScrapped}) => {
   return (
     <Stat
       bg={"white"}
@@ -11,7 +11,7 @@ const DataScrapper = () => {
       h={'full'}
     >
       <StatLabel fontWeight={"bold"} fontSize={'lg'}>Data Scrapper</StatLabel>
-        <StatNumber fontSize={'2rem'} color={'green.500'}>9751</StatNumber>
+        <StatNumber fontSize={'2rem'} color={'green.500'}>{dataScrapped}</StatNumber>
     </Stat>
   );
 };

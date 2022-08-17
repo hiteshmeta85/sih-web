@@ -9,9 +9,8 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
-import {alertsData} from "../../constants/sample-data/alertsData";
 
-const Alerts = () => {
+const Alerts = ({alerts}) => {
   return (
     <Box
       bg={"white"}
@@ -20,11 +19,13 @@ const Alerts = () => {
       w={'full'}
       h={'fit-content'}
       mb={4}
+      maxH={'300px'}
+      minH={'300px'}
     >
       <Text fontWeight={'semibold'} p={3} fontSize={'xl'}>Alerts</Text>
       <Accordion allowToggle mb={4}>
         <>
-          {alertsData.map((item, index) => {
+          {alerts.map((item, index) => {
             return (
               <AccordionItem key={index}>
                 <Text>

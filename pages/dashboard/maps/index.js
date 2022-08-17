@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import DashboardContainer from "../_layout";
-import {Box, Button, Flex, Text} from "@chakra-ui/react";
+import {Box, Button, Flex, Spinner, Text} from "@chakra-ui/react";
 import {SearchLocation} from "../../../components/Map/SearchLocation";
 import {Circle, GoogleMap, InfoWindow, Marker, useLoadScript} from "@react-google-maps/api";
 import {
@@ -12,269 +12,39 @@ import {
   twitterCircle
 } from "../../../components/Map/MapConfigAndDefaults";
 import {FaMapMarkerAlt} from "react-icons/fa";
-import {CommonMapData} from "../../../constants/sample-data/commonMapData"
 import {ImCancelCircle} from "react-icons/im";
 import {BiSelectMultiple} from "react-icons/bi";
+import axios from "axios";
+import Error from "../../../components/Error/Error";
 
 const options = {
   disableDefaultUI: true, zoomControl: true,
 };
 
-const Index = () => {
-  /// project
-  const alerts = CommonMapData.data.alerts
-  const projectIds = [1, 2, 3]
-  const [currentProjectData, setCurrentProjectData] = useState({
-    "projectId": 1,
-    "twitter": [
-      {
-        "geolocation_lat": 24.990201,
-        "geolocation_lng": 75.1276701
-      },
-      {
-        "geolocation_lat": 23.990201,
-        "geolocation_lng": 74.1276701
-      },
-      {
-        "geolocation_lat": 18.990201,
-        "geolocation_lng": 73.1276701
-      },
-      {
-        "geolocation_lat": 23.690201,
-        "geolocation_lng": 75.1276701
-      },
-      {
-        "geolocation_lat": 23.890201,
-        "geolocation_lng": 74.1276701
-      },
-      {
-        "geolocation_lat": 18.990201,
-        "geolocation_lng": 73.1276701
-      }
-    ],
-    "facebook": [
-      {
-        "geolocation_lat": 22.990201,
-        "geolocation_lng": 77.1276701
-      },
-      {
-        "geolocation_lat": 24.990201,
-        "geolocation_lng": 76.1276701
-      },
-      {
-        "geolocation_lat": 19.990201,
-        "geolocation_lng": 73.1276701
-      }
-    ],
-    "instagram": [
-      {
-        "geolocation_lat": 18.990201,
-        "geolocation_lng": 73.1276701
-      },
-      {
-        "geolocation_lat": 18.000201,
-        "geolocation_lng": 73.1276701
-      },
-      {
-        "geolocation_lat": 13.990201,
-        "geolocation_lng": 79.1276701
-      }
-    ],
-    "relief_camps": [
-      {
-        "reliefId": 1,
-        "geolocation_lat": 18.990201,
-        "geolocation_lng": 73.1276701,
-        "projectId": 100,
-        "creationTime": "2022-08-13T03:55:39.263000Z"
-      },
-      {
-        "reliefId": 2,
-        "geolocation_lat": 22.990201,
-        "geolocation_lng": 75.1276701,
-        "projectId": 100,
-        "creationTime": "2022-08-13T03:59:15.629000Z"
-      },
-      {
-        "reliefId": 3,
-        "geolocation_lat": 20.990201,
-        "geolocation_lng": 78.1276701,
-        "projectId": 100,
-        "creationTime": "2022-08-13T06:49:37.883000Z"
-      },
-      {
-        "reliefId": 4,
-        "geolocation_lat": 18.990201,
-        "geolocation_lng": 74.1276701,
-        "projectId": 100,
-        "creationTime": "2022-08-13T06:52:07.562000Z"
-      },
-    ],
-    "clustersTwitter": [
-      {
-        "geolocation_lat": 20.990201,
-        "geolocation_lng": 77.1276701
-      },
-      {
-        "geolocation_lat": 18.990201,
-        "geolocation_lng": 76.1276701
-      },
-      {
-        "geolocation_lat": 19.990201,
-        "geolocation_lng": 77.1276701
-      }
-    ],
-    "clustersFacebook": [
-      {
-        "geolocation_lat": 19.990201,
-        "geolocation_lng": 77.1276701
-      },
-      {
-        "geolocation_lat": 19.990201,
-        "geolocation_lng": 77.1276701
-      },
-      {
-        "geolocation_lat": 17.990201,
-        "geolocation_lng": 77.1276701
-      }
-    ],
-    "clustersInstagram": [
-      {
-        "geolocation_lat": 19.990201,
-        "geolocation_lng": 76.1276701
-      },
-      {
-        "geolocation_lat": 19.990201,
-        "geolocation_lng": 82.1276701
-      },
-      {
-        "geolocation_lat": 14.990201,
-        "geolocation_lng": 76.1276701
-      }
-    ]
-  })
-  const [currentProjectId, setCurrentProjectId] = useState(0)
+const Index = ({projectIds, alerts, projectData}) => {
 
-  const handleChange = (event) => {
-    // send api request
-    setCurrentProjectData({
-      "projectId": 2,
-      "twitter": [
-        {
-          "geolocation_lat": 31.990201,
-          "geolocation_lng": 76.1276701
-        },
-        {
-          "geolocation_lat": 21.990201,
-          "geolocation_lng": 76.1276701
-        },
-        {
-          "geolocation_lat": 23.990201,
-          "geolocation_lng": 73.1276701
-        }
-      ],
-      "facebook": [
-        {
-          "geolocation_lat": 22.990201,
-          "geolocation_lng": 82.1276701
-        },
-        {
-          "geolocation_lat": 24.990201,
-          "geolocation_lng": 83.1276701
-        },
-        {
-          "geolocation_lat": 29.990201,
-          "geolocation_lng": 73.1276701
-        }
-      ],
-      "instagram": [
-        {
-          "geolocation_lat": 18.990201,
-          "geolocation_lng": 73.1276701
-        },
-        {
-          "geolocation_lat": 19.000201,
-          "geolocation_lng": 73.1276701
-        },
-        {
-          "geolocation_lat": 13.990201,
-          "geolocation_lng": 79.1276701
-        }
-      ],
-      "relief_camps": [
-        {
-          "reliefId": 1,
-          "geolocation_lat": 20.990201,
-          "geolocation_lng": 73.1276701,
-          "projectId": 100,
-          "creationTime": "2022-08-13T03:55:39.263000Z"
-        },
-        {
-          "reliefId": 2,
-          "geolocation_lat": 21.990201,
-          "geolocation_lng": 75.1276701,
-          "projectId": 100,
-          "creationTime": "2022-08-13T03:59:15.629000Z"
-        },
-        {
-          "reliefId": 3,
-          "geolocation_lat": 25.990201,
-          "geolocation_lng": 78.1276701,
-          "projectId": 100,
-          "creationTime": "2022-08-13T06:49:37.883000Z"
-        },
-        {
-          "reliefId": 4,
-          "geolocation_lat": 17.990201,
-          "geolocation_lng": 79.1276701,
-          "projectId": 100,
-          "creationTime": "2022-08-13T06:52:07.562000Z"
-        },
-      ],
-      "clustersTwitter": [
-        {
-          "geolocation_lat": 20.990201,
-          "geolocation_lng": 77.1276701
-        },
-        {
-          "geolocation_lat": 18.990201,
-          "geolocation_lng": 80.1276701
-        },
-        {
-          "geolocation_lat": 20.990201,
-          "geolocation_lng": 81.1276701
-        }
-      ],
-      "clustersFacebook": [
-        {
-          "geolocation_lat": 18.990201,
-          "geolocation_lng": 73.1276701
-        },
-        {
-          "geolocation_lat": 18.990201,
-          "geolocation_lng": 73.1276701
-        },
-        {
-          "geolocation_lat": 18.990201,
-          "geolocation_lng": 73.1276701
-        }
-      ],
-      "clustersInstagram": [
-        {
-          "geolocation_lat": 18.990201,
-          "geolocation_lng": 73.1276701
-        },
-        {
-          "geolocation_lat": 18.990201,
-          "geolocation_lng": 73.1276701
-        },
-        {
-          "geolocation_lat": 18.990201,
-          "geolocation_lng": 73.1276701
-        }
-      ]
-    })
-    setCurrentProjectId(event.target.value)
+  /// project
+  const [currentProjectData, setCurrentProjectData] = useState({...projectData})
+  const [currentProjectId, setCurrentProjectId] = useState(projectData.projectId)
+  const [isDataFetching, setIsDataFetching] = useState(false)
+
+  const handleChange = async (event) => {
+    event.preventDefault()
+    setIsDataFetching(true)
+    const id = event.target.value
+    try {
+      await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/maps/${id}`)
+        .then(function (response) {
+          setCurrentProjectData(response.data.data.projects)
+          setCurrentProjectId(id)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    } catch (err) {
+      console.log(err)
+    }
+    setIsDataFetching(false)
   }
 
   /// map - show geolocation
@@ -288,8 +58,6 @@ const Index = () => {
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: googleMapsApiKey, libraries,
   });
-
-  console.log(currentProjectData)
 
   const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
@@ -313,8 +81,20 @@ const Index = () => {
   if (loadError) return "Error";
   if (!isLoaded) return "Loading...";
 
-  const handleSubmit = () => {
-    console.log({geolocation_lng: markers[0].lng, geolocation_lat: markers[0].lat})
+  const handleSubmit = async () => {
+    try {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/relifcamps`,
+        {projectId: currentProjectData.projectId, geolocation_lng: markers[0].lng, geolocation_lat: markers[0].lat})
+        .then(function (response) {
+          console.log(response)
+          // manage add relief camps to existing array
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (<DashboardContainer
@@ -333,8 +113,9 @@ const Index = () => {
         appearance: 'none', border: '2px solid black', padding: '5px 24px', borderRadius: '6px', marginRight: '8px'
       }}
       >
-        {projectIds.map((item, index) => <option key={index} value={index}>{item}</option>)}
+        {projectIds.map((item, index) => <option key={index} value={item}>{item}</option>)}
       </select>
+      {isDataFetching && <Spinner/>}
     </Flex>}
   >
     <Box pos={'relative'}>
@@ -523,7 +304,7 @@ const Index = () => {
               }}
             />)
           })}
-          {showReliefCamps && currentProjectData.relief_camps.map((marker, index) => {
+          {showReliefCamps && currentProjectData.relifCamps.map((marker, index) => {
             return (<Marker
               key={index}
               position={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}}
@@ -540,7 +321,7 @@ const Index = () => {
           })}
           {showTwitterPoints && (<>
             {currentProjectData.twitter.map((marker, index) => {
-              return (<>
+              return (
                 <Marker
                   key={index}
                   position={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}}
@@ -554,7 +335,7 @@ const Index = () => {
                     scaledSize: new window.google.maps.Size(20, 20),
                   }}
                 />
-              </>)
+              )
             })}
           </>)}
           {showFacebookPoints && (<>
@@ -609,3 +390,27 @@ const Index = () => {
 };
 
 export default Index;
+
+export async function getServerSideProps() {
+
+  let projectIds = [], alerts = [], projectData = {}
+
+  try {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/maps`)
+    if (res.data) {
+      projectIds = res.data.data.projectIds.map((item) => item.projectId)
+      alerts = res.data.data.alerts
+      projectData = res.data.data.projectData
+    }
+  } catch (e) {
+    console.log(e)
+  }
+
+  return {
+    props: {
+      projectIds,
+      alerts,
+      projectData
+    }
+  }
+}

@@ -13,10 +13,8 @@ import {
   Tabs,
   Text,
 } from "@chakra-ui/react";
-import {recentProjects} from "../../constants/sample-data/recentProjects";
-import {popularTwitterHandles} from "../../constants/sample-data/popularTwitterHandles";
 
-const DashTabs = () => {
+const DashTabs = ({activeAccounts, recentProjects}) => {
   return (
     <>
       <Tabs isFitted border={'1px solid lightgray'} borderRadius={'md'}>
@@ -24,17 +22,16 @@ const DashTabs = () => {
           <Tab p={3}>Active Accounts</Tab>
           <Tab p={3}>Recent Projects</Tab>
         </TabList>
-        <TabPanels variant='soft-rounded' colorscheme='green'>
+        <TabPanels variant='soft-rounded' colorscheme='green' minH={'285px'} maxH={'285px'} overflow={'scroll'}>
           <TabPanel px={0} pt={2}>
             <>
-              {popularTwitterHandles.map((item, index) => {
+              {activeAccounts.map((item, index) => {
                 return (
                   <Box key={index}>
                     <Flex alignItems={"center"} gap={6} px={6} py={2}>
                       <BsTwitter color={"#1DA1F2"} size={"1.5rem"}/>
                       <Box>
-                        <Text fontWeight={"semibold"}>{item.name}</Text>
-                        <Text color={"gray.500"} fontSize={"sm"}>@{item.username}</Text>
+                        <Text color={"gray.500"} fontSize={"sm"}>@{item}</Text>
                       </Box>
                     </Flex>
                     <Divider/>
@@ -47,16 +44,16 @@ const DashTabs = () => {
             <>
               {recentProjects.map((item, index) => {
                 return (
-                  <LinkBox key={index}>
+                  <Box key={index}>
                     <Flex alignItems={"center"} gap={6} px={6} py={2}>
                       <Box>
                         <Text fontWeight={"semibold"}>{item.projectName}</Text>
                         <Text color={"gray.500"} fontSize={"sm"} textTransform={"capitalize"}>{item.disasterType}</Text>
                       </Box>
                     </Flex>
-                    <LinkOverlay href='#'/>
+                    {/*<LinkOverlay href='#'/>*/}
                     <Divider/>
-                  </LinkBox>
+                  </Box>
                 )
               })}
             </>

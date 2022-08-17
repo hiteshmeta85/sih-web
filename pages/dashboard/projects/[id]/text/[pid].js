@@ -4,7 +4,7 @@ import {
   Divider,
   Flex,
   Grid,
-  GridItem,
+  GridItem, Heading, Highlight,
   Link,
   Modal,
   ModalBody,
@@ -78,7 +78,7 @@ const IndividualTextAnalysis = () => {
   const {pid} = router.query
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [claims, setClaims] = useState([])
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const {isOpen, onOpen, onClose} = useDisclosure()
 
   const handleSubmit = (value) => {
     setIsSubmitting(true)
@@ -96,30 +96,38 @@ const IndividualTextAnalysis = () => {
       title={'Individual Analysis - Text'}
       rightSection={
         <Box p={4} border={"1px solid lightgray"} borderRadius={"md"}><PieChart data={PieChartData}/></Box>
-    }
+      }
     >
       <Grid gap={8}>
-        <GridItem p={2} px={4} border={"1px solid lightgray"} borderRadius={"md"}>
+        <GridItem p={4} border={"1px solid lightgray"} borderRadius={"md"}>
           <Text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Quisque nisl eros, pulvinar facilisis justo mollis, auctor
-            consequat urna. Morbi a bibendum metus. Donec scelerisque
-            sollicitudin enim eu venenatis. Duis tincidunt laoreet ex,
-            in pretium orci vestibulum eget. Class aptent taciti
-            sociosqu ad litora torquent per conubia nostra, per inceptos
-            himenaeos. Duis pharetra luctus lacus ut vestibulum.
-            Maecenas ipsum lacus, lacinia quis posuere ut, pulvinar
-            vitae dolor. Integer eu nibh at nisi ullamcorper sagittis id
-            vel leo. Integer feugiat faucibus libero, at maximus nisl
-            suscipit posuere. Morbi nec enim nunc. Phasellus bibendum
-            turpis ut ipsum egestas, sed sollicitudin elit convallis.
-            Cras pharetra mi tristique sapien vestibulum lobortis. Nam
-            eget bibendum metus, non dictum mauris. Nulla at tellus
-            sagittis, viverra est a, bibendum metus.
+            {/* query is a required attribute */}
+            <Highlight
+              query={['Lorem', 'Nam', 'Integer', 'Morbi', 'Class']}
+              styles={{px: '2', py: '1', rounded: 'sm', bg: 'green.100'}}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Quisque nisl eros, pulvinar facilisis justo mollis, auctor
+              consequat urna. Morbi a bibendum metus. Donec scelerisque
+              sollicitudin enim eu venenatis. Duis tincidunt laoreet ex,
+              in pretium orci vestibulum eget. Class aptent taciti
+              sociosqu ad litora torquent per conubia nostra, per inceptos
+              himenaeos. Duis pharetra luctus lacus ut vestibulum.
+              Maecenas ipsum lacus, lacinia quis posuere ut, pulvinar
+              vitae dolor. Integer eu nibh at nisi ullamcorper sagittis id
+              vel leo. Integer feugiat faucibus libero, at maximus nisl
+              suscipit posuere. Morbi nec enim nunc. Phasellus bibendum
+              turpis ut ipsum egestas, sed sollicitudin elit convallis.
+              Cras pharetra mi tristique sapien vestibulum lobortis. Nam
+              eget bibendum metus, non dictum mauris. Nulla at tellus
+              sagittis, viverra est a, bibendum metus.
+            </Highlight>
           </Text>
         </GridItem>
         <Button
-          onClick={claims.length > 0 ? () => { onOpen() } : () => handleSubmit('assam flood')}
+          onClick={claims.length > 0 ? () => {
+            onOpen()
+          } : () => handleSubmit('assam flood')}
           bg={'blackAlpha.800'}
           _hover={{bg: 'blackAlpha.700'}}
           _active={{bg: 'blackAlpha.800'}}
@@ -150,12 +158,14 @@ const IndividualTextAnalysis = () => {
         </GridItem>
       </Grid>
 
-    {/* Modal */}
-      <Modal onClose={()=> {onClose()}} size={'xl'} isOpen={isOpen} scrollBehavior={'inside'}>
-        <ModalOverlay />
+      {/* Modal */}
+      <Modal onClose={() => {
+        onClose()
+      }} size={'xl'} isOpen={isOpen} scrollBehavior={'inside'}>
+        <ModalOverlay/>
         <ModalContent>
           <ModalHeader>Fact Check</ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton/>
           <ModalBody>
             <Flex flexDir={'column'} gap={4}>
               <>
@@ -169,18 +179,24 @@ const IndividualTextAnalysis = () => {
                       </Flex>
                       <Text><Text as={'span'} fontWeight={'bold'}>Text:</Text> {item.text}</Text>
                       <Text><Text fontWeight={'bold'} as={'span'}>Claimant:</Text> {item.claimant}</Text>
-                      <Text fontSize={'sm'}>Claim Date: {moment(item.claimDate).format('ll')}</Text>
+                      <Text fontSize={'sm'}>Claim Date: {moment(item.claimDate)
+                        .format('ll')}</Text>
                       {/* Claim Review */}
                       {item.claimReview.length > 0 && <>
                         <Divider maxW={48}/>
                         <Text fontWeight={'bold'}>Claim Review: </Text>
                         <Text><Text as={'span'} fontWeight={'bold'}>Title:</Text> {item.claimReview[0].title}</Text>
-                        <Text alignSelf={'start'} as={'span'} px={2} py={1} bg={'gray.100'} textUnderlineOffset={4} border={'1px solid black'} rounded={'sm'}>Rating: {item.claimReview[0].textualRating}</Text>
+                        <Text alignSelf={'start'} as={'span'} px={2} py={1} bg={'gray.100'} textUnderlineOffset={4}
+                              border={'1px solid black'}
+                              rounded={'sm'}>Rating: {item.claimReview[0].textualRating}</Text>
                         <Flex justifyContent={'space-between'} mt={2}>
-                          <Text fontSize={'sm'}>{moment(item.claimReview[0].reviewDate).format('ll')}</Text>
+                          <Text fontSize={'sm'}>{moment(item.claimReview[0].reviewDate)
+                            .format('ll')}</Text>
                           <Flex alignItems={'center'} gap={2}>
-                            <Link target={'_blank'} href={item.claimReview[0].url} cursor={'pointer'} color={'gray.600'}><BiLink/></Link>
-                            <Text fontSize={'sm'} fontWeight={'bold'}>Publisher: {item.claimReview[0].publisher.name}</Text>
+                            <Link target={'_blank'} href={item.claimReview[0].url} cursor={'pointer'}
+                                  color={'gray.600'}><BiLink/></Link>
+                            <Text fontSize={'sm'}
+                                  fontWeight={'bold'}>Publisher: {item.claimReview[0].publisher.name}</Text>
                           </Flex>
                         </Flex>
                       </>}

@@ -23,13 +23,13 @@ const SidebarNavItem = ({navLink, icon, name, isSidebarOpen}) => {
           pr={isSidebarOpen ? 14 : 4}
           py={2}
           my={2}
-          transition={'all 1s'}
+          transition={'all 0.5s'}
         >
           {icon && <ListIcon
             as={icon}
             color={(router.pathname === `${navLink}` || isNavItemHovered === true) ? '#0B2656' : 'gray.100'}
           />}
-          <Text display={isSidebarOpen ? 'inline-block' : 'none'} transition={'all 1s'}>{name}</Text>
+          <Text display={isSidebarOpen ? 'inline-block' : 'none'}>{name}</Text>
         </ListItem>
       </Link>
     </NextLink>

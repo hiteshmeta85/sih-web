@@ -1,16 +1,15 @@
 import React from "react";
 import Slider from "react-slick";
-import {Box, Flex, Text} from "@chakra-ui/react";
+import {Box, Text} from "@chakra-ui/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {BsTwitter} from "react-icons/bs";
 
 const TweetCarousel = ({data}) => {
 
   const settings = {
     dots: true,
-    slidesToShow: 6,
-    slidesToScroll: 6,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     initialSlide: 0,
     autoplay: true,
     autoplaySpeed: 4000,
@@ -44,25 +43,29 @@ const TweetCarousel = ({data}) => {
 
   return (
     <Slider {...settings}>
-      {data.map((item, index) => {
-        return (
-          <Box key={index} px={1}>
-            <Text
-              align={'center'}
-              border={"1px solid lightgray"}
-              borderRadius={"md"}
-              fontWeight={'semibold'}
-              py={2}
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-              gap={2}
-            >
-              <BsTwitter color={'#1C9BEF'}/> #{item}
-            </Text>
-          </Box>
-        )
-      })}
+      {data.map((tweet) => tweet.trim())
+        .filter((tweet) => tweet !== '')
+        .map((item, index) => {
+          return (
+            <Box key={index} px={1}>
+              <Text
+                align={'center'}
+                border={"1px solid lightgray"}
+                borderRadius={"md"}
+                fontWeight={'semibold'}
+                p={2}
+                display={'flex'}
+                alignItems={'center'}
+                justifyContent={'center'}
+                gap={2}
+                wordBreak={'break-word'}
+              >
+                {/*<BsTwitter color={'#1C9BEF'} size={'1.5rem'}/>*/}
+                {item}
+              </Text>
+            </Box>
+          )
+        })}
     </Slider>
   );
 }

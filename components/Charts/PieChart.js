@@ -9,7 +9,7 @@ const options = {
   plugins: {
     legend: {
       display: true,
-      position: 'right',
+      position: 'bottom',
     },
     title: {
       display: false,
