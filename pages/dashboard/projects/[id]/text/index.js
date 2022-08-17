@@ -23,6 +23,7 @@ import {AiFillFacebook, AiOutlineInstagram, AiOutlineTwitter} from "react-icons/
 import {facebookSampleTweets} from "../../../../../constants/sample-data/facebookSampleTweets";
 import {instagramSampleTweets} from "../../../../../constants/sample-data/instagramSampleTweets";
 import {IoIosRefresh} from "react-icons/io";
+import RefreshButton from "../../../../../components/Button/RefreshButton";
 
 const ProjectTextView = () => {
 
@@ -235,8 +236,8 @@ const ProjectTextView = () => {
         }
       }
     } else {
-      setShouldPageRefresh(true)
       console.log("Keys Not Found: Dead End")
+      setShouldPageRefresh(true)
     }
   }
 
@@ -255,20 +256,8 @@ const ProjectTextView = () => {
       <TabPanels bg={"white"}>
         <TabPanel overflowX={'scroll'}>
           {shouldPageRefresh ? <Flex alignItems={'center'} gap={2} mb={4} justifyContent={'flex-end'}>
-            <Button
-              display={'flex'}
-              alignItems={'center'}
-              gap={2}
-              bg={'blackAlpha.800'}
-              _hover={{bg: 'blackAlpha.700'}}
-              _active={{bg: 'blackAlpha.800'}}
-              color={'white'}
-              onClick={handlePageRefresh}
-            >
-              <Text>Refresh</Text>
-              <Icon as={IoIosRefresh} h={6} w={6} color={'white'}/>
-            </Button>
-          </Flex> : '' }
+            <RefreshButton handlePageRefresh={handlePageRefresh}/>
+          </Flex> : ''}
           <TableContainer>
             <Table borderWidth={"1px"}>
               <Thead>
