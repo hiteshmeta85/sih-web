@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import DashboardContainer from "../_layout";
 import {Box, Button, Flex, Spinner, Text} from "@chakra-ui/react";
-import {SearchLocation} from "../../../components/Map/SearchLocation";
+import {SearchLocation} from "../../components/Map/SearchLocation";
 import {Circle, GoogleMap, InfoWindow, Marker, useLoadScript} from "@react-google-maps/api";
 import {
   facebookCircle,
@@ -10,18 +10,17 @@ import {
   libraries,
   mapCenter,
   twitterCircle
-} from "../../../components/Map/MapConfigAndDefaults";
+} from "../../components/Map/MapConfigAndDefaults";
 import {FaMapMarkerAlt} from "react-icons/fa";
 import {ImCancelCircle} from "react-icons/im";
 import {BiSelectMultiple} from "react-icons/bi";
 import axios from "axios";
-import Error from "../../../components/Error/Error";
 
 const options = {
   disableDefaultUI: true, zoomControl: true,
 };
 
-const Index = ({projectIds, alerts, projectData}) => {
+const Maps = ({projectIds, alerts, projectData}) => {
 
   /// project
   const [currentProjectData, setCurrentProjectData] = useState({...projectData})
@@ -391,7 +390,7 @@ const Index = ({projectIds, alerts, projectData}) => {
   </DashboardContainer>);
 };
 
-export default Index;
+export default Maps;
 
 export async function getServerSideProps() {
 
