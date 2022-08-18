@@ -13,9 +13,6 @@ import {BiSelectMultiple} from "react-icons/bi";
 const options = {
   disableDefaultUI: true,
   zoomControl: true,
-  zoomControlOptions: {
-    position: google.maps.ControlPosition.RIGHT_TOP,
-  },
 };
 
 const Index = ({alertsData}) => {
