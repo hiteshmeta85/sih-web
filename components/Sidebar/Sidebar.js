@@ -6,10 +6,10 @@ import React, {useState} from "react";
 import Image from "next/image";
 import LogoImage from "../Logo/logo2.svg";
 
-const Sidebar = () => {
+const Sidebar = ({isSidebarOpenByDefault = true}) => {
 
   const [isNavItemHovered, setIsNavItemHovered] = useState(false)
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(isSidebarOpenByDefault)
 
   return (
     <Box bg={'#F5F5F5'} h={'100vh'}>

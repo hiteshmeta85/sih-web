@@ -3,7 +3,7 @@ import DashboardContainer from "../_layout";
 
 const LiveDemoLayout = ({children}) => {
   return (
-    <DashboardContainer title={'Live Demo'}>
+    <DashboardContainer title={'Live Demo'} isSidebarOpenByDefault={false}>
       {children}
     </DashboardContainer>
   );

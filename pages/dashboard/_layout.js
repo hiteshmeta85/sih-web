@@ -3,10 +3,10 @@ import {Box, Flex, Text} from "@chakra-ui/react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import DashboardMenu from "../../components/Sidebar/DashboardMenu";
 
-const DashboardContainer = ({children, title, helperItems}) => {
+const DashboardContainer = ({children, title, helperItems, isSidebarOpenByDefault = true}) => {
   return (
     <Flex>
-      <Sidebar/>
+      <Sidebar isSidebarOpenByDefault={isSidebarOpenByDefault}/>
       <Box
         flex={1}
         h={'100vh'}
