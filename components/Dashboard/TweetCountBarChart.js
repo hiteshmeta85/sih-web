@@ -55,7 +55,7 @@ const TweetCountBarChart = ({data}) => {
           })}
         </Select>
       </Flex>
-      <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
+      <CardTitle primaryText={'Data Scrapped vs Time'} secondaryText={''}/>
       <Box mt={4} height={'400px'}>
         <BarChart data={{
           labels: chartLabels,

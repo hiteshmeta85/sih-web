@@ -11,7 +11,7 @@ const TweetCountPieChart = ({labels, data}) => {
       border={"1px solid lightgray"}
       borderRadius={"md"}
     >
-      <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
+      <CardTitle primaryText={'Total Data Scrapped Percentage.'} secondaryText={'Project - Uttarakhand Flood'}/>
       <PieChart data={{
         labels: labels,
         datasets: [
