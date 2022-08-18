@@ -142,7 +142,7 @@ const ProjectTextPlusVideosView = () => {
       console.log("getting celery keys")
       const getCeleryKeys = async () => {
         try {
-          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/new/projects/39/text`)
+          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/new/projects/39/image/0`)
           if (response) {
             setCeleryKeys(response.data)
           }
@@ -228,13 +228,13 @@ const ProjectTextPlusVideosView = () => {
 
   console.log("Twitter Data", twitterData, "Facebook Data", facebookData, "Instagram Data", instagramData)
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      newFn()
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [newFn]);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     newFn()
+  //   }, 5000);
+  //
+  //   return () => clearInterval(interval);
+  // }, [newFn]);
 
   return (
     <TabsLayout defaultIndex={1}>

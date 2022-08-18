@@ -2,7 +2,9 @@ import {Box, Flex, Icon, List, ListItem, Text} from "@chakra-ui/react";
 import SidebarNavItem from "./SidebarNavItem";
 import {sidebarItems} from "../../constants/useful-data/sidebarItems";
 import {BiArrowBack} from "react-icons/bi";
-import {useState} from "react";
+import React, {useState} from "react";
+import Image from "next/image";
+import LogoImage from "../Logo/logo2.svg";
 
 const Sidebar = () => {
 
@@ -35,12 +37,18 @@ const Sidebar = () => {
             <Text
               fontWeight={'bold'}
               pl={6}
-              pr={10}
+              pr={isSidebarOpen ? 10 : 4}
               py={2}
               my={"auto"}
               h={12}
+              display={'flex'}
+              alignItems={'center'}
+              gap={4}
             >
-              <Text as={'span'} transition={'all 1s'} display={isSidebarOpen ? 'inline-block' : 'none'}>Homebrew.</Text>
+              <Image src={LogoImage} height={'25px'} width={'25px'}/>
+              <Text as={'span'} transition={'all 1s'} display={isSidebarOpen ? 'inline-block' : 'none'}>
+                Homebrew.
+              </Text>
             </Text>
             <Box>
               {sidebarItems.map((item, index) => {
