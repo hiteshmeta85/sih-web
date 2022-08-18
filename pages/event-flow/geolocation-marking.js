@@ -19,10 +19,7 @@ const options = {
 };
 
 const GeolocationMarking = ({alerts, projectData}) => {
-  /// project
-  const [currentProjectData, setCurrentProjectData] = useState({...projectData})
 
-  /// map - show geolocation
   const [showAlerts, setShowAlerts] = useState(false)
   const [showReliefCamps, setShowReliefCamps] = useState(false)
   const [showTwitterPoints, setShowTwitterPoints] = useState(false)
@@ -34,14 +31,7 @@ const GeolocationMarking = ({alerts, projectData}) => {
     googleMapsApiKey: googleMapsApiKey, libraries,
   });
 
-  const [markers, setMarkers] = React.useState([]);
   const [selected, setSelected] = React.useState(null);
-
-  // const onMapClick = React.useCallback((e) => {
-  //   setMarkers(() => [{
-  //     lat: e.latLng.lat(), lng: e.latLng.lng(), time: new Date()
-  //   }]);
-  // }, []);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -63,13 +53,14 @@ const GeolocationMarking = ({alerts, projectData}) => {
       forwardLink={'/event-flow/analysis'}
     >
       <Box pos={'relative'}>
-        <Flex
+        {Object.keys(projectData).length !== 0 && <Flex
           position={'absolute'}
           justifyContent={'space-between'}
           alignItems={'center'}
-          bottom={2}
+          bottom={0}
           zIndex={1}
-          mb={3}
+          bg={'green.500'}
+          py={2}
           borderRadius={'sm'}
           userSelect={'none'}
           flexWrap={'wrap'}
@@ -188,7 +179,7 @@ const GeolocationMarking = ({alerts, projectData}) => {
               {showInstagramPoints ? <ImCancelCircle/> : <BiSelectMultiple/>}
             </Flex>
           </Flex>
-        </Flex>
+        </Flex>}
         <GoogleMap
           id="map"
           mapContainerStyle={{
@@ -204,36 +195,25 @@ const GeolocationMarking = ({alerts, projectData}) => {
         >
           <>
             {showAffectedZones && (<>
-              {currentProjectData.clustersInstagram.map((marker, index) => {
+              {projectData.clustersInstagram.map((marker, index) => {
                 return (
-                  <Circle key={index} center={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}} radius={60000}
+                  <Circle key={index} center={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}}
+                          radius={60000}
                           options={twitterCircle}/>)
               })}
-              {currentProjectData.clustersFacebook.map((marker, index) => {
+              {projectData.clustersFacebook.map((marker, index) => {
                 return (
-                  <Circle key={index} center={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}} radius={60000}
+                  <Circle key={index} center={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}}
+                          radius={60000}
                           options={facebookCircle}/>)
               })}
-              {currentProjectData.clustersTwitter.map((marker, index) => {
+              {projectData.clustersTwitter.map((marker, index) => {
                 return (
-                  <Circle key={index} center={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}} radius={60000}
+                  <Circle key={index} center={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}}
+                          radius={60000}
                           options={instagramCircle}/>)
               })}
             </>)}
-            {markers.map((marker, index) => (<Marker
-              key={index}
-              position={{lat: marker.lat, lng: marker.lng}}
-              onClick={() => {
-                setSelected(marker);
-                panTo({lat: marker.lat, lng: marker.lng})
-              }}
-              icon={{
-                url: `/images/circles/relief_camp.svg`,
-                origin: new window.google.maps.Point(0, 0),
-                anchor: new window.google.maps.Point(15, 15),
-                scaledSize: new window.google.maps.Size(25, 25),
-              }}
-            />))}
             {showAlerts && alerts.map((marker, index) => {
               return (<Marker
                 key={index}
@@ -249,7 +229,7 @@ const GeolocationMarking = ({alerts, projectData}) => {
                 }}
               />)
             })}
-            {showReliefCamps && currentProjectData.relifCamps.map((marker, index) => {
+            {showReliefCamps && projectData.relifCamps.map((marker, index) => {
               return (<Marker
                 key={index}
                 position={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}}
@@ -265,7 +245,7 @@ const GeolocationMarking = ({alerts, projectData}) => {
               />)
             })}
             {showTwitterPoints && (<>
-              {currentProjectData.twitter.map((marker, index) => {
+              {projectData.twitter.map((marker, index) => {
                 return (
                   <Marker
                     key={index}
@@ -284,7 +264,7 @@ const GeolocationMarking = ({alerts, projectData}) => {
               })}
             </>)}
             {showFacebookPoints && (<>
-              {currentProjectData.facebook.map((marker, index) => {
+              {projectData.facebook.map((marker, index) => {
                 return (<Marker
                   key={index}
                   position={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}}
@@ -302,7 +282,7 @@ const GeolocationMarking = ({alerts, projectData}) => {
             </>)}
 
             {showInstagramPoints && (<>
-              {currentProjectData.instagram.map((marker, index) => {
+              {projectData.instagram.map((marker, index) => {
                 return (<Marker
                   key={index}
                   position={{lat: marker.geolocation_lat, lng: marker.geolocation_lng}}

@@ -22,40 +22,44 @@ const urlsData = [
         url: '/event-flow/',
       },
       {
-        title: 'Binary Image Classification',
-        url: '/event-flow/binary-image-classification',
+        title: 'Raw Data Extraction',
+        url: '/event-flow/raw-data-extraction',
       },
       {
         title: 'Binary Text Classification',
         url: '/event-flow/binary-text-classification',
       },
       {
-        title: 'Binary Video Classification',
-        url: '/event-flow/binary-video-classification',
+        title: 'Multi label text classification',
+        url: '/event-flow/multi-label-text-classification',
       },
       {
-        title: 'Geolocation Marking',
-        url: '/event-flow/geolocation-marking',
+        title: 'Binary Image Classification',
+        url: '/event-flow/binary-image-classification',
       },
       {
         title: 'Multi label image classification',
         url: '/event-flow/multi-label-image-classification',
       },
       {
-        title: 'Multi label text classification',
-        url: '/event-flow/multi-label-text-classification',
-      },
-      {
-        title: 'Raw Data Extraction',
-        url: '/event-flow/raw-data-extraction',
+        title: 'Binary Video Classification',
+        url: '/event-flow/binary-video-classification',
       },
       {
         title: 'Voice Analysis',
         url: '/event-flow/voice-analysis',
       },
       {
+        title: 'Geolocation Marking',
+        url: '/event-flow/geolocation-marking',
+      },
+      {
         title: 'Analysis',
         url: '/event-flow/analysis',
+      },
+      {
+        title: 'Conclusion',
+        url: '/event-flow/conclusion',
       },
     ]
   },
@@ -149,7 +153,7 @@ const Urls = () => {
   return (
     <LandingPageLayout>
       <Box maxW={'container.xl'} mx={'auto'} my={4} p={{base: 2, md: 4,}}>
-        <Accordion defaultIndex={[0]} allowMultiple maxW={'container.md'} bg={'white'}>
+        <Accordion allowMultiple maxW={'container.md'} bg={'white'}>
           <>
             {urlsData.map((item, index) => {
                 return (

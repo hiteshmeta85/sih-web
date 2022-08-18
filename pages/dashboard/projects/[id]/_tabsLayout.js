@@ -14,7 +14,7 @@ const TabsLayout = ({children, defaultIndex}) => {
 
       <Tabs borderRadius={"md"} defaultIndex={defaultIndex}>
         <TabList overflowX={'scroll'}>
-          <NextLink href={`/dashboard/projects/${id}/text`}><Link _hover={{textDecoration: 'none'}}><Tab>Twitter</Tab></Link></NextLink>
+          <NextLink href={`/dashboard/projects/${id}/text`}><Link _hover={{textDecoration: 'none'}}><Tab>Text</Tab></Link></NextLink>
           <NextLink href={`/dashboard/projects/${id}/text-images`}><Link _hover={{textDecoration: 'none'}}><Tab>Text + Images</Tab></Link></NextLink>
           <NextLink href={`/dashboard/projects/${id}/voices`}><Link _hover={{textDecoration: 'none'}}><Tab>Voices</Tab></Link></NextLink>
           <NextLink href={`/dashboard/projects/${id}/videos`}><Link _hover={{textDecoration: 'none'}}><Tab>Videos</Tab></Link></NextLink>
