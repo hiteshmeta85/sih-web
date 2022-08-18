@@ -19,53 +19,9 @@ import {useRouter} from "next/router";
 import {useState} from "react";
 import Error from "../../../../components/Error/Error";
 
-const SelectHashtags = ({hashtags, projectName, disasterType, id}) => {
+const SelectHashtags = ({hashtags, projectName, disasterType, id, states}) => {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState('')
-  const states = [{
-    "state": "Andhra Pradesh",
-    "districts": [
-      "Anantapur",
-      "Chittoor",
-      "East Godavari",
-      "Guntur",
-      "Krishna",
-      "Kurnool",
-      "Nellore",
-      "Prakasam",
-      "Srikakulam",
-      "Visakhapatnam",
-      "Vizianagaram",
-      "West Godavari",
-      "YSR Kadapa"
-    ]
-  },
-    {
-      "state": "Arunachal Pradesh",
-      "districts": [
-        "Tawang",
-        "West Kameng",
-        "East Kameng",
-        "Papum Pare",
-        "Kurung Kumey",
-        "Kra Daadi",
-        "Lower Subansiri",
-        "Upper Subansiri",
-        "West Siang",
-        "East Siang",
-        "Siang",
-        "Upper Siang",
-        "Lower Siang",
-        "Lower Dibang Valley",
-        "Dibang Valley",
-        "Anjaw",
-        "Lohit",
-        "Namsai",
-        "Changlang",
-        "Tirap",
-        "Longding"
-      ]
-    }]
 
   return (
     <DashboardContainer title={"Create Project - Hashtags"}>
@@ -242,7 +198,7 @@ const SelectHashtags = ({hashtags, projectName, disasterType, id}) => {
 export async function getServerSideProps(context) {
   const id = context.params.id
 
-  let hashtags, projectName, disasterType;
+  let hashtags, projectName, disasterType, states;
 
   try {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/create-project/select-hashtags/${id}`)
@@ -251,11 +207,13 @@ export async function getServerSideProps(context) {
       hashtags = response.data.data.hashtags
       projectName = response.data.data.projectInfo.projectName
       disasterType = response.data.data.projectInfo.disasterType
+      states = response.data.data.states.states
     }
   } catch (e) {
     hashtags = null
     projectName = null
     disasterType = null
+    states = null
   }
 
   return {
@@ -263,6 +221,7 @@ export async function getServerSideProps(context) {
       hashtags,
       projectName,
       disasterType,
+      states,
       id
     }
   }

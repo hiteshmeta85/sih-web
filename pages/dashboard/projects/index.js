@@ -22,7 +22,7 @@ const Projects = ({allProjectsInfo}) => {
       {allProjects ? <>
           <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={4}>
             <CreateNewProjectCard href={'/dashboard/create-project'}/>
-            {allProjects.map((item, index) => {
+            {allProjects.sort((a, b) => Date.parse(b.creationTime) - Date.parse(a.creationTime)).map((item, index) => {
               return (
                 <ProjectDetailsCard key={index} label={item.projectName} date={item.creationTime} id={item.projectId} setAllProjects={setAllProjects} allProjects={allProjects}/>
               )

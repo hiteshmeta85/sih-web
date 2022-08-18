@@ -1,5 +1,4 @@
 import {
-  Button,
   Flex,
   Icon,
   Link,
@@ -22,7 +21,6 @@ import {useRouter} from "next/router";
 import {AiFillFacebook, AiOutlineInstagram, AiOutlineTwitter} from "react-icons/ai";
 import {facebookSampleTweets} from "../../../../../constants/sample-data/facebookSampleTweets";
 import {instagramSampleTweets} from "../../../../../constants/sample-data/instagramSampleTweets";
-import {IoIosRefresh} from "react-icons/io";
 import RefreshButton from "../../../../../components/Button/RefreshButton";
 
 const ProjectTextView = () => {
@@ -308,8 +306,7 @@ const ProjectTextView = () => {
                         <Td maxW={'xs'} whiteSpace={'initial'}>{item.post_text}</Td>
                         <Td>{item.multilabel.split(',')
                           .slice(0, 2)
-                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'}
-                                                      m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
+                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
                         <Td textAlign={'center'}>{item.time}</Td>
                         <Td textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
                           <Icon as={AiFillFacebook} h={8} w={8} color={'#4267B2'}/></Link>
@@ -329,8 +326,7 @@ const ProjectTextView = () => {
                         <Td maxW={'xs'} whiteSpace={'initial'}>{item.caption}</Td>
                         <Td>{item.multilabel.split(',')
                           .slice(0, 2)
-                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'}
-                                                      m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
+                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
                         <Td textAlign={'center'}>{item.creationTime.$date.$numberLong}</Td>
                         <Td textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
                           <Icon as={AiOutlineInstagram} h={8} w={8} color={'#FCAF45'}/></Link>
