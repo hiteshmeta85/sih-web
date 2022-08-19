@@ -29,8 +29,10 @@ const ProjectTextView = () => {
   const {id} = router.query
 
   const [celeryKeys, setCeleryKeys] = useState({
-    "twitter_task_id": "8e4d39aa-a8aa-4406-9eb9-77538e296c80",
-    "facebook_task_id": "a8771e71-7f6b-495c-af77-5db7d3b94cc5"
+    "status": "Scrapping",
+    "twitter_task_id": "ff355004-5e66-4b49-a74f-c8cc9b0060dd",
+    "facebook_task_id": "fa847a01-327f-453d-b5dd-685708a42f45",
+    "instagram_task_id": "dd39102e-c97d-4c2e-a643-f8f7ab9eea69"
   })
   const [twitterData, setTwitterData] = useState([])
   const [facebookData, setFacebookData] = useState([])
@@ -38,6 +40,7 @@ const ProjectTextView = () => {
   const [didWeGetTaskIds, setDidWeGetTaskIds] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [shouldPageRefresh, setShouldPageRefresh] = useState(false)
+  const [didWeGetData, setDidWeGetData] = useState(false)
 
   const handlePageRefresh = () => {
     setCeleryKeys({})
@@ -56,6 +59,7 @@ const ProjectTextView = () => {
           const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${twitterKeys[0]}`)
           if (response) {
             if (response.data.status === 'SUCCESS' || 'FAILURE') {
+              console.log(response.data)
               setTwitterData([...twitterData, ...response.data.result])
               return true
             }
@@ -151,13 +155,20 @@ const ProjectTextView = () => {
       } else {
         localStorage.setItem('twitterKeysForText', JSON.stringify(instagramKeys))
       }
-    } else if (Object.keys(celeryKeys).length === 0) {
+    } else if (Object.keys(celeryKeys).length === 0 && didWeGetData === false) {
       console.log("getting celery keys")
       const getCeleryKeys = async () => {
         try {
           const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/new/projects/39/text`)
           if (response) {
-            setCeleryKeys(response.data)
+            if(response.data.status === 'Scrapping'){
+              setCeleryKeys(response.data)
+            } else if (response.data.status === 'Scrapped'){
+              setInstagramData([...instagramData, ...response.data.instagram])
+              setFacebookData([...facebookData, ...response.data.facebook])
+              setTwitterData([...twitterData, ...response.data.twitter])
+              setDidWeGetData(true)
+            }
           }
         } catch (err) {
           console.log(err);
@@ -294,7 +305,7 @@ const ProjectTextView = () => {
                       </Tr>
                     )
                   })}
-                  {facebookSampleTweets.map((item, index) => {
+                  {facebookData.map((item, index) => {
                     return (
                       <Tr key={index}>
                         <Td bg={item.prediction === 1 ? 'green.200' : 'red.200'}>{item.prediction}</Td>
@@ -314,7 +325,7 @@ const ProjectTextView = () => {
                       </Tr>
                     )
                   })}
-                  {instagramSampleTweets.map((item, index) => {
+                  {instagramData.map((item, index) => {
                     return (
                       <Tr key={index}>
                         <Td bg={item.prediction === 1 ? 'green.200' : 'red.200'}>{item.prediction}</Td>
