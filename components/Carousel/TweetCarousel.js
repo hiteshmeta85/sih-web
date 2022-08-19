@@ -15,6 +15,7 @@ const TweetCarousel = ({data}) => {
     autoplaySpeed: 4000,
     pauseOnHover: true,
     swipeToSlide: true,
+    infinite: false,
     gap: 4,
     responsive: [
       {

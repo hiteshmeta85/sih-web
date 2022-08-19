@@ -64,7 +64,7 @@ const labels = [
 const IndividualTextAndImageAnalysis = () => {
 
   const router = useRouter()
-  const {pid} = router.query
+  const {pid, social} = router.query
 
   return (
     <IndividualTweetAnalysisLayout
@@ -115,15 +115,6 @@ const IndividualTextAndImageAnalysis = () => {
               <Image src="https://pbs.twimg.com/media/FYnUHX6akAAfNJm.jpg" alt={'image'}/>
             </Box>
           </SimpleGrid>
-        </GridItem>
-        <GridItem p={2}>
-          <Progress
-            border={"1px solid lightgray"}
-            borderRadius={"md"}
-            colorScheme="green"
-            size="lg"
-            value={40}
-          />
         </GridItem>
         <SimpleGrid columns={{base: 2, md: 3}} gap={4} p={2}>
           <>

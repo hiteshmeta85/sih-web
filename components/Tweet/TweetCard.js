@@ -1,5 +1,6 @@
 import React from 'react';
 import {Box, Flex, Image, Text} from '@chakra-ui/react';
+import Link from "next/link";
 
 const TweetCard = ({description, image, username, date, icon}) => {
 
@@ -33,6 +34,9 @@ const TweetCard = ({description, image, username, date, icon}) => {
               </Flex>
             </Box>}
           {date && <Text fontSize={'xs'}>{date}</Text>}
+          <Link href={{pathname: '/dashboard/projects/1/text-images/1', query: { social: 'twitter' }}}>
+            <a>here</a>
+          </Link>
         </Flex>
         {/*<Text fontWeight={700} fontSize={'lg'}>
           {title}

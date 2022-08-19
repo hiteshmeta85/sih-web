@@ -14,6 +14,7 @@ const ImageCarousel = ({images}) => {
     autoplay: true,
     pauseOnHover: true,
     swipeToSlide: true,
+    infinite: false,
     gap: 4,
     responsive: [
       {
