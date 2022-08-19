@@ -20,9 +20,11 @@ const FileUploadForm = ({title, label = 'Select File', url, setResponseData, log
         }}
         validationSchema={fileUploadSchema}
         onSubmit={(values, {resetForm, setSubmitting}) => {
+          setSubmitting(true)
           let data = new FormData();
           data.append('file', values.file);
           data.append('fileName', values.file);
+          console.log("working")
           axios
             .post(`${url}`, data, {
               headers: {
@@ -63,7 +65,7 @@ const FileUploadForm = ({title, label = 'Select File', url, setResponseData, log
                   multiple
                   style={{visibility: "hidden"}}
                 />
-                <CustomSubmitButton handleSubmit={handleSubmit} label={'Submit'} isSubmitting={isSubmitting}/>
+                {values.file && <CustomSubmitButton handleSubmit={handleSubmit} label={'Submit'} isSubmitting={isSubmitting}/>}
               </Flex>
               <Box mt={1}>
                 <ErrorMessage name="file"/>
