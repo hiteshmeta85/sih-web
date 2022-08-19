@@ -13,7 +13,8 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  SimpleGrid, Spinner,
+  SimpleGrid,
+  Spinner,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -24,8 +25,9 @@ import axios from "axios";
 import moment from "moment";
 import {BiLink} from "react-icons/bi";
 import {FaQuoteLeft} from "react-icons/fa";
+import {AiOutlineFacebook, AiOutlineInstagram, AiOutlineTwitter} from "react-icons/ai";
 
-const IndividualTextAnalysis = ({multilabel, username, date, tweet}) => {
+const IndividualTextAnalysis = ({multilabel, username, date, tweet, socialMediaType}) => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [claims, setClaims] = useState([])
@@ -52,6 +54,14 @@ const IndividualTextAnalysis = ({multilabel, username, date, tweet}) => {
       title={'Individual Analysis - Text'}
     >
       <Grid gap={8}>
+        <Flex alignItems={'center'} justifyContent={'space-between'}>
+          <Flex alignItems={'center'} gap={2}>{socialMediaType === 'twitter' ? <AiOutlineTwitter size={'1.5rem'} color={'#1DA1F2'}/> :
+            socialMediaType === 'facebook' ? <AiOutlineFacebook size={'1.5rem'} color={'#4267B2'}/> ?
+              socialMediaType === 'instagram' : <AiOutlineInstagram size={'1.5rem'} color={'#FCAF45'}/> : '' }
+            <Text>@{username}</Text>
+          </Flex>
+          <Text>{date}</Text>
+        </Flex>
         <GridItem p={4} border={"1px solid lightgray"} borderRadius={"md"}>
           <Text>
             {/* query is a required attribute */}
@@ -151,7 +161,7 @@ export async function getServerSideProps(context) {
   const pid = context.params.pid;
   const social = context.query.social.toLowerCase();
 
- let multilabel = '', tweet = '', username = '', date = '';
+ let multilabel = '', tweet = '', username = '', date = '', socialMediaType = '';
 
   try {
     const res = await axios.get(`http://127.0.0.1:8000/homebrew/api/twitter/1554405286206705664`)
@@ -162,18 +172,28 @@ export async function getServerSideProps(context) {
           tweet = res.data.tweet_data.tweet
           username = res.data.tweet_data.username
           date = res.data.tweet_data.date
+          socialMediaType = 'twitter'
+        }
+        if(social === 'facebook'){
+          multilabel = res.data.facebook_data.multilabel
+          tweet = res.data.facebook_data.post_text
+          username = res.data.facebook_data.username
+          date = res.data.facebook_data.date
+          socialMediaType = 'facebook'
         }
       }
     }
   } catch (e) {
     console.log(e)
   }
+
   return {
     props: {
       multilabel,
       tweet,
       username,
-      date
+      date,
+      socialMediaType
     }
   }
 }

@@ -5,11 +5,11 @@ const Badge = ({label}) => {
   return (
     <Text
       align={'center'}
-      bg={"gray.100"}
       border={"2px solid black"}
       borderRadius={"md"}
       fontWeight={'semibold'}
       py={2}
+      px={2}
     >
       {label}
     </Text>
