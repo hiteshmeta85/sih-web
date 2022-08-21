@@ -3,7 +3,7 @@ import {Box} from "@chakra-ui/react";
 import {CardTitle} from "../Analysis/CardTitle";
 import {PieChart} from "../Charts/PieChart";
 
-const TweetCountPieChart = ({labels, data}) => {
+const TweetCountPieChart = ({labels, data, primaryText, secondaryText, extras}) => {
 
   return (
     <Box
@@ -11,7 +11,7 @@ const TweetCountPieChart = ({labels, data}) => {
       border={"1px solid lightgray"}
       borderRadius={"md"}
     >
-      <CardTitle primaryText={'Total Data Scrapped Percentage.'} secondaryText={'Project - Uttarakhand Flood'}/>
+      <CardTitle primaryText={primaryText} secondaryText={secondaryText} extras={extras}/>
       <PieChart data={{
         labels: labels,
         datasets: [

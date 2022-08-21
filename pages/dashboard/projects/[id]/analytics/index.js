@@ -1,301 +1,23 @@
 import TabsLayout from "../_tabsLayout";
-import {Box, Flex, Grid, GridItem, Select, StatGroup, Tab, TabList, TabPanel, TabPanels, Tabs} from "@chakra-ui/react";
+import {Flex, Grid, Select, StatGroup, TabPanel, TabPanels} from "@chakra-ui/react";
 import React, {useState} from "react";
 import StatCard from "../../../../../components/Stat/StatCard";
-import {CardTitle} from "../../../../../components/Analysis/CardTitle";
-import {PieChart} from "../../../../../components/Charts/PieChart";
-import {BarChart} from "../../../../../components/Charts/BarChart";
+import axios from "axios";
+import TweetCountBarChart from "../../../../../components/Dashboard/TweetCountBarChart";
+import TweetCountPieChart from "../../../../../components/Dashboard/TweetCountPieChart";
 
-const BarChartData = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [28, 36, 52, 21, 41, 21, 57],
-      backgroundColor: ['rgb(255, 111, 181,0.7)'],
-    },
-    {
-      label: 'Dataset 2',
-      data: [8, 26, 32, 58, 31, 11, 47],
-      backgroundColor: ['rgb(77, 119, 255, 0.7)'],
-    },
-  ],
-};
+const ProjectAnalytics = ({statistics, barChartData, pieChartData}) => {
 
-const BarChartData2 = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [18, 32, 22, 42, 11, 41, 57],
-      backgroundColor: ['rgb(255, 111, 181,0.7)'],
-    },
-    {
-      label: 'Dataset 2',
-      data: [8, 26, 12, 33, 57, 14, 37],
-      backgroundColor: ['rgb(77, 119, 255, 0.7)'],
-    },
-  ],
-};
-
-const ScatterChartData = {
-  datasets: [
-    {
-      label: 'A dataset',
-      data: [
-        {
-          x: 18,
-          y: 28,
-        },
-        {
-          x: 18,
-          y: 20,
-        },
-        {
-          x: 19,
-          y: 21,
-        },
-        {
-          x: 10,
-          y: 32,
-        },
-        {
-          x: 9,
-          y: 20,
-        },
-        {
-          x: 17,
-          y: 13,
-        },
-        {
-          x: 16,
-          y: 22,
-        },
-        {
-          x: 11,
-          y: 2,
-        },
-        {
-          x: 23,
-          y: 27,
-        },
-        {
-          x: 11,
-          y: 4,
-        },
-        {
-          x: 1,
-          y: 2,
-        },
-        {
-          x: 10,
-          y: 21,
-        },
-        {
-          x: 4,
-          y: 21,
-        },
-        {
-          x: 18,
-          y: 5,
-        },
-        {
-          x: 18,
-          y: 22,
-        },
-        {
-          x: 12,
-          y: 26,
-        },
-        {
-          x: 4,
-          y: 21,
-        },
-        {
-          x: 7,
-          y: 12,
-        },
-        {
-          x: 9,
-          y: 12,
-        },
-        {
-          x: 15,
-          y: 11,
-        },
-        {
-          x: 16,
-          y: 21,
-        },
-        {
-          x: 18,
-          y: 2,
-        },
-        {
-          x: 6,
-          y: 6,
-        },
-        {
-          x: 1,
-          y: 4,
-        },
-        {
-          x: 1,
-          y: 26,
-        },
-        {
-          x: 10,
-          y: 21,
-        },
-        {
-          x: 4,
-          y: 21,
-        },
-        {
-          x: 18,
-          y: 5,
-        }
-      ],
-      backgroundColor: ['rgba(255, 155, 132, 1)'],
-    },
-    {
-      label: 'B dataset',
-      data: [
-        {
-          x: 1,
-          y: 22,
-        },
-        {
-          x: 11,
-          y: 22,
-        },
-        {
-          x: 13,
-          y: 24,
-        },
-        {
-          x: 15,
-          y: 32,
-        },
-        {
-          x: 19,
-          y: 20,
-        },
-        {
-          x: 17,
-          y: 3,
-        },
-        {
-          x: 6,
-          y: 22,
-        },
-        {
-          x: 19,
-          y: 2,
-        },
-        {
-          x: 23,
-          y: 4,
-        },
-        {
-          x: 11,
-          y: 14,
-        },
-        {
-          x: 1,
-          y: 23,
-        },
-        {
-          x: 15,
-          y: 21,
-        },
-        {
-          x: 14,
-          y: 21,
-        },
-        {
-          x: 28,
-          y: 5,
-        },
-        {
-          x: 8,
-          y: 21,
-        },
-        {
-          x: 12,
-          y: 23,
-        },
-        {
-          x: 14,
-          y: 21,
-        },
-      ],
-      backgroundColor: 'rgb(60, 207, 78, 1)',
-    },
-  ],
-};
-
-const PieChartData = {
-  labels: ['Emergency', 'Hospital', 'Evacuation', 'Help', 'Aid', 'Rescue'],
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: [
-        'rgb(255, 111, 181,0.7)',
-        'rgb(77, 119, 255, 0.7)',
-        'rgba(255, 155, 132, 0.7)',
-        'rgba(75, 192, 192, 0.7)',
-        'rgba(153, 102, 255, 0.7)',
-        'rgb(60, 207, 78, 0.5)',
-      ],
-      borderColor: [
-        'rgb(255, 111, 181, 1)',
-        'rgb(77, 119, 255, 1)',
-        'rgba(255, 155, 132, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgb(60, 207, 78, 1)',
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
-
-const PieChartData2 = {
-  labels: ['Emergency', 'Hospital', 'Evacuation', 'Help', 'Aid', 'Rescue'],
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [2, 12, 17, 15, 2, 3],
-      backgroundColor: [
-        'rgb(255, 111, 181,0.7)',
-        'rgb(77, 119, 255, 0.7)',
-        'rgba(255, 155, 132, 0.7)',
-        'rgba(75, 192, 192, 0.7)',
-        'rgba(153, 102, 255, 0.7)',
-        'rgb(60, 207, 78, 0.5)',
-      ],
-      borderColor: [
-        'rgb(255, 111, 181, 1)',
-        'rgb(77, 119, 255, 1)',
-        'rgba(255, 155, 132, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgb(60, 207, 78, 1)',
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
-
-const ProjectAnalytics = () => {
-
-  const [selectedOption, setSelectedOption] = useState("One")
-
-  const handleChange = (event) => {
-    setSelectedOption(event.target.value)
+  const handleSocialMediaChange = (event) => {
+    console.log(pieChartData[event.target.value])
+    if(Object.keys(pieChartData[event.target.value]).length > 0){
+      if(pieChartData[event.target.value].labels.length !== 0 && pieChartData[event.target.value].data.length !== 0){
+        setSelectedSocialMediaType(event.target.value)
+      }
+    }
   }
+
+  const [selectedSocialMediaType, setSelectedSocialMediaType] = useState("twitterPieChart")
 
   return (
     <TabsLayout defaultIndex={5}>
@@ -308,65 +30,25 @@ const ProjectAnalytics = () => {
         <TabPanel>
           <Flex flexDir={'column'} gap={5}>
             <StatGroup gap={5}>
-              <StatCard label={'Label 1'} value={100} boxShadow={'2xl'} cardBgColor={'blackAlpha.800'} titleColor={'white'}/>
-              <StatCard label={'Label 1'} value={100}/>
-              <StatCard label={'Label 1'} value={100}/>
-              <StatCard label={'Label 1'} value={100}/>
-              <StatCard label={'Label 1'} value={100}/>
+              <StatCard label={'Final Verdict'} value={statistics.totalRanked} boxShadow={'2xl'} cardBgColor={'blackAlpha.800'} titleColor={'white'}/>
+              <StatCard label={'Total Prediction'} value={statistics.totalPredict}/>
+              <StatCard label={'Twitter'} value={statistics.twitterPredictCount}/>
+              <StatCard label={'Facebook'} value={statistics.facebookPredictCount}/>
+              <StatCard label={'Instagram'} value={statistics.instagramPredictCount}/>
             </StatGroup>
-            <Grid templateColumns='repeat(2, 1fr)' gap={5}>
-              <GridItem colSpan={{base: 2, lg: 1}} border={'1px solid lightgray'} borderRadius={'lg'} p={4}>
-                {/*<CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
-                <ScatterChart data={ScatterChartData}/>*/}
-                <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
-                <Flex justifyContent={'end'} my={4}>
-                  <Select value={selectedOption} onChange={(e) => handleChange(e)} w={'150px'}>
-                    <option value="One">One</option>
-                    <option value="Two">Two</option>
-                  </Select>
-                </Flex>
-                <Box height={'400px'}>
-                  {selectedOption === "One" && <BarChart data={BarChartData}/>}
-                  {selectedOption === "Two" && <BarChart data={BarChartData2}/>}
-                </Box>
-              </GridItem>
-              <GridItem colSpan={{base: 2, lg: 1}} border={'1px solid lightgray'} borderRadius={'lg'} p={2}>
-                <Tabs isFitted variant='soft-rounded' colorScheme={'green'}>
-                  <TabList>
-                    <Tab borderRadius={"md"}>One</Tab>
-                    <Tab borderRadius={"md"}>Two</Tab>
-                  </TabList>
-                  <TabPanels>
-                    <TabPanel px={0}>
-                      <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
-                      <PieChart data={PieChartData}/>
-                    </TabPanel>
-                    <TabPanel px={0}>
-                      <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
-                      <PieChart data={PieChartData2}/>
-                    </TabPanel>
-                  </TabPanels>
-                </Tabs>
-              </GridItem>
+            <Grid templateColumns='repeat(2, 1fr)' gap={5} mt={4}>
+              <TweetCountBarChart data={barChartData}/>
+              <TweetCountPieChart
+                data={pieChartData[selectedSocialMediaType].data}
+                labels={pieChartData[selectedSocialMediaType].labels}
+                primaryText={'Multi-Labels %'}
+                extras={<Select value={selectedSocialMediaType} onChange={(e) => handleSocialMediaChange(e)} w={'150px'} my={2}>
+                  <option value="twitterPieChart">Twitter</option>
+                  <option value="facebookPieChart">Facebook</option>
+                  <option value="instagramPieChart">Instagram</option>
+                </Select>}
+              />
             </Grid>
-          {/*<Grid templateColumns='repeat(3, 1fr)' gap={5} alignItems={'start'}>
-              <GridItem colSpan={{base: 3, lg: 1}} border={'1px solid lightgray'} borderRadius={'lg'} p={2}>
-                <CardTitle primaryText={'Lorem Ipsum'} secondaryText={'Vivamus in enim ut tortor placerat rutrum.'}/>
-                <Flex justifyContent={'end'} my={4}>
-                  <Select value={selectedOption} onChange={(e) => handleChange(e)} w={'150px'}>
-                    <option value="One">One</option>
-                    <option value="Two">Two</option>
-                  </Select>
-                </Flex>
-                <Box height={'400px'}>
-                  {selectedOption === "One" && <BarChart data={BarChartData}/>}
-                  {selectedOption === "Two" && <BarChart data={BarChartData2}/>}
-                </Box>
-              </GridItem>
-              <GridItem colSpan={{base: 3, lg: 2}} border={'1px solid lightgray'} borderRadius={'lg'} p={0}>
-                <ClusterMap height={'500px'}/>
-              </GridItem>
-            </Grid>*/}
           </Flex>
         </TabPanel>
       </TabPanels>
@@ -375,3 +57,29 @@ const ProjectAnalytics = () => {
 }
 
 export default ProjectAnalytics
+
+export async function getServerSideProps(context){
+  const {id} = context.params
+  console.log(id)
+
+  let pieChartData = {}, barChartData = {}, statistics = {}
+
+  try {
+   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/39/analytics`)
+    if (res.data) {
+      pieChartData = res.data.pieChartData
+      statistics = res.data.statistics
+      barChartData = res.data.barChart
+    }
+  } catch (e) {
+    console.log(e)
+  }
+
+  return {
+    props: {
+      statistics,
+      barChartData,
+      pieChartData
+    }
+  }
+}

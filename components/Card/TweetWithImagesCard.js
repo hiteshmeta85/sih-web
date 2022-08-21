@@ -4,7 +4,7 @@ import "@fontsource/inter"
 import {useState} from "react";
 import {FcNext, FcPrevious} from "react-icons/fc";
 
-const TweetWithImagesCard = ({images, username, tweet, date, socialMediaType, label}) => {
+const TweetWithImagesCard = ({images, username, tweet, date, socialMediaType, label, areLabelsMultiple = false, labels = []}) => {
 
   const [currentSlide, setCurrentSlide] = useState(0)
   const totalSlides = images.length
@@ -35,7 +35,13 @@ const TweetWithImagesCard = ({images, username, tweet, date, socialMediaType, la
         </Box>
         <Divider/>
         <Flex flexDir={'column'} gap={2} px={4} pt={2} pb={4}>
-          {label && <Text textTransform={'capitalize'} alignSelf={'start'} px={2} rounded={'md'} border={'1px solid red'}>{label}</Text>}
+          {!areLabelsMultiple ? (label && <Text textTransform={'capitalize'} alignSelf={'start'} px={2} rounded={'md'} border={'1px solid red'}>{label}</Text>)
+            : <Flex flexWrap={'wrap'} gap={2}>
+            {labels.length > 0 && [...new Set(labels)].map((item, index)=>
+              <Text key={index} textTransform={'capitalize'} alignSelf={'start'} px={2} rounded={'md'} border={'1px solid red'}>
+                {item}
+              </Text>)}
+          </Flex>}
           <Text fontWeight={'bold'} color={'gray.400'} fontSize={'sm'} letterSpacing={'wider'}>@{username}</Text>
           <Text lineHeight={'shorter'} fontFamily={'Inter'}>{tweet}</Text>
         </Flex>

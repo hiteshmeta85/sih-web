@@ -15,7 +15,6 @@ import axios from "axios";
 const Index = ({
   alerts,
   activeAccounts,
-  mapData,
   recentProjects,
   trendingTweets,
   dataScrapped,
@@ -55,7 +54,7 @@ const Index = ({
                 colSpan={{base: 4, md: 2}}
                 rowSpan={2}
               >
-                <TweetCountPieChart data={pieChartData.data} labels={pieChartData.labels}/>
+                <TweetCountPieChart data={pieChartData.data} labels={pieChartData.labels} primaryText={'Total Data Scrapped Percentage.'} secondaryText={'Project - Uttarakhand Flood'}/>
               </GridItem>
               <GridItem colSpan={{base: 4, md: 2}} rowSpan={1}>
                 <ActiveModels/>

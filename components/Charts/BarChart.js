@@ -43,9 +43,6 @@ const options = {
       },
     },
   },
-  ticks: {
-    stepSize: 1,
-  },
   elements: {
     bar: {
       borderWidth: 1,

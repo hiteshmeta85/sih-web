@@ -10,7 +10,7 @@ const TweetCountBarChart = ({data}) => {
   const [chartLabels, setChartLabels] = useState(data["twitterBarChart"][0].labels)
 
   const handleSocialMediaChange = (event) => {
-    if(data[event.target.value].length > 0){
+    if (data[event.target.value].length > 0) {
       setSelectedDateRange("year")
       setSelectedSocialMediaType(event.target.value)
       setChartLabels(data[event.target.value].find((item) => item.type === "year").labels)

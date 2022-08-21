@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import DashboardContainer from "../_layout";
-import {Avatar, Box, Button, Flex, Grid, GridItem, Wrap, WrapItem} from "@chakra-ui/react";
+import {Avatar, Box, Button, Flex, Grid, GridItem} from "@chakra-ui/react";
 import {Formik} from "formik";
 import CustomSubmitButton from "../../components/Button/CustomSubmitButton";
 import CustomInput from "../../components/Input/CustomInput";
+import DashboardContainer from "./_layout";
 
 const Account = () => {
 

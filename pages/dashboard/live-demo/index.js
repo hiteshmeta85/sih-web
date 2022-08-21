@@ -78,6 +78,7 @@ const TextSection = ({toggleItem, textResponseData, setTextResponseData}) => {
                 await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_DEMO_LIVE}/text`, values)
                   .then(function (response) {
                     if (response.data) {
+                      console.log(response.data)
                       setTextResponseData(response.data)
                     }
                   })
@@ -322,19 +323,19 @@ const AudioSection = ({toggleItem, setAudioResponseData, audioResponseData}) => 
 const VideoSection = ({toggleItem, setVideoResponseData, videoResponseData}) => {
   return (
     <>{toggleItem === 'video' && <Box>
-      <FileUploadForm key={3} accept={'video/*'} url={''} logo={<MdOutlineOndemandVideo size={'2rem'}/>} setResponseData={setVideoResponseData} label={'Upload Video'}/>
+      <FileUploadForm key={3} accept={'video/*'} url={`${process.env.NEXT_PUBLIC_API_HOST_DEMO_LIVE}/video`} logo={<MdOutlineOndemandVideo size={'2rem'}/>} setResponseData={setVideoResponseData} label={'Upload Video'}/>
       <Box mt={8}>
         <Box mt={8}>
-          <SimpleGrid columns={{base: 1, md: 2}} gap={6}>
+          {Object.keys(videoResponseData).length>0 && <SimpleGrid columns={{base: 1, md: 2}} gap={6}>
             <Box>
               <Text fontWeight={'bold'} fontSize={'xl'} mb={2}>Original Video</Text>
-              <VideoPlayer url={'https://youtu.be/X-hJj5hKrdo'}/>
+              <VideoPlayer url={videoResponseData.data.video}/>
             </Box>
             <Box>
               <Text fontWeight={'bold'} fontSize={'xl'} mb={2}>Object Detected Video</Text>
-              <VideoPlayer url={'https://youtu.be/X-hJj5hKrdo'}/>
+              <VideoPlayer url={videoResponseData.data.videoDetectionUrl}/>
             </Box>
-          </SimpleGrid>
+          </SimpleGrid>}
         </Box>
       </Box>
     </Box>}</>

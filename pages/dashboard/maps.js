@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import DashboardContainer from "../_layout";
 import {Box, Button, Flex, Spinner, Text} from "@chakra-ui/react";
 import {SearchLocation} from "../../components/Map/SearchLocation";
 import {Circle, GoogleMap, InfoWindow, Marker, useLoadScript} from "@react-google-maps/api";
@@ -15,6 +14,7 @@ import {FaMapMarkerAlt} from "react-icons/fa";
 import {ImCancelCircle} from "react-icons/im";
 import {BiSelectMultiple} from "react-icons/bi";
 import axios from "axios";
+import DashboardContainer from "./_layout";
 
 const options = {
   disableDefaultUI: true, zoomControl: true,
@@ -399,6 +399,7 @@ export async function getServerSideProps() {
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/maps`)
     if (res.data) {
+      console.log(res.data)
       projectIds = res.data.data.projectIds.map((item) => item.projectId)
       alerts = res.data.data.alerts
       projectData = res.data.data.projectData

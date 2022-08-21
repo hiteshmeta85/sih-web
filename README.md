@@ -33,11 +33,9 @@ npm run dev
 
 ```
 1. Next.js
-2. Firebase
-3. Google Map API
-4. Chakra-UI
-5. Chart.js
-6. Framer Motion
-7. Formik
-8. Yup
+2. Google Map API
+3. Chakra-UI
+4. Chart.js
+5. Formik
+6. Yup
 ```
