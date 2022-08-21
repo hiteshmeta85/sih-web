@@ -48,6 +48,26 @@ a {
     background-size: calc(100%) calc(50%);
 }
 
+.active-menu-item-yellow {
+    background: linear-gradient(to bottom, yellow 0%, yellow 100%) no-repeat bottom;
+    background-size: calc(100%) calc(37%);
+}
+
+.active-menu-item-green {
+    background: linear-gradient(to bottom, lightgreen 0%, lightgreen 100%) no-repeat bottom;
+    background-size: calc(100%) calc(37%);
+}
+
+.active-menu-item-blue {
+    background: linear-gradient(to bottom, skyblue 0%, skyblue 100%) no-repeat bottom;
+    background-size: calc(100%) calc(37%);
+}
+
+.active-menu-item-light-green {
+    background: linear-gradient(to bottom, aquamarine 0%, aquamarine 100%) no-repeat bottom;
+    background-size: calc(100%) calc(37%);
+}
+
 /* animations */
 
 @keyframes horizontal-bounce {

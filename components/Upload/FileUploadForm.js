@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Box, Flex, Text} from "@chakra-ui/react";
 import {ErrorMessage, Form, Formik} from "formik";
 import fileUploadSchema from "../../lib/schemas/fileUploadSchema";
@@ -6,7 +6,8 @@ import axios from "axios";
 import CustomSubmitButton from "../Button/CustomSubmitButton";
 import {AiOutlineFileAdd} from "react-icons/ai";
 
-const FileUploadForm = ({title, label = 'Select File', url, setResponseData, logo}) => {
+const FileUploadForm = ({title, label = 'Select File', url, setResponseData, logo, accept}) => {
+
   return (
     <Box>
       <Flex alignItems={'center'} justifyContent={'space-between'} gap={2} fontSize={'xl'} fontWeight={'semibold'} my={1}>
@@ -19,12 +20,10 @@ const FileUploadForm = ({title, label = 'Select File', url, setResponseData, log
           file: null,
         }}
         validationSchema={fileUploadSchema}
-        onSubmit={(values, {resetForm, setSubmitting}) => {
-          setSubmitting(true)
+        onSubmit={(values, {resetForm}) => {
           let data = new FormData();
           data.append('file', values.file);
           data.append('fileName', values.file);
-          console.log("working")
           axios
             .post(`${url}`, data, {
               headers: {
@@ -38,7 +37,6 @@ const FileUploadForm = ({title, label = 'Select File', url, setResponseData, log
             .catch((err) => {
               console.log(err);
             });
-          setSubmitting(false)
         }}
       >
         {({
@@ -58,11 +56,11 @@ const FileUploadForm = ({title, label = 'Select File', url, setResponseData, log
                   {values.file ? values.file.name : label}
                 </label>
                 <input
+                  accept={accept}
                   id="file" name="file" type="file"
                   onChange={(event) => {
                     setFieldValue("file", event.currentTarget.files[0]);
                   }}
-                  multiple
                   style={{visibility: "hidden"}}
                 />
                 {values.file && <CustomSubmitButton handleSubmit={handleSubmit} label={'Submit'} isSubmitting={isSubmitting}/>}

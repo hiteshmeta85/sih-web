@@ -42,6 +42,7 @@ const IndividualTextAnalysis = ({multilabel, username, date, tweet, socialMediaT
           setClaims(res.data.claims)
           onOpen()
         } else {
+          onOpen()
           console.log('no claim found')
         }
       })
@@ -112,7 +113,7 @@ const IndividualTextAnalysis = ({multilabel, username, date, tweet, socialMediaT
           <ModalBody>
             <Flex flexDir={'column'} gap={4}>
               <>
-                {claims && claims.map((item, index) => {
+                {claims.length > 0 ? claims.map((item, index) => {
                   return (
                     <Flex key={index} flexDir={'column'} gap={2}>
                       {/* Claim */}
@@ -122,8 +123,7 @@ const IndividualTextAnalysis = ({multilabel, username, date, tweet, socialMediaT
                       </Flex>
                       <Text><Text as={'span'} fontWeight={'bold'}>Text:</Text> {item.text}</Text>
                       <Text><Text fontWeight={'bold'} as={'span'}>Claimant:</Text> {item.claimant}</Text>
-                      <Text fontSize={'sm'}>Claim Date: {moment(item.claimDate)
-                        .format('ll')}</Text>
+                      <Text fontSize={'sm'}>Claim Date: {moment(item.claimDate).format('ll')}</Text>
                       {/* Claim Review */}
                       {item.claimReview.length > 0 && <>
                         <Divider maxW={48}/>
@@ -141,7 +141,7 @@ const IndividualTextAnalysis = ({multilabel, username, date, tweet, socialMediaT
                       <Divider/>
                     </Flex>
                   )
-                })}
+                }) : 'No Claim Found'}
               </>
             </Flex>
           </ModalBody>
