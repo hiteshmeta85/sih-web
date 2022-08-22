@@ -1,7 +1,5 @@
 import React, {useState} from "react";
 import {Box, Button, Flex, Image, Text} from "@chakra-ui/react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
 import {sampleDisasters} from "../../constants/sample-data/sampleDisasters";
 
@@ -48,13 +46,13 @@ const LandingCarousel = () => {
       />
       <Box
         position={'absolute'}
-        fontSize={'4xl'}
+        fontSize={'3xl'}
         bottom={'5%'}
-        left={'5%'}
+        left={'8%'}
         right={'15%'}
         fontWeight={800}
       >
-        <Text bg={'rgba(255,255,0, 0.8)'} as={'span'} px={4} py={"0.2rem"}>
+        <Text bg={'rgba(255,255,0, 0.9)'} as={'span'} px={4} py={"0.2rem"}>
           <Text as={'span'}>&ldquo;</Text>
           {news}
           <Text as={'span'}>&rdquo;</Text>

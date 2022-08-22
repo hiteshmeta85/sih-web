@@ -9,6 +9,7 @@ import {IoIosAlert} from "react-icons/io";
 import {BsTwitter} from "react-icons/bs";
 import axios from "axios";
 import LandingCarousel from "../components/Carousel/LandingCarousel";
+import Avatar from "../components/Avatar/Avatar";
 
 export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
 
@@ -59,6 +60,32 @@ export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
           </>
         </Flex>
       </TweetsContainer>}
+      <SimpleGrid columns={{base: 2, md: 3, lg: 6}} maxW={'container.xl'} mx={'auto'} py={8} gap={3} justifyContent={'space-between'}>
+        <Avatar
+          name="Hitesh Meta"
+          jobTitle="Web Developer"
+        />
+        <Avatar
+          name="Om Surve"
+          jobTitle="ML Engineer"
+        />
+        <Avatar
+          name="Kunal Wagh"
+          jobTitle="Data Scientist"
+        />
+        <Avatar
+          name="Shreya Belanekar"
+          jobTitle="Frontend Developer"
+        />
+        <Avatar
+          name="Tanshiq Parkar"
+          jobTitle="Backend Developer"
+        />
+        <Avatar
+          name="Yash Wakekar"
+          jobTitle="Backend Developer"
+        />
+      </SimpleGrid>
     </LandingPageLayout>
   )
 }

@@ -237,7 +237,7 @@ const ImageSection = ({toggleItem, imageResponseData, setImageResponseData}) => 
             <Image src={imageResponseData.data.objectDetection.objectDetectionUrl} alt={'image'}/>
             <Flex gap={3} flexDir={'column'}>
               <Text fontWeight={'bold'}>Class Detected</Text>
-              {imageResponseData.data.objectDetection.classDetected.map((item, index) =>
+              {[...new Set(imageResponseData.data.objectDetection.classDetected)].map((item, index) =>
                 <Text key={index} border={'1px solid black'} p={4} borderStyle={'dashed'}>{item}</Text>
               )}
             </Flex>
