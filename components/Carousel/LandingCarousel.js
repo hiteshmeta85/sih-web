@@ -48,14 +48,13 @@ const LandingCarousel = () => {
       />
       <Box
         position={'absolute'}
-        color={'white'}
         fontSize={'4xl'}
         bottom={'5%'}
         left={'5%'}
         right={'15%'}
         fontWeight={800}
       >
-        <Text>
+        <Text bg={'rgba(255,255,0, 0.8)'} as={'span'} px={4} py={"0.2rem"}>
           <Text as={'span'}>&ldquo;</Text>
           {news}
           <Text as={'span'}>&rdquo;</Text>
