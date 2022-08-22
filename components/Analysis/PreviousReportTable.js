@@ -19,31 +19,11 @@ const PreviousReportTable = () => {
           <Tbody>
             <Tr>
               <Td>1</Td>
-              <Td>23 July 2022</Td>
+              <Td>22 Aug 2022</Td>
               <Td isNumeric>
                 <Flex alignItems={'center'} justifyContent={'end'} gap={2}>
                   <AiOutlineEye/>
-                  <Link href={'/'} color={'blue'}>View Report</Link>
-                </Flex>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>2</Td>
-              <Td>24 July 2022</Td>
-              <Td isNumeric>
-                <Flex alignItems={'center'} justifyContent={'end'} gap={2}>
-                  <AiOutlineEye/>
-                  <Link href={'/'} color={'blue'}>View Report</Link>
-                </Flex>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>3</Td>
-              <Td>25 July 2022</Td>
-              <Td isNumeric>
-                <Flex alignItems={'center'} justifyContent={'end'} gap={2}>
-                  <AiOutlineEye/>
-                  <Link href={'/'} color={'blue'}>View Report</Link>
+                  <Link target={'_blank'} href={'https://firebasestorage.googleapis.com/v0/b/hackmanthan-lostminds.appspot.com/o/report_twiitter.html?alt=media&token=6cc6e07e-0814-43ec-a9e2-1eceda183b6f'} color={'blue'}>View Report</Link>
                 </Flex>
               </Td>
             </Tr>

@@ -42,6 +42,10 @@ const urlsData = [
         url: '/event-flow/multi-label-image-classification',
       },
       {
+        title: 'Image Object Detection',
+        url: '/event-flow/image-object-detection',
+      },
+      {
         title: 'Binary Video Classification',
         url: '/event-flow/binary-video-classification',
       },
@@ -64,15 +68,57 @@ const urlsData = [
     ]
   },
   {
-    title: 'Auth',
+    title: 'Live Demo',
     pages: [
       {
-        title: 'Login',
-        url: '/auth/login',
+        title: 'Index',
+        url: '/dashboard/live-demo',
+      },
+    ]
+  },
+  {
+    title: 'Create Project',
+    pages: [
+      {
+        title: 'Index',
+        url: '/dashboard/create-project',
       },
       {
-        title: 'Register',
-        url: '/auth/register',
+        title: 'Select Location',
+        url: '/dashboard/create-project/select-location',
+      },
+      {
+        title: 'Select Hashtags',
+        url: '/dashboard/create-project/select-hashtags',
+      },
+      {
+        title: 'Custom Hashtags',
+        url: '/dashboard/create-project/custom-hashtags',
+      },
+      {
+        title: 'Select Social Media',
+        url: '/dashboard/create-project/select-social-media',
+      },
+    ]
+  },
+  {
+    title: 'Dashboard',
+    pages: [
+      {
+        title: 'Index',
+        url: '/dashboard',
+      },
+      {
+        title: 'Projects',
+        url: '/dashboard/projects',
+      },
+      {
+        title: 'Alerts',
+        url: '/dashboard/alerts',
+      },
+      {
+        title: 'Account',
+        url: '/dashboard/account',
       },
     ]
   },
@@ -106,44 +152,36 @@ const urlsData = [
     ]
   },
   {
-    title: 'Dashboard',
+    title: 'Auth',
     pages: [
       {
-        title: 'Index',
-        url: '/dashboard',
+        title: 'Login',
+        url: '/auth/login',
       },
       {
-        title: 'Projects',
-        url: '/dashboard/projects',
-      },
-      {
-        title: 'Alerts',
-        url: '/dashboard/alerts',
+        title: 'Register',
+        url: '/auth/register',
       },
     ]
   },
   {
-    title: 'Create Project',
+    title: 'Test Files',
     pages: [
       {
-        title: 'Index',
-        url: '/dashboard/create-project',
+        title: 'Cors Test',
+        url: '/test-files/cors-test',
       },
       {
-        title: 'Select Location',
-        url: '/dashboard/create-project/select-location',
+        title: 'Celery Test',
+        url: '/test-files/celery-test',
       },
       {
-        title: 'Select Hashtags',
-        url: '/dashboard/create-project/select-hashtags',
+        title: 'Fast Check API Test',
+        url: '/test-files/fact-check-api-test',
       },
       {
-        title: 'Custom Hashtags',
-        url: '/dashboard/create-project/custom-hashtags',
-      },
-      {
-        title: 'Select Social Media',
-        url: '/dashboard/create-project/select-social-media',
+        title: 'React Table Test',
+        url: '/test-files/react-table-test',
       },
     ]
   },
