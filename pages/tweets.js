@@ -50,7 +50,7 @@ export default Tweets;
 
 export async function getServerSideProps() {
 
-  let ndrfTweets;
+  let ndrfTweets = {};
 
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/ndrf-tweets`)
@@ -58,7 +58,7 @@ export async function getServerSideProps() {
       ndrfTweets = res.data.data.ndrfTweets
     }
   } catch (e) {
-    ndrfTweets = null
+    console.log(e)
   }
 
   return {

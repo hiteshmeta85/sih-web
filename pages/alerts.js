@@ -8,7 +8,7 @@ const Alerts = ({alerts}) => {
 
   return (
     <LandingPageLayout>
-      {alerts && <Box maxW={'container.xl'} mx={'auto'} p={{base: 2, md: 4, lg: 8}}>
+      {alerts.length > 0 && <Box maxW={'container.xl'} mx={'auto'} p={{base: 2, md: 4, lg: 8}}>
         <Heading my={2}>Alerts</Heading>
         <SimpleGrid spacing={4}>
           <>
@@ -37,7 +37,7 @@ export default Alerts;
 
 export async function getServerSideProps() {
 
-  let alerts
+  let alerts = []
 
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/alerts`)
@@ -46,7 +46,6 @@ export async function getServerSideProps() {
     }
   } catch (e) {
     console.log(e)
-    alerts = null
   }
 
   return {

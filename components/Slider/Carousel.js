@@ -31,15 +31,6 @@ const Carousel = () => {
     });
   };
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIndex((index) => {
-  //       let newIndex = index + 1;
-  //       return checkNumber(newIndex);
-  //     });
-  //   }, 4000);
-  // }, [index]);
-
   return (
     <Flex
       w={'100%'}

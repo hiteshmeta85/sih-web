@@ -7,67 +7,6 @@ import axios from "axios";
 
 const ActiveAccounts = ({activeAccounts}) => {
 
-  /*
-  const activeAccountsData = [
-    {
-      id: 1,
-      username: 'hiteshmeta85',
-      name: 'Hitesh Meta',
-      account_link: '/',
-      latest_tweets: [
-        {
-          id: 1,
-          tweet: 'Subhas Chandra Bose Aapda Prabandhan Puraskar\'  ➡Last date to apply: 31 August 2022  For more info:  https://t.co/89rgcJrZsn  https://t.co/xQEKa71Jfg   https://t.co/D2GTHrHkG0  @ndmaindia',
-          photos: ['']
-        },
-        {
-          id: 2,
-          tweet: 'Subhas Chandra Bose Aapda Prabandhan Puraskar\'  ➡Last date to apply: 31 August 2022  For more info:  https://t.co/89rgcJrZsn  https://t.co/xQEKa71Jfg   https://t.co/D2GTHrHkG0  @ndmaindia',
-          photos: ['']
-        },
-        {
-          id: 3,
-          tweet: 'Subhas Chandra Bose Aapda Prabandhan Puraskar\'  ➡Last date to apply: 31 August 2022  For more info:  https://t.co/89rgcJrZsn  https://t.co/xQEKa71Jfg   https://t.co/D2GTHrHkG0  @ndmaindia',
-          photos: ['']
-        },
-        {
-          id: 4,
-          tweet: 'Subhas Chandra Bose Aapda Prabandhan Puraskar\'  ➡Last date to apply: 31 August 2022  For more info:  https://t.co/89rgcJrZsn  https://t.co/xQEKa71Jfg   https://t.co/D2GTHrHkG0  @ndmaindia',
-          photos: ['']
-        },
-      ]
-    },
-    {
-      id: 2,
-      username: 'gamingflexer',
-      name: 'Om Surve',
-      account_link: '/',
-      latest_tweets: [
-        {
-          id: 1,
-          tweet: 'Subhas Chandra Bose Aapda Prabandhan Puraskar\'  ➡Last date to apply: 31 August 2022  For more info:  https://t.co/89rgcJrZsn  https://t.co/xQEKa71Jfg   https://t.co/D2GTHrHkG0  @ndmaindia',
-          photos: ['']
-        },
-        {
-          id: 2,
-          tweet: 'Subhas Chandra Bose Aapda Prabandhan Puraskar\'  ➡Last date to apply: 31 August 2022  For more info:  https://t.co/89rgcJrZsn  https://t.co/xQEKa71Jfg   https://t.co/D2GTHrHkG0  @ndmaindia',
-          photos: ['']
-        },
-        {
-          id: 3,
-          tweet: 'Subhas Chandra Bose Aapda Prabandhan Puraskar\'  ➡Last date to apply: 31 August 2022  For more info:  https://t.co/89rgcJrZsn  https://t.co/xQEKa71Jfg   https://t.co/D2GTHrHkG0  @ndmaindia',
-          photos: ['']
-        },
-        {
-          id: 4,
-          tweet: 'Subhas Chandra Bose Aapda Prabandhan Puraskar\'  ➡Last date to apply: 31 August 2022  For more info:  https://t.co/89rgcJrZsn  https://t.co/xQEKa71Jfg   https://t.co/D2GTHrHkG0  @ndmaindia',
-          photos: ['']
-        },
-      ]
-    }
-  ]
-  */
-
   return (
     <LandingPageLayout>
       {activeAccounts && <Flex
@@ -80,8 +19,7 @@ const ActiveAccounts = ({activeAccounts}) => {
         pb={{base: 6, md: 8}}
       >
         <>
-          {Object.keys(activeAccounts)
-            .map((key, index) => {
+          {Object.keys(activeAccounts).map((key, index) => {
               return (
                 <Flex
                   key={index}
@@ -94,13 +32,6 @@ const ActiveAccounts = ({activeAccounts}) => {
                   >
                     <Icon as={BsTwitter} color={'#1DA1F2'} w={9} h={9}/>
                     <Flex flexDir={'column'}>
-                      {/*<Text
-                      fontWeight={'bold'}
-                      fontSize={'xl'}
-                      lineHeight={'shorter'}
-                    >
-                      {key}
-                    </Text>*/}
                       <Text
                         fontFamily={'Open Sans'}
                         lineHeight={'shorter'}
@@ -136,7 +67,7 @@ export default ActiveAccounts;
 
 export async function getServerSideProps() {
 
-  let activeAccounts
+  let activeAccounts = {}
 
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/active-accounts`)
@@ -145,7 +76,6 @@ export async function getServerSideProps() {
     }
   } catch (e) {
     console.log(e)
-    activeAccounts = null
   }
 
   return {

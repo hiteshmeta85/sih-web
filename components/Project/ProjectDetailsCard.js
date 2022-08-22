@@ -68,7 +68,7 @@ const ProjectDetailsCard = (props) => {
               fontWeight={"semibold"}
               color={"gray.500"}>
               Created On {moment(date)
-              .format('llll')}
+              .format('ll')}
             </Text>
           </Box>
         </Link>

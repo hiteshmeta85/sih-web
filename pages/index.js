@@ -63,7 +63,7 @@ export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
 
 export async function getServerSideProps() {
 
-  let news = [], ndrfTweets = [], alerts = [], activeAccounts = [], mapData = [];
+  let news = [], ndrfTweets = [], alerts = [], activeAccounts = [];
 
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/landing`)
@@ -72,7 +72,6 @@ export async function getServerSideProps() {
       ndrfTweets = res.data.data.ndrfTweets
       alerts = res.data.data.alerts
       activeAccounts = res.data.data.activeAccounts
-      mapData = res.data.data.mapData
     }
   } catch (e) {
     console.log(e)
@@ -84,7 +83,6 @@ export async function getServerSideProps() {
       ndrfTweets,
       alerts,
       activeAccounts,
-      mapData
     }
   }
 }

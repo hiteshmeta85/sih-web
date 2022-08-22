@@ -26,7 +26,7 @@ export default News;
 
 export async function getServerSideProps() {
 
-  let headlines
+  let headlines = []
 
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/get-headlines`)
@@ -34,9 +34,8 @@ export async function getServerSideProps() {
       headlines = res.data.data.news.value
     }
   } catch (e) {
-    headlines = null
+    console.log(e)
   }
-
 
   return {
     props: {

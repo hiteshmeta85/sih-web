@@ -183,6 +183,7 @@ const ProjectTextView = () => {
     if (Object.keys(celeryKeys).length === 0 && didWeGetData === false) {
       console.log("getting celery keys")
       const getCeleryKeys = async () => {
+        setIsLoading(true)
         try {
           const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/new/projects/1/text`)
           if (response) {
@@ -200,6 +201,7 @@ const ProjectTextView = () => {
         } catch (err) {
           console.log(err);
         }
+        setIsLoading(false)
       };
       getCeleryKeys()
     }
@@ -323,7 +325,7 @@ const ProjectTextView = () => {
                             {item.name}
                           </Text>
                         </Td>
-                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ? item.tweet : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'blue'}/><Text>{item.translated}</Text></Box>}</Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ? item.tweet : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'gray.700'}/><Text>{item.translated}</Text></Box>}</Td>
                         <Td>{item.multilabel.split(',')
                           .slice(0, 2)
                           .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
