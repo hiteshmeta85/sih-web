@@ -13,8 +13,7 @@ export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
 
   return (
     <LandingPageLayout>
-      {/*<ClusterMap/>*/}
-      {news && <TweetsContainer title={'News'} href={'/news'}>
+      {news.length > 0 && <TweetsContainer title={'News'} href={'/news'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={6}>
           <>
             {news.slice(0, 4)
@@ -26,7 +25,7 @@ export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
           </>
         </SimpleGrid>
       </TweetsContainer>}
-      {alerts && <TweetsContainer title={<Flex alignItems={'center'} gap={2}><IoIosAlert color={'#EB4747'}/> Alerts</Flex>} href={'/alerts'}>
+      {alerts.length > 0 && <TweetsContainer title={<Flex alignItems={'center'} gap={2}><IoIosAlert color={'#EB4747'}/> Alerts</Flex>} href={'/alerts'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
           <>
             {alerts.slice(0, 6)
@@ -36,7 +35,7 @@ export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
           </>
         </SimpleGrid>
       </TweetsContainer>}
-      {ndrfTweets && <TweetsContainer title={<Flex alignItems={'center'} gap={2}><BsTwitter color={'#1DA1F2'}/> NDRF’s Latest Tweets</Flex>} href={'/tweets'}>
+      {ndrfTweets.length > 0 && <TweetsContainer title={<Flex alignItems={'center'} gap={2}><BsTwitter color={'#1DA1F2'}/> NDRF’s Latest Tweets</Flex>} href={'/tweets'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={{base: 4, lg: 10}}>
           <>
             {ndrfTweets.slice(0, 6)
@@ -46,7 +45,7 @@ export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
           </>
         </SimpleGrid>
       </TweetsContainer>}
-      {activeAccounts && <TweetsContainer title={'Active Social Media Accounts'} href={'/active-accounts'}>
+      {activeAccounts.length > 0 && <TweetsContainer title={'Active Social Media Accounts'} href={'/active-accounts'}>
         <Flex gap={4} overflowX={'scroll'} py={6} px={0.5}>
           <>
             {Object.keys(activeAccounts)
@@ -64,7 +63,7 @@ export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
 
 export async function getServerSideProps() {
 
-  let news, ndrfTweets, alerts, activeAccounts, mapData;
+  let news = [], ndrfTweets = [], alerts = [], activeAccounts = [], mapData = [];
 
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/landing`)
@@ -76,11 +75,7 @@ export async function getServerSideProps() {
       mapData = res.data.data.mapData
     }
   } catch (e) {
-    news = null
-    ndrfTweets = null
-    alerts = null
-    activeAccounts = null
-    mapData = null
+    console.log(e)
   }
 
   return {

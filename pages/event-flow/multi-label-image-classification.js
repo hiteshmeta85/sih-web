@@ -12,7 +12,7 @@ const MultiLabelImageClassification = ({twitterData, facebookData, instagramData
     <EventFlowLayout
       heading={"Step 5 - Multi-label Image Classification"}
       progressPercent={40}
-      forwardLink={"/event-flow/binary-video-classification"}
+      forwardLink={"/event-flow/image-object-detection"}
     >
       <SimpleGrid columns={{base: 2, md: 4}} gap={4}>
         <StatCard

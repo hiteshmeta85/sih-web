@@ -164,7 +164,7 @@ export async function getServerSideProps(context) {
  let multilabel = '', tweet = '', username = '', date = '', socialMediaType = '';
 
   try {
-    const res = await axios.get(`http://127.0.0.1:8000/homebrew/api/twitter/1554405286206705664`)
+    const res = await axios.get(`http://127.0.0.1:8000/homebrew/api/twitter/73333159936`)
     if (res.data) {
       if(Object.keys(res.data).length > 0){
         if(social === 'twitter'){

@@ -8,7 +8,7 @@ import {facebookSampleTweets} from "../../../../../constants/sample-data/faceboo
 import {instagramSampleTweets} from "../../../../../constants/sample-data/instagramSampleTweets";
 import {useRouter} from "next/router";
 import axios from "axios";
-import RefreshButton from "../../../../../components/Button/RefreshButton";
+import CustomButton from "../../../../../components/Button/CustomButton";
 
 const ProjectTextPlusVideosView = () => {
 
@@ -242,7 +242,7 @@ const ProjectTextPlusVideosView = () => {
         <TabPanel/>
         <TabPanel bg={'#F5F5F5'} px={0}>
           {shouldPageRefresh ? <Flex alignItems={'center'} gap={2} justifyContent={'flex-end'}>
-            <RefreshButton handlePageRefresh={handlePageRefresh}/>
+            <CustomButton handlePageRefresh={handlePageRefresh}/>
           </Flex> : ''}
           <Box mb={8}>
             <Flex borderBottom={"2px solid black"} mb={6} gap={4} alignItems={'center'} pb={1}>

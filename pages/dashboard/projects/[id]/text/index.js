@@ -1,4 +1,5 @@
 import {
+  Box,
   Flex,
   Icon,
   Link,
@@ -18,22 +19,17 @@ import React, {useEffect, useState} from "react";
 import TabsLayout from "../_tabsLayout";
 import axios from "axios";
 import {useRouter} from "next/router";
-import {AiFillFacebook, AiOutlineInstagram, AiOutlineTwitter} from "react-icons/ai";
-import {facebookSampleTweets} from "../../../../../constants/sample-data/facebookSampleTweets";
-import {instagramSampleTweets} from "../../../../../constants/sample-data/instagramSampleTweets";
-import RefreshButton from "../../../../../components/Button/RefreshButton";
+import {AiFillDelete, AiFillFacebook, AiOutlineInstagram, AiOutlineTwitter} from "react-icons/ai";
+import CustomButton from "../../../../../components/Button/CustomButton";
+import {VscSave} from "react-icons/vsc";
+import {MdOutlineTranslate} from "react-icons/md";
 
 const ProjectTextView = () => {
 
   const router = useRouter()
   const {id} = router.query
 
-  const [celeryKeys, setCeleryKeys] = useState({
-    "status": "Scrapping",
-    "twitter_task_id": "ff355004-5e66-4b49-a74f-c8cc9b0060dd",
-    "facebook_task_id": "fa847a01-327f-453d-b5dd-685708a42f45",
-    "instagram_task_id": "dd39102e-c97d-4c2e-a643-f8f7ab9eea69"
-  })
+  const [celeryKeys, setCeleryKeys] = useState({})
   const [twitterData, setTwitterData] = useState([])
   const [facebookData, setFacebookData] = useState([])
   const [instagramData, setInstagramData] = useState([])
@@ -42,128 +38,159 @@ const ProjectTextView = () => {
   const [shouldPageRefresh, setShouldPageRefresh] = useState(false)
   const [didWeGetData, setDidWeGetData] = useState(false)
 
-  const handlePageRefresh = () => {
-    setCeleryKeys({})
-    setDidWeGetTaskIds(false)
-    setShouldPageRefresh(true)
+  // const handlePageRefresh = async () => {
+  //   setCeleryKeys({})
+  //   setDidWeGetTaskIds(false)
+  //   setShouldPageRefresh(true)
+  // }
+
+  const handleSaveData = async () => {
+    const saveProgress = async () => {
+      setIsLoading(true)
+      try {
+        const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/projects/1/text/status`)
+        if (response) {
+          console.log(response)
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    await saveProgress()
+  }
+
+  const handleClearLocalStorageKeys = () => {
+    localStorage.removeItem('twitterKeysForText')
+    localStorage.removeItem('facebookKeysForText')
+    localStorage.removeItem('facebookKeysForText')
   }
 
   const newFn = async () => {
-    if (localStorage.getItem('twitterKeysForText')) {
-      console.log("working on twitter keys")
-      let twitterKeys = localStorage.getItem('twitterKeysForText')
-      twitterKeys = JSON.parse(twitterKeys)
-      const getTwitterData = async () => {
-        setIsLoading(true)
-        try {
-          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${twitterKeys[0]}`)
-          if (response) {
-            if (response.data.status === 'SUCCESS' || 'FAILURE') {
-              console.log(response.data)
-              setTwitterData([...twitterData, ...response.data.result])
-              return true
+    /// changed else if to if,
+    /// check for id
+
+    if(JSON.parse(localStorage.getItem('keyIdForText')) === id){
+      if (localStorage.getItem('twitterKeysForText')) {
+        console.log("working on twitter keys")
+        let twitterKeys = localStorage.getItem('twitterKeysForText')
+        twitterKeys = JSON.parse(twitterKeys)
+        const getTwitterData = async () => {
+          setIsLoading(true)
+          try {
+            const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${twitterKeys[0]}`)
+            if (response) {
+              if (response.data.status === 'SUCCESS' || 'FAILURE') {
+                console.log(response.data)
+                setTwitterData([...twitterData, ...response.data.result])
+                return true
+              }
             }
+          } catch (err) {
+            return false
           }
-        } catch (err) {
-          return false
+          setIsLoading(false)
+        };
+        if (twitterKeys.length > 0) {
+          const response = await getTwitterData()
+          console.log("twitter response", response)
+          console.log('initial', twitterKeys.length)
+          if (response === true) {
+            twitterKeys.shift()
+            console.log('twitter success')
+          } else {
+            console.log("twitter failed for :", twitterKeys[0])
+          }
         }
-        setIsLoading(false)
-      };
-      if (twitterKeys.length > 0) {
-        const response = await getTwitterData()
-        console.log("twitter response", response)
-        console.log('initial', twitterKeys.length)
-        if (response === true) {
-          twitterKeys.shift()
-          console.log('twitter success')
+        if (twitterKeys.length === 0) {
+          localStorage.removeItem('twitterKeysForText')
         } else {
-          console.log("twitter failed for :", twitterKeys[0])
+          localStorage.setItem('twitterKeysForText', JSON.stringify(twitterKeys))
         }
       }
-      if (twitterKeys.length === 0) {
-        localStorage.removeItem('twitterKeysForText')
-      } else {
-        localStorage.setItem('twitterKeysForText', JSON.stringify(twitterKeys))
-      }
-    } else if (localStorage.getItem('facebookKeysForText')) {
-      console.log("working on facebook keys")
-      let facebookKeys = localStorage.getItem('facebookKeysForText')
-      facebookKeys = JSON.parse(facebookKeys)
-      const getFacebookData = async () => {
-        setIsLoading(true)
-        try {
-          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${facebookKeys[0]}`)
-          if (response) {
-            if (response.data.status === 'SUCCESS' || 'FAILURE') {
-              setFacebookData([...facebookData, ...response.data.result])
-              return true
-            } else {
-              return false
+      else if (localStorage.getItem('facebookKeysForText')) {
+        console.log("working on facebook keys")
+        let facebookKeys = localStorage.getItem('facebookKeysForText')
+        facebookKeys = JSON.parse(facebookKeys)
+        const getFacebookData = async () => {
+          setIsLoading(true)
+          try {
+            const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${facebookKeys[0]}`)
+            if (response) {
+              if (response.data.status === 'SUCCESS' || 'FAILURE') {
+                setFacebookData([...facebookData, ...response.data.result])
+                return true
+              } else {
+                return false
+              }
             }
+          } catch (err) {
+            return false
           }
-        } catch (err) {
-          return false
+          setIsLoading(false)
+        };
+        if (facebookKeys.length > 0) {
+          const response = await getFacebookData()
+          if (response === true) {
+            facebookKeys.shift()
+            console.log('facebook success', facebookKeys)
+          } else {
+            console.log("facebook failed")
+          }
         }
-        setIsLoading(false)
-      };
-      if (facebookKeys.length > 0) {
-        const response = await getFacebookData()
-        if (response === true) {
-          facebookKeys.shift()
-          console.log('facebook success', facebookKeys)
+        if (facebookKeys.length === 0) {
+          localStorage.removeItem('facebookKeysForText')
         } else {
-          console.log("facebook failed")
+          localStorage.setItem('twitterKeysForText', JSON.stringify(facebookKeys))
         }
       }
-      if (facebookKeys.length === 0) {
-        localStorage.removeItem('facebookKeysForText')
-      } else {
-        localStorage.setItem('twitterKeysForText', JSON.stringify(facebookKeys))
-      }
-    } else if (localStorage.getItem('instagramKeysForText')) {
-      console.log("working on instagram keys")
-      let instagramKeys = localStorage.getItem('instagramKeysForText')
-      instagramKeys = JSON.parse(instagramKeys)
-      const getInstagramData = async () => {
-        setIsLoading(true)
-        try {
-          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${instagramKeys[0]}`)
-          if (response) {
-            if (response.data.status === 'SUCCESS' || 'FAILURE') {
-              setInstagramData([...instagramData, ...response.data.result])
-              return true
-            } else {
-              return false
+      else if (localStorage.getItem('instagramKeysForText')) {
+        console.log("working on instagram keys")
+        let instagramKeys = localStorage.getItem('instagramKeysForText')
+        instagramKeys = JSON.parse(instagramKeys)
+        const getInstagramData = async () => {
+          setIsLoading(true)
+          try {
+            const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${instagramKeys[0]}`)
+            if (response) {
+              if (response.data.status === 'SUCCESS' || 'FAILURE') {
+                setInstagramData([...instagramData, ...response.data.result])
+                return true
+              } else {
+                return false
+              }
             }
+          } catch (err) {
+            return false
           }
-        } catch (err) {
-          return false
+          setIsLoading(false)
         }
-        setIsLoading(false)
-      }
-      if (instagramKeys.length > 0) {
-        const response = await getInstagramData()
-        if (response === true) {
-          instgramKeys.shift()
-          console.log('instagram success', instagramKeys)
+        if (instagramKeys.length > 0) {
+          const response = await getInstagramData()
+          if (response === true) {
+            instgramKeys.shift()
+            console.log('instagram success', instagramKeys)
+          } else {
+            console.log("instagram failed")
+          }
+        }
+        if (instagramKeys.length === 0) {
+          localStorage.removeItem('instagramKeysForText')
         } else {
-          console.log("instagram failed")
+          localStorage.setItem('twitterKeysForText', JSON.stringify(instagramKeys))
         }
       }
-      if (instagramKeys.length === 0) {
-        localStorage.removeItem('instagramKeysForText')
-      } else {
-        localStorage.setItem('twitterKeysForText', JSON.stringify(instagramKeys))
-      }
-    } else if (Object.keys(celeryKeys).length === 0 && didWeGetData === false) {
+    }
+    if (Object.keys(celeryKeys).length === 0 && didWeGetData === false) {
       console.log("getting celery keys")
       const getCeleryKeys = async () => {
         try {
-          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/new/projects/39/text`)
+          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/new/projects/1/text`)
           if (response) {
             if(response.data.status === 'Scrapping'){
+              localStorage.setItem('keyIdForText', JSON.stringify(id))
               setCeleryKeys(response.data)
             } else if (response.data.status === 'Scrapped'){
+              localStorage.setItem('keyIdForText', JSON.stringify(id))
               setInstagramData([...instagramData, ...response.data.instagram])
               setFacebookData([...facebookData, ...response.data.facebook])
               setTwitterData([...twitterData, ...response.data.twitter])
@@ -175,7 +202,8 @@ const ProjectTextView = () => {
         }
       };
       getCeleryKeys()
-    } else if (Object.keys(celeryKeys).length !== 0 && didWeGetTaskIds === false) {
+    }
+    if (Object.keys(celeryKeys).length !== 0 && didWeGetTaskIds === false) {
       console.log("getting tasks")
       const getTwitterTaskId = async () => {
         try {
@@ -246,7 +274,7 @@ const ProjectTextView = () => {
       }
     } else {
       console.log("Keys Not Found: Dead End")
-      setShouldPageRefresh(true)
+      // setShouldPageRefresh(true)
     }
   }
 
@@ -264,9 +292,11 @@ const ProjectTextView = () => {
     <TabsLayout defaultIndex={0}>
       <TabPanels bg={"white"}>
         <TabPanel overflowX={'scroll'}>
-          {shouldPageRefresh ? <Flex alignItems={'center'} gap={2} mb={4} justifyContent={'flex-end'}>
-            <RefreshButton handlePageRefresh={handlePageRefresh}/>
-          </Flex> : ''}
+          {/*<Flex alignItems={'center'} gap={4} mb={4} justifyContent={'flex-end'}> {shouldPageRefresh ? <>*/}
+          {/*    <CustomButton handlePageRefresh={handlePageRefresh} text={'Refresh'} icon={<Icon as={IoIosRefresh} h={6} w={6} color={'white'}/>}/>*/}
+          {/*  </> :*/}
+          {/*  ''}*/}
+          {/*</Flex>*/}
           <TableContainer>
             <Table borderWidth={"1px"}>
               <Thead>
@@ -285,7 +315,7 @@ const ProjectTextView = () => {
                     return (
                       <Tr key={index}>
                         <Td bg={item.prediction === 1 ? 'green.200' : 'red.200'}>{item.prediction}</Td>
-                        <Td maxW={'xs'} whiteSpace={'initial'}>
+                        <Td maxW={'170px'} whiteSpace={'initial'}>
                           <Text fontWeight={'semibold'}>
                             {item.username}
                           </Text>
@@ -293,12 +323,11 @@ const ProjectTextView = () => {
                             {item.name}
                           </Text>
                         </Td>
-                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.tweet}</Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ? item.tweet : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'blue'}/><Text>{item.translated}</Text></Box>}</Td>
                         <Td>{item.multilabel.split(',')
                           .slice(0, 2)
-                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'}
-                                                      m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
-                        <Td textAlign={'center'}>{item.created_at}</Td>
+                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.created_at}</Td>
                         <Td textAlign={'center'}><Link href={item.link} target={'_blank'}>
                           <Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/></Link>
                         </Td>
@@ -309,16 +338,16 @@ const ProjectTextView = () => {
                     return (
                       <Tr key={index}>
                         <Td bg={item.prediction === 1 ? 'green.200' : 'red.200'}>{item.prediction}</Td>
-                        <Td maxW={'xs'} whiteSpace={'initial'}>
+                        <Td maxW={'170px'} whiteSpace={'initial'}>
                           <Text fontWeight={'semibold'}>
                             {item.username}
                           </Text>
                         </Td>
-                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.post_text}</Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ?  item.post_text : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'blue'}/><Text>{item.translated}</Text></Box>}</Td>
                         <Td>{item.multilabel.split(',')
                           .slice(0, 2)
                           .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
-                        <Td textAlign={'center'}>{item.time}</Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.time}</Td>
                         <Td textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
                           <Icon as={AiFillFacebook} h={8} w={8} color={'#4267B2'}/></Link>
                         </Td>
@@ -329,16 +358,16 @@ const ProjectTextView = () => {
                     return (
                       <Tr key={index}>
                         <Td bg={item.prediction === 1 ? 'green.200' : 'red.200'}>{item.prediction}</Td>
-                        <Td maxW={'xs'} whiteSpace={'initial'}>
+                        <Td maxW={'170px'} whiteSpace={'initial'}>
                           <Text fontWeight={'semibold'}>
                             unknown
                           </Text>
                         </Td>
-                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.caption}</Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ? <Text>{item.caption}</Text>: <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'blue'}/><Text>{item.translated}</Text></Box>}</Td>
                         <Td>{item.multilabel.split(',')
                           .slice(0, 2)
                           .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
-                        <Td textAlign={'center'}>{item.creationTime.$date.$numberLong}</Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.upload_time}</Td>
                         <Td textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
                           <Icon as={AiOutlineInstagram} h={8} w={8} color={'#FCAF45'}/></Link>
                         </Td>
@@ -351,6 +380,10 @@ const ProjectTextView = () => {
           </TableContainer>
           <Flex justifyContent={'center'} alignItems={'center'} my={6} w={'full'}>
             {isLoading ? <Spinner color={'blue'} size={'lg'} mx={'auto'}/> : null}
+          </Flex>
+          <Flex alignItems={'center'} gap={2} mb={4} mt={12} justifyContent={'flex-start'}> {shouldPageRefresh ?
+            <CustomButton handlePageRefresh={handleSaveData} text={'Save Data'} icon={<Icon as={VscSave} h={6} w={6}/>}/>
+            : <CustomButton handlePageRefresh={handleClearLocalStorageKeys} text={'Clear Storage'} icon={<Icon as={AiFillDelete} h={6} w={6}/>}/>}
           </Flex>
         </TabPanel>
       </TabPanels>

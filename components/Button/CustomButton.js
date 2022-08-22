@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Icon, Text} from "@chakra-ui/react";
 import {IoIosRefresh} from "react-icons/io";
 
-const RefreshButton = ({handlePageRefresh}) => {
+const CustomButton = ({handlePageRefresh, icon, text}) => {
   return (
     <Button
       display={'flex'}
@@ -14,10 +14,10 @@ const RefreshButton = ({handlePageRefresh}) => {
       color={'white'}
       onClick={handlePageRefresh}
     >
-      <Text>Refresh</Text>
-      <Icon as={IoIosRefresh} h={6} w={6} color={'white'}/>
+      <Text>{text}</Text>
+      {icon}
     </Button>
   );
 };
 
-export default RefreshButton;
+export default CustomButton;
