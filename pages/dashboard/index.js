@@ -48,13 +48,13 @@ const Index = ({
                 colSpan={{base: 4, md: 2}}
                 rowSpan={2}
               >
-                <TweetCountBarChart data={barChartData}/>
+                {barChartData.length > 0 && <TweetCountBarChart data={barChartData}/>}
               </GridItem>
               <GridItem
                 colSpan={{base: 4, md: 2}}
                 rowSpan={2}
               >
-                <TweetCountPieChart data={pieChartData.data} labels={pieChartData.labels} primaryText={'Total Data Scrapped Percentage.'} secondaryText={'Project - Uttarakhand Flood'}/>
+                {pieChartData.length > 0 && <TweetCountPieChart data={pieChartData.data} labels={pieChartData.labels} primaryText={'Total Data Scrapped Percentage.'} secondaryText={'Project - Uttarakhand Flood'}/>}
               </GridItem>
               <GridItem colSpan={{base: 4, md: 2}} rowSpan={1}>
                 <ActiveModels/>

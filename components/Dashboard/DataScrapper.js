@@ -1,5 +1,6 @@
 import React from "react";
 import {Stat, StatLabel, StatNumber,} from "@chakra-ui/react";
+import CountUp from "react-countup";
 
 const DataScrapper = ({dataScrapped}) => {
   return (
@@ -11,7 +12,7 @@ const DataScrapper = ({dataScrapped}) => {
       h={'full'}
     >
       <StatLabel fontWeight={"bold"} fontSize={'lg'}>Data Scrapper</StatLabel>
-        <StatNumber fontSize={'2rem'} color={'green.500'}>{dataScrapped}</StatNumber>
+        <StatNumber fontSize={'2rem'} color={'green.500'}><CountUp end={dataScrapped} duration={20}/></StatNumber>
     </Stat>
   );
 };
