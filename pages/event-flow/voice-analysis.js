@@ -3,9 +3,12 @@ import EventFlowLayout from "./_layout";
 import {Heading, SimpleGrid} from "@chakra-ui/react";
 import StatCard from "../../components/Stat/StatCard";
 import TweetWithVoices from '../../components/Card/TweetWithVoices';
-import {BinaryAudioVideoData} from './binary-video-classification';
+import axios from "axios";
 
-const VoiceAnalysis = () => {
+const VoiceAnalysis = ({voices}) => {
+
+  console.log(voices)
+
   return (
     <EventFlowLayout
       heading={'STEP 7 - Voice Analysis'}
@@ -14,22 +17,31 @@ const VoiceAnalysis = () => {
     >
       {/* Stats */}
       <SimpleGrid columns={{base: 2, md: 4}} gap={4}>
-        <StatCard label={'Total No of Voices'} value={100} cardBgColor={'blackAlpha.800'} titleColor={'white'}/>
+        <StatCard label={'Total No of Voices'} value={2} cardBgColor={'blackAlpha.800'} titleColor={'white'}/>
       </SimpleGrid>
 
       {/* Heading */}
       <Heading size={'lg'} my={8}>Voices</Heading>
 
       {/* Voices */}
-      <SimpleGrid columns={{base: 1, md: 2, lg: 3}} gap={4}>
+      <SimpleGrid columns={{base: 1, md: 2}} gap={4}>
         <>
-          {BinaryAudioVideoData.map((item, index) => {
+          {voices.map((item, index) => {
             return (
               <TweetWithVoices
                 key={index}
-                username={item.username}
-                date={item.date}
-                audio={item.audio}/>
+                username={"omsurve"}
+                date={"22 Aug 2022"}
+                audio={item.audio_link}
+                language={item.language}
+                transcript={item.transcript}
+                multilabel={item.multilabel}
+                location={item.location}
+                affectedPeople={item.affectedPeople}
+                help={item.help}
+                organisationsHelping={item.organisationsHelping}
+                disasterType={item.disasterType}
+              />
             )
           })}
         </>
@@ -39,3 +51,24 @@ const VoiceAnalysis = () => {
 };
 
 export default VoiceAnalysis;
+
+export async function getServerSideProps() {
+
+  let voices = []
+
+  try {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_DEMO}/event-flow/voice-analysis`)
+    if (res.data) {
+      console.log(res.data)
+      voices = res.data.data
+    }
+  } catch (e) {
+    console.log(e)
+  }
+
+  return {
+    props: {
+      voices
+    }
+  }
+}

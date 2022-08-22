@@ -60,7 +60,7 @@ export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
           </>
         </Flex>
       </TweetsContainer>}
-      <SimpleGrid columns={{base: 2, md: 3, lg: 6}} maxW={'container.xl'} mx={'auto'} py={8} gap={3} justifyContent={'space-between'}>
+      <SimpleGrid columns={{base: 2, md: 3, lg: 6}} maxW={'container.xl'} mx={'auto'} py={20} gap={3} justifyContent={'space-between'}>
         <Avatar
           name="Hitesh Meta"
           jobTitle="Web Developer"

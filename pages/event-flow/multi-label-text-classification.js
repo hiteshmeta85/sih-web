@@ -15,10 +15,11 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import {AiFillFacebook, AiOutlineTwitter} from "react-icons/ai";
+import {AiFillFacebook, AiOutlineInstagram, AiOutlineTwitter} from "react-icons/ai";
 import axios from "axios";
 
 const MultiLabelTextClassification = ({twitterData, facebookData, instagramData}) => {
+
   return (
     <EventFlowLayout
       heading={"Step 3 - Multi-label Classification of Text"}
@@ -61,8 +62,7 @@ const MultiLabelTextClassification = ({twitterData, facebookData, instagramData}
                     <Td maxW={'xs'} whiteSpace={'initial'}>{item.tweet}</Td>
                     <Td maxW={'xs'} whiteSpace={'initial'}>
                       {item.multilabel.split(',')
-                        .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'}
-                                                    m={'0.2rem'} textAlign={'center'}>{step}</Text>)}
+                        .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'}>{step}</Text>)}
                     </Td>
                     <Td textAlign={'center'} maxW={'xs'} whiteSpace={'pre-wrap'}>{item.created_at}</Td>
                     <Td textAlign={'center'}><Link href={item.link} target={'_blank'}>
@@ -80,12 +80,28 @@ const MultiLabelTextClassification = ({twitterData, facebookData, instagramData}
                     <Td maxW={'xs'} whiteSpace={'initial'}>{item.post_text}</Td>
                     <Td maxW={'xs'} whiteSpace={'initial'}>
                       {item.multilabel.split(',')
-                        .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'}
-                                                    m={'0.2rem'} textAlign={'center'}>{step}</Text>)}
+                        .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'}>{step}</Text>)}
                     </Td>
                     <Td textAlign={'center'} maxW={'xs'} whiteSpace={'pre-wrap'}>{item.time}</Td>
                     <Td textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
                       <Icon as={AiFillFacebook} h={8} w={8} color={'#1DA1F2'}/></Link>
+                    </Td>
+                  </Tr>
+                )
+            })}
+            {instagramData.map((item, index) => {
+              if (item.prediction === 1)
+                return (
+                  <Tr key={index}>
+                    <Td>{item.id}</Td>
+                    <Td>Unknown</Td>
+                    <Td maxW={'xs'} whiteSpace={'initial'}>{item.caption}</Td>
+                    <Td maxW={'xs'} whiteSpace={'initial'}>
+                      {item.multilabel.split(',').map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'}>{step}</Text>)}
+                    </Td>
+                    <Td textAlign={'center'} maxW={'xs'} whiteSpace={'pre-wrap'}>{item.upload_time}</Td>
+                    <Td textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
+                      <Icon as={AiOutlineInstagram} h={8} w={8} color={'#FCAF45'}/></Link>
                     </Td>
                   </Tr>
                 )
@@ -101,21 +117,18 @@ export default MultiLabelTextClassification;
 
 export async function getServerSideProps() {
 
-  let twitterData, facebookData, instagramData
+  let twitterData = [], facebookData = [], instagramData = []
 
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_DEMO}/event-flow/multi-label-text-classification`)
     if (res.data) {
       twitterData = res.data.data.twitterData
       facebookData = res.data.data.facebookData
+      instagramData = res.data.data.instagramData
     }
   } catch (e) {
     console.log(e)
-    twitterData = []
-    facebookData = []
   }
-
-  instagramData = []
 
   return {
     props: {
