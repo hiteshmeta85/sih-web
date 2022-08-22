@@ -1,37 +1,104 @@
-import React from "react";
-import Slider from "react-slick";
-import {Box, Text, Image as ChakraImage} from "@chakra-ui/react";
+import React, {useState} from "react";
+import {Box, Button, Flex, Image, Text} from "@chakra-ui/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
+import {sampleDisasters} from "../../constants/sample-data/sampleDisasters";
 
-const LandingCarousel = ({data}) => {
+const LandingCarousel = () => {
+  const [index, setIndex] = useState(0);
+  const {image, news} = sampleDisasters[index];
 
-  const settings = {
-    dots: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    autoplay: true,
-    pauseOnHover: true,
-    swipeToSlide: true,
-    infinite: false,
-    gap: 4,
+  const checkNumber = (num) => {
+    if (num > sampleDisasters.length - 1) {
+      return 0
+    }
+    if (num < 0) {
+      return sampleDisasters.length - 1
+    }
+    return num
+  };
+
+  const nextSlider = () => {
+    setIndex((index) => {
+      let newIndex = index + 1;
+      return checkNumber(newIndex);
+    });
+  };
+
+  const prevSlider = () => {
+    setIndex((index) => {
+      let newIndex = index - 1;
+      return checkNumber(newIndex);
+    });
   };
 
   return (
-    <Box className={'custom-carousel-style'} maxW={'100%'} maxH={'100%'} objectFit={'cover'}>
-    <Slider {...settings}>
-      {data.map((item, index) => {
-        return (
-          <Box key={index} px={1} pos={'relative'} >
-            <ChakraImage src={item.image} alt={'Disaster image'} rounded={'lg'}/>
-            <Text pos={'absolute'} bottom={'8px'} left={'10px'} alignContent={'center'} color={'white'}>{item.news}</Text>
-          </Box>
-        )
-      })}
-    </Slider>
+    <Box
+      w={'100%'}
+      h={'500px'}
+      pos={'relative'}
+    >
+      <Image
+        w={'100%'}
+        h={'100%'}
+        objectFit={'cover'}
+        src={image}
+        alt={'image'}
+      />
+      <Box
+        position={'absolute'}
+        color={'white'}
+        fontSize={'4xl'}
+        bottom={'5%'}
+        left={'5%'}
+        right={'15%'}
+        fontWeight={800}
+      >
+        <Text>
+          <Text as={'span'}>&ldquo;</Text>
+          {news}
+          <Text as={'span'}>&rdquo;</Text>
+        </Text>
+      </Box>
+      <Flex
+        position={'absolute'}
+        bottom={'5%'}
+        right={'5%'}
+        gap={5}
+      >
+        <Button
+          w={{base: '40px', md: '50px'}}
+          h={{base: '40px', md: '50px'}}
+          borderRadius={'50%'}
+          variant={'outline'}
+          cursor={'pointer'}
+          _hover={{bg: 'blackAlpha.200'}}
+          _active={{bg: 'white'}}
+          onClick={prevSlider}
+          size={{base: '2rem'}}
+          borderWidth={'2px'}
+        >
+          <FaArrowLeft color="white"/>
+        </Button>
+
+        <Button
+          w={{base: '40px', md: '50px'}}
+          h={{base: '40px', md: '50px'}}
+          borderRadius={'50%'}
+          variant={'outline'}
+          _hover={{bg: 'blackAlpha.200'}}
+          _active={{bg: 'white'}}
+          cursor={'pointer'}
+          size={{base: '2rem'}}
+          onClick={nextSlider}
+          borderWidth={'2px'}
+        >
+          <FaArrowRight color="white"/>
+        </Button>
+      </Flex>
     </Box>
-  );
+  )
 }
 
 export default LandingCarousel
