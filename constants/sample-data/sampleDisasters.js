@@ -2,7 +2,7 @@ export const sampleDisasters = [
     {
         id: 1,
         news: "As heavy rains lash Himachal, five more bodies found, toll at 27",
-        image: "https://images.indianexpress.com/2022/08/flash-floods-PTI08_20_2022_000182A-10-1.jpg"
+        image: "https://www.washingtonpost.com/resizer/g6qrtMHTZ6exloEIC7vT0fvEry8=/arc-anglerfish-washpost-prod-washpost/public/BX2IH7HQOYI6ZLAWR67XDFGNPA.jpg"
     },
     {
         id: 2,
@@ -17,6 +17,6 @@ export const sampleDisasters = [
     {
         id: 4,
         news: "Millions in Distress as Floods Ravage Assam and Bihar",
-        image: "https://images.thequint.com/thequint/2020-07/f1cd43a4-bbf4-49e6-afc3-989b3e4b6e52/2020_7_img22_Jul_2020_PTI22_07_2020_000085B.jpg"
+        image: "https://static01.nyt.com/images/2022/06/24/world/24xp-bangladesh-floods-01/merlin_209037930_c4e30c39-e91c-40dc-b448-5a4ba6ea8800-videoSixteenByNine3000.jpg"
     },
 ]
