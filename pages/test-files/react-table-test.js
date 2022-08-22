@@ -1,7 +1,7 @@
 import React from "react";
-import ReactTableComponent from "../components/Table/ReactTableComponent";
-import {TweetsData} from "../constants/sample-data/tweetsData";
 import {Box} from "@chakra-ui/react";
+import ReactTableComponent from "../../components/Table/ReactTableComponent";
+import {TweetsData} from "../../constants/sample-data/tweetsData";
 
 function TableComponent() {
   const columns = React.useMemo(
