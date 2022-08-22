@@ -1,5 +1,5 @@
 import TweetsContainer from "../components/Tweet/TweetsContainer";
-import {Flex, SimpleGrid} from "@chakra-ui/react";
+import {Flex, SimpleGrid, Box} from "@chakra-ui/react";
 import TweetCard from "../components/Tweet/TweetCard";
 import SocialMediaAccountCard from "../components/Account/SocialMediaAccountCard";
 import AlertCard from "../components/Alert/AlertCard";
@@ -8,11 +8,16 @@ import LandingPageLayout from "./_layout";
 import {IoIosAlert} from "react-icons/io";
 import {BsTwitter} from "react-icons/bs";
 import axios from "axios";
+import LandingCarousel from "../components/Carousel/LandingCarousel";
+import { sampleDisasters } from "../constants/sample-data/sampleDisasters";
 
 export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
 
   return (
     <LandingPageLayout>
+      <Box  maxW={'container.xl'} mx='auto'>
+      <LandingCarousel data={sampleDisasters} />
+      </Box>
       {news.length > 0 && <TweetsContainer title={'News'} href={'/news'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={6}>
           <>
