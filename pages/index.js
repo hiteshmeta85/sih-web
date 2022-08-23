@@ -1,5 +1,5 @@
 import TweetsContainer from "../components/Tweet/TweetsContainer";
-import {Box, Flex, SimpleGrid} from "@chakra-ui/react";
+import {Box, Flex, Heading, SimpleGrid} from "@chakra-ui/react";
 import TweetCard from "../components/Tweet/TweetCard";
 import SocialMediaAccountCard from "../components/Account/SocialMediaAccountCard";
 import AlertCard from "../components/Alert/AlertCard";
@@ -60,32 +60,34 @@ export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
           </>
         </Flex>
       </TweetsContainer>}
-      <SimpleGrid columns={{base: 2, md: 3, lg: 6}} maxW={'container.xl'} mx={'auto'} py={20} gap={3} justifyContent={'space-between'}>
-        <Avatar
-          name="Hitesh Meta"
-          jobTitle="Web Developer"
-        />
-        <Avatar
-          name="Om Surve"
-          jobTitle="ML Engineer"
-        />
-        <Avatar
-          name="Kunal Wagh"
-          jobTitle="Data Scientist"
-        />
-        <Avatar
-          name="Shreya Belanekar"
-          jobTitle="Frontend Developer"
-        />
-        <Avatar
-          name="Tanshiq Parkar"
-          jobTitle="Backend Developer"
-        />
-        <Avatar
-          name="Yash Wakekar"
-          jobTitle="Backend Developer"
-        />
-      </SimpleGrid>
+      <TweetsContainer title={'Meet Our Team!'}>
+        <SimpleGrid columns={{base: 2, md: 3, lg: 6}} gap={3} justifyContent={'space-between'}>
+          <Avatar
+            name="Hitesh Meta"
+            jobTitle="Full-Stack Web Developer"
+          />
+          <Avatar
+            name="Om Surve"
+            jobTitle="ML Engineer & Backend Developer"
+          />
+          <Avatar
+            name="Kunal Wagh"
+            jobTitle="Data Scientist"
+          />
+          <Avatar
+            name="Shreya Belanekar"
+            jobTitle="Frontend Developer"
+          />
+          <Avatar
+            name="Tanshiq Parkar"
+            jobTitle="Full-Stack Web Developer"
+          />
+          <Avatar
+            name="Yash Wakekar"
+            jobTitle="Backend Developer"
+          />
+        </SimpleGrid>
+      </TweetsContainer>
     </LandingPageLayout>
   )
 }

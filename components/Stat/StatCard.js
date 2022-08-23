@@ -12,7 +12,7 @@ const StatCard = ({label, value, boxShadow, cardBgColor, titleColor, subTextColo
     >
       {icon && <Box mb={4}>{icon}</Box>}
       <StatLabel fontWeight={'bold'} fontSize={'xl'} color={titleColor || ''}>{label}</StatLabel>
-      {text && <StatLabel fontWeight={'bold'} fontSize={'xl'} color={textColor || ''}>{text}</StatLabel>}
+      {text && <StatLabel fontWeight={'bold'} fontSize={'xl'} color={textColor || ''} textTransform={'capitalize'}>{text}</StatLabel>}
       <StatNumber color={subTextColor || 'green.400'}>{value}</StatNumber>
     </Stat>
   )

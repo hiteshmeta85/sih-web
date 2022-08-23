@@ -21,7 +21,7 @@ const TweetsContainer = ({title, children, href}) => {
         >
           {title}
         </Heading>
-        <NextLink href={href} passHref>
+        {href && <NextLink href={href} passHref>
           <Link
             _hover={{textDecoration: 'none', bg: 'blackAlpha.700'}}
             whiteSpace={'nowrap'}
@@ -33,7 +33,7 @@ const TweetsContainer = ({title, children, href}) => {
           >
             See all
           </Link>
-        </NextLink>
+        </NextLink>}
       </Flex>
       {children}
     </Box>

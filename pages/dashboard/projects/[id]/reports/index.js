@@ -20,9 +20,9 @@ const ProjectReports = () => {
         <TabPanel/>
         <TabPanel>
           <Flex flexDir={'column'} gap={16}>
+            <PreviousReportTable/>
             <FileUploadForm title={'Upload File'} url={''} setResponseData={setResponseData}/>
             <CreateReportForm/>
-            <PreviousReportTable/>
           </Flex>
         </TabPanel>
       </TabPanels>

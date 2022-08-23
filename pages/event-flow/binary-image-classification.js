@@ -1,6 +1,6 @@
 import React from 'react';
 import EventFlowLayout from "./_layout";
-import {Flex, Heading, SimpleGrid} from "@chakra-ui/react";
+import {Heading, SimpleGrid} from "@chakra-ui/react";
 import StatCard from "../../components/Stat/StatCard";
 import TweetWithImagesCard from "../../components/Card/TweetWithImagesCard";
 import axios from "axios";
@@ -55,7 +55,7 @@ const BinaryImageClassification = ({twitterData, facebookData, instagramData}) =
                       return (
                         <TweetWithImagesCard
                           key={index}
-                          tweet={item.language === "en" || "" ? item.tweet : item.translated}
+                          tweet={item.language === "en" || "" ? item.post_text : item.translated}
                           images={[`${image.photos}`]}
                           username={item.username}
                           date={item.time}

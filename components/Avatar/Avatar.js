@@ -5,7 +5,7 @@ const Avatar = (props) => {
   const { name, jobTitle, imageSrc, ...boxProps } = props
 
   return (
-    <Box {...boxProps} textAlign={'center'}>
+    <Box {...boxProps} textAlign={'center'} p={4} bg={'white'} boxShadow={'md'} rounded={'md'}>
       <Profile
         size='lg'
         name={name}

@@ -400,9 +400,9 @@ export async function getServerSideProps() {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/maps`)
     if (res.data) {
       console.log(res.data)
-      projectIds = res.data.data.projectIds.map((item) => item.projectId)
+      projectIds = res.data.data.projectId.map((item) => item.projectId)
       alerts = res.data.data.alerts
-      projectData = res.data.data.projectData
+      projectData = res.data.data.projects
     }
   } catch (e) {
     console.log(e)

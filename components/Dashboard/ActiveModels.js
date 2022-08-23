@@ -9,14 +9,16 @@ import image from "./image.png";
 
 const ActiveModels = () => {
   return (
-    <Box
+    <Flex
+      flexDir={'column'}
+      justifyContent={'space-between'}
       bg={"white"}
       borderRadius={"md"}
       border={"1px solid lightgray"}
       h={"full"}
       p={4}
     >
-      <Text fontSize={"lg"} fontWeight={"bold"} mb={4}>
+      <Text fontSize={"lg"} fontWeight={"bold"}>
         Active Models
       </Text>
       <Flex justifyContent={'space-between'} gap={2}>
@@ -36,7 +38,7 @@ const ActiveModels = () => {
           <Image src={image} alt={'img'} className={'blink-animation'}/>
         </Avatar>
       </Flex>
-    </Box>
+    </Flex>
   );
 };
 

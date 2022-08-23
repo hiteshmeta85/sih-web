@@ -5,7 +5,7 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  Box,
+  Box, Divider,
   Flex,
   Text,
 } from "@chakra-ui/react";
@@ -22,7 +22,8 @@ const Alerts = ({alerts}) => {
       maxH={'320px'}
       minH={'320px'}
     >
-      <Text fontWeight={'semibold'} p={3} fontSize={'xl'}>Alerts</Text>
+      <Text fontWeight={'semibold'} px={3} py={2} fontSize={'xl'}>Alerts</Text>
+      <Divider/>
       <Accordion allowToggle mb={4}>
         <>
           {alerts.map((item, index) => {

@@ -12,6 +12,7 @@ const PreviousReportTable = () => {
           <Thead>
             <Tr>
               <Th>Report Id</Th>
+              <Th>Project Name</Th>
               <Th>Created On</Th>
               <Th isNumeric>View Report</Th>
             </Tr>
@@ -19,6 +20,7 @@ const PreviousReportTable = () => {
           <Tbody>
             <Tr>
               <Td>1</Td>
+              <Td>Uttarakhand Flood</Td>
               <Td>22 Aug 2022</Td>
               <Td isNumeric>
                 <Flex alignItems={'center'} justifyContent={'end'} gap={2}>

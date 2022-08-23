@@ -16,23 +16,23 @@ const Index = ({
   alerts,
   activeAccounts,
   recentProjects,
-  trendingTweets,
   dataScrapped,
   pieChartData,
   barChartData,
   statistics
 }) => {
+
   return (
     <DashboardContainer title={"Dashboard"}>
       <Box bg={"white"} p={4} rounded={'md'}>
         <Box
-          border={"1px solid lightgray"}
+          border={"1px dashed black"}
           borderRadius={"md"}
           p={4} mb={4}
         >
           <CardTitle primaryText={'Trending Tweets'}/>
           <Box py={4} px={8}>
-            <TweetCarousel data={trendingTweets}/>
+            {Object.keys(activeAccounts).length > 0 && <TweetCarousel data={activeAccounts.TwitterActiveAccounts.hashTags.concat(activeAccounts.FacebookActiveAccounts.hashTag, activeAccounts.InstagramActiveAccounts.hashTag).split(',')}/>}
           </Box>
         </Box>
         <Grid gridTemplateColumns={"repeat(3, 1fr)"} gap={4}>
@@ -45,30 +45,26 @@ const Index = ({
                 <SocialMediaCard statistics={statistics}/>
               </GridItem>
               <GridItem
-                colSpan={{base: 4, md: 2}}
-                rowSpan={2}
+                colSpan={{base: 2, lg: 2}}
               >
-                {barChartData.length > 0 && <TweetCountBarChart data={barChartData}/>}
+                <ActiveModels/>
               </GridItem>
               <GridItem
                 colSpan={{base: 4, md: 2}}
                 rowSpan={2}
               >
-                {pieChartData.length > 0 && <TweetCountPieChart data={pieChartData.data} labels={pieChartData.labels} primaryText={'Total Data Scrapped Percentage.'} secondaryText={'Project - Uttarakhand Flood'}/>}
+                {Object.keys(pieChartData).length > 0 && <TweetCountPieChart data={pieChartData.data} labels={pieChartData.labels} primaryText={'Total Data Scrapped Percentage.'} secondaryText={'Project - Uttarakhand Flood'}/>}
               </GridItem>
               <GridItem colSpan={{base: 4, md: 2}} rowSpan={1}>
-                <ActiveModels/>
+                {Object.keys(barChartData).length > 0 && <TweetCountBarChart data={barChartData}/>}
               </GridItem>
             </Grid>
           </GridItem>
           <GridItem colSpan={{base: 3, lg: 1}}>
             <Alerts alerts={alerts}/>
-            <DashTabs activeAccounts={activeAccounts} recentProjects={recentProjects}/>
+            {Object.keys(activeAccounts).length > 0 && <DashTabs activeAccounts={activeAccounts.TwitterActiveAccounts.mentions.concat(activeAccounts.FacebookActiveAccounts.mentions, activeAccounts.InstagramActiveAccounts.mentions).split(',')} recentProjects={recentProjects}/>}
           </GridItem>
         </Grid>
-        <Box my={4}>
-          {/*<ClusterMap/>*/}
-        </Box>
       </Box>
     </DashboardContainer>
   );
@@ -78,32 +74,20 @@ export default Index;
 
 export async function getServerSideProps() {
 
-  let alerts = [], activeAccounts = [], mapData = [], recentProjects = [], trendingTweets = [], dataScrapped = [],
-    pieChartData = [], barChartData = []
-
-  let statistics = {
-    "projectId": 39,
-    "twitter_scraped_count": 1554,
-    "twitter_project_rel": 30,
-    "insta_scraped_count": 0,
-    "insta_project_rel": 40,
-    "facebook_scraped_count": 19,
-    "facebook_project_rel": 30,
-    "total_scraped_count": 1573,
-    "total_scraped_rel": 0
-  }
+  let alerts = [], activeAccounts = {}, recentProjects = [], trendingTweets = [], dataScrapped = 0,
+    pieChartData = {}, barChartData = {}, statistics = {}
 
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/dashboard`)
     if (res.data) {
       alerts = res.data.data.alerts,
         activeAccounts = res.data.data.activeAccounts,
-        mapData = res.data.data.mapData,
         recentProjects = res.data.data.recentProjects,
-        trendingTweets = res.data.data.trendingTweets,
         dataScrapped = res.data.data.dataScrapped,
         pieChartData = res.data.data.pieChartData,
-        barChartData = res.data.data.barChart
+        barChartData = res.data.data.barChart,
+        statistics = res.data.data.statistics
+
     }
   } catch (e) {
     console.log(e)
@@ -113,7 +97,6 @@ export async function getServerSideProps() {
     props: {
       alerts,
       activeAccounts,
-      mapData,
       recentProjects,
       trendingTweets,
       dataScrapped,

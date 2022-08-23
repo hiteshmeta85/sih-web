@@ -37,8 +37,8 @@ const ProjectAnalytics = ({statistics, barChartData, pieChartData}) => {
               <StatCard label={'Instagram'} value={statistics.instagramPredictCount}/>
             </StatGroup>
             <Grid templateColumns='repeat(2, 1fr)' gap={5} mt={4}>
-              <TweetCountBarChart data={barChartData}/>
-              <TweetCountPieChart
+              {Object.keys(barChartData).length > 0 && <TweetCountBarChart data={barChartData}/>}
+              {Object.keys(pieChartData).length > 0 && <TweetCountPieChart
                 data={pieChartData[selectedSocialMediaType].data}
                 labels={pieChartData[selectedSocialMediaType].labels}
                 primaryText={'Multi-Labels %'}
@@ -47,7 +47,7 @@ const ProjectAnalytics = ({statistics, barChartData, pieChartData}) => {
                   <option value="facebookPieChart">Facebook</option>
                   <option value="instagramPieChart">Instagram</option>
                 </Select>}
-              />
+              />}
             </Grid>
           </Flex>
         </TabPanel>
@@ -65,7 +65,7 @@ export async function getServerSideProps(context){
   let pieChartData = {}, barChartData = {}, statistics = {}
 
   try {
-   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/39/analytics`)
+   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/1/analytics`)
     if (res.data) {
       pieChartData = res.data.pieChartData
       statistics = res.data.statistics

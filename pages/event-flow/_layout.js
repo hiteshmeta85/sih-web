@@ -36,24 +36,35 @@ const EventFlowLayout = (
           gap={4}
         >
           <Box>
-            {/* Dashboard Link */}
-            <NextLink href={'/dashboard'} passHref>
-              <Link
-                display={'flex'}
+            {/* Bottom Section */}
+            <Box
+              maxW={'container.xl'}
+              mx={'auto'}
+              py={2}
+            >
+              <Flex
+                justifyContent={'start'}
                 alignItems={'center'}
-                gap={2}
-                cursor={'pointer'}
-                maxW={'2xs'}
-                onMouseOver={() => setIsDashboardLinkHovered(true)}
-                onMouseOut={() => setIsDashboardLinkHovered(false)}
-                _hover={{textDecoration: 'none'}}
-                fontWeight={'bold'}
-                color={'gray.500'}
+                gap={6}
               >
-                <Text as={'span'}
-                      className={isDashboardLinkHovered ? 'horizontal-bounce' : ''}><IoIosArrowRoundBack/></Text>Dashboard
-              </Link>
-            </NextLink>
+                <Flex
+                  onClick={() => Router.back()}
+                  alignItems={'center'}
+                  gap={3}
+                  cursor={'pointer'}>
+                  <Image src={BackButtonIcon} alt={'Back Button Icon'} height={'30px'} width={'30px'}/>
+                  <Text fontWeight={'bold'}>Back</Text>
+                </Flex>
+                {isForwardButtonPresent &&
+                  <NextLink href={forwardLink || '/'} passHref>
+                    <Link display={'flex'} alignItems={'center'} gap={3} _hover={{textDecoration: 'none'}}>
+                      <Text fontWeight={'bold'}>Next</Text>
+                      <Image src={ForwardButtonIcon} alt={'Forward Button Icon'} height={'30px'} width={'30px'}/>
+                    </Link>
+                  </NextLink>
+                }
+              </Flex>
+            </Box>
             {/* Heading */}
             <Heading size={'lg'} mt={4}>{heading}</Heading>
           </Box>
@@ -94,37 +105,6 @@ const EventFlowLayout = (
 
       {/* Horizontal Rule */}
       <Box py={'1px'} bg={'blackAlpha.800'}/>
-
-      {/* Bottom Section */}
-      <Box
-        maxW={'container.xl'}
-        mx={'auto'}
-        pt={12}
-        pb={{base: 12, lg: 20}}
-        px={2}
-      >
-        <Flex
-          justifyContent={'space-between'}
-          alignItems={'center'}
-        >
-          <Flex
-            onClick={() => Router.back()}
-            alignItems={'center'}
-            gap={3}
-            cursor={'pointer'}>
-            <Image src={BackButtonIcon} alt={'Back Button Icon'} height={'40px'} width={'40px'}/>
-            <Text fontWeight={'bold'}>Back</Text>
-          </Flex>
-          {isForwardButtonPresent &&
-            <NextLink href={forwardLink || '/'} passHref>
-              <Link display={'flex'} alignItems={'center'} gap={3} _hover={{textDecoration: 'none'}}>
-                <Text fontWeight={'bold'}>Next</Text>
-                <Image src={ForwardButtonIcon} alt={'Forward Button Icon'} height={'40px'} width={'40px'}/>
-              </Link>
-            </NextLink>
-          }
-        </Flex>
-      </Box>
     </>
   );
 };

@@ -13,35 +13,60 @@ import {
 } from "react-icons/bs";
 import {IoLocationSharp} from "react-icons/io5";
 import {CgDanger} from "react-icons/cg";
+import axios from "axios";
 
-const Conclusion = () => {
+const Conclusion = ({stats}) => {
   return (
     <EventFlowLayout
       heading={'Step 10 - Conclusion'}
       progressPercent={100}
       forwardLink={'/dashboard'}
     >
-      <SimpleGrid columns={{base: 2, md: 5}} gap={4}>
-        <StatCard icon={<BsClipboardData size={'2.5rem'} color={'white'}/>} label={'Total Number of Disastrous Tweets and Posts'} value={1000} cardBgColor={'blackAlpha.800'} titleColor={'white'}/>
-        <Box/>
-        <StatCard icon={<BsTwitter size={'2.5rem'} color={'white'}/>} label={'Total Disastrous Tweets from Twitter'} value={800} cardBgColor={'#1DA1F2'} titleColor={'white'} subTextColor={'white'}/>
-        <StatCard icon={<BsFacebook size={'2.5rem'} color={'white'}/>} label={'Total Disastrous Post from Facebook'} value={100} cardBgColor={'#4267B2'} titleColor={'white'} subTextColor={'white'}/>
-        <StatCard icon={<BsInstagram size={'2.5rem'} color={'white'}/>} label={'Total Disastrous Post from Instagram'} value={100} cardBgColor={'#FCAF45'} titleColor={'white'} subTextColor={'white'}/>
-      </SimpleGrid>
+      {Object.keys(stats).length > 0 && <>
+        <SimpleGrid columns={{base: 2, md: 5}} gap={4}>
+          <StatCard icon={<BsClipboardData size={'2.5rem'} color={'white'}/>} label={'Total Number of Tweets and Posts Scrapped'} value={stats.totalScrapped} cardBgColor={'blackAlpha.800'} titleColor={'white'}/>
+          <StatCard icon={<BsClipboardData size={'2.5rem'} color={'white'}/>} label={'Total Number of Tweets and Posts Ranked'} value={stats.totalRanked} cardBgColor={'gray.500'} titleColor={'white'} subTextColor={'blackAlpha.700'}/>
+          <Box/>
+          <StatCard icon={<IoLocationSharp size={'2.5rem'} color={'#EB8F34'}/>} label={'Top Location Identified'} text={stats.topLocation} textColor={'green.700'} cardBgColor={'green.200'}/>
+          <StatCard icon={<CgDanger size={'2.5rem'} color={'#EB3434'}/>} label={'Estimate Number of Affected People'} value={stats.affectedPeople} cardBgColor={'red.300'} subTextColor={'red.700'}/>
+        </SimpleGrid>
 
-      <SimpleGrid columns={{base: 3, md: 5}} gap={4} my={6}>
-        <Box/>
-        <StatCard icon={<BsCardImage size={'2.5rem'}/>} label={'Total Number of Images'} value={500} cardBgColor={'pink.200'} subTextColor={'pink.800'}/>
-        <StatCard icon={<BsFillCameraVideoFill size={'2.5rem'}/>} label={'Total Number of Videos'} value={100} cardBgColor={'teal.200'} subTextColor={'teal.800'}/>
-        <StatCard icon={<BsSoundwave size={'2.5rem'}/>} label={'Total Number of Audios'} value={50} cardBgColor={'cyan.300'} subTextColor={'cyan.800'}/>
-      </SimpleGrid>
+        <SimpleGrid columns={{base: 2, md: 5}} gap={4} my={6}>
+          <StatCard icon={<BsClipboardData size={'2.5rem'} color={'white'}/>} label={'Total Number of Disastrous Tweets and Posts'} value={stats.totalPredict} cardBgColor={'purple.300'} titleColor={'white'} subTextColor={'white'}/>
+          <Box/>
+          <StatCard icon={<BsTwitter size={'2.5rem'} color={'white'}/>} label={'Total Disastrous Tweets from Twitter'} value={stats.twitterPredictCount} cardBgColor={'#1DA1F2'} titleColor={'white'} subTextColor={'white'}/>
+          <StatCard icon={<BsFacebook size={'2.5rem'} color={'white'}/>} label={'Total Disastrous Post from Facebook'} value={stats.facebookPredictCount} cardBgColor={'#4267B2'} titleColor={'white'} subTextColor={'white'}/>
+          <StatCard icon={<BsInstagram size={'2.5rem'} color={'white'}/>} label={'Total Disastrous Post from Instagram'} value={stats.instagramPredictCount} cardBgColor={'#FCAF45'} titleColor={'white'} subTextColor={'white'}/>
+        </SimpleGrid>
 
-      <SimpleGrid columns={{base: 3, md: 5}} gap={4} mt={6}>
-        <StatCard icon={<IoLocationSharp size={'2.5rem'} color={'#EB8F34'}/>} label={'Top Location Identified'} text={'Panvel, Maharashtra'} textColor={'green.700'} cardBgColor={'green.200'}/>
-        <StatCard icon={<CgDanger size={'2.5rem'} color={'#EB3434'}/>} label={'Estimate Number of Affected People'} value={1000} cardBgColor={'red.300'} subTextColor={'red.700'}/>
-      </SimpleGrid>
+        <SimpleGrid columns={{base: 3, md: 5}} gap={4} my={6}>
+          <StatCard icon={<BsCardImage size={'2.5rem'}/>} label={'Total Number of Images'} value={stats.imagesCount} cardBgColor={'pink.200'} subTextColor={'pink.800'}/>
+          <StatCard icon={<BsFillCameraVideoFill size={'2.5rem'}/>} label={'Total Number of Videos'} value={stats.videosCount} cardBgColor={'teal.200'} subTextColor={'teal.800'}/>
+          <StatCard icon={<BsSoundwave size={'2.5rem'}/>} label={'Total Number of Audios'} value={stats.audioCount} cardBgColor={'cyan.300'} subTextColor={'cyan.800'}/>
+        </SimpleGrid>
+      </>}
     </EventFlowLayout>
   );
 };
 
 export default Conclusion;
+
+export async function getServerSideProps() {
+
+ let stats = {}
+
+  try {
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_DEMO}/event-flow/conclusion`)
+    if (res.data) {
+      stats = res.data.data
+    }
+  } catch (e) {
+    console.log(e)
+  }
+
+  return {
+    props: {
+      stats
+    }
+  }
+}

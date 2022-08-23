@@ -185,7 +185,7 @@ const ProjectTextView = () => {
       const getCeleryKeys = async () => {
         setIsLoading(true)
         try {
-          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/new/projects/1/text`)
+          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/projects/1/text`)
           if (response) {
             if(response.data.status === 'Scrapping'){
               localStorage.setItem('keyIdForText', JSON.stringify(id))
