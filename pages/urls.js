@@ -51,7 +51,7 @@ const urlsData = [
       },
       {
         title: 'Video Object Detection',
-        url: '/event-flow/video-object-detetion',
+        url: '/event-flow/video-object-detection',
       },
       {
         title: 'Voice Analysis',
