@@ -50,6 +50,10 @@ const urlsData = [
         url: '/event-flow/binary-video-classification',
       },
       {
+        title: 'Video Object Detection',
+        url: '/event-flow/video-object-detetion',
+      },
+      {
         title: 'Voice Analysis',
         url: '/event-flow/voice-analysis',
       },
