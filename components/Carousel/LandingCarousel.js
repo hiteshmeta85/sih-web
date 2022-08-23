@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Box, Button, Flex, Image, Text} from "@chakra-ui/react";
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
-import {sampleDisasters} from "../../constants/sample-data/sampleDisasters";
+import {sampleDisasters} from "../../constants/useful-data/sampleDisasters";
 
 const LandingCarousel = () => {
   const [index, setIndex] = useState(0);

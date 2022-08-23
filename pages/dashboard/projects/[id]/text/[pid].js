@@ -90,13 +90,13 @@ const IndividualTextAnalysis = ({multilabel, username, date, tweet, socialMediaT
           <Text fontWeight={'bold'} fontSize={'xl'}>Multi-Labels</Text>
           <SimpleGrid columns={{base: 2, md: 3}} gap={4} py={2}>
             <>
-              {multilabel.split(',')
+              {multilabel.length > 0 ?  multilabel.split(',')
                 .slice(1, 4)
                 .map((item, index) => {
                   return (
                     <Badge label={item} key={index}/>
                   );
-                })}
+                }): 'Multi-labels empty!'}
             </>
           </SimpleGrid>
         </GridItem>
@@ -164,7 +164,7 @@ export async function getServerSideProps(context) {
  let multilabel = '', tweet = '', username = '', date = '', socialMediaType = '';
 
   try {
-    const res = await axios.get(`http://127.0.0.1:8000/homebrew/api/twitter/73333159936`)
+    const res = await axios.get(`http://127.0.0.1:8000/homebrew/api/${social}/${pid}`)
     if (res.data) {
       if(Object.keys(res.data).length > 0){
         if(social === 'twitter'){
@@ -178,7 +178,7 @@ export async function getServerSideProps(context) {
           multilabel = res.data.facebook_data.multilabel
           tweet = res.data.facebook_data.post_text
           username = res.data.facebook_data.username
-          date = res.data.facebook_data.date
+          date = res.data.facebook_data.time
           socialMediaType = 'facebook'
         }
       }

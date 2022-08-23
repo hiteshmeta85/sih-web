@@ -284,7 +284,7 @@ const ProjectTextPlusVideosView = () => {
         <TabPanel bg={'#F5F5F5'} px={0}>
           <Flex alignItems={'center'} justifyContent={'center'} gap={2} mb={4} mt={2} border={'1px dashed #EB4747'} p={2} maxW={'170px'}>
             <Text className={'blink'}></Text>
-            <Text color={"gray.600"} fontWeight={"bold"}>{didWeGetData ? 'Scrapping Done' : isScrappingLive ? 'Scrapping Live' : ''}</Text>
+            <Text color={"gray.600"} fontWeight={"bold"}>{didWeGetData ? 'Scrapping Done' : isScrappingLive ? 'Scrapping Live' : 'Loading'}</Text>
           </Flex>
           {/*<Flex alignItems={'center'} gap={4} mb={4} justifyContent={'flex-end'}> {shouldPageRefresh ? <>*/}
           {/*    <CustomButton handlePageRefresh={handlePageRefresh} text={'Refresh'} icon={<Icon as={IoIosRefresh} h={6} w={6} color={'white'}/>}/>*/}
@@ -303,11 +303,12 @@ const ProjectTextPlusVideosView = () => {
                   return (
                     <TweetCard
                       key={index}
-                      icon={<AiOutlineTwitter color={'#1DA1F2'} size={'1.5rem'}/>}
+                      icon={<AiOutlineTwitter color={'#1DA1F2'} size={'2rem'}/>}
                       description={item.language === "en" || "" ? item.tweet : item.translated}
                       image={item.photos.split(',')[0]}
                       username={item.username}
                       date={item.date}
+                      url={`/dashboard/projects/${id}/post-analysis/${item.id}?social=twitter`}
                     />
                   )
                 })}
@@ -326,11 +327,12 @@ const ProjectTextPlusVideosView = () => {
                     return (
                       <TweetCard
                         key={index}
-                        icon={<AiOutlineFacebook color={'#4267B2'} size={'1.5rem'}/>}
+                        icon={<AiOutlineFacebook color={'#4267B2'} size={'2rem'}/>}
                         description={item.language === "en" || "" ? item.post_text : item.translated}
                         image={item.images}
                         username={item.username}
                         date={item.time}
+                        url={`/dashboard/projects/${id}/post-analysis/${item.id}?social=facebook`}
                       />
                     )
                   })}
@@ -349,10 +351,11 @@ const ProjectTextPlusVideosView = () => {
                     return (
                       <TweetCard
                         key={index}
-                        icon={<AiOutlineInstagram color={'#4267B2'} size={'1.5rem'}/>}
+                        icon={<AiOutlineInstagram color={'#4267B2'} size={'2rem'}/>}
                         description={item.language === "en" || "" ? item.post_text : item.caption}
                         image={item.thumbnails.split(',')[0]}
                         username={item.username}
+                        url={`/dashboard/projects/${id}/post-analysis/${item.id}?social=instagram`}
                         //date={item.creationTime.$date.$numberLong}
                       />
                     )

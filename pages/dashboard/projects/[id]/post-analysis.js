@@ -646,29 +646,29 @@ export async function getServerSideProps(context) {
     }
   }
 
-  // try {
-  //   const res = await axios.get(`http://127.0.0.1:8000/homebrew/api/twitter/1554405286206705664`)
-  //   if (res.data) {
-  //     if(Object.keys(res.data).length > 0){
-  //       if(social === 'twitter'){
-  //         multilabel = res.data.tweet_data.multilabel
-  //         tweet = res.data.tweet_data.tweet
-  //         username = res.data.tweet_data.username
-  //         date = res.data.tweet_data.date
-  //         socialMediaType = 'twitter'
-  //       }
-  //       if(social === 'facebook'){
-  //         multilabel = res.data.facebook_data.multilabel
-  //         tweet = res.data.facebook_data.post_text
-  //         username = res.data.facebook_data.username
-  //         date = res.data.facebook_data.time
-  //         socialMediaType = 'facebook'
-  //       }
-  //     }
-  //   }
-  // } catch (e) {
-  //   console.log(e)
-  // }
+  try {
+    const res = await axios.get(`http://127.0.0.1:8000/homebrew/api/twitter/${id}`)
+    if (res.data) {
+      if(Object.keys(res.data).length > 0){
+        if(social === 'twitter'){
+          multilabel = res.data.tweet_data.multilabel
+          tweet = res.data.tweet_data.tweet
+          username = res.data.tweet_data.username
+          date = res.data.tweet_data.date
+          socialMediaType = 'twitter'
+        }
+        if(social === 'facebook'){
+          multilabel = res.data.facebook_data.multilabel
+          tweet = res.data.facebook_data.post_text
+          username = res.data.facebook_data.username
+          date = res.data.facebook_data.time
+          socialMediaType = 'facebook'
+        }
+      }
+    }
+  } catch (e) {
+    console.log(e)
+  }
 
   if (social === 'twitter') {
     multilabel = res3.data.tweet_data.multilabel

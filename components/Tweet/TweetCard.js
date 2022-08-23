@@ -1,8 +1,7 @@
 import React from 'react';
-import {Box, Flex, Image, Text} from '@chakra-ui/react';
-import Link from "next/link";
+import {Box, Flex, Image, Link, Text} from '@chakra-ui/react';
 
-const TweetCard = ({description, image, username, date, icon}) => {
+const TweetCard = ({description, image, username, date, icon, url = '/'}) => {
 
   return (
     <>
@@ -29,7 +28,7 @@ const TweetCard = ({description, image, username, date, icon}) => {
               color={'gray.500'}
             >
               <Flex align={'center'} gap={2}>
-              {icon && icon}
+                <Link href={url || ''} target={'_blank'}>{icon && icon}</Link>
               @{username}
               </Flex>
             </Box>}

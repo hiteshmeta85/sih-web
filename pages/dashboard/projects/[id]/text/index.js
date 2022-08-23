@@ -299,7 +299,7 @@ const ProjectTextView = () => {
         <TabPanel overflowX={'scroll'}>
           <Flex alignItems={'center'} justifyContent={'center'} gap={2} mb={4} mt={2} border={'1px dashed #EB4747'} p={2} maxW={'170px'}>
             <Text className={'blink'}></Text>
-            <Text color={"gray.600"} fontWeight={"bold"}>{didWeGetData ? 'Scrapping Done' : isScrappingLive ? 'Scrapping Live' : ''}</Text>
+            <Text color={"gray.600"} fontWeight={"bold"}>{didWeGetData ? 'Scrapping Done' : isScrappingLive ? 'Scrapping Live' : 'Loading'}</Text>
           </Flex>
           {/*<Flex alignItems={'center'} gap={4} mb={4} justifyContent={'flex-end'}> {shouldPageRefresh ? <>*/}
           {/*    <CustomButton handlePageRefresh={handlePageRefresh} text={'Refresh'} icon={<Icon as={IoIosRefresh} h={6} w={6} color={'white'}/>}/>*/}
@@ -337,7 +337,7 @@ const ProjectTextView = () => {
                           .slice(0, 2)
                           .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
                         <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.created_at}</Td>
-                        <Td textAlign={'center'}><Link href={item.link} target={'_blank'}>
+                        <Td textAlign={'center'}><Link href={`/dashboard/projects/${id}/post-analysis/${item.id}?social=twitter`} target={'_blank'}>
                           <Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/></Link>
                         </Td>
                       </Tr>
@@ -357,7 +357,7 @@ const ProjectTextView = () => {
                           .slice(0, 2)
                           .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
                         <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.time}</Td>
-                        <Td textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
+                        <Td textAlign={'center'}><Link href={`/dashboard/projects/${id}/post-analysis/${item.id}?social=facebook`} target={'_blank'}>
                           <Icon as={AiFillFacebook} h={8} w={8} color={'#4267B2'}/></Link>
                         </Td>
                       </Tr>
@@ -377,7 +377,7 @@ const ProjectTextView = () => {
                           .slice(0, 2)
                           .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
                         <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.upload_time}</Td>
-                        <Td textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
+                        <Td textAlign={'center'}><Link href={`/dashboard/projects/${id}/post-analysis/${item.id}?social=twitter`} target={'_blank'}>
                           <Icon as={AiOutlineInstagram} h={8} w={8} color={'#FCAF45'}/></Link>
                         </Td>
                       </Tr>
