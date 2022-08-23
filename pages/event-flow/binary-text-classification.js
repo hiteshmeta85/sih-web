@@ -1,9 +1,24 @@
 import React from "react";
 import EventFlowLayout from "./_layout";
 import StatCard from "../../components/Stat/StatCard";
-import {Heading, Icon, Link, SimpleGrid, Table, TableContainer, Tbody, Td, Th, Thead, Tr,} from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Icon,
+  Link,
+  SimpleGrid,
+  Table,
+  TableContainer,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 import {AiOutlineFacebook, AiOutlineInstagram, AiOutlineTwitter} from "react-icons/ai";
 import axios from "axios";
+import {MdOutlineTranslate} from "react-icons/md";
 
 const BinaryTextClassification = ({twitterData, facebookData, instagramData}) => {
   return (
@@ -59,7 +74,7 @@ const BinaryTextClassification = ({twitterData, facebookData, instagramData}) =>
                     <Tr key={index}>
                       <Td>{item.id}</Td>
                       <Td maxW={'xs'} whiteSpace={'initial'}>{item.username}</Td>
-                      <Td maxW={'xs'} whiteSpace={'initial'}>{item.tweet}</Td>
+                      <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ? item.tweet : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'gray.700'}/><Text>{item.translated}</Text></Box>}</Td>
                       <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.created_at}</Td>
                       <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}><Link href={item.link} target={'_blank'}>
                         <Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/></Link>
@@ -73,7 +88,7 @@ const BinaryTextClassification = ({twitterData, facebookData, instagramData}) =>
                     <Tr key={index}>
                       <Td>{item.id}</Td>
                       <Td maxW={'xs'} whiteSpace={'initial'}>{item.username}</Td>
-                      <Td maxW={'xs'} whiteSpace={'initial'}>{item.post_text}</Td>
+                      <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ? item.post_text : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'gray.700'}/><Text>{item.translated}</Text></Box>}</Td>
                       <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.time}</Td>
                       <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}><Link href={item.post_url} target={'_blank'}>
                         <Icon as={AiOutlineFacebook} h={8} w={8} color={'#4167B2'}/></Link>
@@ -87,7 +102,7 @@ const BinaryTextClassification = ({twitterData, facebookData, instagramData}) =>
                   <Tr key={index}>
                     <Td>{item.id}</Td>
                     <Td maxW={'xs'} whiteSpace={'initial'}>Unknown</Td>
-                    <Td maxW={'xs'} whiteSpace={'initial'}>{item.caption}</Td>
+                    <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ? item.caption : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'gray.700'}/><Text>{item.translated}</Text></Box>}</Td>
                     <Td textAlign={'center'} maxW={'xs'} whiteSpace={'initial'}>{item.upload_time}</Td>
                     <Td textAlign={'center'} maxW={'xs'} whiteSpace={'initial'}><Link href={item.post_url} target={'_blank'}>
                       <Icon as={AiOutlineInstagram} h={8} w={8} color={ "#FCAF45"}/></Link>

@@ -2,6 +2,7 @@ import React from "react";
 import EventFlowLayout from "./_layout";
 import StatCard from "../../components/Stat/StatCard";
 import {
+  Box,
   Heading,
   Icon,
   Link,
@@ -17,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import {AiFillFacebook, AiOutlineInstagram, AiOutlineTwitter} from "react-icons/ai";
 import axios from "axios";
+import {MdOutlineTranslate} from "react-icons/md";
 
 const MultiLabelTextClassification = ({twitterData, facebookData, instagramData}) => {
 
@@ -59,7 +61,7 @@ const MultiLabelTextClassification = ({twitterData, facebookData, instagramData}
                   <Tr key={index}>
                     <Td>{item.id}</Td>
                     <Td>{item.username}</Td>
-                    <Td maxW={'xs'} whiteSpace={'initial'}>{item.tweet}</Td>
+                    <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ? item.tweet : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'gray.700'}/><Text>{item.translated}</Text></Box>}</Td>
                     <Td maxW={'xs'} whiteSpace={'initial'}>
                       {item.multilabel.split(',')
                         .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'}>{step}</Text>)}
@@ -77,7 +79,7 @@ const MultiLabelTextClassification = ({twitterData, facebookData, instagramData}
                   <Tr key={index}>
                     <Td>{item.id}</Td>
                     <Td>{item.username}</Td>
-                    <Td maxW={'xs'} whiteSpace={'initial'}>{item.post_text}</Td>
+                    <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ? item.post_text : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'gray.700'}/><Text>{item.translated}</Text></Box>}</Td>
                     <Td maxW={'xs'} whiteSpace={'initial'}>
                       {item.multilabel.split(',')
                         .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'}>{step}</Text>)}
@@ -95,7 +97,7 @@ const MultiLabelTextClassification = ({twitterData, facebookData, instagramData}
                   <Tr key={index}>
                     <Td>{item.id}</Td>
                     <Td>Unknown</Td>
-                    <Td maxW={'xs'} whiteSpace={'initial'}>{item.caption}</Td>
+                    <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ? item.caption : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'gray.700'}/><Text>{item.translated}</Text></Box>}</Td>
                     <Td maxW={'xs'} whiteSpace={'initial'}>
                       {item.multilabel.split(',').map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'}>{step}</Text>)}
                     </Td>

@@ -59,7 +59,6 @@ export async function getServerSideProps() {
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_DEMO}/event-flow/voice-analysis`)
     if (res.data) {
-      console.log(res.data)
       voices = res.data.data
     }
   } catch (e) {

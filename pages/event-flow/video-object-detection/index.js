@@ -1,9 +1,10 @@
 import React from 'react';
-import {Heading, SimpleGrid} from "@chakra-ui/react";
+import {Box, Heading, Icon, SimpleGrid, Text} from "@chakra-ui/react";
 import StatCard from "../../../components/Stat/StatCard";
 import ThumbnailCard from "../../../components/Card/ThumbnailCard";
 import EventFlowLayout from "../_layout";
 import axios from "axios";
+import {MdOutlineTranslate} from "react-icons/md";
 
 const VideoObjectDetection = ({twitterData}) => {
   return (
@@ -31,7 +32,7 @@ const VideoObjectDetection = ({twitterData}) => {
                     return (
                       <ThumbnailCard
                         key={index}
-                        tweet={item.language === "en" || "" ? item.tweet : item.translated}
+                        tweet={item.language === "en" || "" ? item.tweet : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'gray.700'}/><Text>{item.translated}</Text></Box>}
                         image={image.objectDetectionUrl}
                         username={item.username}
                         date={item.created_at}

@@ -1,9 +1,10 @@
 import React from "react";
 import EventFlowLayout from "./_layout";
-import {Heading, SimpleGrid} from "@chakra-ui/react";
+import {Box, Heading, Icon, SimpleGrid, Text} from "@chakra-ui/react";
 import StatCard from "../../components/Stat/StatCard";
 import TweetWithImagesCard from "../../components/Card/TweetWithImagesCard";
 import axios from "axios";
+import {MdOutlineTranslate} from "react-icons/md";
 
 
 const MultiLabelImageClassification = ({twitterData, facebookData, instagramData}) => {
@@ -39,7 +40,7 @@ const MultiLabelImageClassification = ({twitterData, facebookData, instagramData
                         <TweetWithImagesCard
                           key={index}
                           label={image.classifiedClass}
-                          tweet={item.language === "en" || "" ? item.tweet : item.translated}
+                          tweet={item.language === "en" || "" ? item.tweet : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'gray.700'}/><Text>{item.translated}</Text></Box>}
                           images={[`${image.photos}`]}
                           username={item.username}
                           date={item.created_at}
@@ -62,7 +63,7 @@ const MultiLabelImageClassification = ({twitterData, facebookData, instagramData
                         <TweetWithImagesCard
                           key={index}
                           label={image.classifiedClass}
-                          tweet={item.language === "en" || "" ? item.tweet : item.translated}
+                          tweet={item.language === "en" || "" ? item.tweet : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'gray.700'}/><Text>{item.translated}</Text></Box>}
                           images={[`${image.photos}`]}
                           username={item.username}
                           date={item.time}

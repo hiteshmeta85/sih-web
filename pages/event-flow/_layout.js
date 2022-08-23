@@ -105,6 +105,37 @@ const EventFlowLayout = (
 
       {/* Horizontal Rule */}
       <Box py={'1px'} bg={'blackAlpha.800'}/>
+
+      {/* Bottom Section */}
+      <Box
+        maxW={'container.xl'}
+        mx={'auto'}
+        pt={12}
+        pb={{base: 12, lg: 20}}
+        px={2}
+      >
+        <Flex
+          justifyContent={'space-between'}
+          alignItems={'center'}
+        >
+          <Flex
+            onClick={() => Router.back()}
+            alignItems={'center'}
+            gap={3}
+            cursor={'pointer'}>
+            <Image src={BackButtonIcon} alt={'Back Button Icon'} height={'40px'} width={'40px'}/>
+            <Text fontWeight={'bold'}>Back</Text>
+          </Flex>
+          {isForwardButtonPresent &&
+            <NextLink href={forwardLink || '/'} passHref>
+              <Link display={'flex'} alignItems={'center'} gap={3} _hover={{textDecoration: 'none'}}>
+                <Text fontWeight={'bold'}>Next</Text>
+                <Image src={ForwardButtonIcon} alt={'Forward Button Icon'} height={'40px'} width={'40px'}/>
+              </Link>
+            </NextLink>
+          }
+        </Flex>
+      </Box>
     </>
   );
 };
