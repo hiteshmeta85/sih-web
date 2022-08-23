@@ -15,15 +15,15 @@ const SocialMediaCard = ({statistics}) => {
       <Box>
         <Flex alignItems={"center"} gap={5} p={2}>
           <Icon as={BsTwitter} h={6} w={6} color={'#1DA1F2'}/>
-          <Text fontWeight={'semibold'}><CountUp end={statistics.twitter_scraped_count} duration={20}/></Text>
+          <Text fontWeight={'semibold'}><CountUp end={statistics.twitter_scraped_count} duration={60}/></Text>
         </Flex>
         <Flex alignItems={"center"} gap={5} p={2}>
           <Icon as={BsFacebook} h={6} w={6} color={'#4267B2'}/>
-          <Text fontWeight={'semibold'}><CountUp end={statistics.facebook_scraped_count} duration={20}/></Text>
+          <Text fontWeight={'semibold'}><CountUp end={statistics.facebook_scraped_count} duration={60}/></Text>
         </Flex>
         <Flex alignItems={"center"} gap={5} p={2}>
           <Icon as={BsInstagram} h={6} w={6} color={'#FCAF45'}/>
-          <Text fontWeight={'semibold'}><CountUp end={statistics.insta_scraped_count} duration={20}/></Text>
+          <Text fontWeight={'semibold'}><CountUp end={statistics.insta_scraped_count} duration={60}/></Text>
         </Flex>
       </Box>
     </Stat>

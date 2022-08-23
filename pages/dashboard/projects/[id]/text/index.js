@@ -37,6 +37,7 @@ const ProjectTextView = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [shouldPageRefresh, setShouldPageRefresh] = useState(false)
   const [didWeGetData, setDidWeGetData] = useState(false)
+  const [isScrappingLive, setIsScrappingLive] = useState(true)
 
   // const handlePageRefresh = async () => {
   //   setCeleryKeys({})
@@ -189,6 +190,7 @@ const ProjectTextView = () => {
           if (response) {
             if(response.data.status === 'Scrapping'){
               localStorage.setItem('keyIdForText', JSON.stringify(id))
+              setIsScrappingLive(true)
               setCeleryKeys(response.data)
             } else if (response.data.status === 'Scrapped'){
               localStorage.setItem('keyIdForText', JSON.stringify(id))
@@ -294,6 +296,10 @@ const ProjectTextView = () => {
     <TabsLayout defaultIndex={0}>
       <TabPanels bg={"white"}>
         <TabPanel overflowX={'scroll'}>
+          {isScrappingLive && <Flex alignItems={'center'} justifyContent={'center'} gap={2} mb={4} mt={2} border={'1px dashed #EB4747'} p={2} maxW={'170px'}>
+            <Text className={'blink'}></Text>
+            <Text color={"gray.600"} fontWeight={"bold"}>Scrapping Live</Text>
+          </Flex>}
           {/*<Flex alignItems={'center'} gap={4} mb={4} justifyContent={'flex-end'}> {shouldPageRefresh ? <>*/}
           {/*    <CustomButton handlePageRefresh={handlePageRefresh} text={'Refresh'} icon={<Icon as={IoIosRefresh} h={6} w={6} color={'white'}/>}/>*/}
           {/*  </> :*/}

@@ -12,7 +12,7 @@ const DataScrapper = ({dataScrapped}) => {
       h={'full'}
     >
       <StatLabel fontWeight={"bold"} fontSize={'lg'}>Data Scrapper</StatLabel>
-        <StatNumber fontSize={'2rem'} color={'green.500'}><CountUp end={dataScrapped} duration={20}/></StatNumber>
+        <StatNumber fontSize={'2rem'} color={'green.500'}><CountUp end={dataScrapped} duration={60}/></StatNumber>
     </Stat>
   );
 };
