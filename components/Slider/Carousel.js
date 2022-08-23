@@ -47,13 +47,12 @@ const Carousel = () => {
       <Box
         position={'absolute'}
         top={'40%'}
-        color={'white'}
         fontSize={'4xl'}
         left={'5%'}
         right={'5%'}
         fontWeight={800}
       >
-        <Text>
+        <Text as={'span'} bg={'rgba(240, 234, 190, 0.8)'}>
           <Text as={'span'}>&ldquo;</Text>
           {text}
           <Text as={'span'}>&rdquo;</Text>
@@ -63,18 +62,23 @@ const Carousel = () => {
         position={'absolute'}
         bottom={'5%'}
         left={'5%'}
-        color={'white'}
         flexDir={'column'}
+        gap={1}
       >
         <Text
           fontWeight={700}
-          fontSize={'2xl'}
+          fontSize={'xl'}
+          as={'span'}
+          bg={'rgba(240, 234, 190, 0.8)'}
+          lineHeight={'shorter'}
+          px={2}
         >
           {name}
         </Text>
         <Box>
-          <Text fontSize={'xl'} fontWeight={600}>{designation}</Text>
-          <Text fontSize={'lg'} fontWeight={500}>{company}</Text>
+          <Text fontSize={'xl'} fontWeight={600} as={'span'} bg={'rgba(240, 234, 190, 0.8)'} px={2}>{designation}</Text>
+          <br/>
+          <Text fontSize={'lg'} fontWeight={600} as={'span'} bg={'rgba(240, 234, 190, 0.8)'} px={2}>{company}</Text>
         </Box>
       </Flex>
       <Flex
