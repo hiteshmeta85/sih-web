@@ -62,10 +62,6 @@ const urlsData = [
         url: '/event-flow/geolocation-marking',
       },
       {
-        title: 'Analysis',
-        url: '/event-flow/analysis',
-      },
-      {
         title: 'Conclusion',
         url: '/event-flow/conclusion',
       },
@@ -86,22 +82,6 @@ const urlsData = [
       {
         title: 'Index',
         url: '/dashboard/create-project',
-      },
-      {
-        title: 'Select Location',
-        url: '/dashboard/create-project/select-location',
-      },
-      {
-        title: 'Select Hashtags',
-        url: '/dashboard/create-project/select-hashtags',
-      },
-      {
-        title: 'Custom Hashtags',
-        url: '/dashboard/create-project/custom-hashtags',
-      },
-      {
-        title: 'Select Social Media',
-        url: '/dashboard/create-project/select-social-media',
       },
     ]
   },
@@ -213,7 +193,7 @@ const Urls = () => {
                         {item.pages.map((nav, index) => {
                           return (
                             <NextLink key={index} href={nav.url} passHref>
-                              <Link>
+                              <Link target={'_blank'}>
                                 <Flex key={index} alignItems={'center'} gap={2} py={1}>
                                   <Icon as={BsLink} color={'blue.500'} h={6} w={6}/>
                                   <Text>{nav.title}</Text>

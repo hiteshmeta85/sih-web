@@ -49,8 +49,8 @@ const GeolocationMarking = ({alerts, projectData}) => {
   return (
     <EventFlowLayout
       heading={'Step 10 - Geolocation Marking'}
-      progressPercent={80}
-      forwardLink={'/event-flow/analysis'}
+      progressPercent={85}
+      forwardLink={'/event-flow/conclusion'}
     >
       <Box pos={'relative'}>
         {Object.keys(projectData).length !== 0 && <Flex
@@ -323,7 +323,7 @@ export async function getServerSideProps() {
 
   try {
     // todo: change /maps to /maps/projectId
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/maps`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_DEMO}/event-flow/geolocation-marking`)
     if (res.data) {
       alerts = res.data.data.alerts
       projectData = res.data.data.projectData
