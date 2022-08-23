@@ -37,12 +37,12 @@ const ProjectVideos = ({twitterData}) => {
 
 export default ProjectVideos
 
-export async function getServerSideProps() {
-
+export async function getServerSideProps(context) {
+  const {id} = context.params
   let twitterData = []
 
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/1/videos`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/${id}/videos`)
     if (res.data) {
       twitterData = res.data.data.twitter
     }

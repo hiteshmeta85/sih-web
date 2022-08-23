@@ -60,12 +60,11 @@ export default ProjectAnalytics
 
 export async function getServerSideProps(context){
   const {id} = context.params
-  console.log(id)
 
   let pieChartData = {}, barChartData = {}, statistics = {}
 
   try {
-   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/1/analytics`)
+   const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/${id}/analytics`)
     if (res.data) {
       pieChartData = res.data.pieChartData
       statistics = res.data.statistics

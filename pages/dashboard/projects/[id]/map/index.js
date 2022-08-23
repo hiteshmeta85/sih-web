@@ -320,12 +320,12 @@ const ProjectMap = ({alerts, projectData}) => {
 
 export default ProjectMap
 
-export async function getServerSideProps() {
-
+export async function getServerSideProps(context) {
+  const {id} = context.params
   let alerts = [], projectData = {}
 
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/maps/1`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/maps/${id}`)
     if (res.data) {
       alerts = res.data.data.alerts
       projectData = res.data.data.projectData
