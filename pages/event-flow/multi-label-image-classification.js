@@ -7,7 +7,6 @@ import axios from "axios";
 
 
 const MultiLabelImageClassification = ({twitterData, facebookData, instagramData}) => {
-  console.log(twitterData)
   return (
     <EventFlowLayout
       heading={"Step 5 - Multi-label Image Classification"}

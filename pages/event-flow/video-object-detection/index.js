@@ -8,7 +8,7 @@ import axios from "axios";
 const VideoObjectDetection = ({twitterData}) => {
   return (
     <EventFlowLayout
-      heading={'STEP 6 - Binary Video Classification '}
+      heading={'STEP 8 - Video Object Detection'}
       progressPercent={60}
       forwardLink={'/event-flow/voice-analysis'}
     >

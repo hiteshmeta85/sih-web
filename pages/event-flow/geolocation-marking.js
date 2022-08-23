@@ -48,7 +48,7 @@ const GeolocationMarking = ({alerts, projectData}) => {
 
   return (
     <EventFlowLayout
-      heading={'Step 8 - Geolocation Marking'}
+      heading={'Step 10 - Geolocation Marking'}
       progressPercent={80}
       forwardLink={'/event-flow/analysis'}
     >

@@ -18,7 +18,7 @@ import axios from "axios";
 const Conclusion = ({stats}) => {
   return (
     <EventFlowLayout
-      heading={'Step 10 - Conclusion'}
+      heading={'Step 12 - Conclusion'}
       progressPercent={100}
       forwardLink={'/dashboard'}
     >

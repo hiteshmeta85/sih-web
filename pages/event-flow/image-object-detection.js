@@ -6,10 +6,9 @@ import TweetWithImagesCard from "../../components/Card/TweetWithImagesCard";
 import axios from "axios";
 
 const ImageObjectDetection = ({twitterData, facebookData, instagramData}) => {
-  console.log(facebookData)
 
   return (
-    <EventFlowLayout progressPercent={45} heading={'Image Object Detection'} forwardLink={'/event-flow/binary-video-classification'} isForwardButtonPresent={true}>
+    <EventFlowLayout progressPercent={45} heading={'Step 6 - Image Object Detection'} forwardLink={'/event-flow/binary-video-classification'} isForwardButtonPresent={true}>
 
       <SimpleGrid columns={{base: 2, md: 4}} gap={4}>
         <StatCard

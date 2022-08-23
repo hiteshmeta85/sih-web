@@ -11,7 +11,7 @@ const VoiceAnalysis = ({voices}) => {
 
   return (
     <EventFlowLayout
-      heading={'STEP 7 - Voice Analysis'}
+      heading={'STEP 9 - Voice Analysis'}
       progressPercent={70}
       forwardLink={'/event-flow/geolocation-marking'}
     >
