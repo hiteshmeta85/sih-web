@@ -65,7 +65,7 @@ const TextSection = ({toggleItem, textResponseData, setTextResponseData}) => {
   return (
     <>{toggleItem === 'text' && <Box>
       <Box>
-        <Heading as={'span'} className={'active-menu-item-yellow'} fontSize={'2xl'}>Test Text</Heading>
+        <Heading as={'span'} className={'active-menu-item-yellow'} fontSize={'2xl'}>Text</Heading>
         <Box minW={{base: '100%', lg: 'lg'}} mt={4}>
           <Formik
             initialValues={{
@@ -132,12 +132,12 @@ const TextSection = ({toggleItem, textResponseData, setTextResponseData}) => {
 
         {(textResponseData.data.location || textResponseData.data.organisationsHelping || textResponseData.data.disasterType || textResponseData.data.help) &&
           <Box mt={8}>
-            <Heading as={'span'} className={'active-menu-item-light-green'} fontSize={'2xl'}>NER</Heading>
+            {(textResponseData.data.location.length > 0 || textResponseData.data.organisationsHelping.length > 0 || textResponseData.data.disasterType.length > 0 || textResponseData.data.help.length > 0) && <Heading as={'span'} className={'active-menu-item-light-green'} fontSize={'2xl'}>NER</Heading>}
             <Flex gap={8} my={4}>
-              {textResponseData.data.location && <Text>Location: {textResponseData.data.location}</Text>}
-              {textResponseData.data.organisationsHelping && <Text>Organization Helping: {textResponseData.data.organisationsHelping}</Text>}
-              {textResponseData.data.disasterType && <Text>Disaster Type: {textResponseData.data.disasterType}</Text>}
-              {textResponseData.data.help && <Text>Location: {textResponseData.data.help}</Text>}
+              {textResponseData.data.location && textResponseData.data.location.length > 0 && <Text>Location: {textResponseData.data.location}</Text>}
+              {textResponseData.data.organisationsHelping && textResponseData.data.organisationsHelping.length > 0 && <Text>Organization Helping: {textResponseData.data.organisationsHelping}</Text>}
+              {textResponseData.data.disasterType && textResponseData.data.disasterType.length > 0 && <Text>Disaster Type: {textResponseData.data.disasterType}</Text>}
+              {textResponseData.data.help && textResponseData.data.help.length > 0  && <Text>Location: {textResponseData.data.help}</Text>}
             </Flex>
           </Box>
         }
@@ -150,12 +150,12 @@ const TextSection = ({toggleItem, textResponseData, setTextResponseData}) => {
             </Flex>
           </Flex>
         </Box>
-        <Box mt={8}>
+        {textResponseData.data.multiLabels && textResponseData.data.multiLabels.length > 0 && <Box mt={8}>
           <Heading as={'span'} className={'active-menu-item-green'} fontSize={'2xl'}>Labels</Heading>
           <Flex gap={2} my={4} flexWrap={'wrap'}>
             <>{textResponseData.data.multiLabels.slice(0,3).map((label, index) => <Text key={index} minW={'150px'} textAlign={'center'} border={'2px solid black'} rounded={'lg'} py={1} px={2}>{label}</Text>)}</>
           </Flex>
-        </Box>
+        </Box>}
       </>}
 
       {/* Modal */}
@@ -223,6 +223,10 @@ const ImageSection = ({toggleItem, imageResponseData, setImageResponseData}) => 
         label={'Upload Image'} title={''}
         logo={<AiOutlineFileImage size={'2rem'}/>}
       />
+      {Object.keys(imageResponseData).length > 0 && <Box mt={8}>
+        <Text fontWeight={'bold'} fontSize={'xl'} mb={6}>Classified Class</Text>
+        <Text as={'span'} textTransform={'capitalize'} border={'1px solid black'} p={4} borderStyle={'dashed'}><Text as={'span'} fontWeight={'bold'}>{imageResponseData.imageClassfication.class}</Text> {imageResponseData.imageClassfication.score}</Text>
+      </Box>}
       {Object.keys(imageResponseData).length > 0 && <>
         <Box mt={8}>
           <Text fontWeight={'bold'} fontSize={'xl'} mb={2}>Original Image</Text>

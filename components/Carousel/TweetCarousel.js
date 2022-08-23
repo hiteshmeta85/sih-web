@@ -62,7 +62,7 @@ const TweetCarousel = ({data}) => {
                 wordBreak={'break-word'}
               >
                 {/*<BsTwitter color={'#1C9BEF'} size={'1.5rem'}/>*/}
-                {item}
+                #{item}
               </Text>
             </Box>
           )

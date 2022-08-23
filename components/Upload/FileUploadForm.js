@@ -31,6 +31,7 @@ const FileUploadForm = ({title, label = 'Select File', url, setResponseData, log
               },
             })
             .then((response) => {
+              console.log(response.data)
               setResponseData(response.data)
               resetForm()
             })

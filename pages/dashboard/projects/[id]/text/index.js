@@ -299,7 +299,7 @@ const ProjectTextView = () => {
         <TabPanel overflowX={'scroll'}>
           <Flex alignItems={'center'} justifyContent={'center'} gap={2} mb={4} mt={2} border={'1px dashed #EB4747'} p={2} maxW={'170px'}>
             <Text className={'blink'}></Text>
-            <Text color={"gray.600"} fontWeight={"bold"}>{didWeGetData ? 'Scrapping Done' : isScrappingLive ? 'Scrapping Live' : 'Scrapping Done'}</Text>
+            <Text color={"gray.600"} fontWeight={"bold"}>{didWeGetData ? 'Scrapping Done' : isScrappingLive ? 'Scrapping Live' : ''}</Text>
           </Flex>
           {/*<Flex alignItems={'center'} gap={4} mb={4} justifyContent={'flex-end'}> {shouldPageRefresh ? <>*/}
           {/*    <CustomButton handlePageRefresh={handlePageRefresh} text={'Refresh'} icon={<Icon as={IoIosRefresh} h={6} w={6} color={'white'}/>}/>*/}

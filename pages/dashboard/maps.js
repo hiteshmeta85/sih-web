@@ -34,7 +34,8 @@ const Maps = ({projectIds, alerts, projectData}) => {
     try {
       await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/maps/${id}`)
         .then(function (response) {
-          setCurrentProjectData(response.data.data.projects)
+          console.log(response)
+          setCurrentProjectData(response.data.data.projectData)
           setCurrentProjectId(id)
         })
         .catch(function (error) {
@@ -399,10 +400,9 @@ export async function getServerSideProps() {
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/maps`)
     if (res.data) {
-      console.log(res.data)
-      projectIds = res.data.data.projectId.map((item) => item.projectId)
+      projectIds = res.data.data.projects.map((item) => item.projectId)
       alerts = res.data.data.alerts
-      projectData = res.data.data.projects
+      projectData = res.data.data.projectData
     }
   } catch (e) {
     console.log(e)
