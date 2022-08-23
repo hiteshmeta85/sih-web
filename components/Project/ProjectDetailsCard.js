@@ -65,10 +65,10 @@ const ProjectDetailsCard = (props) => {
             </Text>
             <Text
               fontSize={"sm"}
-              fontWeight={"semibold"}
-              color={"gray.500"}>
-              Created On {moment(date)
-              .format('ll')}
+              fontWeight={"bold"}
+            >
+              Created On <Text as={'span'} bg={'rgba(26, 192, 255, 0.5)'} p={'2px 4px'}>{moment(date)
+              .format('ll')}</Text>
             </Text>
           </Box>
         </Link>
