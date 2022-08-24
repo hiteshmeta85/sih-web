@@ -337,7 +337,7 @@ const ProjectTextView = () => {
                           .slice(0, 2)
                           .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
                         <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.created_at}</Td>
-                        <Td textAlign={'center'}><Link href={`/dashboard/projects/${id}/post-analysis/${item.id}?social=twitter`} target={'_blank'}>
+                        <Td textAlign={'center'}><Link href={`/dashboard/projects/${id}/post-analysis/${item.conversation_id}?social=twitter`} target={'_blank'}>
                           <Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/></Link>
                         </Td>
                       </Tr>
