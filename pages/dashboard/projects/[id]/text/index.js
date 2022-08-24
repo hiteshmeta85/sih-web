@@ -372,10 +372,10 @@ const ProjectTextView = () => {
                             unknown
                           </Text>
                         </Td>
-                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ? <Text>{item.caption}</Text>: <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'blue'}/><Text>{item.translated}</Text></Box>}</Td>
-                        <Td>{item.multilabel.split(',')
+                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.caption}</Td>
+                        <Td>{item.multilabel.length > 0 ? item.multilabel.split(',')
                           .slice(0, 2)
-                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
+                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>) : '----'}</Td>
                         <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.upload_time}</Td>
                         <Td textAlign={'center'}><Link href={`/dashboard/projects/${id}/post-analysis/${item.id}?social=twitter`} target={'_blank'}>
                           <Icon as={AiOutlineInstagram} h={8} w={8} color={'#FCAF45'}/></Link>

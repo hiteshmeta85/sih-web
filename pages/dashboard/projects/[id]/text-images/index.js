@@ -351,10 +351,10 @@ const ProjectTextPlusVideosView = () => {
                     return (
                       <TweetCard
                         key={index}
-                        icon={<AiOutlineInstagram color={'#4267B2'} size={'2rem'}/>}
+                        icon={<AiOutlineInstagram color={'#FCAF45'} size={'2rem'}/>}
                         description={item.language === "en" || "" ? item.post_text : item.caption}
                         image={item.thumbnails.split(',')[0]}
-                        username={item.username}
+                        username={'unknown'}
                         url={`/dashboard/projects/${id}/post-analysis/${item.id}?social=instagram`}
                         //date={item.creationTime.$date.$numberLong}
                       />

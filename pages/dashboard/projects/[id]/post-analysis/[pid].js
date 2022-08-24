@@ -131,7 +131,12 @@ const PostAnalysis = ({
           <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={4}>
             {classifiedPhotos.map((item, index) => {
               return (
-                <Image key={index} src={socialMediaType === 'facebook' ? item.images : item.photos} alt={'image'}/>
+                <React.Fragment key={index}>
+                  <Box>
+                    <Image src={socialMediaType === 'facebook' ? item.images : item.photos} alt={'image'}/>
+                    <Text textAlign={'center'} fontWeight={'bold'} border={'1px dashed lightgray'} mt={2} p={2}>{item.classifiedClass}</Text>
+                  </Box>
+                </React.Fragment>
               )
             })}
           </SimpleGrid>
@@ -141,8 +146,20 @@ const PostAnalysis = ({
           <Text fontWeight={'bold'} fontSize={'xl'} mb={2}>Object Detected Photos</Text>
           <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={4}>
             {objectDetectedImages.map((item, index) => {
+              if(item.objectDetectionUrl)
               return (
-                <Image key={index} src={item.objectDetectionUrl} alt={'image'}/>
+                <Box key={index}>
+                  <Image src={item.objectDetectionUrl} alt={'image'}/>
+                  {item.classDetected.length > 0 && <>
+                    {[...new Set(item.classDetected.split(','))].map((classItem, index)=> {
+                      return (
+                        <Box key={index}>
+                          <Text textAlign={'center'} fontWeight={'bold'} border={'1px dashed lightgray'} mt={2} p={2}>{classItem}</Text>
+                        </Box>
+                      )
+                    })}
+                  </>}
+                </Box>
               )
             })}
           </SimpleGrid>
@@ -152,6 +169,7 @@ const PostAnalysis = ({
           <Text fontWeight={'bold'} fontSize={'xl'} mb={2}>Crop Detected Photos</Text>
           <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={4}>
             {cropDetectedImages.map((item, index) => {
+              if(item.categoryWiseUrl)
               return (
                 <Image key={index} src={item.categoryWiseUrl} alt={'image'}/>
               )
@@ -229,7 +247,7 @@ export async function getServerSideProps(context) {
       if(Object.keys(res.data).length > 0){
         if(social === 'twitter'){
           multilabel = res.data.tweet_data.multilabel
-          tweet = res.data.tweet_data.tweet
+          tweet = res.data.tweet_data.language === 'en' || "" ? res.data.tweet_data.tweet : res.data.tweet_data.translated
           username = res.data.tweet_data.username
           date = res.data.tweet_data.date
           socialMediaType = 'twitter'
@@ -240,7 +258,7 @@ export async function getServerSideProps(context) {
         }
         if(social === 'facebook'){
           multilabel = res.data.facebook_data.multilabel
-          tweet = res.data.facebook_data.language === 'en' ? res.data.facebook_data.post_text : res.data.facebook_data.translated
+          tweet = res.data.facebook_data.language === 'en' || "" ? res.data.facebook_data.post_text : res.data.facebook_data.translated
           username = res.data.facebook_data.username
           date = res.data.facebook_data.time
           socialMediaType = 'facebook'
@@ -251,7 +269,7 @@ export async function getServerSideProps(context) {
         }
         if(social === 'instagram'){
           multilabel = res.data.insta_data.multilabel
-          tweet = res.data.insta_data.language === 'en' ? res.data.insta_data.caption : res.data.insta_data.translated
+          tweet = res.data.insta_data.language === 'en' || "" ? res.data.insta_data.caption : res.data.insta_data.translated
           username = 'unknown'
           date = res.data.insta_data.upload_time
           socialMediaType = 'facebook'
@@ -265,42 +283,6 @@ export async function getServerSideProps(context) {
   } catch (e) {
     console.log(e)
   }
-
-  // if (social === 'twitter') {
-  //   multilabel = res3.data.tweet_data.multilabel
-  //   tweet = res3.data.tweet_data.tweet
-  //   username = res3.data.tweet_data.username
-  //   date = res3.data.tweet_data.date
-  //   socialMediaType = 'twitter'
-  //   originalPhotos = res3.data.tweet_photos
-  //   classifiedPhotos = res3.data.tweet_photos_classified
-  //   objectDetectedImages = res3.data.tweet_obj_detection
-  //   cropDetectedImages = res3.data.tweet_crop_detection
-  // }
-
-  // if (social === 'facebook') {
-  //   multilabel = res.data.facebook_data.multilabel
-  //   tweet = res.data.facebook_data.language === 'en' ? res.data.facebook_data.post_text : res.data.facebook_data.translated
-  //   username = res.data.facebook_data.username
-  //   date = res.data.facebook_data.time
-  //   socialMediaType = 'facebook'
-  //   originalPhotos = res.data.facebook_photos
-  //   classifiedPhotos = res.data.facebook_photos_classified
-  //   objectDetectedImages = res.data.facebook_obj_detection
-  //   cropDetectedImages = res.data.facebook_crop_detection
-  // }
-
-  // if (social === 'instagram') {
-  //   multilabel = res2.data.insta_data.multilabel
-  //   tweet = res2.data.insta_data.language === 'en' ? res2.data.insta_data.caption : res2.data.insta_data.translated
-  //   username = 'unknown'
-  //   date = res2.data.insta_data.upload_time
-  //   socialMediaType = 'facebook'
-  //   originalPhotos = res2.data.insta_photos
-  //   classifiedPhotos = res2.data.insta_photos_classified
-  //   objectDetectedImages = res2.data.insta_obj_detection
-  //   cropDetectedImages = res2.data.insta_crop_detection
-  // }
 
   return {
     props: {
