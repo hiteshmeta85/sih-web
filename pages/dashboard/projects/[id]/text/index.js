@@ -49,7 +49,7 @@ const ProjectTextView = () => {
     const saveProgress = async () => {
       setIsLoading(true)
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/projects/1/text/status`)
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/projects/${id}/text/status`)
         if (response) {
           console.log(response)
         }
@@ -78,7 +78,7 @@ const ProjectTextView = () => {
         const getTwitterData = async () => {
           setIsLoading(true)
           try {
-            const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${twitterKeys[0]}`)
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/task/${twitterKeys[0]}`)
             if (response) {
               if (response.data.status === 'SUCCESS' || 'FAILURE') {
                 console.log(response.data)
@@ -115,7 +115,7 @@ const ProjectTextView = () => {
         const getFacebookData = async () => {
           setIsLoading(true)
           try {
-            const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${facebookKeys[0]}`)
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/task/${facebookKeys[0]}`)
             if (response) {
               if (response.data.status === 'SUCCESS' || 'FAILURE') {
                 setFacebookData([...facebookData, ...response.data.result])
@@ -151,7 +151,7 @@ const ProjectTextView = () => {
         const getInstagramData = async () => {
           setIsLoading(true)
           try {
-            const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${instagramKeys[0]}`)
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/task/${instagramKeys[0]}`)
             if (response) {
               if (response.data.status === 'SUCCESS' || 'FAILURE') {
                 setInstagramData([...instagramData, ...response.data.result])
@@ -186,7 +186,7 @@ const ProjectTextView = () => {
       const getCeleryKeys = async () => {
         setIsLoading(true)
         try {
-          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/projects/1/text`)
+          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/api/projects/${id}/text`)
           if (response) {
             if(response.data.status === 'Scrapping'){
               localStorage.setItem('keyIdForText', JSON.stringify(id))
@@ -211,7 +211,7 @@ const ProjectTextView = () => {
       console.log("getting tasks")
       const getTwitterTaskId = async () => {
         try {
-          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${celeryKeys.twitter_task_id}`)
+          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/task/${celeryKeys.twitter_task_id}`)
           if (response) {
             console.log(response.data)
             if (response.data.status === 'SUCCESS' || 'FAILURE') {
@@ -228,7 +228,7 @@ const ProjectTextView = () => {
       };
       const getFacebookTaskId = async () => {
         try {
-          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${celeryKeys.facebook_task_id}`)
+          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/task/${celeryKeys.facebook_task_id}`)
           if (response) {
             if (response.data.status === 'SUCCESS' || 'FAILURE') {
               localStorage.setItem('facebookKeysForText', JSON.stringify(response.data.result))
@@ -243,7 +243,7 @@ const ProjectTextView = () => {
       };
       const getInstagramTaskId = async () => {
         try {
-          const response = await axios.get(`http://127.0.0.1:8000/homebrew/api/task/${celeryKeys.instagram_task_id}`)
+          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/task/${celeryKeys.instagram_task_id}`)
           if (response) {
             if (response.data.status === 'SUCCESS' || 'FAILURE') {
               localStorage.setItem('instagramKeysForText', JSON.stringify(response.data.result))
