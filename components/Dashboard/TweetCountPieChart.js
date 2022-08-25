@@ -7,9 +7,10 @@ const TweetCountPieChart = ({labels, data, primaryText, secondaryText, extras}) 
 
   return (
     <Box
-      p={4}
-      border={"1px solid lightgray"}
-      borderRadius={"md"}
+      bg={'white'}
+      borderRadius={24}
+      boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
+      p={6}
     >
       <CardTitle primaryText={primaryText} secondaryText={secondaryText} extras={extras}/>
       <PieChart data={{

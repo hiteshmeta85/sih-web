@@ -17,7 +17,13 @@ import {
 const DashTabs = ({activeAccounts, recentProjects}) => {
   return (
     <>
-      <Tabs isFitted border={'1px solid lightgray'} borderRadius={'md'}>
+      <Tabs isFitted
+            borderRadius={24}
+            boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
+            p={6}
+            mt={6}
+            bg={'white'}
+      >
         <TabList>
           <Tab p={3}>Active Accounts</Tab>
           <Tab p={3}>Recent Projects</Tab>

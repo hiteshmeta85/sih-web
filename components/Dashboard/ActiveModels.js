@@ -1,4 +1,4 @@
-import {Avatar, Box, Flex, Text} from "@chakra-ui/react";
+import {Avatar, Flex, Text} from "@chakra-ui/react";
 import React from "react";
 import Image from "next/image";
 import audio from "./audio.png";
@@ -12,16 +12,16 @@ const ActiveModels = () => {
     <Flex
       flexDir={'column'}
       justifyContent={'space-between'}
-      bg={"white"}
-      borderRadius={"md"}
-      border={"1px solid lightgray"}
-      h={"full"}
-      p={4}
+      borderRadius={24}
+      boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
+      p={6}
+      h={'full'}
+      bg={'white'}
     >
-      <Text fontSize={"lg"} fontWeight={"bold"}>
+      <Text fontWeight={600} fontSize={'xl'} borderBottom={'2px dashed black'} alignSelf={'start'}>
         Active Models
       </Text>
-      <Flex justifyContent={'space-between'} gap={2}>
+      <Flex justifyContent={'space-between'} gap={2} pt={2}>
         <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
           <Image src={audio} alt={'img'} className={'blink-animation'}/>
         </Avatar>
@@ -34,7 +34,7 @@ const ActiveModels = () => {
         <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
           <Image src={detection} alt={'img'} className={'blink-animation'}/>
         </Avatar>
-        <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
+        <Avatar pt={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm'}}>
           <Image src={image} alt={'img'} className={'blink-animation'}/>
         </Avatar>
       </Flex>

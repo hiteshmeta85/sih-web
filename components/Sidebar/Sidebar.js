@@ -6,23 +6,22 @@ import React, {useState} from "react";
 import Image from "next/image";
 import LogoImage from "../Logo/logo2.svg";
 
-const Sidebar = ({isSidebarOpenByDefault = true}) => {
+const Sidebar = ({isSidebarOpenByDefault = true, backgroundColor = 'blackAlpha.800'}) => {
 
   const [isNavItemHovered, setIsNavItemHovered] = useState(false)
   const [isSidebarOpen, setIsSidebarOpen] = useState(isSidebarOpenByDefault)
 
   return (
-    <Box bg={'#F5F5F5'} h={'100vh'}>
+    <Box h={'100vh'} bg={backgroundColor ? '': '#F5F5F5'}>
       <Box
         display={{base: 'none', lg: 'block'}}
         overflow={'auto'}
         h={'full'}
         letterSpacing={'wide'}
-        boxShadow={'lg'}
-        color={'gray.100'}
         fontSize={'lg'}
-        py={4}
-        pl={4}
+        py={6}
+        px={5}
+        color={'white'}
       >
         <List
           py={4} px={4}
@@ -30,26 +29,26 @@ const Sidebar = ({isSidebarOpenByDefault = true}) => {
           display={'flex'}
           flexDir={'column'}
           justifyContent={'space-between'}
-          bg={'blackAlpha.800'}
-          borderRadius={12}
+          bg={backgroundColor}
+          borderRadius={24}
+          boxShadow={'rgba(17, 17, 26, 0.4) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px'}
         >
           <Flex flexDir={'column'} rowGap={8}>
-            <Text
+            {<Flex
               fontWeight={'bold'}
               pl={6}
               pr={isSidebarOpen ? 10 : 4}
               py={2}
               my={"auto"}
               h={12}
-              display={'flex'}
               alignItems={'center'}
               gap={4}
             >
-              <Image src={LogoImage} height={'25px'} width={'25px'}/>
-              <Text as={'span'} transition={'all 1s'} display={isSidebarOpen ? 'inline-block' : 'none'}>
+              {isSidebarOpen && <Image src={LogoImage} height={'25px'} width={'25px'} transition={'all 1s'}/>}
+              <Text as={'span'} transition={'all 1s'}  display={isSidebarOpen ? 'inline-block' : 'none'}>
                 Homebrew.
               </Text>
-            </Text>
+            </Flex>}
             <Box>
               {sidebarItems.map((item, index) => {
                 if (item.position === 'top') {

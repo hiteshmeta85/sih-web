@@ -14,13 +14,14 @@ const Alerts = ({alerts}) => {
   return (
     <Box
       bg={"white"}
-      borderRadius={"md"}
-      border={"1px solid lightgray"}
       w={'full'}
       h={'fit-content'}
       mb={4}
       maxH={'320px'}
       minH={'320px'}
+      borderRadius={24}
+      boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
+      p={6}
     >
       <Text fontWeight={'semibold'} px={3} py={2} fontSize={'xl'}>Alerts</Text>
       <Divider/>

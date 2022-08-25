@@ -26,10 +26,10 @@ const TweetCountBarChart = ({data}) => {
 
   return (
     <Box
-      border={"1px solid lightgray"}
-      p={4}
-      alignItems={"center"}
-      borderRadius={"md"}
+      borderRadius={24}
+      boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
+      p={6}
+      bg={'white'}
     >
       <Flex justifyContent={'space-between'}>
         <Select value={selectedSocialMediaType} onChange={(e) => handleSocialMediaChange(e)} w={'150px'} my={2}>
@@ -63,6 +63,7 @@ const TweetCountBarChart = ({data}) => {
             label: [selectedDateRange],
             data: chartData,
             backgroundColor: [
+              'rgba(111, 106, 248, 0.2)',
               'rgb(29, 161, 242, 0.2)',
               'rgba(66, 103, 178, 0.2)',
               'rgba(252, 175, 69, 0.2)',
@@ -70,9 +71,12 @@ const TweetCountBarChart = ({data}) => {
               'rgba(252, 105, 29, 0.2)',
             ],
             borderColor: [
+              'rgba(111, 106, 248, 1)',
               'rgba(29, 161, 242, 1)',
               'rgba(66, 103, 178, 1)',
               'rgba(252, 175, 69, 1)',
+              'rgba(252, 175, 19, 0.2)',
+              'rgba(252, 105, 29, 0.2)',
             ],
             borderWidth: 1,
           }]
