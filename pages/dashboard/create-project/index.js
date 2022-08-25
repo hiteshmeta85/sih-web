@@ -64,7 +64,7 @@ const Index = () => {
               <CustomInput type={"text"} name={"projectName"} placeholder={"eg. Kerala Floods"}/>
             </Box>
             <Box>
-              <Heading fontSize={"3xl"} mb={4}>Select Disaster Type</Heading>
+              <Heading fontSize={"3xl"} mb={4}>Select Incident Type</Heading>
               <SimpleGrid columns={{base: 1, md: 3, lg: 5}} spacing={4}>
                 <>
                   {disasterTypes.map((item, index) => {
