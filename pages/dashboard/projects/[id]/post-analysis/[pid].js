@@ -118,7 +118,7 @@ const PostAnalysis = ({
         </Box>}
 
         {cropDetectedImages.length > 0 && <Box mt={8}>
-          <Text fontWeight={'bold'} fontSize={'xl'} mb={2}>Crop Detected Photos</Text>
+          <Text fontWeight={'bold'} fontSize={'xl'}>Crop Detected Photos</Text>
           <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={4}>
             {cropDetectedImages.map((item, index) => {
               if(item.categoryWiseUrl)
@@ -145,7 +145,7 @@ export async function getServerSideProps(context) {
     classifiedPhotos = [], objectDetectedImages = [], cropDetectedImages = [], ndrfAccounts = [];
 
   try {
-    const res = await axios.get(`http://127.0.0.1:8000/homebrew/api/${social}/${pid}`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/${social}/${pid}`)
     if (res.data) {
       if(Object.keys(res.data).length > 0){
         if(social === 'twitter'){

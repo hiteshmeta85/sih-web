@@ -248,7 +248,8 @@ const ImageSection = ({toggleItem, imageResponseData, setImageResponseData}) => 
           </SimpleGrid>
         </Box>
         <Box mt={8}>
-          <Text fontWeight={'bold'} fontSize={'xl'} mb={2}>Crop Detected Images</Text>
+          <Text fontWeight={'bold'} fontSize={'xl'}>Crop Detected Images</Text>
+          <Text fontWeight={'bold'} marginRight={4} my={8}><Text as={'span'} px={4} py={2} rounded={'md'} border={'1px dashed'}>Total No of Person Detected: {imageResponseData.data.objectDetectionCropped.filter((item) => item.type === 'person').length}</Text></Text>
           <Flex gap={4}>
             {imageResponseData.data.objectDetectionCropped.map((item, index) => {
               return (
