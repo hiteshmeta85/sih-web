@@ -48,14 +48,13 @@ const TextSection = ({toggleItem, textResponseData, setTextResponseData}) => {
   const handleClaimSubmit = async (value) => {
     setIsSubmitting(true)
     await axios.get(`https://factchecktools.googleapis.com/v1alpha1/claims:search?query=${encodeURIComponent(value)}&key=${process.env.NEXT_PUBLIC_FACT_CHECK_API}`)
-      .then(res => {
+      .then( res => {
         console.log(res)
         if (Object.keys(res.data).length > 0) {
           setClaims(res.data.claims)
           onOpen()
         } else {
           onOpen()
-          console.log('no claim found')
         }
       })
       .catch(e => console.log(e))

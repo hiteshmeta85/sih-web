@@ -19,8 +19,8 @@ const Contact = () => {
         <Box maxW={'container.xl'} mx={'auto'} p={{base: 2, md: 4, lg: 8}}>
           <Formik
             initialValues={{
-              firstName: '',
-              lastName: '',
+              first: '',
+              last: '',
               email: '',
               message: '',
               labels: [],
@@ -46,8 +46,8 @@ const Contact = () => {
                 <SimpleGrid columns={{base: 1, lg: 2}} gap={{base: 4, md: 6}} my={6}>
                   <Flex flexDir={'column'} gap={4}>
                     <SimpleGrid columns={{base: 1, md: 2}} gap={4}>
-                      <CustomInput name={'firstName'} label={'First Name'} placeholder={'John'} type={'text'} styles={customStyle}/>
-                      <CustomInput name={'lastName'} label={'Last Name'} placeholder={'Doe'} type={'text'} styles={customStyle}/>
+                      <CustomInput name={'first'} label={'First Name'} placeholder={'John'} type={'text'} styles={customStyle}/>
+                      <CustomInput name={'last'} label={'Last Name'} placeholder={'Doe'} type={'text'} styles={customStyle}/>
                     </SimpleGrid>
                     <CustomInput name={'email'} label={'Email'} placeholder={'johndoe@gmail.com'} type={'email'} styles={customStyle}/>
                     <CustomInput name={'phone'} label={'Phone Number'} type={'number'} styles={customStyle}/>
