@@ -201,7 +201,12 @@ const ProjectTextPlusVideosView = () => {
             console.log(response.data)
             if (response.data.status === 'SUCCESS' || 'FAILURE') {
               console.log(response.data.result)
-              localStorage.setItem('twitterKeysForImages', JSON.stringify(response.data.result))
+              if(response.data.status === 'SUCCESS'){
+                localStorage.setItem('twitterKeysForText', JSON.stringify(response.data.result))
+              }
+              if(response.data.status === 'FAILURE'){
+                localStorage.setItem('twitterKeysForText', JSON.stringify([]))
+              }
               return true
             } else {
               return false
@@ -216,7 +221,12 @@ const ProjectTextPlusVideosView = () => {
           const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/task/${celeryKeys.facebook_task_id}`)
           if (response) {
             if (response.data.status === 'SUCCESS' || 'FAILURE') {
-              localStorage.setItem('facebookKeysForImages', JSON.stringify(response.data.result))
+              if(response.data.status === 'SUCCESS'){
+                localStorage.setItem('facebookKeysForText', JSON.stringify(response.data.result))
+              }
+              if(response.data.status === 'FAILURE'){
+                localStorage.setItem('facebookKeysForText', JSON.stringify([]))
+              }
               return true
             } else {
               return false
@@ -231,7 +241,12 @@ const ProjectTextPlusVideosView = () => {
           const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/task/${celeryKeys.instagram_task_id}`)
           if (response) {
             if (response.data.status === 'SUCCESS' || 'FAILURE') {
-              localStorage.setItem('instagramKeysForImages', JSON.stringify(response.data.result))
+              if(response.data.status === 'SUCCESS'){
+                localStorage.setItem('instagramKeysForText', JSON.stringify(response.data.result))
+              }
+              if(response.data.status === 'FAILURE'){
+                localStorage.setItem('instagramKeysForText', JSON.stringify([]))
+              }
               return true
             } else {
               return false
