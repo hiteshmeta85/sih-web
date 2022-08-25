@@ -25,7 +25,7 @@ const TweetPost = ({ndrfAccounts, tweetResponseData, setTweetResponseData}) => {
 
   return (
     <div>
-      <Button _hover={{bg: 'white'}} onClick={() => {onOpen()}} pos={'absolute'} bottom={'60px'} right={'60px'} bg={'white'} py={8} px={2} cursor={'pointer'} boxShadow={'2xl'} borderRadius={'full'}>
+      <Button _hover={{bg: 'white'}} onClick={() => {onOpen()}} pos={'absolute'} bottom={'60px'} right={'60px'} bg={'white'} py={8} px={2} cursor={'pointer'} boxShadow={'rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px'} borderRadius={'full'}>
         <Image src={TwitterPostIcon}/>
       </Button>
 
