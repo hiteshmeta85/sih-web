@@ -21,7 +21,8 @@ const Index = ({
   dataScrapped,
   pieChartData,
   barChartData,
-  statistics
+  statistics,
+  disasterHashtags
 }) => {
 
   const [greet, setGreet] = useState('Good Morning')
@@ -90,9 +91,9 @@ const Index = ({
               h={'full'}
               bg={'white'}
             >
-              <CardTitle primaryText={'Trending Hashtags'} icon={<Icon as={IoMdTrendingUp} h={8} w={8}/>}/>
+              <CardTitle primaryText={'Trending Hashtags'} notificationText={!disasterHashtags.length > 0 && 'No hashtags related to disaster found.'} icon={<Icon as={IoMdTrendingUp} h={8} w={8}/>}/>
               <Box py={4} px={8}>
-                {Object.keys(activeAccounts).length > 0 && <TweetCarousel data={activeAccounts.TwitterActiveAccounts.hashTags.concat(activeAccounts.FacebookActiveAccounts.hashTag, activeAccounts.InstagramActiveAccounts.hashTag).split(',')}/>}
+                {Object.keys(activeAccounts).length > 0 && <TweetCarousel data={disasterHashtags.length > 0 ? disasterHashtags :  activeAccounts.TwitterActiveAccounts.hashTags.concat(activeAccounts.FacebookActiveAccounts.hashTag, activeAccounts.InstagramActiveAccounts.hashTag).split(',')}/>}
               </Box>
             </Box>
             <Grid gridTemplateColumns={"repeat(3, 1fr)"} gap={6}>
@@ -137,7 +138,7 @@ export default Index;
 export async function getServerSideProps() {
 
   let alerts = [], activeAccounts = {}, recentProjects = [], trendingTweets = [], dataScrapped = 0,
-    pieChartData = {}, barChartData = {}, statistics = {}
+    pieChartData = {}, barChartData = {}, statistics = {}, disasterHashtags = []
 
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/dashboard`)
@@ -148,7 +149,8 @@ export async function getServerSideProps() {
         dataScrapped = res.data.data.dataScrapped,
         pieChartData = res.data.data.pieChartData,
         barChartData = res.data.data.barChart,
-        statistics = res.data.data.statistics
+        statistics = res.data.data.statistics,
+        disasterHashtags = res.data.data.disasterHashtags
 
     }
   } catch (e) {
@@ -164,7 +166,8 @@ export async function getServerSideProps() {
       dataScrapped,
       pieChartData,
       barChartData,
-      statistics
+      statistics,
+      disasterHashtags
     }
   }
 }
