@@ -195,7 +195,7 @@ const ProjectTextPlusVideosView = () => {
       console.log("getting tasks")
       const getTwitterTaskId = async () => {
         try {
-          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/api/task/${celeryKeys.twitter_task_id}`)
+          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/task/${celeryKeys.twitter_task_id}`)
           if (response) {
             console.log(response.data)
             if (response.data.status === 'SUCCESS' || 'FAILURE') {
