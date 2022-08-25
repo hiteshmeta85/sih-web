@@ -51,7 +51,7 @@ const Index = ({
 
   return (
     <Flex>
-      <Sidebar isSidebarOpenByDefault={false} backgroundColor={'#6F6AF8'}/>
+      <Sidebar isSidebarOpenByDefault={false} backgroundColor={'white'}/>
       <Box
         flex={1}
         h={'100vh'}

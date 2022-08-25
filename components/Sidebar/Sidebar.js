@@ -6,13 +6,13 @@ import React, {useState} from "react";
 import Image from "next/image";
 import LogoImage from "../Logo/logo2.svg";
 
-const Sidebar = ({isSidebarOpenByDefault = true, backgroundColor = 'blackAlpha.800'}) => {
+const Sidebar = ({isSidebarOpenByDefault = true, backgroundColor = '#F5F5F5'}) => {
 
   const [isNavItemHovered, setIsNavItemHovered] = useState(false)
   const [isSidebarOpen, setIsSidebarOpen] = useState(isSidebarOpenByDefault)
 
   return (
-    <Box h={'100vh'} bg={backgroundColor ? '': '#F5F5F5'}>
+    <Box h={'100vh'} backgroundColor={backgroundColor}>
       <Box
         display={{base: 'none', lg: 'block'}}
         overflow={'auto'}
@@ -29,7 +29,7 @@ const Sidebar = ({isSidebarOpenByDefault = true, backgroundColor = 'blackAlpha.8
           display={'flex'}
           flexDir={'column'}
           justifyContent={'space-between'}
-          bg={backgroundColor}
+          bg={'#6F6AF8'}
           borderRadius={24}
           boxShadow={'rgba(17, 17, 26, 0.4) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px'}
         >
