@@ -43,7 +43,7 @@ const TweetWithImagesCard = ({images, username, tweet, date, socialMediaType, la
               </Text>)}
           </Flex>}
           <Text fontWeight={'bold'} color={'gray.400'} fontSize={'sm'} letterSpacing={'wider'}>@{username}</Text>
-          <Text lineHeight={'shorter'} fontFamily={'Inter'}>{tweet}</Text>
+          <Box lineHeight={'shorter'} fontFamily={'Inter'}>{tweet}</Box>
         </Flex>
       </Box>
       <Flex justifyContent={'space-between'} alignItems={'center'} px={4} gap={4} pb={2}>
