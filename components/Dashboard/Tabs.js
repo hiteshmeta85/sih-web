@@ -20,7 +20,7 @@ const DashTabs = ({activeAccounts, recentProjects}) => {
       <Tabs isFitted
             borderRadius={24}
             boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
-            p={6}
+            p={6} pt={2}
             mt={6}
             bg={'white'}
       >

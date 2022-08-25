@@ -21,7 +21,7 @@ const Alerts = ({alerts}) => {
       minH={'320px'}
       borderRadius={24}
       boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
-      p={6}
+      p={6} pt={2}
     >
       <Text fontWeight={'semibold'} px={3} py={2} fontSize={'xl'}>Alerts</Text>
       <Divider/>

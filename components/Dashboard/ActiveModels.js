@@ -18,7 +18,7 @@ const ActiveModels = () => {
       h={'full'}
       bg={'white'}
     >
-      <Text fontWeight={600} fontSize={'xl'} borderBottom={'2px dashed black'} alignSelf={'start'}>
+      <Text fontWeight={600} fontSize={'xl'} alignSelf={'start'}>
         Active Models
       </Text>
       <Flex justifyContent={'space-between'} gap={2} pt={2}>
