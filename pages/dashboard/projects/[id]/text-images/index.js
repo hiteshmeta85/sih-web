@@ -7,6 +7,7 @@ import {useRouter} from "next/router";
 import axios from "axios";
 import CustomButton from "../../../../../components/Button/CustomButton";
 import {VscSave} from "react-icons/vsc";
+import {MdOutlineTranslate} from "react-icons/md";
 
 const ProjectTextPlusVideosView = () => {
 
@@ -304,7 +305,7 @@ const ProjectTextPlusVideosView = () => {
                     <TweetCard
                       key={index}
                       icon={<AiOutlineTwitter color={'#1DA1F2'} size={'2rem'}/>}
-                      description={item.language === "en" || "" ? item.tweet : item.translated}
+                      description={item.language === "en" || item.language.length === 0 ? item.tweet : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'blue'}/><Text>{item.translated}</Text></Box>}
                       image={item.photos.split(',')[0]}
                       username={item.username}
                       date={item.date}
@@ -328,7 +329,7 @@ const ProjectTextPlusVideosView = () => {
                       <TweetCard
                         key={index}
                         icon={<AiOutlineFacebook color={'#4267B2'} size={'2rem'}/>}
-                        description={item.language === "en" || "" ? item.post_text : item.translated}
+                        description={item.language === "en" || item.language.length === 0 ? item.post_text : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'blue'}/><Text>{item.translated}</Text></Box>}
                         image={item.images}
                         username={item.username}
                         date={item.time}
@@ -352,7 +353,7 @@ const ProjectTextPlusVideosView = () => {
                       <TweetCard
                         key={index}
                         icon={<AiOutlineInstagram color={'#FCAF45'} size={'2rem'}/>}
-                        description={item.language === "en" || "" ? item.post_text : item.caption}
+                        description={item.language === "en" || item.language.length === 0 ? item.caption : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'blue'}/><Text>{item.translated}</Text></Box>}
                         image={item.thumbnails.split(',')[0]}
                         username={'unknown'}
                         url={`/dashboard/projects/${id}/post-analysis/${item.id}?social=instagram`}

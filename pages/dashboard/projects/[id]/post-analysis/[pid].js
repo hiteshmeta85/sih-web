@@ -162,7 +162,7 @@ export async function getServerSideProps(context) {
         }
         if(social === 'facebook'){
           multilabel = res.data.facebook_data.multilabel
-          tweet = res.data.facebook_data.language === 'en' || "" ? res.data.facebook_data.post_text : res.data.facebook_data.translated
+          tweet = res.data.facebook_data.language === "en" || "" ? res.data.facebook_data.post_text : res.data.facebook_data.translated
           username = res.data.facebook_data.username
           date = res.data.facebook_data.time
           socialMediaType = 'facebook'
@@ -174,7 +174,7 @@ export async function getServerSideProps(context) {
         }
         if(social === 'instagram'){
           multilabel = res.data.insta_data.multilabel
-          tweet = res.data.insta_data.language === 'en' || "" ? res.data.insta_data.caption : res.data.insta_data.translated
+          tweet = res.data.insta_data.language === "en" || res.data.insta_data.language.length === 0 ? res.data.insta_data.caption : res.data.insta_data.translated
           username = 'unknown'
           date = res.data.insta_data.upload_time
           socialMediaType = 'facebook'

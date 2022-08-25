@@ -12,10 +12,10 @@ const TweetCarousel = ({data}) => {
     slidesToScroll: 5,
     initialSlide: 0,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 2000,
     pauseOnHover: true,
     swipeToSlide: true,
-    infinite: false,
+    infinite: true,
     gap: 4,
     responsive: [
       {

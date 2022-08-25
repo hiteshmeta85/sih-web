@@ -40,9 +40,9 @@ const TweetCard = ({description, image, username, date, icon, url = '/'}) => {
         {/*<Text fontWeight={700} fontSize={'lg'}>
           {title}
         </Text>*/}
-        <Text fontSize={'md'} lineHeight={'short'}>
+        <Box fontSize={'md'}>
           {description}
-        </Text>
+        </Box>
         {image && <Image src={image} width={"full"} objectFit={"cover"} alt={'image'}/>}
       </Flex>
     </>

@@ -332,10 +332,10 @@ const ProjectTextView = () => {
                             {item.name}
                           </Text>
                         </Td>
-                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ? item.tweet : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'gray.700'}/><Text>{item.translated}</Text></Box>}</Td>
-                        <Td>{item.multilabel.split(',')
+                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || item.language.length === 0 ? item.tweet : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'gray.700'}/><Text>{item.translated}</Text></Box>}</Td>
+                        <Td>{item.multilabel.length > 0 ? item.multilabel.split(',')
                           .slice(0, 2)
-                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
+                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>) : '----'}</Td>
                         <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.created_at}</Td>
                         <Td textAlign={'center'}><Link href={`/dashboard/projects/${id}/post-analysis/${item.conversation_id}?social=twitter`} target={'_blank'}>
                           <Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/></Link>
@@ -352,10 +352,10 @@ const ProjectTextView = () => {
                             {item.username}
                           </Text>
                         </Td>
-                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || "" ?  item.post_text : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'blue'}/><Text>{item.translated}</Text></Box>}</Td>
-                        <Td>{item.multilabel.split(',')
+                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || item.language.length === 0 ?  item.post_text : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'blue'}/><Text>{item.translated}</Text></Box>}</Td>
+                        <Td>{item.multilabel.length > 0 ? item.multilabel.split(',')
                           .slice(0, 2)
-                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>)}</Td>
+                          .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>) : '----'}</Td>
                         <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.time}</Td>
                         <Td textAlign={'center'}><Link href={`/dashboard/projects/${id}/post-analysis/${item.id}?social=facebook`} target={'_blank'}>
                           <Icon as={AiFillFacebook} h={8} w={8} color={'#4267B2'}/></Link>
@@ -372,12 +372,12 @@ const ProjectTextView = () => {
                             unknown
                           </Text>
                         </Td>
-                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.caption}</Td>
+                        <Td maxW={'xs'} whiteSpace={'initial'}>{item.language === "en" || item.language.length === 0 ?  item.caption : <Box><Icon as={MdOutlineTranslate} h={6} w={6} color={'blue'}/><Text>{item.translated}</Text></Box>}</Td>
                         <Td>{item.multilabel.length > 0 ? item.multilabel.split(',')
                           .slice(0, 2)
                           .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>) : '----'}</Td>
                         <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.upload_time}</Td>
-                        <Td textAlign={'center'}><Link href={`/dashboard/projects/${id}/post-analysis/${item.id}?social=twitter`} target={'_blank'}>
+                        <Td textAlign={'center'}><Link href={`/dashboard/projects/${id}/post-analysis/${item.id}?social=instagram`} target={'_blank'}>
                           <Icon as={AiOutlineInstagram} h={8} w={8} color={'#FCAF45'}/></Link>
                         </Td>
                       </Tr>
