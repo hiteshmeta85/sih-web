@@ -1,6 +1,17 @@
 import React from 'react';
 import LandingPageLayout from "./_layout";
-import {Box, Flex, Heading, SimpleGrid, Text} from "@chakra-ui/react";
+import {
+  Box, Button,
+  Flex,
+  Heading,
+  Modal, ModalBody,
+  ModalCloseButton,
+  ModalContent, ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  SimpleGrid,
+  Text, useDisclosure
+} from "@chakra-ui/react";
 import {Form, Formik} from "formik";
 import contactSchema from "../lib/schemas/contactSchema";
 import CustomInput from "../components/Input/CustomInput";
@@ -8,10 +19,12 @@ import CustomSubmitButton from "../components/Button/CustomSubmitButton";
 import CustomSelect from "../components/Select/CustomSelect";
 import SearchAndMarkLocation from "../components/Map/SearchAndMarkLocation";
 import {labelOptions} from "../constants/useful-data/labelOptions";
+import axios from "axios";
 
 const Contact = () => {
 
   const customStyle = {border: '1px solid lightgray', borderRadius: '5px', padding: '0.3rem 0.7rem'}
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
     <LandingPageLayout>
@@ -30,9 +43,23 @@ const Contact = () => {
               address: '',
             }}
             validationSchema={contactSchema}
-            onSubmit={(values, {setSubmitting}) => {
+            onSubmit={async (values, {setSubmitting, resetForm}) => {
+              setSubmitting(true);
+              try {
+                await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/contact`, values)
+                  .then(function (response) {
+                    if (response.status === 200) {
+                      resetForm()
+                      onOpen()
+                    }
+                  })
+                  .catch(function (err) {
+                    console.log(err)
+                  })
+              } catch (err) {
+                console.log(err)
+              }
               setSubmitting(false);
-              console.log(values)
             }}
           >
             {({
@@ -65,6 +92,24 @@ const Contact = () => {
           </Formik>
         </Box>
       </Box>
+
+    {/* Modal */}
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalCloseButton />
+          <ModalBody pt={14}>
+            <Text fontWeight={'bold'} mb={4}>An alert has been sent successfully to the NDRF Team.</Text>
+            <Text fontWeight={'bold'} as={'span'} bg={'yellow'} px={2} py={1}>NDRF Team would contact you shortly.</Text>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </LandingPageLayout>
   );
 };
