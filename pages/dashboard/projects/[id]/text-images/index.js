@@ -309,7 +309,7 @@ const ProjectTextPlusVideosView = () => {
                       image={item.photos.split(',')[0]}
                       username={item.username}
                       date={item.date}
-                      url={`/dashboard/projects/${id}/post-analysis/${item.conversation_id}?social=twitter`}
+                      url={`/dashboard/projects/${id}/post-analysis/${item.tweet_id_db}?social=twitter`}
                     />
                   )
                 })}

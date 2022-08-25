@@ -67,11 +67,9 @@ const ProjectTextView = () => {
   }
 
   const newFn = async () => {
-    /// changed else if to if,
-    /// check for id
 
     if(JSON.parse(localStorage.getItem('keyIdForText')) === id){
-      if (localStorage.getItem('twitterKeysForText')) {
+      if (localStorage.getItem('twitterKeysForText') && localStorage.getItem('twitterKeysForText') !== null) {
         console.log("working on twitter keys")
         let twitterKeys = localStorage.getItem('twitterKeysForText')
         twitterKeys = JSON.parse(twitterKeys)
@@ -108,7 +106,7 @@ const ProjectTextView = () => {
           localStorage.setItem('twitterKeysForText', JSON.stringify(twitterKeys))
         }
       }
-      else if (localStorage.getItem('facebookKeysForText')) {
+      else if (localStorage.getItem('facebookKeysForText') && localStorage.getItem('facebookKeysForText') !== null) {
         console.log("working on facebook keys")
         let facebookKeys = localStorage.getItem('facebookKeysForText')
         facebookKeys = JSON.parse(facebookKeys)
@@ -144,7 +142,7 @@ const ProjectTextView = () => {
           localStorage.setItem('twitterKeysForText', JSON.stringify(facebookKeys))
         }
       }
-      else if (localStorage.getItem('instagramKeysForText')) {
+      else if (localStorage.getItem('instagramKeysForText') && localStorage.getItem('instagramKeysForText') !== null) {
         console.log("working on instagram keys")
         let instagramKeys = localStorage.getItem('instagramKeysForText')
         instagramKeys = JSON.parse(instagramKeys)
@@ -193,11 +191,14 @@ const ProjectTextView = () => {
               setIsScrappingLive(true)
               setCeleryKeys(response.data)
             } else if (response.data.status === 'Scrapped'){
+              console.log("keys", response.data)
               localStorage.setItem('keyIdForText', JSON.stringify(id))
               setInstagramData([...instagramData, ...response.data.instagram])
               setFacebookData([...facebookData, ...response.data.facebook])
               setTwitterData([...twitterData, ...response.data.twitter])
               setDidWeGetData(true)
+            } else {
+              console.log("process already in progress")
             }
           }
         } catch (err) {
@@ -283,7 +284,7 @@ const ProjectTextView = () => {
     }
   }
 
-  console.log("Twitter Data", twitterData, "Facebook Data", facebookData, "Instagram Data", instagramData)
+  console.log("Twitter Data", twitterData, "Facebook Data", facebookData, "Instagram Data", instagramData, "Celery keys", celeryKeys)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -337,7 +338,7 @@ const ProjectTextView = () => {
                           .slice(0, 2)
                           .map((step, index) => <Text key={index} border={'1px solid lightgray'} rounded={'lg'} m={'0.2rem'} textAlign={'center'} p={'4px'}>{step}</Text>) : '----'}</Td>
                         <Td maxW={'xs'} whiteSpace={'initial'} textAlign={'center'}>{item.created_at}</Td>
-                        <Td textAlign={'center'}><Link href={`/dashboard/projects/${id}/post-analysis/${item.conversation_id}?social=twitter`} target={'_blank'}>
+                        <Td textAlign={'center'}><Link href={`/dashboard/projects/${id}/post-analysis/${item.tweet_id_db}?social=twitter`} target={'_blank'}>
                           <Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/></Link>
                         </Td>
                       </Tr>
