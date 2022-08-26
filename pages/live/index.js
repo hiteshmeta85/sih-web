@@ -6,7 +6,7 @@ import {RiTimer2Line} from "react-icons/ri";
 import {AiOutlineInstagram, AiOutlineTwitter} from "react-icons/ai";
 import {FaFacebookF} from "react-icons/fa";
 import axios from "axios";
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 import {FiExternalLink} from "react-icons/fi";
 
 const Card = ({username, tweet, image, name, prediction, link}) => {
@@ -63,7 +63,7 @@ const CardContainer = ({icon, title, children, social, ChangeSliceNumber}) => {
   )
 }
 
-const Live = ({ query }) => {
+const Live = ({query}) => {
   const router = useRouter()
   const {disaster} = router.query
 
@@ -80,13 +80,13 @@ const Live = ({ query }) => {
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/live-dashboard`, {hashtags: [`${disaster}`]})
       if (response) {
-        if(response.data.data.twitter.length > 0){
+        if (response.data.data.twitter.length > 0) {
           setTwitterData(response.data.data.twitter)
         }
-        if(response.data.data.facebook.length > 0){
+        if (response.data.data.facebook.length > 0) {
           setFacebookData(response.data.data.facebook)
         }
-        if(response.data.data.instagram.length > 0){
+        if (response.data.data.instagram.length > 0) {
           setInstagramData(response.data.data.instagram)
         }
       }
@@ -94,8 +94,6 @@ const Live = ({ query }) => {
       return false
     }
   }
-
-  console.log("Twitter Data", twitterData, "Facebook Data", facebookData, "Instagram Data", instagramData)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -129,6 +127,41 @@ const Live = ({ query }) => {
     }
   }
 
+  React.useEffect(() => {
+    let timeout;
+    if (twitterSliceNumber < twitterData.length - 1) {
+      timeout = setTimeout(() => setTwitterSliceNumber(twitterSliceNumber + 3), 2000);
+    }
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [twitterData, twitterSliceNumber]);
+
+  React.useEffect(() => {
+    let timeout;
+    if (facebookSliceNumber < facebookData.length - 1) {
+      timeout = setTimeout(() => setFacebookSliceNumber(facebookSliceNumber + 3), 2000);
+    }
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [facebookData, facebookSliceNumber]);
+
+  React.useEffect(() => {
+    let timeout;
+    if (instagramSliceNumber < instagramData.length - 1) {
+      timeout = setTimeout(() => setInstagramSliceNumber(instagramSliceNumber + 3), 2000);
+    }
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [instagramData, instagramSliceNumber]);
+
+  console.log(twitterSliceNumber, facebookSliceNumber, instagramSliceNumber)
+
   return (
     <Flex>
       <Sidebar isSidebarOpenByDefault={false} backgroundColor={'white'}/>
@@ -152,7 +185,7 @@ const Live = ({ query }) => {
             borderRadius={"md"}
             mt={{base: 3, lg: 4}}
             pl={4}
-            pr={2}
+            pr={4}
             pt={2}
             color={'gray.800'}
             fontWeight={'bold'}
@@ -162,44 +195,51 @@ const Live = ({ query }) => {
               <Text fontSize={'3xl'}>Live Data Fetching</Text>
               <Icon as={RiTimer2Line} className={'rotate-circular'} h={10} w={10}/>
             </Flex>
+            <Flex gap={2} alignItems={'center'} border={'1px dashed lightgray'} px={4} py={2} fontSize={'sm'}>
+              <Box p={2} className={'blink'}/>
+              <Text>Live</Text>
+            </Flex>
           </Flex>
-          <CardContainer title={'Twitter'} icon={<Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/>} social={'twitter'} ChangeSliceNumber={ChangeSliceNumber}>
-            {twitterData.slice(0, twitterSliceNumber)
+          <CardContainer title={'Twitter'} icon={<Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/>}
+                         social={'twitter'} ChangeSliceNumber={ChangeSliceNumber}>
+            {twitterData.slice(twitterSliceNumber - 3, twitterSliceNumber)
               .map((item, index) => {
                 return (
                   <Card
                     key={index}
                     username={item.username}
                     name={item.name}
-                    tweet={item.language === 'en' || item.language.length === 0 ? item.tweet : item.translated}
+                    tweet={item.tweet}
                     prediction={item.prediction}
                     link={item.link}
                   />
                 )
               })}
           </CardContainer>
-          <CardContainer title={'Facebook'} icon={<Icon as={FaFacebookF} h={7} w={7} color={'#4267B2'}/>} social={'facebook'} ChangeSliceNumber={ChangeSliceNumber}>
-            {facebookData.slice(0, facebookSliceNumber)
+          <CardContainer title={'Facebook'} icon={<Icon as={FaFacebookF} h={7} w={7} color={'#4267B2'}/>}
+                         social={'facebook'} ChangeSliceNumber={ChangeSliceNumber}>
+            {facebookData.slice(facebookSliceNumber - 3, facebookSliceNumber)
               .map((item, index) => {
                 return (
                   <Card
                     key={index}
                     username={item.username}
-                    tweet={item.language === 'en' || item.language.length === 0 ? item.post_text : item.translated}
+                    tweet={item.post_text}
                     prediction={item.prediction}
                     link={item.post_url}
                   />
                 )
               })}
           </CardContainer>
-          <CardContainer title={'Instagram'} icon={<Icon as={AiOutlineInstagram} h={8} w={8} color={'#FCAF45'}/>} social={'instagram'} ChangeSliceNumber={ChangeSliceNumber}>
-            {instagramData.slice(0, instagramSliceNumber)
+          <CardContainer title={'Instagram'} icon={<Icon as={AiOutlineInstagram} h={8} w={8} color={'#FCAF45'}/>}
+                         social={'instagram'} ChangeSliceNumber={ChangeSliceNumber}>
+            {instagramData.slice(instagramSliceNumber - 3, instagramSliceNumber)
               .map((item, index) => {
                 return (
                   <Card
                     key={index}
                     username={'Unknown'}
-                    tweet={item.language === 'en' || item.language.length === 0 ? item.caption : item.translated}
+                    tweet={item.caption}
                     prediction={item.prediction}
                     link={item.post_url}
                   />
