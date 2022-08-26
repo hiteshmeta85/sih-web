@@ -35,22 +35,22 @@ export const sidebarItems = [
     icon: FiAlertTriangle,
     position: 'top'
   },
-  {
-    name: 'Event Flow',
-    navLink: '/event-flow',
-    icon: RiPlayList2Fill,
-    position: 'top'
-  },
+  // {
+  //   name: 'Event Flow',
+  //   navLink: '/event-flow',
+  //   icon: RiPlayList2Fill,
+  //   position: 'top'
+  // },
   {
     name: 'Live Demo',
     navLink: '/dashboard/live-demo',
     icon: FaSignal,
     position: 'top'
   },
-  {
-    name: 'Account',
-    navLink: '/dashboard/account',
-    icon: AiOutlineSetting,
-    position: 'bottom'
-  },
+  // {
+  //   name: 'Account',
+  //   navLink: '/dashboard/account',
+  //   icon: AiOutlineSetting,
+  //   position: 'bottom'
+  // },
 ]

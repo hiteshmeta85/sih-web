@@ -4,7 +4,7 @@ import {sidebarItems} from "../../constants/useful-data/sidebarItems";
 import {BiArrowBack} from "react-icons/bi";
 import React, {useState} from "react";
 import Image from "next/image";
-import LogoImage from "../Logo/logo2.svg";
+import LogoImage from "../../public/logo.png";
 
 const Sidebar = ({isSidebarOpenByDefault = true, backgroundColor = '#F5F5F5'}) => {
 
@@ -24,30 +24,35 @@ const Sidebar = ({isSidebarOpenByDefault = true, backgroundColor = '#F5F5F5'}) =
         color={'white'}
       >
         <List
-          py={4} px={4}
+          pb={6}
+          pt={8}
+          px={4}
           h={'full'}
           display={'flex'}
           flexDir={'column'}
           justifyContent={'space-between'}
-          bg={'#6F6AF8'}
+          bg={'blackAlpha.800'}
           borderRadius={24}
           boxShadow={'rgba(17, 17, 26, 0.4) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px'}
         >
           <Flex flexDir={'column'} rowGap={8}>
             {<Flex
               fontWeight={'bold'}
-              pl={6}
-              pr={isSidebarOpen ? 10 : 4}
-              py={2}
+              pl={4}
+              pr={isSidebarOpen ? 6 : 0}
+              py={4}
               my={"auto"}
               h={12}
               alignItems={'center'}
               gap={4}
             >
-              {isSidebarOpen && <Image src={LogoImage} height={'25px'} width={'25px'} transition={'all 1s'}/>}
-              <Text as={'span'} transition={'all 1s'}  display={isSidebarOpen ? 'inline-block' : 'none'}>
-                Homebrew.
-              </Text>
+              <Image src={LogoImage} height={'35px'} width={'35px'} transition={'all 1s'}/>
+              <Box>
+                <Text as={'span'} transition={'all 1s'}  display={isSidebarOpen ? 'inline-block' : 'none'}>
+                  NDRF
+                </Text>
+                <Text fontSize={'x-small'} display={isSidebarOpen ? 'block' : 'none'}>Saving Lives & Beyond...</Text>
+              </Box>
             </Flex>}
             <Box>
               {sidebarItems.map((item, index) => {

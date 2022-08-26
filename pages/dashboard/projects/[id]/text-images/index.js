@@ -14,7 +14,12 @@ const ProjectTextPlusVideosView = () => {
   const router = useRouter()
   const {id} = router.query
 
-  const [celeryKeys, setCeleryKeys] = useState({})
+  const [celeryKeys, setCeleryKeys] = useState({
+    "status": "Scrapping",
+    "twitter_task_id": "94cd8ecf-2aa1-46d5-8daf-47ba255e1aff",
+    "facebook_task_id": "0c4e5aaf-3fcf-414e-ae8b-f2b4e48e7e94",
+    "instagram_task_id": "34d044a7-df78-4173-b332-25f688d55dcf"
+  })
   const [twitterData, setTwitterData] = useState([])
   const [facebookData, setFacebookData] = useState([])
   const [instagramData, setInstagramData] = useState([])
@@ -52,8 +57,6 @@ const ProjectTextPlusVideosView = () => {
   }
 
   const newFn = async () => {
-    /// changed else if to if,
-    /// check for id
 
     if(JSON.parse(localStorage.getItem('keyIdForImages')) === id){
       if (localStorage.getItem('twitterKeysForImages')) {

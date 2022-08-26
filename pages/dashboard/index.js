@@ -48,7 +48,7 @@ const disasterTypes = [
     id: 5,
     disasterType: "landslide",
     label: "Landslide",
-    image: wildfire
+    //image: wildfire
   },
 ]
 
@@ -60,7 +60,8 @@ const Index = ({
   pieChartData,
   barChartData,
   statistics,
-  disasterHashtags
+  disasterHashtags,
+  trendingTweets
 }) => {
 
   const [greet, setGreet] = useState('Good Morning')
@@ -102,6 +103,8 @@ const Index = ({
       console.log(err)
     }
   }
+
+  console.log(trendingTweets)
 
   return (
     <Flex>
@@ -175,13 +178,10 @@ const Index = ({
               h={'full'}
               bg={'white'}
             >
-              <CardTitle primaryText={'Trending Hashtags'}
-                         notificationText={!disasterHashtags.length > 0 && 'Hashtags related to disaster found.'}
-                         icon={<Icon as={IoMdTrendingUp} h={8} w={8}/>}/>
+              <CardTitle primaryText={'Trending Hashtags'} notificationText={!disasterHashtags.length > 0 && 'Hashtags related to disaster found.'} icon={<Icon as={IoMdTrendingUp} h={8} w={8}/>}/>
               <Box py={4} px={8}>
                 {Object.keys(activeAccounts).length > 0 && <TweetCarousel
-                  data={disasterHashtags.length > 0 ? disasterHashtags : activeAccounts.TwitterActiveAccounts.hashTags.concat(activeAccounts.FacebookActiveAccounts.hashTag, activeAccounts.InstagramActiveAccounts.hashTag)
-                    .split(',')}/>}
+                  data={disasterHashtags.length > 0 ? disasterHashtags : trendingTweets}/>}
               </Box>
             </Box>
             <Grid gridTemplateColumns={"repeat(3, 1fr)"} gap={6}>
@@ -242,7 +242,7 @@ export async function getServerSideProps() {
         barChartData = res.data.data.barChart,
         statistics = res.data.data.statistics,
         disasterHashtags = res.data.data.disasterHashtags
-
+      trendingTweets = res.data.data.trendingTweets
     }
   } catch (e) {
     console.log(e)
