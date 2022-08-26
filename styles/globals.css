@@ -70,6 +70,14 @@ a {
 
 /* animations */
 
+.rotate-circular {
+    animation: rotate-circular 2s infinite;
+}
+
+@keyframes rotate-circular {
+    100% {transform: rotate(360deg);}
+}
+
 @keyframes horizontal-bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateX(0);

@@ -29,7 +29,7 @@ export const disasterTypes = [
   },
   {
     id: 4,
-    disasterType: "Storm",
+    disasterType: "storm",
     label: "Storm",
     image: storm
   },
@@ -47,21 +47,20 @@ export const disasterTypes = [
   },
   {
     id: 7,
-    disasterType: "building collapse",
+    disasterType: "buildingcollapse",
     label: "Building collapse",
     image: buildingCollapse
   },
   {
     id: 8,
-    disasterType: "industry hazards",
+    disasterType: "industryhazards",
     label: "Industry hazards",
     image: industryHazards
   },
   {
     id: 9,
-    disasterType: "transport accident",
+    disasterType: "transportaccident",
     label: "Transport accident",
     image: transportAccident
   },
-
 ]

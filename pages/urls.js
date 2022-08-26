@@ -107,6 +107,15 @@ const urlsData = [
     ]
   },
   {
+    title: 'Live',
+    pages: [
+      {
+        title: 'Index',
+        url: '/live',
+      },
+    ]
+  },
+  {
     title: 'Landing Pages',
     pages: [
       {

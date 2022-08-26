@@ -1,4 +1,4 @@
-import {Box, Flex, Grid, GridItem, Icon, Text} from "@chakra-ui/react";
+import {Box, Flex, Grid, GridItem, Icon, SimpleGrid, Text} from "@chakra-ui/react";
 import React, {useEffect, useState} from "react";
 import Alerts from "../../components/Dashboard/Alerts";
 import DashTabs from "../../components/Dashboard/Tabs";
@@ -13,6 +13,38 @@ import axios from "axios";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import DashboardMenu from "../../components/Sidebar/DashboardMenu";
 import {IoMdTrendingUp} from "react-icons/io";
+import Router from 'next/router'
+import flood from "./create-project/flood.png";
+import earthquake from "./create-project/earthquake.png";
+import hurricane from "./create-project/hurricane.png";
+import wildfire from "./create-project/wildfire.png";
+
+const disasterTypes = [
+  {
+    id: 1,
+    disasterType: "flood",
+    label: "Flood",
+    image: flood
+  },
+  {
+    id: 2,
+    disasterType: "earthquake",
+    label: "Earthquake",
+    image: earthquake
+  },
+  {
+    id: 3,
+    disasterType: "hurricane",
+    label: "Hurricane",
+    image: hurricane
+  },
+  {
+    id: 5,
+    disasterType: "wildfire",
+    label: "Wildfire",
+    image: wildfire
+  },
+]
 
 const Index = ({
   alerts,
@@ -27,7 +59,7 @@ const Index = ({
 
   const [greet, setGreet] = useState('Good Morning')
 
-  useEffect(()=> {
+  useEffect(() => {
     let welcome;
     let date = new Date();
     let hour = date.getHours();
@@ -48,6 +80,22 @@ const Index = ({
     }
     setGreet(welcome)
   }, [])
+
+  const handleSelectDisaster = async (disasterType) => {
+    try {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/start-live-scrape`, {"hashtag": disasterType})
+        .then(function (response) {
+          if (response) {
+            Router.push({pathname: '/live', query: {disaster: disasterType}})
+          }
+        })
+        .catch(function (err) {
+          console.log(err)
+        })
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   return (
     <Flex>
@@ -81,7 +129,37 @@ const Index = ({
             {greet}, NDRF!
           </Text>
         </Flex>
-        <Box pr={3}>
+        <Box>
+          <SimpleGrid columns={{base: 1, md: 3, lg: 5}} spacing={4} p={4}>
+            <>
+              {disasterTypes.map((item, index) => {
+                return (
+                  <Box
+                    key={index}
+                    cursor={"pointer"}
+                    bg={"#6F6AF8"}
+                    borderRadius={24}
+                    boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
+                    _hover={{boxShadow: 'rgba(100, 100, 111, 0.5) 0px 7px 29px 0px;'}}
+                    p={6}
+                    h={'full'}
+                    onClick={() => {
+                      handleSelectDisaster(item.disasterType)
+                    }}
+                  >
+                    <Text
+                      textAlign={"center"}
+                      fontWeight={"semibold"}
+                      letterSpacing={"1px"}
+                      color={'white'}
+                    >
+                      {item.label}
+                    </Text>
+                  </Box>
+                )
+              })}
+            </>
+          </SimpleGrid>
           <Box p={4} rounded={'md'}>
             <Box
               mb={8}
@@ -91,9 +169,13 @@ const Index = ({
               h={'full'}
               bg={'white'}
             >
-              <CardTitle primaryText={'Trending Hashtags'} notificationText={!disasterHashtags.length > 0 && 'No hashtags related to disaster found.'} icon={<Icon as={IoMdTrendingUp} h={8} w={8}/>}/>
+              <CardTitle primaryText={'Trending Hashtags'}
+                         notificationText={!disasterHashtags.length > 0 && 'No hashtags related to disaster found.'}
+                         icon={<Icon as={IoMdTrendingUp} h={8} w={8}/>}/>
               <Box py={4} px={8}>
-                {Object.keys(activeAccounts).length > 0 && <TweetCarousel data={disasterHashtags.length > 0 ? disasterHashtags :  activeAccounts.TwitterActiveAccounts.hashTags.concat(activeAccounts.FacebookActiveAccounts.hashTag, activeAccounts.InstagramActiveAccounts.hashTag).split(',')}/>}
+                {Object.keys(activeAccounts).length > 0 && <TweetCarousel
+                  data={disasterHashtags.length > 0 ? disasterHashtags : activeAccounts.TwitterActiveAccounts.hashTags.concat(activeAccounts.FacebookActiveAccounts.hashTag, activeAccounts.InstagramActiveAccounts.hashTag)
+                    .split(',')}/>}
               </Box>
             </Box>
             <Grid gridTemplateColumns={"repeat(3, 1fr)"} gap={6}>
@@ -114,7 +196,8 @@ const Index = ({
                     colSpan={{base: 4, md: 2}}
                     rowSpan={2}
                   >
-                    {Object.keys(pieChartData).length > 0 && <TweetCountPieChart data={pieChartData.data} labels={pieChartData.labels} primaryText={'Total Data Scrapped Percentage.'} secondaryText={'Project - Uttarakhand Flood'}/>}
+                    {Object.keys(pieChartData).length > 0 &&
+                      <TweetCountPieChart data={pieChartData.data} labels={pieChartData.labels} primaryText={'Total Data Scrapped Percentage.'} secondaryText={'Project - Uttarakhand Flood'}/>}
                   </GridItem>
                   <GridItem colSpan={{base: 4, md: 2}} rowSpan={1}>
                     {Object.keys(barChartData).length > 0 && <TweetCountBarChart data={barChartData}/>}
@@ -123,7 +206,9 @@ const Index = ({
               </GridItem>
               <GridItem colSpan={{base: 3, lg: 1}}>
                 <Alerts alerts={alerts}/>
-                {Object.keys(activeAccounts).length > 0 && <DashTabs activeAccounts={activeAccounts.TwitterActiveAccounts.mentions.concat(activeAccounts.FacebookActiveAccounts.mentions, activeAccounts.InstagramActiveAccounts.mentions).split(',')} recentProjects={recentProjects}/>}
+                {Object.keys(activeAccounts).length > 0 && <DashTabs
+                  activeAccounts={activeAccounts.TwitterActiveAccounts.mentions.concat(activeAccounts.FacebookActiveAccounts.mentions, activeAccounts.InstagramActiveAccounts.mentions)
+                    .split(',')} recentProjects={recentProjects}/>}
               </GridItem>
             </Grid>
           </Box>

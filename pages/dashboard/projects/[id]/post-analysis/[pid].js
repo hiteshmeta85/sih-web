@@ -150,7 +150,7 @@ export async function getServerSideProps(context) {
       if(Object.keys(res.data).length > 0){
         if(social === 'twitter'){
           multilabel = res.data.tweet_data.multilabel
-          tweet = res.data.tweet_data.language === 'en' || "" ? res.data.tweet_data.tweet : res.data.tweet_data.translated
+          tweet = res.data.tweet_data.language === 'en' || res.data.tweet_data.language.length === 0 ? res.data.tweet_data.tweet : res.data.tweet_data.translated
           username = res.data.tweet_data.username
           date = res.data.tweet_data.date
           socialMediaType = 'twitter'
@@ -162,7 +162,7 @@ export async function getServerSideProps(context) {
         }
         if(social === 'facebook'){
           multilabel = res.data.facebook_data.multilabel
-          tweet = res.data.facebook_data.language === "en" || "" ? res.data.facebook_data.post_text : res.data.facebook_data.translated
+          tweet = res.data.facebook_data.language === "en" || res.data.facebook_data.language.length === 0 ? res.data.facebook_data.post_text : res.data.facebook_data.translated
           username = res.data.facebook_data.username
           date = res.data.facebook_data.time
           socialMediaType = 'facebook'

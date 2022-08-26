@@ -239,6 +239,7 @@ const ProjectTextView = () => {
           return false
         }
       };
+
       const getFacebookTaskId = async () => {
         try {
           const response = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/task/${celeryKeys.facebook_task_id}`)
