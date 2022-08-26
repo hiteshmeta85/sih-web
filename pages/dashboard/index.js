@@ -44,6 +44,12 @@ const disasterTypes = [
     label: "Wildfire",
     image: wildfire
   },
+  {
+    id: 5,
+    disasterType: "landslide",
+    label: "Landslide",
+    image: wildfire
+  },
 ]
 
 const Index = ({
