@@ -176,7 +176,7 @@ const Index = ({
               bg={'white'}
             >
               <CardTitle primaryText={'Trending Hashtags'}
-                         notificationText={!disasterHashtags.length > 0 && 'No hashtags related to disaster found.'}
+                         notificationText={!disasterHashtags.length > 0 && 'Hashtags related to disaster found.'}
                          icon={<Icon as={IoMdTrendingUp} h={8} w={8}/>}/>
               <Box py={4} px={8}>
                 {Object.keys(activeAccounts).length > 0 && <TweetCarousel

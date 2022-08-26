@@ -10,8 +10,8 @@ export const CardTitle = ({primaryText, secondaryText, extras, icon, notificatio
           <Text fontWeight={'bold'} fontSize={'lg'} my={1}>{primaryText}</Text>
         </Flex>
         {notificationText && <Flex alignItems={'center'} gap={2}>
-          <Icon as={IoMdAlert} h={8} w={8}/>
-          <Text fontWeight={'bold'} fontSize={'md'} my={1}> {notificationText}</Text>
+          <Icon as={IoMdAlert} h={8} w={8} color={'red'}/>
+          <Text fontWeight={'bold'} fontSize={'md'} my={1} color={'red'}> {notificationText}</Text>
         </Flex>}
       </Flex>
       <Text fontSize={'sm'}>{secondaryText}</Text>
