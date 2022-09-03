@@ -3,7 +3,7 @@ import {Box, Button, Flex, Image, Text} from "@chakra-ui/react";
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
 import {sampleDisasters} from "../../constants/useful-data/sampleDisasters";
 
-const LandingCarousel = () => {
+const LandingPageCarousel = () => {
   const [index, setIndex] = useState(0);
   const {image, news} = sampleDisasters[index];
 
@@ -98,4 +98,4 @@ const LandingCarousel = () => {
   )
 }
 
-export default LandingCarousel
+export default LandingPageCarousel

@@ -4,7 +4,7 @@ import axios from "axios";
 import {AiOutlineFacebook, AiOutlineInstagram, AiOutlineTwitter} from "react-icons/ai";
 import DashboardContainer from "../../../_layout";
 import ClaimReviewForm from "../../../../../components/Modals/ClaimReviewForm";
-import TweetPost from "../../../../../components/Modals/TweetPost";
+import CreateTwitterPost from "../../../../../components/Modals/CreateTwitterPost";
 
 const PostAnalysis = ({
   multilabel,
@@ -24,7 +24,8 @@ const PostAnalysis = ({
   return (
     <DashboardContainer title={'Post Analysis'}>
       <Box bg={'white'} p={4}>
-        <Grid gap={8} border={'1px solid gray'} py={8} px={8} rounded={'md'} borderStyle={'dashed'} maxW={'container.sm'}>
+        <Grid gap={8} border={'1px solid gray'} py={8} px={8} rounded={'md'} borderStyle={'dashed'}
+              maxW={'container.sm'}>
           <Flex alignItems={'center'} justifyContent={'space-between'}>
             <Flex alignItems={'center'} gap={2}>{socialMediaType === 'twitter' ?
               <AiOutlineTwitter size={'1.5rem'} color={'#1DA1F2'}/> :
@@ -42,7 +43,7 @@ const PostAnalysis = ({
 
           <Flex gap={4}>
             <ClaimReviewForm tweet={tweet}/>
-            <TweetPost ndrfAccounts={ndrfAccounts} tweetResponseData={tweetResponseData} setTweetResponseData={setTweetResponseData}/>
+            <CreateTwitterPost ndrfAccounts={ndrfAccounts} tweetResponseData={tweetResponseData} setTweetResponseData={setTweetResponseData}/>
           </Flex>
 
           {tweetResponseData && <Flex gap={2} alignItems={'center'}>
@@ -59,7 +60,8 @@ const PostAnalysis = ({
                   .slice(1, 4)
                   .map((item, index) => {
                     return (
-                      <Text key={index} p={3} border={'1px solid lightgray'} borderStyle={'dashed'} rounded={'xl'}>{item}</Text>
+                      <Text key={index} p={3} border={'1px solid lightgray'} borderStyle={'dashed'}
+                            rounded={'xl'}>{item}</Text>
                     );
                   })}
               </>
@@ -86,7 +88,8 @@ const PostAnalysis = ({
                 <React.Fragment key={index}>
                   <Box>
                     <Image src={socialMediaType === 'facebook' ? item.images : item.photos} alt={'image'}/>
-                    <Text textAlign={'center'} fontWeight={'bold'} border={'1px dashed lightgray'} mt={2} p={2}>{item.classifiedClass}</Text>
+                    <Text textAlign={'center'} fontWeight={'bold'} border={'1px dashed lightgray'} mt={2}
+                          p={2}>{item.classifiedClass}</Text>
                   </Box>
                 </React.Fragment>
               )
@@ -98,21 +101,22 @@ const PostAnalysis = ({
           <Text fontWeight={'bold'} fontSize={'xl'} mb={2}>Object Detected Photos</Text>
           <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={4}>
             {objectDetectedImages.map((item, index) => {
-              if(item.objectDetectionUrl)
-              return (
-                <Box key={index}>
-                  <Image src={item.objectDetectionUrl} alt={'image'}/>
-                  {item.classDetected.length > 0 && <>
-                    {[...new Set(item.classDetected.split(','))].map((classItem, index)=> {
-                      return (
-                        <Box key={index}>
-                          <Text textAlign={'center'} fontWeight={'bold'} border={'1px dashed lightgray'} mt={2} p={2}>{classItem}</Text>
-                        </Box>
-                      )
-                    })}
-                  </>}
-                </Box>
-              )
+              if (item.objectDetectionUrl)
+                return (
+                  <Box key={index}>
+                    <Image src={item.objectDetectionUrl} alt={'image'}/>
+                    {item.classDetected.length > 0 && <>
+                      {[...new Set(item.classDetected.split(','))].map((classItem, index) => {
+                        return (
+                          <Box key={index}>
+                            <Text textAlign={'center'} fontWeight={'bold'} border={'1px dashed lightgray'} mt={2}
+                                  p={2}>{classItem}</Text>
+                          </Box>
+                        )
+                      })}
+                    </>}
+                  </Box>
+                )
             })}
           </SimpleGrid>
         </Box>}
@@ -121,10 +125,10 @@ const PostAnalysis = ({
           <Text fontWeight={'bold'} fontSize={'xl'}>Crop Detected Photos</Text>
           <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={4}>
             {cropDetectedImages.map((item, index) => {
-              if(item.categoryWiseUrl)
-              return (
-                <Image key={index} src={item.categoryWiseUrl} alt={'image'}/>
-              )
+              if (item.categoryWiseUrl)
+                return (
+                  <Image key={index} src={item.categoryWiseUrl} alt={'image'}/>
+                )
             })}
           </SimpleGrid>
         </Box>}
@@ -147,8 +151,8 @@ export async function getServerSideProps(context) {
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/${social}/${pid}`)
     if (res.data) {
-      if(Object.keys(res.data).length > 0){
-        if(social === 'twitter'){
+      if (Object.keys(res.data).length > 0) {
+        if (social === 'twitter') {
           multilabel = res.data.tweet_data.multilabel
           tweet = res.data.tweet_data.language === 'en' || res.data.tweet_data.language.length === 0 ? res.data.tweet_data.tweet : res.data.tweet_data.translated
           username = res.data.tweet_data.username
@@ -160,7 +164,7 @@ export async function getServerSideProps(context) {
           cropDetectedImages = res.data.tweet_crop_detection
           ndrfAccounts = res.data.helpers_account
         }
-        if(social === 'facebook'){
+        if (social === 'facebook') {
           multilabel = res.data.facebook_data.multilabel
           tweet = res.data.facebook_data.language === "en" || res.data.facebook_data.language.length === 0 ? res.data.facebook_data.post_text : res.data.facebook_data.translated
           username = res.data.facebook_data.username
@@ -172,7 +176,7 @@ export async function getServerSideProps(context) {
           cropDetectedImages = res.data.facebook_crop_detection
           ndrfAccounts = res.data.helpers_account
         }
-        if(social === 'instagram'){
+        if (social === 'instagram') {
           multilabel = res.data.insta_data.multilabel
           tweet = res.data.insta_data.language === "en" || res.data.insta_data.language.length === 0 ? res.data.insta_data.caption : res.data.insta_data.translated
           username = 'unknown'

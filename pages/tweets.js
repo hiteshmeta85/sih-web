@@ -1,9 +1,9 @@
 import {Box, Heading, SimpleGrid} from "@chakra-ui/react";
 import React from "react";
 import {BsTwitter} from "react-icons/bs";
-import TweetCard from "../components/Tweet/TweetCard";
 import LandingPageLayout from "./_layout";
 import axios from "axios";
+import TweetCard from "../components/Card/TweetCard";
 
 const Tweets = ({ndrfTweets}) => {
 

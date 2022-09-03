@@ -28,19 +28,19 @@ const Navbar = () => {
             gap={6}
             align={'center'}
           >
-            {navItems.map((item, index) => {
-              return (
-                <Text key={index} fontWeight={'semibold'} className={router.pathname === `${item.href}` ? 'active-menu-item' : 'menu-item'}>
-                  <NextLink href={item.href} passHref>
-                    <Link
-                      _hover={{textDecoration: 'none'}}
-                    >
-                      {item.label}
-                    </Link>
-                  </NextLink>
-                </Text>
-              )
-            })}
+            <>
+              {navItems.map((item, index) => {
+                return (
+                  <Text key={index} fontWeight={'semibold'} className={router.pathname === `${item.href}` ? 'active-menu-item' : 'menu-item'}>
+                    <NextLink href={item.href} passHref>
+                      <Link _hover={{textDecoration: 'none'}}>
+                        {item.label}
+                      </Link>
+                    </NextLink>
+                  </Text>
+                )
+              })}
+            </>
           </Flex>
           <Flex
             justify={'space-between'}

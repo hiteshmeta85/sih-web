@@ -55,15 +55,3 @@ const ImageCarousel = ({images}) => {
 }
 
 export default ImageCarousel
-
-// const ArrowLeft = () => {
-//   return (
-//     <Image className="slick-arrow" src={BackButtonImage} alt={'Left Arrow'} height={30} width={30}/>
-//   )
-// }
-//
-// const ArrowRight = () => {
-//   return (
-//     <Image className="slick-arrow" src={ForwardButtonImage} alt={'Right Arrow'} height={30} width={30}/>
-//   )
-// }

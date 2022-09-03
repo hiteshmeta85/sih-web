@@ -2,7 +2,7 @@ import {AiOutlineHome, AiOutlineProject, AiOutlineSetting} from "react-icons/ai"
 import {FiAlertTriangle, FiMapPin} from "react-icons/fi";
 import {RiPlayList2Fill} from "react-icons/ri";
 import {FaSignal} from "react-icons/fa";
-import {BsGlobe2} from "react-icons/bs";
+//import {BsGlobe2} from "react-icons/bs";
 
 export const sidebarItems = [
   {
@@ -35,22 +35,22 @@ export const sidebarItems = [
     icon: FiAlertTriangle,
     position: 'top'
   },
-  // {
-  //   name: 'Event Flow',
-  //   navLink: '/event-flow',
-  //   icon: RiPlayList2Fill,
-  //   position: 'top'
-  // },
+  {
+    name: 'Event Flow',
+    navLink: '/event-flow',
+    icon: RiPlayList2Fill,
+    position: 'top'
+  },
   {
     name: 'Live Demo',
     navLink: '/dashboard/live-demo',
     icon: FaSignal,
     position: 'top'
   },
-  // {
-  //   name: 'Account',
-  //   navLink: '/dashboard/account',
-  //   icon: AiOutlineSetting,
-  //   position: 'bottom'
-  // },
+  {
+    name: 'Account',
+    navLink: '/dashboard/account',
+    icon: AiOutlineSetting,
+    position: 'bottom'
+  },
 ]

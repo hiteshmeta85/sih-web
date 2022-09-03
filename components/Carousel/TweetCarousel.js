@@ -3,26 +3,8 @@ import Slider from "react-slick";
 import {Box, Text} from "@chakra-ui/react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import axios from "axios";
-import Router from "next/router";
 
-const TweetCarousel = ({data}) => {
-
-  const handleSelectDisaster = async (disasterType) => {
-    try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/start-live-scrape`, {"hashtag": disasterType})
-        .then(function (response) {
-          if (response) {
-            Router.push({pathname: '/live', query: {disaster: disasterType}})
-          }
-        })
-        .catch(function (err) {
-          console.log(err)
-        })
-    } catch (err) {
-      console.log(err)
-    }
-  }
+const TweetCarousel = ({data, handleSelectDisaster}) => {
 
   const settings = {
     dots: true,
@@ -85,7 +67,6 @@ const TweetCarousel = ({data}) => {
                 _hover={{bg: 'gray.50'}}
                 _active={{bg: 'gray.100'}}
               >
-                {/*<BsTwitter color={'#1C9BEF'} size={'1.5rem'}/>*/}
                 {(item[0] === '#' ? `${item}` : `#${item}`)}
               </Text>
             </Box>

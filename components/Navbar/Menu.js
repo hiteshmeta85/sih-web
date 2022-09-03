@@ -55,17 +55,19 @@ const Menu = () => {
           </Flex>
           <Divider borderColor={'blackAlpha.600'}/>
           <DrawerBody fontWeight={'semibold'}>
-            {navItems.map((item, index) => {
-              return (
-                <Text key={index} my={2}>
-                  <NextLink href={item.href} passHref>
-                    <Link>{item.label}</Link>
-                  </NextLink>
-                </Text>
-              )
-            })}
-            <Text my={2}><Link href='/auth/login'>Login</Link></Text>
+            <>
+              {navItems.map((item, index) => {
+                return (
+                  <Text key={index} my={2}>
+                    <NextLink href={item.href} passHref>
+                      <Link>{item.label}</Link>
+                    </NextLink>
+                  </Text>
+                )
+              })}
+            </>
             <Text my={2}><Link href='/dashboard'>Dashboard</Link></Text>
+            <Text my={2}><Link href='/auth/login'>Login</Link></Text>
           </DrawerBody>
           <DrawerFooter>
             <Button

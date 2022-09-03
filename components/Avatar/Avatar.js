@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Img, Text, Avatar as Profile} from "@chakra-ui/react";
+import {Avatar as Profile, Box, Text} from "@chakra-ui/react";
 
 const Avatar = (props) => {
   const { name, jobTitle, imageSrc, ...boxProps } = props

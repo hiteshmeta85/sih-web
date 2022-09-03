@@ -1,4 +1,4 @@
-import {Avatar, Flex, Text} from "@chakra-ui/react";
+import {Avatar, Box, Flex, Text} from "@chakra-ui/react";
 import React from "react";
 import Image from "next/image";
 import audio from "./audio.png";
@@ -21,22 +21,22 @@ const ActiveModels = () => {
       <Text fontWeight={600} fontSize={'xl'} borderBottom={'2px dashed black'} alignSelf={'start'}>
         Active Models
       </Text>
-      <Flex justifyContent={'space-between'} gap={2} pt={2}>
-        <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
-          <Image src={audio} alt={'img'} className={'blink-animation'}/>
-        </Avatar>
-        <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
-          <Image src={text} alt={'img'} className={'blink-animation'}/>
-        </Avatar>
-        <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
-          <Image src={classification} alt={'img'} className={'blink-animation'}/>
-        </Avatar>
-        <Avatar p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
-          <Image src={detection} alt={'img'} className={'blink-animation'}/>
-        </Avatar>
-        <Avatar pt={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm'}}>
-          <Image src={image} alt={'img'} className={'blink-animation'}/>
-        </Avatar>
+      <Flex justifyContent={'space-between'} gap={2}>
+        <Box p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
+          <Image src={audio} alt={'img'}/>
+        </Box>
+        <Box p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
+          <Image src={text} alt={'img'}/>
+        </Box>
+        <Box p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
+          <Image src={classification} alt={'img'}/>
+        </Box>
+        <Box p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
+          <Image src={detection} alt={'img'}/>
+        </Box>
+        <Box p={{base: 2, md: 2, lg: 4}} bg={'transparent'} size={{base: 'sm', md: 'md', lg: 'md'}}>
+          <Image src={image} alt={'img'}/>
+        </Box>
       </Flex>
     </Flex>
   );

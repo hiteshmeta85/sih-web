@@ -1,8 +1,8 @@
 import React from 'react';
 import LandingPageLayout from "./_layout";
-import AlertCard from "../components/Alert/AlertCard";
 import {Box, Heading, SimpleGrid} from "@chakra-ui/react";
 import axios from "axios";
+import AlertCard from "../components/Card/AlertCard";
 
 const Alerts = ({alerts}) => {
 

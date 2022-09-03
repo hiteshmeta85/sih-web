@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import DashboardContainer from "../_layout";
 import CustomLink from "../../../components/Link/CustomLink";
 import {MdOutlineAdd} from "react-icons/md";
-import AlertCard from "../../../components/Alert/AlertCard";
-import {Box, Flex, Heading, SimpleGrid} from "@chakra-ui/react";
+import {Box, Flex, SimpleGrid} from "@chakra-ui/react";
 import axios from "axios";
 import {googleMapsApiKey, libraries, mapCenter} from "../../../components/Map/MapConfigAndDefaults";
 import {GoogleMap, Marker, useLoadScript} from "@react-google-maps/api";
 import {ImCancelCircle} from "react-icons/im";
 import {BiSelectMultiple} from "react-icons/bi";
+import AlertCard from "../../../components/Card/AlertCard";
 
 const options = {
   disableDefaultUI: true,
@@ -63,9 +63,6 @@ const Index = ({alertsData}) => {
                     geolocation_lat={item.geolocation_lat}
                     geolocation_lng={item.geolocation_lng}
                     severity_type={item.severityType}
-                    canDelete={true}
-                    alerts={alerts}
-                    setAlerts={setAlerts}
                   />
                 )
               })}

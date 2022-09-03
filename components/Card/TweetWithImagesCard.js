@@ -37,10 +37,12 @@ const TweetWithImagesCard = ({images, username, tweet, date, socialMediaType, la
         <Flex flexDir={'column'} gap={2} px={4} pt={2} pb={4}>
           {!areLabelsMultiple ? (label && <Text textTransform={'capitalize'} alignSelf={'start'} px={2} rounded={'md'} border={'1px solid red'}>{label}</Text>)
             : <Flex flexWrap={'wrap'} gap={2}>
-            {labels.length > 0 && [...new Set(labels)].map((item, index)=>
-              <Text key={index} textTransform={'capitalize'} alignSelf={'start'} px={2} rounded={'md'} border={'1px solid red'}>
-                {item}
-              </Text>)}
+            <>
+              {labels.length > 0 && [...new Set(labels)].map((item, index) =>
+                <Text key={index} textTransform={'capitalize'} alignSelf={'start'} px={2} rounded={'md'} border={'1px solid red'}>
+                  {item}
+                </Text>)}
+            </>
           </Flex>}
           <Text fontWeight={'bold'} color={'gray.400'} fontSize={'sm'} letterSpacing={'wider'}>@{username}</Text>
           <Box lineHeight={'shorter'} fontFamily={'Inter'}>{tweet}</Box>

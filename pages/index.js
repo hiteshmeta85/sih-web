@@ -1,28 +1,67 @@
-import TweetsContainer from "../components/Tweet/TweetsContainer";
-import {Box, Flex, Heading, SimpleGrid} from "@chakra-ui/react";
-import TweetCard from "../components/Tweet/TweetCard";
-import SocialMediaAccountCard from "../components/Account/SocialMediaAccountCard";
-import AlertCard from "../components/Alert/AlertCard";
+import {Box, Flex, Heading, Link, SimpleGrid} from "@chakra-ui/react";
 import NewsCard from "../components/News/NewsCard";
 import LandingPageLayout from "./_layout";
 import {IoIosAlert} from "react-icons/io";
 import {BsTwitter} from "react-icons/bs";
 import axios from "axios";
-import LandingCarousel from "../components/Carousel/LandingCarousel";
+import LandingPageCarousel from "../components/Carousel/LandingPageCarousel";
 import Avatar from "../components/Avatar/Avatar";
+import SocialMediaAccountCard from "../components/Card/SocialMediaAccountCard";
+import NextLink from "next/link";
+import React from "react";
+import TweetCard from "../components/Card/TweetCard";
+import AlertCard from "../components/Card/AlertCard";
+
+const TweetsContainer = ({title, children, href}) => {
+  return (
+    <Box
+      px={{base: 2, md: 4, lg: 8}}
+      maxW={'container.xl'}
+      mx={'auto'}
+      pt={{base: 4, md: 8}}
+      pb={{base: 6, md: 10}}
+    >
+      <Flex
+        justifyContent={'space-between'}
+        alignItems={'center'}
+        mb={{base: 4, lg: 8}}
+      >
+        <Heading
+          fontSize={{base: '2xl', md: '4xl'}}
+        >
+          {title}
+        </Heading>
+        {href && <NextLink href={href} passHref>
+          <Link
+            _hover={{textDecoration: 'none', bg: 'blackAlpha.700'}}
+            whiteSpace={'nowrap'}
+            _active={{bg: 'blackAlpha.800'}}
+            rounded={'full'}
+            bg={'blackAlpha.800'}
+            color={'white'}
+            px={6} py={2} m={2}
+          >
+            See all
+          </Link>
+        </NextLink>}
+      </Flex>
+      {children}
+    </Box>
+  );
+};
 
 export default function Home({news, ndrfTweets, alerts, activeAccounts}) {
 
   return (
     <LandingPageLayout>
-      <LandingCarousel/>
+      <LandingPageCarousel/>
       {news.length > 0 && <TweetsContainer title={'News'} href={'/news'}>
         <SimpleGrid columns={{base: 1, md: 2, lg: 4}} gap={6}>
           <>
             {news.slice(0, 4)
               .map((item, index) => {
                 return (
-                  <NewsCard key={index} title={item.title} datePublished={item.datePublished} description={item.description}/>
+                  <NewsCard key={index} title={item.title} datePublished={item.datePublished} description={item.description} src={item.url}/>
                 )
               })}
           </>

@@ -1,5 +1,5 @@
 import {
-  Box,
+  Box, Button,
   Flex,
   Icon,
   Link,
@@ -20,9 +20,26 @@ import TabsLayout from "../_tabsLayout";
 import axios from "axios";
 import {useRouter} from "next/router";
 import {AiFillDelete, AiFillFacebook, AiOutlineInstagram, AiOutlineTwitter} from "react-icons/ai";
-import CustomButton from "../../../../../components/Button/CustomButton";
 import {VscSave} from "react-icons/vsc";
 import {MdOutlineTranslate} from "react-icons/md";
+
+const CustomButton = ({handlePageRefresh, icon, text}) => {
+  return (
+    <Button
+      display={'flex'}
+      alignItems={'center'}
+      gap={2}
+      bg={'blackAlpha.800'}
+      _hover={{bg: 'blackAlpha.700'}}
+      _active={{bg: 'blackAlpha.800'}}
+      color={'white'}
+      onClick={handlePageRefresh}
+    >
+      <Text>{text}</Text>
+      {icon}
+    </Button>
+  );
+};
 
 const ProjectTextView = () => {
 
@@ -38,19 +55,6 @@ const ProjectTextView = () => {
   const [shouldPageRefresh, setShouldPageRefresh] = useState(false)
   const [didWeGetData, setDidWeGetData] = useState(false)
   const [isScrappingLive, setIsScrappingLive] = useState(false)
-
-  // const handlePageRefresh = async () => {
-  //   setCeleryKeys({})
-  //   setDidWeGetTaskIds(false)
-  //   setShouldPageRefresh(true)
-  // }
-
-
-  ////////////////
-
-
-
-  //////////////
 
   const handleSaveData = async () => {
     const saveProgress = async () => {

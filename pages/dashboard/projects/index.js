@@ -3,14 +3,12 @@ import {SimpleGrid} from "@chakra-ui/react";
 import {MdOutlineAdd} from "react-icons/md";
 import ProjectDetailsCard from "../../../components/Project/ProjectDetailsCard";
 import CreateNewProjectCard from "../../../components/Project/CreateNewProjectCard";
-import React, {useState} from "react";
+import React from "react";
 import CustomLink from "../../../components/Link/CustomLink";
 import axios from "axios";
 import Error from "../../../components/Error/Error";
 
 const Projects = ({allProjectsInfo}) => {
-
-  const [allProjects, setAllProjects] = useState(allProjectsInfo)
 
   return (
     <DashboardContainer
@@ -19,17 +17,15 @@ const Projects = ({allProjectsInfo}) => {
         <CustomLink href={'/dashboard/create-project'} text={'Create Project'} icon={<MdOutlineAdd/>}/>
       }
     >
-      {allProjects ? <>
+      {allProjectsInfo ?
           <SimpleGrid columns={{base: 1, md: 2, lg: 3}} spacing={4}>
             <CreateNewProjectCard href={'/dashboard/create-project'}/>
-            {allProjects.sort((a, b) => Date.parse(b.creationTime) - Date.parse(a.creationTime)).map((item, index) => {
+            {allProjectsInfo.sort((a, b) => Date.parse(b.creationTime) - Date.parse(a.creationTime)).map((item, index) => {
               return (
-                <ProjectDetailsCard key={index} label={item.projectName} date={item.creationTime} id={item.projectId} setAllProjects={setAllProjects} allProjects={allProjects}/>
+                <ProjectDetailsCard key={index} label={item.projectName} date={item.creationTime} id={item.projectId}/>
               )
             })}
-          </SimpleGrid>
-        </> :
-        <Error/>
+          </SimpleGrid> : <Error/>
       }
     </DashboardContainer>
   );

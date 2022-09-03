@@ -1,12 +1,11 @@
 import React from "react";
-import {Box, Flex, Icon, Stat, Text,} from "@chakra-ui/react";
+import {Flex, Icon, Stat, Text,} from "@chakra-ui/react";
 import {BsFacebook, BsInstagram, BsTwitter} from "react-icons/bs";
 import CountUp from "react-countup";
 
 const SocialMediaCard = ({statistics}) => {
   return (
     <Stat
-      //bg={"white"}
       borderRadius={24}
       boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
       p={6}

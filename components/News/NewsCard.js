@@ -52,10 +52,8 @@ const NewsCard = ({title, datePublished, description, isDetailedView = false, bo
           {isDetailedView ?
             <Box>
               <Text noOfLines={isTextExpanded ? undefined : 5}>{body}</Text>
-              <Text color={'blue.500'} cursor={'pointer'}
-                    onClick={()=>{setIsTextExpanded(!isTextExpanded)}}
-              >
-                    {isTextExpanded ? 'Show less' : 'Read more...'}
+              <Text onClick={() => {setIsTextExpanded(!isTextExpanded)}} color={'blue.500'} cursor={'pointer'}>
+                {isTextExpanded ? 'Show less' : 'Read more...'}
               </Text>
             </Box>
             :
@@ -63,8 +61,9 @@ const NewsCard = ({title, datePublished, description, isDetailedView = false, bo
           }
         </Flex>
         {!isDetailedView &&
-          <NextLink href={'/'} passHref>
+          <NextLink href={src} passHref>
             <Link
+              target={'_blank'}
               alignSelf={'flex-start'}
               color={'#017BFE'}
               _hover={{textDecoration: 'none'}}
@@ -79,12 +78,12 @@ const NewsCard = ({title, datePublished, description, isDetailedView = false, bo
       </Flex>
       {isDetailedView &&
         <Image
-        src={src}
-        borderRadius={'md'}
-        maxW={{base: '2xs', lg:'sm'}}
-        maxH={{base: '2xs', lg:'sm'}}
-        objectFit={'contain'}
-        alt={'article image'}
+          src={src}
+          borderRadius={'md'}
+          maxW={{base: '2xs', lg: 'sm'}}
+          maxH={{base: '2xs', lg: 'sm'}}
+          objectFit={'contain'}
+          alt={'article image'}
         />}
     </Flex>
   );

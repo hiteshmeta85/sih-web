@@ -2,7 +2,7 @@ import {Box, Divider, Flex, Heading, HStack, Icon, Link, SimpleGrid, Text} from 
 import NextLink from "next/link";
 import {socialMediaTypes} from "../../constants/useful-data/socialMediaTypes";
 
-const Contact = () => {
+const Footer = () => {
 
   return (
     <Box bg={'white'}>
@@ -55,4 +55,4 @@ const Contact = () => {
   );
 }
 
-export default Contact;
+export default Footer;

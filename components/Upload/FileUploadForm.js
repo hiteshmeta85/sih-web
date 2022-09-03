@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Box, Flex, Text} from "@chakra-ui/react";
 import {ErrorMessage, Form, Formik} from "formik";
 import fileUploadSchema from "../../lib/schemas/fileUploadSchema";

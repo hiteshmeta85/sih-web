@@ -33,6 +33,7 @@ const Sidebar = ({isSidebarOpenByDefault = true, backgroundColor = '#F5F5F5'}) =
           justifyContent={'space-between'}
           bg={'blackAlpha.800'}
           borderRadius={24}
+          overflowY={'scroll'}
           boxShadow={'rgba(17, 17, 26, 0.4) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px'}
         >
           <Flex flexDir={'column'} rowGap={8}>
@@ -46,7 +47,7 @@ const Sidebar = ({isSidebarOpenByDefault = true, backgroundColor = '#F5F5F5'}) =
               alignItems={'center'}
               gap={4}
             >
-              <Image src={LogoImage} height={'35px'} width={'35px'} transition={'all 1s'}/>
+              <Image src={LogoImage} height={'35px'} width={'35px'} transition={'all 1s'} alt={'Logo'}/>
               <Box>
                 <Text as={'span'} transition={'all 1s'}  display={isSidebarOpen ? 'inline-block' : 'none'}>
                   NDRF
@@ -55,19 +56,23 @@ const Sidebar = ({isSidebarOpenByDefault = true, backgroundColor = '#F5F5F5'}) =
               </Box>
             </Flex>}
             <Box>
-              {sidebarItems.map((item, index) => {
-                if (item.position === 'top') {
-                  return <SidebarNavItem key={index} navLink={item.navLink} name={item.name} icon={item.icon} isSidebarOpen={isSidebarOpen}/>
-                }
-              })}
+              <>
+                {sidebarItems.map((item, index) => {
+                  if (item.position === 'top') {
+                    return <SidebarNavItem key={index} navLink={item.navLink} name={item.name} icon={item.icon} isSidebarOpen={isSidebarOpen}/>
+                  }
+                })}
+              </>
             </Box>
           </Flex>
           <Box>
-            {sidebarItems.map((item, index) => {
-              if (item.position === 'bottom') {
-                return <SidebarNavItem key={index} navLink={item.navLink} name={item.name} icon={item.icon} isSidebarOpen={isSidebarOpen}/>
-              }
-            })}
+            <>
+              {sidebarItems.map((item, index) => {
+                if (item.position === 'bottom') {
+                  return <SidebarNavItem key={index} navLink={item.navLink} name={item.name} icon={item.icon} isSidebarOpen={isSidebarOpen}/>
+                }
+              })}
+            </>
             <ListItem
               borderLeftRadius={12}
               borderRightRadius={12}

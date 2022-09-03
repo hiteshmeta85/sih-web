@@ -33,13 +33,7 @@ const TweetCard = ({description, image, username, date, icon, url = '/'}) => {
               </Flex>
             </Box>}
           {date && <Text fontSize={'xs'}>{date}</Text>}
-          {/*<Link href={{pathname: '/dashboard/projects/1/text-images/1', query: { social: 'twitter' }}}>*/}
-          {/*  <a>here</a>*/}
-          {/*</Link>*/}
         </Flex>
-        {/*<Text fontWeight={700} fontSize={'lg'}>
-          {title}
-        </Text>*/}
         <Box fontSize={'md'}>
           {description}
         </Box>

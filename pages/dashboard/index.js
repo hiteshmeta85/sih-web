@@ -14,41 +14,32 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import DashboardMenu from "../../components/Sidebar/DashboardMenu";
 import {IoMdTrendingUp} from "react-icons/io";
 import Router from 'next/router'
-import flood from "./create-project/flood.png";
-import earthquake from "./create-project/earthquake.png";
-import hurricane from "./create-project/hurricane.png";
-import wildfire from "./create-project/wildfire.png";
 
 const disasterTypes = [
   {
     id: 1,
     disasterType: "flood",
     label: "Flood",
-    image: flood
   },
   {
     id: 2,
     disasterType: "earthquake",
     label: "Earthquake",
-    image: earthquake
   },
   {
     id: 3,
     disasterType: "hurricane",
     label: "Hurricane",
-    image: hurricane
   },
   {
     id: 5,
     disasterType: "wildfire",
     label: "Wildfire",
-    image: wildfire
   },
   {
     id: 5,
     disasterType: "landslide",
     label: "Landslide",
-    //image: wildfire
   },
 ]
 
@@ -103,8 +94,6 @@ const Index = ({
       console.log(err)
     }
   }
-
-  console.log(trendingTweets)
 
   return (
     <Flex>
@@ -180,8 +169,7 @@ const Index = ({
             >
               <CardTitle primaryText={'Trending Hashtags'} notificationText={!disasterHashtags.length > 0 && 'Hashtags related to disaster found.'} icon={<Icon as={IoMdTrendingUp} h={8} w={8}/>}/>
               <Box py={4} px={8}>
-                {Object.keys(activeAccounts).length > 0 && <TweetCarousel
-                  data={disasterHashtags.length > 0 ? disasterHashtags : trendingTweets}/>}
+                {Object.keys(activeAccounts).length > 0 && <TweetCarousel data={disasterHashtags.length > 0 ? disasterHashtags : trendingTweets} handleSelectDisaster={handleSelectDisaster}/>}
               </Box>
             </Box>
             <Grid gridTemplateColumns={"repeat(3, 1fr)"} gap={6}>
@@ -193,17 +181,14 @@ const Index = ({
                   <GridItem colSpan={{base: 2, lg: 1}}>
                     <SocialMediaCard statistics={statistics}/>
                   </GridItem>
-                  <GridItem
-                    colSpan={{base: 2, lg: 2}}
-                  >
+                  <GridItem colSpan={{base: 2, lg: 2}}>
                     <ActiveModels/>
                   </GridItem>
                   <GridItem
                     colSpan={{base: 4, md: 2}}
                     rowSpan={2}
                   >
-                    {Object.keys(pieChartData).length > 0 &&
-                      <TweetCountPieChart data={pieChartData.data} labels={pieChartData.labels} primaryText={'Total Data Scrapped Percentage.'} secondaryText={'Project - Uttarakhand Flood'}/>}
+                    {Object.keys(pieChartData).length > 0 && <TweetCountPieChart data={pieChartData.data} labels={pieChartData.labels} primaryText={'Total Data Scrapped Percentage.'} secondaryText={'Project - Uttarakhand Flood'}/>}
                   </GridItem>
                   <GridItem colSpan={{base: 4, md: 2}} rowSpan={1}>
                     {Object.keys(barChartData).length > 0 && <TweetCountBarChart data={barChartData}/>}
@@ -212,9 +197,7 @@ const Index = ({
               </GridItem>
               <GridItem colSpan={{base: 3, lg: 1}}>
                 <Alerts alerts={alerts}/>
-                {Object.keys(activeAccounts).length > 0 && <DashTabs
-                  activeAccounts={activeAccounts.TwitterActiveAccounts.mentions.concat(activeAccounts.FacebookActiveAccounts.mentions, activeAccounts.InstagramActiveAccounts.mentions)
-                    .split(',')} recentProjects={recentProjects}/>}
+                {Object.keys(activeAccounts).length > 0 && <DashTabs activeAccounts={activeAccounts.TwitterActiveAccounts.mentions.concat(activeAccounts.FacebookActiveAccounts.mentions, activeAccounts.InstagramActiveAccounts.mentions).split(',')} recentProjects={recentProjects}/>}
               </GridItem>
             </Grid>
           </Box>
@@ -234,14 +217,14 @@ export async function getServerSideProps() {
   try {
     const res = await axios.get(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/dashboard`)
     if (res.data) {
-      alerts = res.data.data.alerts,
-        activeAccounts = res.data.data.activeAccounts,
-        recentProjects = res.data.data.recentProjects,
-        dataScrapped = res.data.data.dataScrapped,
-        pieChartData = res.data.data.pieChartData,
-        barChartData = res.data.data.barChart,
-        statistics = res.data.data.statistics,
-        disasterHashtags = res.data.data.disasterHashtags
+      alerts = res.data.data.alerts
+      activeAccounts = res.data.data.activeAccounts
+      recentProjects = res.data.data.recentProjects
+      dataScrapped = res.data.data.dataScrapped
+      pieChartData = res.data.data.pieChartData
+      barChartData = res.data.data.barChart
+      statistics = res.data.data.statistics
+      disasterHashtags = res.data.data.disasterHashtags
       trendingTweets = res.data.data.trendingTweets
     }
   } catch (e) {

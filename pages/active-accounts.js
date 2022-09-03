@@ -1,9 +1,9 @@
 import React from 'react';
 import LandingPageLayout from "./_layout";
 import {Flex, Icon, SimpleGrid, Text} from "@chakra-ui/react";
-import TweetCard from "../components/Tweet/TweetCard";
 import {BsTwitter} from "react-icons/bs";
 import axios from "axios";
+import TweetCard from "../components/Card/TweetCard";
 
 const ActiveAccounts = ({activeAccounts}) => {
 

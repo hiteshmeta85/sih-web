@@ -13,7 +13,7 @@ const CustomSelect = ({...props}) => {
         options={props.options}
         placeholder={props.placeholder}
         component={ReactSelect}
-        isMulti={props.isMulti || true}
+        isMulti={props.isMulti || false}
         {...field} {...props}
         style={{width: "100%", paddingTop: '0.5rem', paddingRight: '0.5rem'}}
         className={`${meta.touched && meta.error && `is-invalid`}`}

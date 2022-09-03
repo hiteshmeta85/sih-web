@@ -11,8 +11,6 @@ const ModelDescriptionCarousel = ({data}) => {
     slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
-    // autoplay: true,
-    // autoplaySpeed: 4000,
     pauseOnHover: true,
     swipeToSlide: true,
     infinite: false,

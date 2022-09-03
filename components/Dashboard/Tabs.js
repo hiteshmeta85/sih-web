@@ -1,28 +1,17 @@
 import React from "react";
 import {BsTwitter} from "react-icons/bs";
-import {
-  Box,
-  Divider,
-  Flex,
-  LinkBox,
-  LinkOverlay,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Text,
-} from "@chakra-ui/react";
+import {Box, Divider, Flex, Tab, TabList, TabPanel, TabPanels, Tabs, Text,} from "@chakra-ui/react";
 
 const DashTabs = ({activeAccounts, recentProjects}) => {
   return (
     <>
-      <Tabs isFitted
-            borderRadius={24}
-            boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
-            p={6}
-            mt={6}
-            bg={'white'}
+      <Tabs
+        isFitted
+        borderRadius={24}
+        boxShadow={'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;'}
+        p={6}
+        mt={6}
+        bg={'white'}
       >
         <TabList>
           <Tab p={3}>Active Accounts</Tab>
@@ -57,7 +46,6 @@ const DashTabs = ({activeAccounts, recentProjects}) => {
                         <Text color={"gray.500"} fontSize={"sm"} textTransform={"capitalize"}>{item.disasterType}</Text>
                       </Box>
                     </Flex>
-                    {/*<LinkOverlay href='#'/>*/}
                     <Divider/>
                   </Box>
                 )

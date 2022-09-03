@@ -1,12 +1,18 @@
 import React, {useState} from 'react';
 import {
-  Button, Divider, Flex, Link,
-  Modal, ModalBody,
+  Button,
+  Divider,
+  Flex,
+  Link,
+  Modal,
+  ModalBody,
   ModalCloseButton,
-  ModalContent, ModalFooter,
+  ModalContent,
+  ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Spinner, Text,
+  Spinner,
+  Text,
   useDisclosure
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -69,32 +75,70 @@ const ClaimReviewForm = ({tweet}) => {
                   return (
                     <Flex key={index} flexDir={'column'} gap={2}>
                       {/* Claim */}
+
                       <Flex alignItems={'center'} gap={2}>
                         <FaQuoteLeft mb={2}/>
                         <Text fontWeight={'bold'}>Claim: </Text>
                       </Flex>
-                      <Text><Text as={'span'} fontWeight={'bold'}>Text:</Text> {item.text}</Text>
-                      <Text><Text fontWeight={'bold'} as={'span'}>Claimant:</Text> {item.claimant}</Text>
-                      <Text fontSize={'sm'}>Claim Date: {moment(item.claimDate).format('ll')}</Text>
+                      <Text>
+                        <Text as={'span'} fontWeight={'bold'}>Text:</Text> {item.text}
+                      </Text>
+                      <Text>
+                        <Text
+                          fontWeight={'bold'}
+                          as={'span'}
+                        >
+                          Claimant:
+                        </Text>
+                        {item.claimant}
+                      </Text>
+                      <Text fontSize={'sm'}>Claim Date: {moment(item.claimDate)
+                        .format('ll')}</Text>
+
                       {/* Claim Review */}
-                      {item.claimReview.length > 0 && <>
-                        <Divider maxW={48}/>
-                        <Text fontWeight={'bold'}>Claim Review: </Text>
-                        <Text><Text as={'span'} fontWeight={'bold'}>Title:</Text> {item.claimReview[0].title}</Text>
-                        <Text alignSelf={'start'} as={'span'} px={2} py={1} bg={'gray.100'} textUnderlineOffset={4} border={'1px solid black'} rounded={'sm'}>Rating: {item.claimReview[0].textualRating}</Text>
-                        <Flex justifyContent={'space-between'} mt={2}>
-                          <Text fontSize={'sm'}>{moment(item.claimReview[0].reviewDate).format('ll')}</Text>
-                          <Flex alignItems={'center'} gap={2}>
-                            <Link target={'_blank'} href={item.claimReview[0].url} cursor={'pointer'} color={'gray.600'}><BiLink/></Link>
-                            <Text fontSize={'sm'} fontWeight={'bold'}>Publisher: {item.claimReview[0].publisher.name}</Text>
+                      {item.claimReview.length > 0 &&
+                        <>
+                          <Divider maxW={48}/>
+                          <Text fontWeight={'bold'}>Claim Review: </Text>
+                          <Text><Text as={'span'} fontWeight={'bold'}>Title:</Text> {item.claimReview[0].title}</Text>
+                          <Text
+                            as={'span'}
+                            alignSelf={'start'}
+                            px={2} py={1}
+                            bg={'gray.100'}
+                            textUnderlineOffset={4}
+                            border={'1px solid black'}
+                            rounded={'sm'}
+                          >
+                            Rating: {item.claimReview[0].textualRating}
+                          </Text>
+                          <Flex justifyContent={'space-between'} mt={2}>
+                            <Text fontSize={'sm'}>
+                              {moment(item.claimReview[0].reviewDate).format('ll')}
+                            </Text>
+                            <Flex alignItems={'center'} gap={2}>
+                              <Link
+                                target={'_blank'}
+                                href={item.claimReview[0].url}
+                                cursor={'pointer'}
+                                color={'gray.600'}
+                              >
+                                <BiLink/>
+                              </Link>
+                              <Text
+                                fontSize={'sm'}
+                                fontWeight={'bold'}
+                              >
+                                Publisher: {item.claimReview[0].publisher.name}
+                              </Text>
+                            </Flex>
                           </Flex>
-                        </Flex>
-                      </>}
+                        </>
+                      }
                       <Divider/>
                     </Flex>
                   )
-                }) : <Text color={'red.700'}>No Claim Found</Text>
-                }
+                }) : <Text color={'red.700'}>No Claim Found</Text>}
               </>
             </Flex>
           </ModalBody>
