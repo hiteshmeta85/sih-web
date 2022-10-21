@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import axios from "axios";
 
-const CorsTest = () => {
+const Cors = () => {
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,4 +31,4 @@ const CorsTest = () => {
   );
 };
 
-export default CorsTest;
+export default Cors;

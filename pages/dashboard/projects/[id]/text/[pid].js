@@ -1,11 +1,9 @@
 import {
   Button,
-  Divider,
   Flex,
   Grid,
   GridItem,
   Highlight,
-  Link,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -22,16 +20,15 @@ import React, {useState} from "react";
 import Badge from "../../../../../components/Badge/Badge";
 import IndividualTweetAnalysisLayout from "../_individualTweetAnalysisLayout";
 import axios from "axios";
-import moment from "moment";
-import {BiLink} from "react-icons/bi";
-import {FaQuoteLeft} from "react-icons/fa";
 import {AiOutlineFacebook, AiOutlineInstagram, AiOutlineTwitter} from "react-icons/ai";
+import ClaimDetailsCard from "../../../../../components/Card/ClaimDetailsCard";
 
 const IndividualTextAnalysis = ({multilabel, username, date, tweet, socialMediaType}) => {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [claims, setClaims] = useState([])
   const {isOpen, onOpen, onClose} = useDisclosure()
+  const [didWeGetInfo, setDidWeGetInfo] = useState(false)
 
   const handleSubmit = async (value) => {
     setIsSubmitting(true)
@@ -41,6 +38,7 @@ const IndividualTextAnalysis = ({multilabel, username, date, tweet, socialMediaT
         if (Object.keys(res.data).length > 0) {
           setClaims(res.data.claims)
           onOpen()
+          setDidWeGetInfo(true)
         } else {
           onOpen()
           console.log('no claim found')
@@ -112,37 +110,11 @@ const IndividualTextAnalysis = ({multilabel, username, date, tweet, socialMediaT
           <ModalCloseButton/>
           <ModalBody>
             <Flex flexDir={'column'} gap={4}>
-              <>
-                {claims.length > 0 ? claims.map((item, index) => {
-                  return (
-                    <Flex key={index} flexDir={'column'} gap={2}>
-                      {/* Claim */}
-                      <Flex alignItems={'center'} gap={2}>
-                        <FaQuoteLeft mb={2}/>
-                        <Text fontWeight={'bold'}>Claim: </Text>
-                      </Flex>
-                      <Text><Text as={'span'} fontWeight={'bold'}>Text:</Text> {item.text}</Text>
-                      <Text><Text fontWeight={'bold'} as={'span'}>Claimant:</Text> {item.claimant}</Text>
-                      <Text fontSize={'sm'}>Claim Date: {moment(item.claimDate).format('ll')}</Text>
-                      {/* Claim Review */}
-                      {item.claimReview.length > 0 && <>
-                        <Divider maxW={48}/>
-                        <Text fontWeight={'bold'}>Claim Review: </Text>
-                        <Text><Text as={'span'} fontWeight={'bold'}>Title:</Text> {item.claimReview[0].title}</Text>
-                        <Text alignSelf={'start'} as={'span'} px={2} py={1} bg={'gray.100'} textUnderlineOffset={4} border={'1px solid black'} rounded={'sm'}>Rating: {item.claimReview[0].textualRating}</Text>
-                        <Flex justifyContent={'space-between'} mt={2}>
-                          <Text fontSize={'sm'}>{moment(item.claimReview[0].reviewDate).format('ll')}</Text>
-                          <Flex alignItems={'center'} gap={2}>
-                            <Link target={'_blank'} href={item.claimReview[0].url} cursor={'pointer'} color={'gray.600'}><BiLink/></Link>
-                            <Text fontSize={'sm'} fontWeight={'bold'}>Publisher: {item.claimReview[0].publisher.name}</Text>
-                          </Flex>
-                        </Flex>
-                      </>}
-                      <Divider/>
-                    </Flex>
-                  )
-                }) : 'No Claim Found'}
-              </>
+              {didWeGetInfo && claims.length > 0 ? claims.map((item, index) => {
+                return (
+                  <ClaimDetailsCard key={index} item={item}/>
+                )
+              }) : didWeGetInfo ? 'No Claim Found' : ''}
             </Flex>
           </ModalBody>
           <ModalFooter>

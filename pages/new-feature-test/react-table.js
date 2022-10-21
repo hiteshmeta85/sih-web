@@ -42,7 +42,7 @@ function TableComponent() {
   return (<ReactTableComponent columns={columns} data={TweetsData}/>)
 }
 
-const ReactTableTest = () => {
+const ReactTable = () => {
   return (
     <Box maxW={'container.xl'} mx={'auto'} my={12}>
       <TableComponent/>
@@ -50,4 +50,4 @@ const ReactTableTest = () => {
   );
 };
 
-export default ReactTableTest;
+export default ReactTable;
