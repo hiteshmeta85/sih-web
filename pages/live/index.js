@@ -9,7 +9,7 @@ import axios from "axios";
 import {useRouter} from 'next/router'
 import {FiExternalLink} from "react-icons/fi";
 
-const Card = ({username, tweet, image, name, prediction, link}) => {
+const Card = ({username, tweet, image, name, link}) => {
   return (
     <Flex gap={4} flexDir={'column'} py={4} px={4} border={'1px solid lightgray'}>
       <Flex gap={3} alignItems={'center'} justifyContent={'space-between'}>
@@ -18,15 +18,6 @@ const Card = ({username, tweet, image, name, prediction, link}) => {
           {name && <Text>{name}</Text>}
         </Flex>
         <Link target={'_blank'} href={link}><Icon as={FiExternalLink}/></Link>
-        {/*<Text
-          bg={prediction === 1 ? 'green.300' : 'red.300'}
-          px={4}
-          py={1}
-          fontSize={'sm'}
-          rounded={'full'}
-        >
-          {prediction === 1 ? 'Disastrous' : 'Non-Disastrous'}
-        </Text>*/}
       </Flex>
       <Text>{tweet}</Text>
       {image && <Image src={image} alt={'tweet-image'}/>}
@@ -63,7 +54,7 @@ const CardContainer = ({icon, title, children, social, ChangeSliceNumber}) => {
   )
 }
 
-const Live = ({query}) => {
+const Live = () => {
   const router = useRouter()
   const {disaster} = router.query
 
@@ -75,8 +66,7 @@ const Live = ({query}) => {
   const [facebookSliceNumber, setFacebookSliceNumber] = useState(3)
   const [instagramSliceNumber, setInstagramSliceNumber] = useState(3)
 
-  const newFn = async () => {
-    console.log(disaster)
+  const fetchData = async () => {
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/live-dashboard`, {hashtags: [`${disaster}`]})
       if (response) {
@@ -97,35 +87,11 @@ const Live = ({query}) => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      newFn()
+      fetchData()
     }, 5000);
 
     return () => clearInterval(interval);
   }, [disaster]);
-
-  const ChangeSliceNumber = (social) => {
-    if (social === 'twitter') {
-      if (twitterSliceNumber === 3) {
-        setTwitterSliceNumber(twitterData.length)
-      } else {
-        setTwitterSliceNumber(3)
-      }
-    }
-    if (social === 'facebook') {
-      if (facebookSliceNumber === 3) {
-        setFacebookSliceNumber(facebookData.length)
-      } else {
-        setFacebookSliceNumber(3)
-      }
-    }
-    if (social === 'instagram') {
-      if (instagramSliceNumber === 3) {
-        setInstagramSliceNumber(instagramData.length)
-      } else {
-        setInstagramSliceNumber(3)
-      }
-    }
-  }
 
   React.useEffect(() => {
     let timeout;
@@ -159,8 +125,6 @@ const Live = ({query}) => {
       clearTimeout(timeout);
     };
   }, [instagramData, instagramSliceNumber]);
-
-  console.log(twitterSliceNumber, facebookSliceNumber, instagramSliceNumber)
 
   return (
     <Flex>
@@ -200,8 +164,11 @@ const Live = ({query}) => {
               <Text>Live</Text>
             </Flex>
           </Flex>
-          <CardContainer title={'Twitter'} icon={<Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/>}
-                         social={'twitter'} ChangeSliceNumber={ChangeSliceNumber}>
+          <CardContainer
+            title={'Twitter'}
+            icon={<Icon as={AiOutlineTwitter} h={8} w={8} color={'#1DA1F2'}/>}
+            social={'twitter'}
+          >
             {twitterData.slice(twitterSliceNumber - 3, twitterSliceNumber)
               .map((item, index) => {
                 return (
@@ -210,14 +177,16 @@ const Live = ({query}) => {
                     username={item.username}
                     name={item.name}
                     tweet={item.tweet}
-                    prediction={item.prediction}
                     link={item.link}
                   />
                 )
               })}
           </CardContainer>
-          <CardContainer title={'Facebook'} icon={<Icon as={FaFacebookF} h={7} w={7} color={'#4267B2'}/>}
-                         social={'facebook'} ChangeSliceNumber={ChangeSliceNumber}>
+          <CardContainer
+            title={'Facebook'}
+            icon={<Icon as={FaFacebookF} h={7} w={7} color={'#4267B2'}/>}
+            social={'facebook'}
+          >
             {facebookData.slice(facebookSliceNumber - 3, facebookSliceNumber)
               .map((item, index) => {
                 return (
@@ -225,14 +194,16 @@ const Live = ({query}) => {
                     key={index}
                     username={item.username}
                     tweet={item.post_text}
-                    prediction={item.prediction}
                     link={item.post_url}
                   />
                 )
               })}
           </CardContainer>
-          <CardContainer title={'Instagram'} icon={<Icon as={AiOutlineInstagram} h={8} w={8} color={'#FCAF45'}/>}
-                         social={'instagram'} ChangeSliceNumber={ChangeSliceNumber}>
+          <CardContainer
+            title={'Instagram'}
+            icon={<Icon as={AiOutlineInstagram} h={8} w={8} color={'#FCAF45'}/>}
+            social={'instagram'}
+          >
             {instagramData.slice(instagramSliceNumber - 3, instagramSliceNumber)
               .map((item, index) => {
                 return (
@@ -240,7 +211,6 @@ const Live = ({query}) => {
                     key={index}
                     username={'Unknown'}
                     tweet={item.caption}
-                    prediction={item.prediction}
                     link={item.post_url}
                   />
                 )
