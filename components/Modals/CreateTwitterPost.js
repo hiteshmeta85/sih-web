@@ -14,7 +14,7 @@ import {
   useDisclosure
 } from "@chakra-ui/react";
 import {Formik} from "formik";
-import twitterAlert from "../../lib/schemas/twitterAlert";
+import twitterAlertSchema from "../../lib/schemas/twitterAlertSchema";
 import axios from "axios";
 import CustomInput from "../Input/CustomInput";
 import TwitterPostIcon from "../../public/twitter-create-post.svg"
@@ -44,7 +44,7 @@ const CreateTwitterPost = ({ndrfAccounts, setTweetResponseData}) => {
                 initialValues={{
                   message: `${ndrfAccounts}`
                 }}
-                validationSchema={twitterAlert}
+                validationSchema={twitterAlertSchema}
                 onSubmit={async (values, {setSubmitting, resetForm}) => {
                   setSubmitting(true);
                   try {

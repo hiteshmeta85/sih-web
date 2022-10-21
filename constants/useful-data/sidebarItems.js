@@ -2,7 +2,6 @@ import {AiOutlineHome, AiOutlineProject, AiOutlineSetting} from "react-icons/ai"
 import {FiAlertTriangle, FiMapPin} from "react-icons/fi";
 import {RiPlayList2Fill} from "react-icons/ri";
 import {FaSignal} from "react-icons/fa";
-//import {BsGlobe2} from "react-icons/bs";
 
 export const sidebarItems = [
   {
@@ -11,12 +10,6 @@ export const sidebarItems = [
     icon: AiOutlineHome,
     position: 'top'
   },
-  // {
-  //   name: 'Live',
-  //   navLink: '/live',
-  //   icon: BsGlobe2,
-  //   position: 'top'
-  // },
   {
     name: 'Projects',
     navLink: '/dashboard/projects',

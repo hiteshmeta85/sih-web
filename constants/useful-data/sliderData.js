@@ -4,7 +4,6 @@ import Slide3 from "../../components/Slider/slide3.jpg";
 import Slide4 from "../../components/Slider/slide4.jpg";
 import Slide5 from "../../components/Slider/slide5.jpg";
 import Slide6 from "../../components/Slider/slide6.jpg";
-import Slide7 from "../../components/Slider/slide7.jpg";
 
 export const sliderData = [
   {
@@ -55,12 +54,4 @@ export const sliderData = [
     designation: 'Backend Developer',
     company: 'Homebrew, India'
   },
-  // {
-  //   id: 7,
-  //   image: Slide7,
-  //   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat a mauris sit amet tincidunt.',
-  //   name: 'Hitesh Meta',
-  //   designation: 'Full Stack Web Developer',
-  //   company: 'Homebrew, India'
-  // },
 ];

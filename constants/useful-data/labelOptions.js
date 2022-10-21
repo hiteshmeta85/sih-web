@@ -23,16 +23,4 @@ export const labelOptions = [
     label: 'Alerts',
     value: 'ALerts',
   },
-  // {
-  //   label: 'Twitter',
-  //   value: 'Twitter',
-  // },
-  // {
-  //   label: 'Instagram',
-  //   value: 'Instagram',
-  // },
-  // {
-  //   label: 'Facebook',
-  //   value: 'Facebook',
-  // },
 ]

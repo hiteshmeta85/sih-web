@@ -7,7 +7,7 @@ import {Box, Flex, Text} from "@chakra-ui/react";
 import axios from "axios";
 import Error from "../../../../components/Error/Error";
 import {useRouter} from "next/router";
-import selectDisasterLocation from "../../../../lib/schemas/selectDisasterLocation";
+import selectDisasterLocation from "../../../../lib/schemas/selectDisasterLocationSchema";
 
 const SelectLocation = ({projectName, disasterType, id}) => {
   const router = useRouter();

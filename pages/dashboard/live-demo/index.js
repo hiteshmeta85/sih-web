@@ -22,7 +22,7 @@ import {
 } from "@chakra-ui/react";
 import {Form, Formik} from "formik";
 import CustomInput from "../../../components/Input/CustomInput";
-import textUploadSchema from "../../../lib/schemas/textUploadValidation";
+import textUploadSchema from "../../../lib/schemas/textUploadValidationSchema";
 import CustomSubmitButton from "../../../components/Button/CustomSubmitButton";
 import FileUploadForm from "../../../components/Upload/FileUploadForm";
 import {AiOutlineAudio, AiOutlineFileImage} from "react-icons/ai";
