@@ -223,7 +223,7 @@ const ProjectMap = ({alerts, projectData}) => {
                       panTo({lat: marker.geolocation_lat, lng: marker.geolocation_lng})
                     }}
                     icon={{
-                      url: `/images/circles/alert.svg`,
+                      url: `/images/markers/alert.svg`,
                       origin: new window.google.maps.Point(0, 0),
                       anchor: new window.google.maps.Point(15, 15),
                       scaledSize: new window.google.maps.Size(25, 25),
@@ -238,7 +238,7 @@ const ProjectMap = ({alerts, projectData}) => {
                       panTo({lat: marker.geolocation_lat, lng: marker.geolocation_lng})
                     }}
                     icon={{
-                      url: `/images/circles/relief_camp.svg`,
+                      url: `/images/markers/relief_camp.svg`,
                       origin: new window.google.maps.Point(0, 0),
                       anchor: new window.google.maps.Point(15, 15),
                       scaledSize: new window.google.maps.Size(25, 25),
@@ -255,7 +255,7 @@ const ProjectMap = ({alerts, projectData}) => {
                           panTo({lat: marker.geolocation_lat, lng: marker.geolocation_lng})
                         }}
                         icon={{
-                          url: `/images/circles/twitter.svg`,
+                          url: `/images/markers/twitter.svg`,
                           origin: new window.google.maps.Point(0, 0),
                           anchor: new window.google.maps.Point(15, 15),
                           scaledSize: new window.google.maps.Size(20, 20),
@@ -273,7 +273,7 @@ const ProjectMap = ({alerts, projectData}) => {
                         panTo({lat: marker.geolocation_lat, lng: marker.geolocation_lng})
                       }}
                       icon={{
-                        url: `/images/circles/facebook.svg`,
+                        url: `/images/markers/facebook.svg`,
                         origin: new window.google.maps.Point(0, 0),
                         anchor: new window.google.maps.Point(15, 15),
                         scaledSize: new window.google.maps.Size(20, 20),
@@ -291,7 +291,7 @@ const ProjectMap = ({alerts, projectData}) => {
                         panTo({lat: marker.geolocation_lat, lng: marker.geolocation_lng})
                       }}
                       icon={{
-                        url: `/images/circles/instagram.svg`,
+                        url: `/images/markers/instagram.svg`,
                         origin: new window.google.maps.Point(0, 0),
                         anchor: new window.google.maps.Point(15, 15),
                         scaledSize: new window.google.maps.Size(20, 20),
