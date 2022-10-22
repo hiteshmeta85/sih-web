@@ -1,5 +1,5 @@
 import {Box, Divider, Flex, Icon, Image, Text} from "@chakra-ui/react";
-import {socialMediaTypes} from "../../constants/useful-data/socialMediaTypes";
+import {socialMediaTypes} from "../../constants/socialMediaTypes";
 import "@fontsource/inter"
 import {useState} from "react";
 import {FcNext, FcPrevious} from "react-icons/fc";

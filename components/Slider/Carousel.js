@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Box, Button, Flex, Image, Text} from "@chakra-ui/react";
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
-import {sliderData} from "../../constants/useful-data/sliderData";
+import {sliderData} from "../../constants/sliderData";
 
 const Carousel = () => {
   const [index, setIndex] = useState(0);

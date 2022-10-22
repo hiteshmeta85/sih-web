@@ -1,7 +1,7 @@
 import EventFlowLayout from "./_layout";
 import ModelDescriptionCarousel from "../../components/Carousel/ModelDescriptionCarousel";
 import React from "react";
-import {modelDescriptionData} from "../../constants/useful-data/modelDescriptionData";
+import {modelDescriptionData} from "../../constants/modelDescriptionData";
 import {Heading} from "@chakra-ui/react";
 
 const Index = () => {

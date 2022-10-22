@@ -1,6 +1,6 @@
 import {Box, Divider, Flex, Heading, HStack, Icon, Link, SimpleGrid, Text} from "@chakra-ui/react";
 import NextLink from "next/link";
-import {socialMediaTypes} from "../../constants/useful-data/socialMediaTypes";
+import {socialMediaTypes} from "../../constants/socialMediaTypes";
 
 const Footer = () => {
 

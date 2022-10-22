@@ -14,7 +14,7 @@ import Logo from "../Logo/Logo";
 import {MdOutlineClose} from "react-icons/md";
 import NextLink from "next/link";
 import React from "react";
-import {sidebarItems} from "../../constants/useful-data/sidebarItems";
+import {sidebarItems} from "../../constants/sidebarItems";
 
 const DashboardMenu = () => {
   const {isOpen, onOpen, onClose} = useDisclosure()

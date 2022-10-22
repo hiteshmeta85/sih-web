@@ -4,7 +4,7 @@ import Menu from "./Menu";
 import NextLink from "next/link";
 import Logo from "../Logo/Logo";
 import {useRouter} from "next/router";
-import {navItems} from "../../constants/useful-data/navItems";
+import {navItems} from "../../constants/navItems";
 
 const Navbar = () => {
   const [isLargerThan540] = useMediaQuery('(min-width: 768px)');

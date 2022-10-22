@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Divider, Flex, Icon, Image, Text} from "@chakra-ui/react";
 import {RiPlayCircleFill} from "react-icons/ri";
-import {socialMediaTypes} from "../../constants/useful-data/socialMediaTypes";
+import {socialMediaTypes} from "../../constants/socialMediaTypes";
 
 const ThumbnailCard = ({image, username, tweet, date, socialMediaType}) => {
   return (

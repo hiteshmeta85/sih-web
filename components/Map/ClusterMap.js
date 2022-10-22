@@ -5,7 +5,7 @@ import {Box, Button, Flex, Text} from "@chakra-ui/react";
 import {GrRefresh} from "react-icons/gr";
 import {ImCancelCircle} from "react-icons/im";
 import {BiSelectMultiple} from "react-icons/bi";
-import {labelOptions} from "../../constants/useful-data/labelOptions";
+import {labelOptions} from "../../constants/labelOptions";
 
 const ClusterMap = ({height, locations}) => {
 

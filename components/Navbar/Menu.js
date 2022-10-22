@@ -17,7 +17,7 @@ import {GiHamburgerMenu} from "react-icons/gi";
 import {MdOutlineClose} from "react-icons/md";
 import NextLink from "next/link";
 import Logo from "../Logo/Logo";
-import {navItems} from "../../constants/useful-data/navItems";
+import {navItems} from "../../constants/navItems";
 
 const Menu = () => {
   const {isOpen, onOpen, onClose} = useDisclosure()

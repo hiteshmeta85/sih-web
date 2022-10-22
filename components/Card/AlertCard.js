@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, Flex, Text} from '@chakra-ui/react';
-import {severityTypes} from "../../constants/useful-data/severityTypes";
+import {severityTypes} from "../../constants/severityTypes";
 
 const AlertCard = ({
   alertId,

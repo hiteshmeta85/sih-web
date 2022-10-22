@@ -1,6 +1,6 @@
 import {Box, Flex, Icon, List, ListItem, Text} from "@chakra-ui/react";
 import SidebarNavItem from "./SidebarNavItem";
-import {sidebarItems} from "../../constants/useful-data/sidebarItems";
+import {sidebarItems} from "../../constants/sidebarItems";
 import {BiArrowBack} from "react-icons/bi";
 import React, {useState} from "react";
 import Image from "next/image";

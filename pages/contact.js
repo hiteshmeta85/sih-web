@@ -18,7 +18,7 @@ import CustomInput from "../components/Input/CustomInput";
 import CustomSubmitButton from "../components/Button/CustomSubmitButton";
 import CustomSelect from "../components/Select/CustomSelect";
 import SearchAndMarkLocation from "../components/Map/SearchAndMarkLocation";
-import {labelOptions} from "../constants/useful-data/labelOptions";
+import {labelOptions} from "../constants/labelOptions";
 import axios from "axios";
 
 const Contact = () => {

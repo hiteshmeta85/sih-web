@@ -8,8 +8,8 @@ import alertSchema from "../../../lib/schemas/alertSchema";
 import CustomSelect from "../../../components/Select/CustomSelect";
 import SearchAndMarkLocation from "../../../components/Map/SearchAndMarkLocation";
 import axios from "axios";
-import {labelOptions} from "../../../constants/useful-data/labelOptions";
-import {severityTypes} from "../../../constants/useful-data/severityTypes";
+import {labelOptions} from "../../../constants/labelOptions";
+import {severityTypes} from "../../../constants/severityTypes";
 
 const CreateAlert = () => {
 
