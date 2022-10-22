@@ -162,19 +162,15 @@ const urlsData = [
     pages: [
       {
         title: 'Cors Test',
-        url: '/test-files/cors-test',
-      },
-      {
-        title: 'Celery Test',
-        url: '/test-files/celery-test',
+        url: '/new-feature-test/cors',
       },
       {
         title: 'Fast Check API Test',
-        url: '/test-files/fact-check-api-test',
+        url: '/new-feature-test/fact-check-api',
       },
       {
         title: 'React Table Test',
-        url: '/test-files/react-table-test',
+        url: '/new-feature-test/react-table',
       },
     ]
   },
