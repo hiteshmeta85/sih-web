@@ -21,6 +21,6 @@ export const labelOptions = [
   },
   {
     label: 'Alerts',
-    value: 'ALerts',
+    value: 'Alerts',
   },
 ]

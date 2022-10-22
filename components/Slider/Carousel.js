@@ -1,18 +1,18 @@
 import React, {useState} from "react";
 import {Box, Button, Flex, Image, Text} from "@chakra-ui/react";
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
-import {sliderData} from "../../constants/sliderData";
+import {authCarouselData} from "../../constants/authCarouselData";
 
 const Carousel = () => {
   const [index, setIndex] = useState(0);
-  const {image, text, name, designation, company} = sliderData[index];
+  const {image, text, name, designation, company} = authCarouselData[index];
 
   const checkNumber = (num) => {
-    if (num > sliderData.length - 1) {
+    if (num > authCarouselData.length - 1) {
       return 0
     }
     if (num < 0) {
-      return sliderData.length - 1
+      return authCarouselData.length - 1
     }
     return num
   };

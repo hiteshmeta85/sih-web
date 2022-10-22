@@ -1,18 +1,18 @@
 import React, {useState} from "react";
 import {Box, Button, Flex, Image, Text} from "@chakra-ui/react";
 import {FaArrowLeft, FaArrowRight} from "react-icons/fa";
-import {sampleDisasters} from "../../constants/sampleDisasters";
+import {herosectionCarouselData} from "../../constants/herosectionCarouselData";
 
 const LandingPageCarousel = () => {
   const [index, setIndex] = useState(0);
-  const {image, news} = sampleDisasters[index];
+  const {image, news} = herosectionCarouselData[index];
 
   const checkNumber = (num) => {
-    if (num > sampleDisasters.length - 1) {
+    if (num > herosectionCarouselData.length - 1) {
       return 0
     }
     if (num < 0) {
-      return sampleDisasters.length - 1
+      return herosectionCarouselData.length - 1
     }
     return num
   };

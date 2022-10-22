@@ -5,7 +5,7 @@ import Slide4 from "../components/Slider/slide4.jpg";
 import Slide5 from "../components/Slider/slide5.jpg";
 import Slide6 from "../components/Slider/slide6.jpg";
 
-export const sliderData = [
+export const authCarouselData = [
   {
     id: 1,
     image: Slide1,

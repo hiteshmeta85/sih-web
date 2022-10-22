@@ -1,4 +1,4 @@
-export const sampleDisasters = [
+export const herosectionCarouselData = [
     {
         id: 1,
         news: "As heavy rains lash Himachal, five more bodies found, toll at 27",
