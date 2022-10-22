@@ -1,33 +1,47 @@
-import {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import {Box, Heading, Text} from "@chakra-ui/react";
 
 const Cors = () => {
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        axios(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/tweets/all`, {
-          headers: {
-            'Access-Control-Allow-Origin': "*"
-          }
+  const [didTheTestPassed, setDidTheTestPassed] = useState(false)
+
+  const fetchData = async () => {
+    try {
+      await axios(`${process.env.NEXT_PUBLIC_API_HOST_HOMEBREW}/tweets/all`, {
+        headers: {
+          'Access-Control-Allow-Origin': "*"
+        }
+      })
+        .then(function (response) {
+          setDidTheTestPassed(true)
         })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
-      } catch (error) {
-        console.log(error)
-      }
+        .catch(function (error) {
+          console.log(error)
+          setDidTheTestPassed(false)
+        })
+    } catch (error) {
+      console.log(error)
+      setDidTheTestPassed(false)
     }
+  }
+
+  useEffect(() => {
     fetchData()
   }, [])
 
   return (
-    <div>
-      Cors Test
-    </div>
+    <Box
+      minH={'100vh'}
+      display={'flex'}
+      alignItems={'center'}
+      justifyContent={'center'}
+      flexDir={'column'}
+      gap={8}
+    >
+      <Heading color={'peru'}>CORS Test</Heading>
+      <Text>Test Result - CORS {didTheTestPassed ? 'Passed' : 'Failed'}</Text>
+    </Box>
   );
 };
 
