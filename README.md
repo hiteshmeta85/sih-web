@@ -1,4 +1,4 @@
-<p align="center"><img src="public/readme-images/SIH2022-logo.png" /></p>
+<p align="center"><img src="public/images/readme/SIH2022-logo.png" /></p>
 <h3 align="center">Team Homebrew</h3>
 <h4 align="center">Winner of Smart India Hackathon 2022 🏆</h4>
 

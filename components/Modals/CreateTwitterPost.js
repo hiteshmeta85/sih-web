@@ -17,7 +17,7 @@ import {Formik} from "formik";
 import twitterAlertSchema from "../../lib/schemas/twitterAlertSchema";
 import axios from "axios";
 import CustomInput from "../Input/CustomInput";
-import TwitterPostIcon from "../../public/twitter-create-post.svg"
+import TwitterPostIcon from "../../public/images/create.svg"
 import Image from "next/image";
 import CustomSubmitButton from "../Button/CustomSubmitButton";
 

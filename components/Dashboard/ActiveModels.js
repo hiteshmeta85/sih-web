@@ -1,11 +1,11 @@
 import {Avatar, Box, Flex, Text} from "@chakra-ui/react";
 import React from "react";
 import Image from "next/image";
-import audio from "./audio.png";
-import text from "./text.png";
-import classification from "./classification.png";
-import detection from "./detection.png";
-import image from "./image.png";
+import audio from "../../public/images/models/audio.png";
+import text from "../../public/images/models/text.png";
+import classification from "../../public/images/models/classification.png";
+import detection from "../../public/images/models/detection.png";
+import image from "../../public/images/models/image.png";
 
 const ActiveModels = () => {
   return (

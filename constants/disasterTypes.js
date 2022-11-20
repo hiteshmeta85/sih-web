@@ -1,12 +1,12 @@
-import flood from "../pages/dashboard/create-project/flood.png";
-import earthquake from "../pages/dashboard/create-project/earthquake.png";
-import hurricane from "../pages/dashboard/create-project/hurricane.png";
-import storm from "../pages/dashboard/create-project/storm.png";
-import wildfire from "../pages/dashboard/create-project/wildfire.png";
-import fire from "../pages/dashboard/create-project/fire.png";
-import buildingCollapse from "../pages/dashboard/create-project/buildingCollapse.png";
-import industryHazards from "../pages/dashboard/create-project/industryHazards.png";
-import transportAccident from "../pages/dashboard/create-project/accident.png";
+import flood from "../public/images/disasters/flood.png";
+import earthquake from "../public/images/disasters/earthquake.png";
+import hurricane from "../public/images/disasters/hurricane.png";
+import storm from "../public/images/disasters/storm.png";
+import wildfire from "../public/images/disasters/wildfire.png";
+import fire from "../public/images/disasters/fire.png";
+import buildingCollapse from "../public/images/disasters/buildingCollapse.png";
+import industryHazards from "../public/images/disasters/industryHazards.png";
+import transportAccident from "../public/images/disasters/accident.png";
 
 export const disasterTypes = [
   {

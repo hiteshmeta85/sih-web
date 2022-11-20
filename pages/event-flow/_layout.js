@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {Box, Flex, Heading, Link, Text} from "@chakra-ui/react";
 import {IoIosArrowRoundBack} from "react-icons/io";
 import NextLink from "next/link";
-import BackButtonIcon from "./BackButton.svg";
-import ForwardButtonIcon from "./ForwardButton.svg"
+import BackButtonIcon from "../../public/images/buttons/BackButton.svg";
+import ForwardButtonIcon from "../../public/images/buttons/ForwardButton.svg"
 import Image from "next/image";
 import Router from "next/router";
 import PropTypes from 'prop-types';
